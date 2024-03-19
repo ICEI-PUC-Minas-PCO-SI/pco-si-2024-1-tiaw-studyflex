@@ -1,10 +1,11 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=14364163&assignment_repo_type=AssignmentRepo)
-# Nome do projeto
-Escreva um ou dois  parágrafo resumindo o objetivo do seu projeto.
+# StudyFlex
+Seria um programa para resolver a má organização dos estudos,ou seja,melhorar a sua flexiblidade,por isso o nome "StudyFlex".
+E isso seria resolvido através de um site,que iria solucionar esse problemas para os estudantes.
 
 ## Alunos integrantes da equipe
 
-* Nome completo do aluno 1
+* Raphael Augusto Ferreira Diniz
 * Nome completo do aluno 2
 * Nome completo do aluno 3
 * Nome completo do aluno 4
