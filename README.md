@@ -6,7 +6,7 @@ E isso seria resolvido através de um site,que iria solucionar esse problemas pa
 ## Alunos integrantes da equipe
 
 * Raphael Augusto Ferreira Diniz
-* Nome completo do aluno 2
+* Mateus Botelho de Souza
 * Nome completo do aluno 3
 * Nome completo do aluno 4
 
