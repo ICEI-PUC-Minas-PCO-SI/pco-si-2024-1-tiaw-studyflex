@@ -7,7 +7,7 @@ E isso seria resolvido através de um site,que iria solucionar esse problemas pa
 
 * Raphael Augusto Ferreira Diniz
 * Mateus Botelho de Souza
-* Nome completo do aluno 3
+* Ana Clara Belo Barcelos
 * Nome completo do aluno 4
 
 ## Professores responsáveis
