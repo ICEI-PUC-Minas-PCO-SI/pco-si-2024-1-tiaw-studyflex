@@ -8,8 +8,7 @@ E isso seria resolvido através de um site,que iria solucionar esse problemas pa
 * Raphael Augusto Ferreira Diniz
 * Mateus Botelho de Souza
 * Ana Clara Belo Barcelos
-* Nome completo do aluno 4
-
+* Lucas Borges de Freitas
 ## Professores responsáveis
 
 * Nome completo do professor 1
