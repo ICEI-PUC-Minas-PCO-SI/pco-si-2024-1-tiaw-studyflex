@@ -11,8 +11,8 @@ Com a StudyFlex, os estudantes terão a oportunidade de estudar em seu próprio 
 * Rafael Melchiades Souza Simões
 ## Professores responsáveis
 
-* Nome completo do professor 1
-* Nome completo do professor 2
+* Leonardo Vilela Cardoso
+
 
 ## Instruções de utilização
 
