@@ -1,7 +1,6 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=14364163&assignment_repo_type=AssignmentRepo)
 # StudyFlex
-Seria um programa para resolver a má organização dos estudos,ou seja,melhorar a sua flexiblidade,por isso o nome "StudyFlex".
-E isso seria resolvido através de um site,que iria solucionar esse problemas para os estudantes.
+Com a StudyFlex, os estudantes terão a oportunidade de estudar em seu próprio ritmo, adaptando o processo de aprendizagem às demandas de suas vidas agitadas e às suas preferências pessoais. A plataforma oferecerá uma ampla gama de recursos, incluindo uma lista de tarefas flexível com capacidade de priorização e categorização, um calendário integrado para facilitar o planejamento de estudos e o cumprimento de prazos, além de alertas e lembretes personalizáveis para manter os estudantes organizados e concentrados em seus objetivos. Com a StudyFlex, os estudantes terão o poder de moldar sua própria jornada educacional e alcançar todo o seu potencial acadêmico. Prepare-se para uma revolução no aprendizado com o lançamento iminente da StudyFlex!
 
 ## Alunos integrantes da equipe
 
