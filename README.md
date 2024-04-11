@@ -1,4 +1,5 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=14364163&assignment_repo_type=AssignmentRepo)
+
 <div align="center"><img src="https://github.com/ICEI-PUC-Minas-PCO-SI/pco-si-2024-1-tiaw-studyflex/assets/116606952/91158fac-0dd9-4d94-b4e9-cbf1caeca56f" width="0px" /></div>
 
 # StudyFlex
