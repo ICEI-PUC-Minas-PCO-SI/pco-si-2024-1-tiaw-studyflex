@@ -9,6 +9,7 @@ E isso seria resolvido através de um site,que iria solucionar esse problemas pa
 * Mateus Botelho de Souza
 * Ana Clara Belo Barcelos
 * Lucas Borges de Freitas
+* Rafael Melchiades Souza Simões
 ## Professores responsáveis
 
 * Nome completo do professor 1
