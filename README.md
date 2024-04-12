@@ -12,6 +12,7 @@ Com a StudyFlex, os estudantes terão a oportunidade de estudar em seu próprio 
 * Ana Clara Belo Barcelos
 * Lucas Borges de Freitas
 * Rafael Melchiades Souza Simões
+* Victor Alves Alcântara
 ## Professores responsáveis
 
 * Leonardo Vilela Cardoso
