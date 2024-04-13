@@ -75,7 +75,7 @@ Neste cenário, o StudyFlex surge como uma solução imprescindível para preenc
 
 A StudyFlex é destinada a auxiliar estudantes na conquista de seus objetivos acadêmicos, logo abrange uma ampla faixa etária, desde alunos do fundamental até estudantes universitários e profissionais que buscam aprendizado contínuo.
 
-Estudantes do Ensino Fundamental e Médio: Este grupo geralmente consiste em adolescentes que estão desenvolvendo habilidades de organização e autogestão.
+Estudantes do Médio: Este grupo geralmente consiste em adolescentes que estão desenvolvendo habilidades de organização e autogestão.
 Estudantes Universitários: Esse grupo inclui jovens adultos que estão frequentando cursos de graduação e pós-graduação. Eles podem se beneficiar da plataforma para gerenciar uma carga horária mais pesada de estudos, acompanhar múltiplas disciplinas e organizar projetos de pesquisa
 
 Estudantes de Educação Continuada e Profissionais em Reciclagem: Este grupo é composto por adultos que já estão inseridos no mercado de trabalho e buscam gerenciar seu tempo de forma efetiva.
