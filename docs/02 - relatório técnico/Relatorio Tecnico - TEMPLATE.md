@@ -125,26 +125,26 @@ Por que Ana precisa do StudyFlex: Ana busca equilibrar sua vida pessoal e profis
 
 
 
-> Diogo da Silva
-> Idade: 21
-Ocupação: Estagiário em uma empresa de tecnologia, cursando engenharia de software.
-Personalidade: Diogo é curioso, pró ativo, porém uma pouco desorganizado com suas tarefas
-Aplicativos:
+• Diogo da Silva
+• Idade: 21
+• Ocupação: Estagiário em uma empresa de tecnologia, cursando engenharia de software.
+• Personalidade: Diogo é curioso, pró ativo, porém uma pouco desorganizado com suas tarefas
+• Aplicativos:
 Redes sociais 
 Softwares de Desenvolvimento
-Motivações
+• Motivações
 Ele deseja ter uma carreira gratificante e desafiadora, onde possa crescer profissionalmente e fazer a diferença no mundo da tecnologia. 
 
 
-Não tolera:
+•Não tolera:
 Falta de Respeito
 Perda de tempo
-Hobbies, História
- Jogar futebol é uma forma de se desconectar do estresse da faculdade e do trabalho, enquanto se diverte e mantém um estilo de vida ativo.
+•Hobbies, História
+Jogar futebol é uma forma de se desconectar do estresse da faculdade e do trabalho, enquanto se diverte e mantém um estilo de vida ativo.
 
  
 
-Por que Diogo precisa do StudyFlex: Diogo tem uma carga acadêmica pesada com uma alta demanda de trabalhos e projetos para cumprir e precisa de uma maneira eficiente de acompanhar tudo e garantir que nada seja esquecido, gerenciando seu tempo e suas prioridades. Logo, podemos fazer uma listagem sobre as razões pelas quais o Diogo precisa dos serviços do StudyFlex:
+• Por que Diogo precisa do StudyFlex: Diogo tem uma carga acadêmica pesada com uma alta demanda de trabalhos e projetos para cumprir e precisa de uma maneira eficiente de acompanhar tudo e garantir que nada seja esquecido, gerenciando seu tempo e suas prioridades. Logo, podemos fazer uma listagem sobre as razões pelas quais o Diogo precisa dos serviços do StudyFlex:
 • Evitar esquecimentos e atrasos 
 • Gerenciamento de tempo 
 • Desenvolvimento de hábitos produtivos 
@@ -159,29 +159,29 @@ Por que Diogo precisa do StudyFlex: Diogo tem uma carga acadêmica pesada com um
 
 
 
-Eduardo Santos
-Idade: 45
-Ocupação: Professor de História do Ensino Médio 
-Personalidade:
+• Eduardo Santos
+• Idade: 45
+• Ocupação: Professor de História do Ensino Médio 
+• Personalidade:
 Apaixonado por história, dedicado, paciente, exigente, perfeccionista.
-Aplicativos:
+• Aplicativos:
 Plataformas de ensino online
  Redes sociais
  Aplicativos de comunicação.
-Motivações
+• Motivações
 Inspirar seus alunos a amar a história, formar cidadãos críticos e conscientes, contribuir para a construção de um futuro melhor.
 
 
-Não tolera:
+• Não tolera:
 Falta de respeito por parte dos alunos.
  Desinteresse pela história.
  Desorganização.
-Hobbies, História
+• Hobbies, História
 Ler livros de história, assistir documentários, viajar para lugares históricos. 
 
 
 
-Por que Eduardo precisa do StudyFlex: 
+• Por que Eduardo precisa do StudyFlex: 
 • Ferramentas para criação de conteúdo interativo. 
 • Recursos para organização de materiais didáticos. 
 • Interface intuitiva e amigável, com recursos fáceis de usar. 
@@ -202,30 +202,30 @@ Por que Eduardo precisa do StudyFlex:
 
 
 
-Diogo da Silva
-Idade: 28
-Ocupação:  Desenvolvedor de software
- Personalidade: : Analítico, dedicado, introvertido, apaixonado por tecnologia, tende a se isolar quando está focado em um projeto, gosta de resolver problemas complexos.
-Deficiência: Deficiência auditiva 
-Aplicativos:
+• Diogo da Silva
+• Idade: 28
+• Ocupação:  Desenvolvedor de software
+• Personalidade: : Analítico, dedicado, introvertido, apaixonado por tecnologia, tende a se isolar quando está focado em um projeto, gosta de resolver problemas complexos.
+• Deficiência: Deficiência auditiva 
+• Aplicativos:
  IDEs de programação
  Ferramentas de controle de versão (como Git)
  Documentação online
 Fóruns de desenvolvimento
  Aplicativos de produtividade.
-Motivações
+• Motivações
  Ser reconhecido como um desenvolvedor de software de destaque, trabalhar em projetos inovadores, contribuir para avanços significativos na área da tecnologia, ter liberdade financeira. 
 
 
-Não tolera:
+• Não tolera:
 Interrupções constantes durante seu fluxo de trabalho
  Ferramentas pouco acessíveis
 Ambientes de trabalho desorganizados ou que não levem em consideração suas necessidades de acessibilidade.
-Hobbies, História
+• Hobbies, História
  Jogar xadrez (estimular o pensamento estratégico, relaxar a mente, desafiar-se intelectualmente).
 
 
-Por que Rafael precisa do StudyFlex: Rafael busca uma ferramenta que o ajude a otimizar seu tempo tanto para os estudos, quanto para o trabalho de forma com que possa gerenciar seus projetos e manter-se organizado, levando em consideração sua deficiência auditiva e suas necessidades específicas. 
+• Por que Rafael precisa do StudyFlex: Rafael busca uma ferramenta que o ajude a otimizar seu tempo tanto para os estudos, quanto para o trabalho de forma com que possa gerenciar seus projetos e manter-se organizado, levando em consideração sua deficiência auditiva e suas necessidades específicas. 
 • Funcionalidades de organização e gestão de tarefas, com suporte para acessibilidade. 
 • Recursos de acompanhamento de tempo com opções visuais e táteis para estimar esforços e evitar sobrecarga.
 
