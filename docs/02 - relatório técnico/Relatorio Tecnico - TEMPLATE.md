@@ -125,8 +125,8 @@ Por que Ana precisa do StudyFlex: Ana busca equilibrar sua vida pessoal e profis
 
 
 
-Diogo da Silva
-Idade: 21
+> Diogo da Silva
+> Idade: 21
 Ocupação: Estagiário em uma empresa de tecnologia, cursando engenharia de software.
 Personalidade: Diogo é curioso, pró ativo, porém uma pouco desorganizado com suas tarefas
 Aplicativos:
