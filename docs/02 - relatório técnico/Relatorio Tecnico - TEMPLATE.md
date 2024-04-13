@@ -290,16 +290,15 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 # Projeto de Interface
 
-......  COLOQUE AQUI O SEU TEXTO DE INTRODUÇÃO ......
+Fluxo de Telas Wireframes: Nesta seção, apresentamos o fluxo de telas wireframes desenvolvido no Figma para demonstrar o conceito inicial da plataforma em desenvolvimento como parte do projeto StudyFlex.
 
-> Apresente as principais interfaces da solução. Discuta como 
-> foram elaboradas de forma a atender os requisitos funcionais, não
-> funcionais e histórias de usuário abordados nas [Especificações do
-> Projeto](#especificações-do-projeto).
+Objetivo: O objetivo deste fluxo de telas é fornecer uma visualização preliminar da organização dos estudos na plataforma, destacando elementos como um menu interativo, calendário e sistema de tarefas integrado.
+
+Ferramentas Utilizadas: O processo de criação desses wireframes foi conduzido utilizando a ferramenta de design colaborativo Figma. O Figma foi escolhido devido à capacidade de colaboração em tempo real, facilitando a interação e o compartilhamento do progresso com a equipe.
 
 ## User Flow
 
-......  INCLUA AQUI O DIAGRAMA COM O FLUXO DO USUÁRIO NA APLICAÇÃO ......
+![WIREFRAMES](https://github.com/ICEI-PUC-Minas-PCO-SI/pco-si-2024-1-tiaw-studyflex/assets/116606952/26abb259-3c2a-45e8-8788-47337b00bf39)
 
 > Fluxo de usuário (User Flow) é uma técnica que permite ao desenvolvedor
 > mapear todo fluxo de telas do site ou app. Essa técnica funciona
