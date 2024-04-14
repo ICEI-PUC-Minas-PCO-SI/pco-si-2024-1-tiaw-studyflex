@@ -362,21 +362,21 @@ A StudyFlex sempre visou trabalhar de forma ágil, flexível e extremamente efic
 
 Sendo este separado nas seguintes listas:
 
-> Backlog: Nesta coluna estão as tarefas que foram identificadas para serem
+- Backlog: Nesta coluna estão as tarefas que foram identificadas para serem
 feitas ao longo do projeto.
 
-> O que tem que ser feito: Nesta coluna estão as tarefas que ainda serão
+- O que tem que ser feito: Nesta coluna estão as tarefas que ainda serão
 iniciadas.
 
-> Fazendo: Nesta coluna estão as tarefas que já foram iniciadas e que
+- Fazendo: Nesta coluna estão as tarefas que já foram iniciadas e que
 pertenciam a coluna “O que tem que ser feito”.
 
-> O que já fez: Nesta coluna estão as tarefas que já foram realizadas.
+- O que já fez: Nesta coluna estão as tarefas que já foram realizadas.
 
-> Revisar: As tarefas são movidas para essa coluna para serem revisadas se
+- Revisar: As tarefas são movidas para essa coluna para serem revisadas se
 estão devidamente corretas e não há nada faltando.
 
-> Finalizado: Nesta coluna estão as tarefas completas e sem nenhum
+- Finalizado: Nesta coluna estão as tarefas completas e sem nenhum
 problema, prontas para serem enviadas.
 
 > 
