@@ -255,6 +255,25 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |------|-----------------------------------------|----|
 |RF-001| Permitir que o usuário cadastre tarefas | ALTA | 
 |RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
+|RF-003| O site deve ter um calendário virtual   | ALTA |
+|RF-004| O site deve ter um sistema de recomendações e dicas sobre estudos | MÉDIA |
+|RF-005| O site deve ter um contato de suporte técnico | ALTA |
+|RF-006| O site deve ter um sistema de blocos de notas | ALTA |
+|RF-007| O site deve ter um sistema de acessibilidade para pessoas com deficiência | ALTA |
+|RF-008| O site deve ter um sitema de recomendações de atividades para o usuário | MÉDIA |
+|RF-009| O site deve ter um recurso de gerenciamento de progresso nas matérias | ALTA |
+|RF-010| Permitir a identificação de compromissos  | ALTA |
+|RF-011| Permirtir a adição e verificação de lembretes e notas | ALTA |
+|RF-012| Permitir o usúrio marcar datas importantes no calendário | ALTA |
+|RF-013| Permitir que os usuários possam colocar suas tarefas no site | ALTA |
+|RF-014| Os usuários devem conseguir analisar as datas mais importantes e pedências de acordo com a relevância e prazo | MÉDIA |
+|RF-015| Permitir que os usuário marquem como concluído as tarefas já feitas em cada matéria | ALTA |
+|RF-016| Os usuários devem conseguir analisar os seus progressos em cada matéria no site | BAIXA |
+|RF-017| Os usuários devem conseguir navegar no site para aba de recomendações e acessar as recomendações e dicas | ALTA |
+|RF-018| Os usuários devem conseguir entrar em contato com o suporte técnico no site | MÉDIA |
+|RF-019| Os usuários devem conseguir escolher os exercícios de acordo com matéria que deseja no site | MÉDIA |
+|RF-020| O site deve permitir que o usuário se cadastre | ALTA |
+
 
 
 ### Requisitos não Funcionais
@@ -337,7 +356,29 @@ Ferramentas Utilizadas: O processo de criação desses wireframes foi conduzido 
 
 # Metodologia
 
+##Organização da Equipe 
+
 A StudyFlex sempre visou trabalhar de forma ágil, flexível e extremamente eficiente. Por conta disso, estamos sempre de olho nas tendências que acompanham o mercado, sejam elas ferramentas, metodologias ou frameworks. Diante da visão que empregamos na empresa, duas metodologias de trabalho nos chamaram a atenção, Scrum e Kanban. Dessa forma combinando as duas estratégias de gestão de projeto, optamos por utilizar o modelo Scrumban em nosso projeto. Desde então essa metodologia tem sido primordial para gerenciarmos nosso projeto. Optamos pela plataforma da Ummense, para realizar o gerenciamento das nossas tarefas, lá onde temos controle e realizamos o acompanhamento do progresso da equipe.
+
+Sendo este separado nas seguintes listas:
+
+> Backlog: Nesta coluna estão as tarefas que foram identificadas para serem
+feitas ao longo do projeto.
+
+> O que tem que ser feito: Nesta coluna estão as tarefas que ainda serão
+iniciadas.
+
+> Fazendo: Nesta coluna estão as tarefas que já foram iniciadas e que
+pertenciam a coluna “O que tem que ser feito”.
+
+> O que já fez: Nesta coluna estão as tarefas que já foram realizadas.
+
+> Revisar: As tarefas são movidas para essa coluna para serem revisadas se
+estão devidamente corretas e não há nada faltando.
+
+> Finalizado: Nesta coluna estão as tarefas completas e sem nenhum
+problema, prontas para serem enviadas.
+
 > 
 > **Quadro de tarefas**:
 > - [StudyFlex - Ummense](https://app.ummense.com/flow/1eef6a34-3128-616c-b232-0ef36ce67755)
