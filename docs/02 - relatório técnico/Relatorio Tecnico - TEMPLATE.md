@@ -337,52 +337,30 @@ Ferramentas Utilizadas: O processo de criação desses wireframes foi conduzido 
 
 # Metodologia
 
-## Organização da Equipe
-
 A StudyFlex sempre visou trabalhar de forma ágil, flexível e extremamente eficiente. Por conta disso, estamos sempre de olho nas tendências que acompanham o mercado, sejam elas ferramentas, metodologias ou frameworks. Diante da visão que empregamos na empresa, duas metodologias de trabalho nos chamaram a atenção, Scrum e Kanban. Dessa forma combinando as duas estratégias de gestão de projeto, optamos por utilizar o modelo Scrumban em nosso projeto. Desde então essa metodologia tem sido primordial para gerenciarmos nosso projeto. Optamos pela plataforma da Ummense, para realizar o gerenciamento das nossas tarefas, lá onde temos controle e realizamos o acompanhamento do progresso da equipe.
-
-Sendo este separado nas seguintes listas:
-
-● Backlog: Nesta coluna estão as tarefas que foram identificadas para serem
-feitas ao longo do projeto.
-
-● O que tem que ser feito: Nesta coluna estão as tarefas que ainda serão
-iniciadas.
-
-● Fazendo: Nesta coluna estão as tarefas que já foram iniciadas e que
-pertenciam a coluna “O que tem que ser feito”.
-
-● O que já fez: Nesta coluna estão as tarefas que já foram realizadas.
-
-● Revisar: As tarefas são movidas para essa coluna para serem revisadas se
-estão devidamente corretas e não há nada faltando.
-
-● Finalizado: Nesta coluna estão as tarefas completas e sem nenhum
-problema, prontas para serem enviadas.
-
 > 
-> **Links Úteis**:
+> **Quadro de tarefas**:
 > - [StudyFlex - Ummense](https://app.ummense.com/flow/1eef6a34-3128-616c-b232-0ef36ce67755)
 
 ## Divisão de Papéis
 
 A equipe está organizada da seguinte maneira:
 
-● DESIGN THINKING
-○ Ana Clara Belo Barcelos - (Entrevista Qualitativa, História de usuários)
-○ Lucas Borges de Freitas - (Personas)
-○ Mateus Botelho de Souza - (Mural de Possibilidades)
-○ Rafael Melchiades Souza Simões - (Mapa de Priorização)
-○ Raphael Augusto Ferreira Diniz - (Mapa de Stakeholders)
-○ Victor Alves Alcântara - (Matriz de Alinhamento, Mapa de proposta de valor)
+> DESIGN THINKING
+> - Ana Clara Belo Barcelos - (Entrevista Qualitativa, História de usuários)
+> - Lucas Borges de Freitas - (Personas)
+> - Mateus Botelho de Souza - (Mural de Possibilidades)
+> - Rafael Melchiades Souza Simões - (Mapa de Priorização)
+> - Raphael Augusto Ferreira Diniz - (Mapa de Stakeholders)
+> - Victor Alves Alcântara - (Matriz de Alinhamento, Mapa de proposta de valor)
 
-● RELATÓRIO TÉCNICO
-○ Ana Clara Belo Barcelos - (Especificação do Projeto)
-○ Lucas Borges de Freitas - (Contexto do Projeto)
-○ Mateus Botelho de Souza - (Projeto de Interface)
-○ Rafael Melchiades Souza Simões - (Metodologia, Especificação do Projeto)
-○ Raphael Augusto Ferreira Diniz - (Contexto do Projeto)
-○ Victor Alves Alcântara - (Metodologia)
+> RELATÓRIO TÉCNICO
+> - Ana Clara Belo Barcelos - (Especificação do Projeto)
+> - Lucas Borges de Freitas - (Contexto do Projeto)
+> - Mateus Botelho de Souza - (Projeto de Interface)
+> - Rafael Melchiades Souza Simões - (Metodologia, Especificação do Projeto)
+> - Raphael Augusto Ferreira Diniz - (Contexto do Projeto)
+> - Victor Alves Alcântara - (Metodologia)
 
 ## Ferramentas
 
@@ -390,42 +368,24 @@ A equipe está organizada da seguinte maneira:
 |-----------|-------------------------|---------------|
 |Processo de Design Thinking  | Figma | https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:383a4244-31bd-4bbd-a76e-2bae023464c7 | 
 |Repositório de código | GitHub | https://github.com/ICEI-PUC-Minas-PCO-SI/pco-si-2024-1-tiaw-studyflex/tree/master | 
-|Protótipo Interativo | Figma | https://figma.com/XXXXXXX](https://www.figma.com/file/1AYkkZhDsKTjM9vLl228uU/StudyFlex?type=design&node-id=0-1&mode=design&t=9QB9xghINIRpJ0Vt-0) | 
+|Protótipo Interativo | Figma | https://figma.com/XXXXXXX](https://www.figma.com/file/1AYkkZhDsKTjM9vLl228uU/StudyFlex?type=design&node-id=0-1&mode=design&t=9QB9xghINIRpJ0Vt-0) |
+|Gerenciamento de Tarefas | Ummense | https://app.ummense.com/flow/1eef6a34-3128-616c-b232-0ef36ce67755 |
+|Hospedagem de site | *em discussão*  | - |
 
 >
-
-> 
-> As ferramentas empregadas no projeto são:
+As ferramentas empregadas no projeto são:
 > 
 > - Editor de código: Visual Studio Code
 > - Ferramentas de comunicação: WhatssApp/Discord
 > - Ferramentas de diagramação: Figma/Canva
-> - Plataforma de hospedagem
->
 > 
-> O editor de código foi escolhido porque ele possui uma integração com o
-> sistema de versão. As ferramentas de comunicação utilizadas possuem
-> integração semelhante e por isso foram selecionadas. Por fim, para criar
-> diagramas utilizamos essa ferramenta por melhor captar as
-> necessidades da nossa solução.
-> 
-> **Links Úteis - Hospedagem**:
-> - [Getting Started with Heroku](https://devcenter.heroku.com/start)
-> - [Crie seu Site com o HostGator](https://www.hostgator.com.br/como-publicar-seu-site)
-> - [GoDady](https://br.godaddy.com/how-to)
-> - [GitHub Pages](https://pages.github.com/)
+Escolhemos o Visual Studio Code por conta da flexibilidade e quantidade expressiva de extensões que irão auxiliar o nosso desenvolvimento, uma interface intuitiva para código e a familiaridade dos membros com a ferramenta.
+A escolha das ferramentas de Diagramação se dá pela popularidade e pela facilidade de uso e capacidade de criar designs visualmente impressionantes, com Figma destacando-se pela colaboração em tempo real e Canva pela variedade de modelos pré-fabricados. 
+Para mensagens de texto, conversas mais dinâmicas, envio de arquivos e atualizações rápidas utilizaremos o WhatsApp. O Discord fica responsável por um contato maior entre o time, com reuniões, apresentações, trabalho em conjunto, discussões sobre o projeto e tudo que o envolve.
 
 ## Controle de Versão
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Discuta como a configuração do projeto foi feita na ferramenta de
-> versionamento escolhida. Exponha como a gerência de tags, merges,
-> commits e branchs é realizada. Discuta como a gerência de issues foi
-> realizada.
-> A ferramenta de controle de versão adotada no projeto foi o
-> [Git](https://git-scm.com/), sendo que o [Github](https://github.com)
-> foi utilizado para hospedagem do repositório `upstream`.
+Escolhemos o Git como ferramenta de versionamento de código devido à sua popularidade, eficiência e ampla adoção na comunidade de desenvolvimento de software. Por oferecer um sistema de controle de versão distribuído, permitindo que equipes de qualquer tamanho colaborem de forma eficaz, rastreiem alterações no código, revertam para versões anteriores e gerenciem o desenvolvimento de projetos de maneira organizada e segura.
 > 
 > O projeto segue a seguinte convenção para o nome de branchs:
 > 
@@ -440,15 +400,6 @@ A equipe está organizada da seguinte maneira:
 > - `bugfix`: uma funcionalidade encontra-se com problemas
 > - `enhancement`: uma funcionalidade precisa ser melhorada
 > - `feature`: uma nova funcionalidade precisa ser introduzida
->
-> **Links Úteis**:
-> - [Tutorial GitHub](https://guides.github.com/activities/hello-world/)
-> - [Git e Github](https://www.youtube.com/playlist?list=PLHz_AreHm4dm7ZULPAmadvNhH6vk9oNZA)
-> - [5 Git Workflows & Branching Strategy to deliver better code](https://zepel.io/blog/5-git-workflows-to-improve-development/)
->
-> **Exemplo - GitHub Feature Branch Workflow**:
->
-> ![Exemplo de Wireframe](images/Github-Workflow.png)
 
 # **############## SPRINT 1 ACABA AQUI #############**
 
