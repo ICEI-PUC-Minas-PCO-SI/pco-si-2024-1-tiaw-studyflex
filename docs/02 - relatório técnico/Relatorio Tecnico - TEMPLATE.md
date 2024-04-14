@@ -339,54 +339,49 @@ Ferramentas Utilizadas: O processo de criação desses wireframes foi conduzido 
 
 ......  COLOQUE AQUI O SEU TEXTO ......
 
-> Nesta parte do documento, você deve apresentar a metodologia 
-> adotada pelo grupo, descrevendo o processo de trabalho baseado nas metodologias ágeis, 
-> a divisão de papéis e tarefas, as ferramentas empregadas e como foi realizada a
-> gestão de configuração do projeto via GitHub.
->
-> Coloque detalhes sobre o processo de Design Thinking e a implementação do Framework Scrum seguido
-> pelo grupo. O grupo poderá fazer uso de ferramentas on-line para acompanhar
-> o andamento do projeto, a execução das tarefas e o status de desenvolvimento
-> da solução.
+A StudyFlex sempre visou trabalhar de forma ágil, flexível e extremamente eficiente. Por conta disso, estamos sempre de olho nas tendências que acompanham o mercado, sejam elas ferramentas, metodologias ou frameworks. Diante da visão que empregamos na empresa, duas metodologias de trabalho nos chamaram a atenção, Scrum e Kanban. Dessa forma combinando as duas estratégias de gestão de projeto, optamos por utilizar o modelo Scrumban em nosso projeto. Desde então essa metodologia tem sido primordial para gerenciarmos nosso projeto. Optamos pela plataforma da Ummense, para realizar o gerenciamento das nossas tarefas, lá onde temos controle e realizamos o acompanhamento do progresso da equipe.
 > 
 > **Links Úteis**:
-> - [Tutorial Trello](https://trello.com/b/8AygzjUA/tutorial-trello)
-> - [Gestão ágil de projetos com o Trello](https://www.youtube.com/watch?v=1o9BOMAKBRE)
-> - [Gerência de projetos - Trello com Scrum](https://www.youtube.com/watch?v=DHLA8X_ujwo)
-> - [Tutorial Slack](https://slack.com/intl/en-br/)
+> - [StudyFlex - Ummense](https://app.ummense.com/flow/1eef6a34-3128-616c-b232-0ef36ce67755)
 
 ## Divisão de Papéis
 
-......  COLOQUE AQUI O SEU TEXTO ......
+A equipe está organizada da seguinte maneira:
 
-> Apresente a divisão de papéis e tarefas entre os membros do grupo.
->
-> **Links Úteis**:
-> - [11 Passos Essenciais para Implantar Scrum no seu Projeto](https://mindmaster.com.br/scrum-11-passos/)
-> - [Scrum em 9 minutos](https://www.youtube.com/watch?v=XfvQWnRgxG0)
+● DESIGN THINKING
+○ Ana Clara Belo Barcelos - (Entrevista Qualitativa, História de usuários)
+○ Lucas Borges de Freitas - (Personas)
+○ Mateus Botelho de Souza - (Mural de Possibilidades)
+○ Rafael Melchiades Souza Simões - (Mapa de Priorização)
+○ Raphael Augusto Ferreira Diniz - (Mapa de Stakeholders)
+○ Victor Alves Alcântara - (Matriz de Alinhamento, Mapa de proposta de valor)
 
+● RELATÓRIO TÉCNICO
+○ Ana Clara Belo Barcelos - (Especificação do Projeto)
+○ Lucas Borges de Freitas - (Contexto do Projeto)
+○ Mateus Botelho de Souza - (Projeto de Interface)
+○ Rafael Melchiades Souza Simões - (Metodologia, Especificação do Projeto)
+○ Raphael Augusto Ferreira Diniz - (Contexto do Projeto)
+○ Victor Alves Alcântara - (Metodologia)
 
 ## Ferramentas
 
-......  COLOQUE AQUI O SEU TEXTO - SIGA O EXEMPLO DA TABELA ABAIXO  ......
-
 | Ambiente  | Plataforma              |Link de Acesso |
 |-----------|-------------------------|---------------|
-|Processo de Design Thinkgin  | Miro |  https://miro.com/XXXXXXX | 
-|Repositório de código | GitHub | https://github.com/XXXXXXX | 
-|Hospedagem do site | Heroku |  https://XXXXXXX.herokuapp.com | 
-|Protótipo Interativo | MavelApp ou Figma | https://figma.com/XXXXXXX | 
+|Processo de Design Thinking  | Figma | https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:383a4244-31bd-4bbd-a76e-2bae023464c7 | 
+|Repositório de código | GitHub | https://github.com/ICEI-PUC-Minas-PCO-SI/pco-si-2024-1-tiaw-studyflex/tree/master | 
+|Protótipo Interativo | Figma | https://figma.com/XXXXXXX](https://www.figma.com/file/1AYkkZhDsKTjM9vLl228uU/StudyFlex?type=design&node-id=0-1&mode=design&t=9QB9xghINIRpJ0Vt-0) | 
 
 >
-> Liste as ferramentas empregadas no desenvolvimento do
-> projeto, justificando a escolha delas, sempre que possível.
+
 > 
 > As ferramentas empregadas no projeto são:
 > 
-> - Editor de código.
-> - Ferramentas de comunicação
-> - Ferramentas de diagramação
+> - Editor de código: Visual Studio Code
+> - Ferramentas de comunicação: WhatssApp/Discord
+> - Ferramentas de diagramação: Figma/Canva
 > - Plataforma de hospedagem
+>
 > 
 > O editor de código foi escolhido porque ele possui uma integração com o
 > sistema de versão. As ferramentas de comunicação utilizadas possuem
