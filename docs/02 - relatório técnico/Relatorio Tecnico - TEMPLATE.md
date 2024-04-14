@@ -356,7 +356,7 @@ Ferramentas Utilizadas: O processo de criação desses wireframes foi conduzido 
 
 # Metodologia
 
-##Organização da Equipe 
+## Organização da Equipe 
 
 A StudyFlex sempre visou trabalhar de forma ágil, flexível e extremamente eficiente. Por conta disso, estamos sempre de olho nas tendências que acompanham o mercado, sejam elas ferramentas, metodologias ou frameworks. Diante da visão que empregamos na empresa, duas metodologias de trabalho nos chamaram a atenção, Scrum e Kanban. Dessa forma combinando as duas estratégias de gestão de projeto, optamos por utilizar o modelo Scrumban em nosso projeto. Desde então essa metodologia tem sido primordial para gerenciarmos nosso projeto. Optamos pela plataforma da Ummense, para realizar o gerenciamento das nossas tarefas, lá onde temos controle e realizamos o acompanhamento do progresso da equipe.
 
