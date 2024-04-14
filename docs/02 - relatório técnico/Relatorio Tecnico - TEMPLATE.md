@@ -337,9 +337,29 @@ Ferramentas Utilizadas: O processo de criação desses wireframes foi conduzido 
 
 # Metodologia
 
-......  COLOQUE AQUI O SEU TEXTO ......
+## Organização da Equipe
 
 A StudyFlex sempre visou trabalhar de forma ágil, flexível e extremamente eficiente. Por conta disso, estamos sempre de olho nas tendências que acompanham o mercado, sejam elas ferramentas, metodologias ou frameworks. Diante da visão que empregamos na empresa, duas metodologias de trabalho nos chamaram a atenção, Scrum e Kanban. Dessa forma combinando as duas estratégias de gestão de projeto, optamos por utilizar o modelo Scrumban em nosso projeto. Desde então essa metodologia tem sido primordial para gerenciarmos nosso projeto. Optamos pela plataforma da Ummense, para realizar o gerenciamento das nossas tarefas, lá onde temos controle e realizamos o acompanhamento do progresso da equipe.
+
+Sendo este separado nas seguintes listas:
+
+● Backlog: Nesta coluna estão as tarefas que foram identificadas para serem
+feitas ao longo do projeto.
+
+● O que tem que ser feito: Nesta coluna estão as tarefas que ainda serão
+iniciadas.
+
+● Fazendo: Nesta coluna estão as tarefas que já foram iniciadas e que
+pertenciam a coluna “O que tem que ser feito”.
+
+● O que já fez: Nesta coluna estão as tarefas que já foram realizadas.
+
+● Revisar: As tarefas são movidas para essa coluna para serem revisadas se
+estão devidamente corretas e não há nada faltando.
+
+● Finalizado: Nesta coluna estão as tarefas completas e sem nenhum
+problema, prontas para serem enviadas.
+
 > 
 > **Links Úteis**:
 > - [StudyFlex - Ummense](https://app.ummense.com/flow/1eef6a34-3128-616c-b232-0ef36ce67755)
