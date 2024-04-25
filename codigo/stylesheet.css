@@ -1,3 +1,31 @@
+.container{
+    margin-top: -25px;
+    
+    
+}
+
+#botao1{
+    background-color: #8AA17B;
+    border-color: none;
+    
+}
+
+#botao2{
+    background-color: #586352;
+    border-color: none;
+    
+}
+
+
+.retan{
+position: absolute;
+width: 726px;
+height: 1117px;
+left: 1002px;
+top: 0px;
+
+background: #586352;
+}
 
 
 
