@@ -27,9 +27,6 @@ WHITE: #FFFFFF
   /* ------------------------ */
   body {
     font-family: "Lato", sans-serif;
-    color: #343a40;
-    background-color: #414b3b;
-    padding: 32px 64px;
   }
   
   .container {
@@ -39,7 +36,6 @@ WHITE: #FFFFFF
     grid-row: 1fr 1fr 5fr 5fr;
     column-gap: 32px;
     row-gap: 16px;
-    box-shadow: 0 20px 20px 5px hsla(210, 10%, 23%, 0.178);
     background-color: #ffffff;
     border-radius: 8px;
   }
@@ -580,5 +576,14 @@ top: 240px;
         top: 240px;
         }
         
+.add1{
 
-        
+position: absolute;
+left: 88.31%;
+right: 8.56%;
+top: 47.18%;
+bottom: 47.99%;
+
+background: #414B3B;
+
+}      
