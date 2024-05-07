@@ -579,11 +579,9 @@ top: 240px;
 .add1{
 
 position: absolute;
-left: 88.31%;
-right: 8.56%;
-top: 47.18%;
-bottom: 47.99%;
-
-background: #414B3B;
+width: 41px;
+height: 41px;
+left: 340px;
+        top: 140px;
 
 }      
