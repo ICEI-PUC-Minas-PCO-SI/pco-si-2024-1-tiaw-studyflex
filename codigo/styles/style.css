@@ -224,22 +224,41 @@ nav {
   display: flex;
   align-items: end;
   border-bottom: 1px solid #414b3b;
+  gap: 4px;
+  position: relative;
 }
 
 .window-view {
-  padding: 2px 64px;
+  padding: 6px 64px;
   border: 2px solid transparent;
+  border-radius: 20px 20px 0px 0px;
+  background-image: linear-gradient(to right, #ffffff, #f5f5f5);
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+}
+
+.add-button {
+  padding: 4px;
+  border: 2px solid transparent;
+  border-radius: 20px 20px 0px 0px;
+  transition: all 0.2s ease-in;
 }
 
 .window-view:hover {
+  background-image: linear-gradient(to right, #f5f5f5, #d8d8d8);
 }
 
-.window-view.add-button .btn-img {
+.add-button .btn-img {
   width: 20px;
   transition: all 0.2s ease-in;
 }
 
-.add-button .btn-img:hover {
+.add-button:hover .btn-img {
+  filter: brightness(0) invert(1);
+}
+
+.add-button:hover {
+  background-color: #414b3b;
 }
 
 .window-title {
@@ -281,6 +300,10 @@ nav {
   border: none;
   box-shadow: 0 5px 5px 1px hsla(210, 10%, 23%, 0.178);
   border: 1px solid #8aa17b;
+}
+
+.search-bar:focus {
+  outline: 2px solid #8aa17b;
 }
 
 .input-icon {
