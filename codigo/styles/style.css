@@ -71,6 +71,11 @@ main {
   padding: 16px 24px;
 }
 
+h2 {
+  font-size: 20px;
+  color: #414b3b;
+}
+
 /* ------------------------ */
 /* COMPONENT STYLES */
 /* ------------------------ */
@@ -336,11 +341,11 @@ nav {
 
 .submit-icon {
   width: 24px;
-  transition: all 0.2s ease-in;
+  transition: all 0.5s ease-in;
 }
 
 .submit-icon:hover {
-  width: 32px;
+  transform: rotate(90deg);
 }
 
 /*TASK CONTAINER*/
@@ -424,4 +429,52 @@ nav {
 
 .task-info-title strong {
   font-weight: 900;
+}
+
+/*MODAL SUBJECT*/
+.add-subject-container {
+  left: 50%;
+  top: 50%;
+  width: 600px;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 8px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  padding: 16px;
+}
+
+.add-subject-container::backdrop {
+}
+
+.close-btn {
+  align-self: end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: all 0.2s ease-in;
+}
+
+.close-btn:hover {
+  background-color: #d9d9d9;
+}
+
+.add-subject-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.template-img {
+  width: 300px;
+}
+
+.add-subject-content .empty {
+  background: url(../assets/imgs/not_found_img.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }

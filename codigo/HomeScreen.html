@@ -29,7 +29,7 @@
         /></a>
 
         <div class="header-box">
-          <button type="button" class="btn header-btn">
+          <button class="btn header-btn">
             <img
               src="./assets/imgs/notification_icon.svg"
               alt="Notificações"
@@ -38,7 +38,7 @@
             />
           </button>
 
-          <button type="button" class="btn header-btn">
+          <button class="btn header-btn">
             <img
               src="./assets/imgs/profile_icon.svg"
               alt="Perfil do usuário"
@@ -72,7 +72,7 @@
           </li>
 
           <li class="add-button" id="addSubjectButton">
-            <button type="button" class="btn header-btn">
+            <button class="btn header-btn">
               <img
                 src="./assets/imgs/add_icon.png"
                 alt="Notificações"
@@ -82,6 +82,52 @@
             </button>
           </li>
         </ul>
+
+        <!--MODAL PARA SELECIONAR MATÉRIA PARA INCLUIR NA NAVBAR-->
+
+        <dialog class="add-subject-container" id="addSubjectModal">
+          <button class="btn close-btn" id="closeSubjectButton">
+            <img
+              src="./assets/imgs/close_icon.png"
+              alt="Botão de fechar"
+              draggable="false"
+              class="close-icon"
+            />
+          </button>
+
+          <h2>Selecionar matéria</h2>
+          <form action="" method="dialog" class="search-bar-container">
+            <input
+              type="search"
+              name=""
+              placeholder="Buscar.."
+              aria-label="Search"
+              class="search-bar"
+            />
+
+            <img
+              src="./assets/imgs/loupe_icon.png"
+              alt="Lupa icone"
+              class="input-icon"
+            />
+
+            <button type="submit" class="submit-btn">
+              <img
+                src="./assets/imgs/search_icon.png"
+                alt="Botão de pesquisar"
+                class="submit-icon"
+              />
+            </button>
+          </form>
+
+          <div class="add-subject-content empty">
+            <img
+              src="./assets/imgs/not_found_img.jpg"
+              alt="Conteúdo vazio"
+              class="template-img"
+            />
+          </div>
+        </dialog>
       </nav>
 
       <aside>
@@ -180,7 +226,7 @@
                 print, and publishing industries for previewing layouts and
                 visual mockups...
               </p>
-              <button type="button" class="task-details">
+              <button  class="task-details">
                 <img
                   src="./assets/imgs/details_icon.png"
                   alt="Detalhes icone"
@@ -213,5 +259,6 @@
         <!--CONTEÚDO DINAMICO-->
       </main>
     </div>
+    <script src="./scripts/script.js" defer></script>
   </body>
 </html>
