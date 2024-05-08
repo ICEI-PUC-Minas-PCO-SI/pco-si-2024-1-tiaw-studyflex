@@ -65,24 +65,13 @@
 
       <nav>
         <ul class="window-nav">
-          <li class="window-view active">
+          <li class="window-view active" content-id="homescreenView">
             <a href="#">
               <h2 class="window-title">Tela Inicial</h2>
             </a>
           </li>
-          <li class="window-view">
-            <a href="#">
-              <a href="Anotacoes.html">
-                <h2 class="window-title">História</h2>
-              </a>
-            </a>
-          </li>
-          <li class="window-view">
-            <a href="#">
-              <h2 class="window-title">HTML+CSS</h2>
-            </a>
-          </li>
-          <li class="add-button">
+
+          <li class="add-button" id="addSubjectButton">
             <button type="button" class="btn header-btn">
               <img
                 src="./assets/imgs/add_icon.png"
@@ -154,7 +143,7 @@
         <!--CONTEÚDO DINAMICO-->
 
         <!--Aqui é onde será adcionado as diferentes variações das telas, o conteúdo dinâmico do site-->
-        <section class="homescreen">
+        <section class="homescreen" id="homescreenView">
           <h1 class="homescreen-title">Tarefas do dia</h1>
           <form action="" method="get" class="search-bar-container">
             <input
@@ -181,24 +170,7 @@
           </form>
 
           <section class="tasks-container">
-            <article class="task-preview">
-              <a href="#"><h3 class="task-title">TAREFA 1</h3></a>
-
-              <a href="#" class="task-subject">História</a>
-              <p class="task-description">
-                Lorem ipsum is placeholder text commonly used in the graphic,
-                print, and publishing industries for previewing layouts and
-                visual mockups...
-              </p>
-              <button type="button" class="task-details">
-                <img
-                  src="./assets/imgs/details_icon.png"
-                  alt="Detalhes icone"
-                  class="icon task-icon"
-                />
-              </button>
-            </article>
-
+            <!--
             <article class="task-preview note">
               <a href="#"><h3 class="task-title">TAREFA 2</h3></a>
 
@@ -215,44 +187,7 @@
                   class="icon task-icon"
                 />
               </button>
-            </article>
-
-            <article class="task-preview note">
-              <a href="#"><h3 class="task-title">TAREFA 3</h3></a>
-
-              <a href="#" class="task-subject">HTML+CSS</a>
-              <p class="task-description">
-                Lorem ipsum is placeholder text commonly used in the graphic,
-                print, and publishing industries for previewing layouts and
-                visual mockups...
-              </p>
-              <button type="button" class="task-details">
-                <img
-                  src="./assets/imgs/details_icon.png"
-                  c
-                  alt="Detalhes icone"
-                  class="icon task-icon"
-                />
-              </button>
-            </article>
-
-            <article class="task-preview">
-              <a href="#"><h3 class="task-title">TAREFA 4</h3></a>
-
-              <a href="#" class="task-subject">História</a>
-              <p class="task-description">
-                Lorem ipsum is placeholder text commonly used in the graphic,
-                print, and publishing industries for previewing layouts and
-                visual mockups...
-              </p>
-              <button type="button" class="task-details">
-                <img
-                  src="./assets/imgs/details_icon.png"
-                  alt="Detalhes icone"
-                  class="icon task-icon"
-                />
-              </button>
-            </article>
+            </article>-->
           </section>
 
           <section class="homescreen-task-info">
