@@ -483,3 +483,184 @@ nav {
 .template-img {
   width: 300px;
 }
+
+.retan1 {
+  width: 250px;
+  height: 300px;
+  left: 390px;
+  top: 400px;
+  display: flex;
+  background: #e68b86;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+
+/* Rectangle 139 */
+.retan2 {
+  position: absolute;
+  width: 250px;
+  height: 300px;
+  left: 730px;
+  top: 400px;
+
+  background: #edbf74;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+
+/* Rectangle 140 */
+.retan3 {
+  position: absolute;
+  width: 250px;
+  height: 300px;
+  left: 1100px;
+  top: 402px;
+
+  background: #9daadf;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+
+.Anotitle1 {
+  position: absolute;
+  width: 166px;
+  height: 24px;
+  left: 10px;
+  top: 020px;
+
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #000000;
+}
+
+.Anosubtitle1 {
+  /* Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups... */
+
+  position: absolute;
+  width: 222px;
+  height: 168px;
+  left: 10px;
+  top: 050px;
+
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #000000;
+
+  opacity: 0.5;
+}
+
+.Anotitle2 {
+  position: absolute;
+  width: 166px;
+  height: 24px;
+  left: 10px;
+  top: 020px;
+
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #000000;
+}
+
+.Anosubtitle2 {
+  /* Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups... */
+
+  position: absolute;
+  width: 222px;
+  height: 168px;
+  left: 10px;
+  top: 050px;
+
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+     
+  color: #000000;
+
+  opacity: 0.5;
+}
+
+.Anotitle3 {
+  position: absolute;
+  width: 166px;
+  height: 24px;
+  left: 10px;
+  top: 020px;
+
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #000000;
+}
+
+.Anosubtitle3 {
+  /* Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups... */
+
+  position: absolute;
+  width: 222px;
+  height: 168px;
+  left: 10px;
+  top: 050px;
+
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #000000;
+
+  opacity: 0.5;
+}
+
+.lapis1 {
+  position: absolute;
+  width: 41px;
+  height: 41px;
+  left: 182px;
+  top: 240px;
+}
+
+.lapis2 {
+  position: absolute;
+  width: 41px;
+  height: 41px;
+  left: 182px;
+  top: 240px;
+}
+
+.lapis3 {
+  position: absolute;
+  width: 41px;
+  height: 41px;
+  left: 182px;
+  top: 240px;
+}
+
+.add1 {
+  position: absolute;
+  width: 41px;
+  height: 41px;
+  left: 340px;
+  top: 140px;
+}
