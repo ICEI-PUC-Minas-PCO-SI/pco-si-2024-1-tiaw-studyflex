@@ -1,5 +1,5 @@
 /*
-SPACING SYSTEM (px)
+SACING SYSTEM (px)
 2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
 
 FONT SIZE SYSTEM (px)
@@ -72,7 +72,7 @@ main {
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 24px;
   color: #414b3b;
 }
 
@@ -314,7 +314,6 @@ nav {
 
 .search-bar {
   padding: 16px 32px 16px 64px;
-  border-radius: 160px;
   width: 100%;
   border: none;
   box-shadow: 0 5px 5px 1px hsla(210, 10%, 23%, 0.178);
@@ -441,7 +440,7 @@ nav {
   border-radius: 8px;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
   flex-direction: column;
-  padding: 16px;
+  padding: 32px;
 }
 
 .add-subject-container::backdrop {
@@ -454,10 +453,23 @@ nav {
   align-items: center;
   border-radius: 50%;
   transition: all 0.2s ease-in;
+  position: absolute;
+  right: 32px;
+  padding: 2px;
 }
 
 .close-btn:hover {
   background-color: #d9d9d9;
+}
+
+.add-subject-container h2 {
+  margin: 32px 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.add-subject-container input {
+  border-radius: 0;
 }
 
 .add-subject-content {
@@ -470,11 +482,4 @@ nav {
 
 .template-img {
   width: 300px;
-}
-
-.add-subject-content .empty {
-  background: url(../assets/imgs/not_found_img.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
 }
