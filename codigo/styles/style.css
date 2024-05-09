@@ -484,183 +484,52 @@ nav {
   width: 300px;
 }
 
-.retan1 {
-  width: 250px;
-  height: 300px;
-  left: 390px;
-  top: 400px;
+.container-card {
   display: flex;
-  background: #e68b86;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 80%;
 }
 
-/* Rectangle 139 */
-.retan2 {
-  position: absolute;
-  width: 250px;
-  height: 300px;
-  left: 730px;
-  top: 400px;
-
-  background: #edbf74;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
+.card1 {
+  width: 300px; /* Ajuste a largura conforme necessário */
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Rectangle 140 */
-.retan3 {
-  position: absolute;
-  width: 250px;
-  height: 300px;
-  left: 1100px;
-  top: 402px;
-
-  background: #9daadf;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
+.card-header {
+  background-color: #f0f0f0;
+  padding: 10px;
 }
 
-.Anotitle1 {
-  position: absolute;
-  width: 166px;
-  height: 24px;
-  left: 10px;
-  top: 020px;
-
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 800;
-  font-size: 20px;
-  line-height: 24px;
-  /* identical to box height */
-
-  color: #000000;
+.card-header h2 {
+  margin: 0;
+  font-size: 18px;
 }
 
-.Anosubtitle1 {
-  /* Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups... */
-
-  position: absolute;
-  width: 222px;
-  height: 168px;
-  left: 10px;
-  top: 050px;
-
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-
-  color: #000000;
-
-  opacity: 0.5;
+.card-body {
+  padding: 15px;
 }
 
-.Anotitle2 {
-  position: absolute;
-  width: 166px;
-  height: 24px;
-  left: 10px;
-  top: 020px;
-
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 800;
-  font-size: 20px;
-  line-height: 24px;
-  /* identical to box height */
-
-  color: #000000;
+.card-body p {
+  margin: 0;
 }
 
-.Anosubtitle2 {
-  /* Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups... */
-
-  position: absolute;
-  width: 222px;
-  height: 168px;
-  left: 10px;
-  top: 050px;
-
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-
-     
-  color: #000000;
-
-  opacity: 0.5;
+.card2 {
+  width: 300px; /* Ajuste a largura conforme necessário */
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.Anotitle3 {
-  position: absolute;
-  width: 166px;
-  height: 24px;
-  left: 10px;
-  top: 020px;
-
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 800;
-  font-size: 20px;
-  line-height: 24px;
-  /* identical to box height */
-
-  color: #000000;
-}
-
-.Anosubtitle3 {
-  /* Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups... */
-
-  position: absolute;
-  width: 222px;
-  height: 168px;
-  left: 10px;
-  top: 050px;
-
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-
-  color: #000000;
-
-  opacity: 0.5;
-}
-
-.lapis1 {
-  position: absolute;
-  width: 41px;
-  height: 41px;
-  left: 182px;
-  top: 240px;
-}
-
-.lapis2 {
-  position: absolute;
-  width: 41px;
-  height: 41px;
-  left: 182px;
-  top: 240px;
-}
-
-.lapis3 {
-  position: absolute;
-  width: 41px;
-  height: 41px;
-  left: 182px;
-  top: 240px;
-}
-
-.add1 {
-  position: absolute;
-  width: 41px;
-  height: 41px;
-  left: 340px;
-  top: 140px;
+.card3 {
+  width: 300px; /* Ajuste a largura conforme necessário */
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
