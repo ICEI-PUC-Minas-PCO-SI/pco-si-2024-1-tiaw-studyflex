@@ -63,26 +63,23 @@
         </div>
       </header>
 
-      <nav>
+      <nav id="navBar">
         <ul class="window-nav" id="windowNav">
           <li class="window-view active" content-id="homescreenView" id="viewTab">
             <a href="#">
               <h2 class="window-title">Tela Inicial</h2>
             </a>
           </li>
+        </ul>
 
-          <li class="add-button" id="addSubjectButton">
-            <button class="btn header-btn">
+        <button class="btn add-button" id="addSubjectButton">
               <img
                 src="./assets/imgs/add_icon.png"
                 alt="Notificações"
                 class="btn-img"
                 draggable="false"
               />
-            </button>
-          </li>
-        </ul>
-
+        </button>
         <!--MODAL PARA SELECIONAR MATÉRIA PARA INCLUIR NA NAVBAR-->
 
         <dialog class="add-subject-container" id="addSubjectModal">
@@ -93,7 +90,7 @@
               draggable="false"
               class="close-icon"
             />
-          </button>
+        </button>
 
           <h2>Selecionar matéria</h2>
           <form action="" method="dialog" class="search-bar-container">
