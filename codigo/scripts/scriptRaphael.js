@@ -6,7 +6,7 @@
 
 
 
-        
+
         btn.addEventListener("click", () => {
             var divClone;
     if (lastCloned === null || lastCloned.classList.contains("retan3")) {
@@ -18,4 +18,17 @@
     }
     container.appendChild(divClone);
     lastCloned = divClone;
+
+    
         });
+
+        var primeiroTitulo = retangulos[0].titulo;
+        var primeiroConteudo = retangulos[0].conteudo;
+
+        var retangulos = [
+            { "titulo": "Título 1", "conteudo": "Conteúdo 1" },
+            { "titulo": "Título 2", "conteudo": "Conteúdo 2" },
+            { "titulo": "Título 3", "conteudo": "Conteúdo 3" }
+        ];
+
+    
