@@ -593,3 +593,89 @@ nav {
 }
 
 /* FIM DO CALENDARIO */
+<<<<<<< HEAD
+=======
+
+.container2{
+  display:flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  position: relative;
+  
+  
+ }
+ 
+ .retan1{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     margin-left: 50px;
+     margin-right: 50px;
+     height: 400px;
+     width: 300px;
+     padding: 5px;
+     background-color: #E68B86;
+     ;
+     
+     
+ 
+ }
+ 
+ .retan-subtit{
+     margin-right: 10px;
+     color: black;
+     font-family: "Lato";
+     
+ }
+ 
+ .retan2{
+     
+     margin-left: 50px;
+     margin-right: 50px;
+     height: 400px;
+     width: 300px;
+     padding: 5px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     background-color: #EDBF74;
+ }
+ 
+ .retan3{
+     
+     margin-left: 50px;
+     margin-right: 50px;
+     height: 400px;
+     width: 300px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     padding: 5px;
+     background-color:  #9DAADF;
+     
+ }
+ 
+ .Btn{
+     
+  margin-left: 50px;
+  margin-right: 50px;
+  padding: 5px;
+  
+  
+}
+
+.lapis{
+  margin-top: 280px;
+  margin-left: 210px;
+  height: 70px;
+  width: 70px;
+}
+ 
+.salvar{
+  margin-top: -185px;
+  margin-left: 10px;
+  margin-bottom: 15px;
+  height: 90px;
+  width: 70px; 
+}
+>>>>>>> 3bc197a29260153726839d97c355085b02394310
