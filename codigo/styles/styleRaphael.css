@@ -446,6 +446,9 @@ nav {
   padding: 32px;
 }
 
+.add-subject-container::backdrop {
+}
+
 .close-btn {
   align-self: end;
   display: flex;
@@ -463,10 +466,9 @@ nav {
 }
 
 .add-subject-container h2 {
-  margin: 16px 0;
+  margin: 32px 0;
   font-size: 24px;
   font-weight: 700;
-  border-bottom: 0 solid #414b3b;
 }
 
 .add-subject-container input {
@@ -485,13 +487,29 @@ nav {
   width: 300px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* CALENDARIO */
 .cal-modal {
   position: relative; /* Para o posicionamento relativo dos elementos filhos */
 }
 
 .large-cal-modal-container {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, .4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -528,6 +546,7 @@ nav {
   height: 30px; /* Altura do botão */
   border-radius: 50%; /* Transforma o botão em um círculo */
 }
+
 
 .large-cal-modal button.close-modal {
   position: absolute;
@@ -576,7 +595,7 @@ nav {
 }
 
 .flatpickr-day.today {
-  background-color: #8aa17b !important;
+  background-color: #8AA17B !important;
   border: none !important;
 }
 
@@ -592,4 +611,65 @@ nav {
   margin: 0 auto; /* Centraliza horizontalmente */
 }
 
+
 /* FIM DO CALENDARIO */
+
+.container{
+  display:flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  position: relative;
+  
+ }
+ 
+ .retan1{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     margin-left: 50px;
+     margin-right: 50px;
+     height: 400px;
+     width: 300px;
+     padding: 5px;
+     background-color: #E68B86;
+     ;
+     
+     
+ 
+ }
+ 
+ .retan-subtit{
+     margin-right: 10px;
+     color: black;
+     font-family: "Lato";
+     
+ }
+ 
+ .retan2{
+     
+     margin-left: 50px;
+     margin-right: 50px;
+     height: 400px;
+     width: 300px;
+     padding: 5px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     background-color: #EDBF74;
+ }
+ 
+ .retan3{
+     
+     margin-left: 50px;
+     margin-right: 50px;
+     height: 400px;
+     width: 300px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     padding: 5px;
+     background-color:  #9DAADF;
+     
+ }
+ 
+ 

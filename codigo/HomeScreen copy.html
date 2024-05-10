@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
       rel="stylesheet"
@@ -65,12 +64,8 @@
       </header>
 
       <nav>
-        <ul class="window-nav" id="windowNav">
-          <li
-            class="window-view active"
-            content-id="homescreenView"
-            id="viewTab"
-          >
+        <ul class="window-nav">
+          <li class="window-view active" content-id="homescreenView">
             <a href="#">
               <h2 class="window-title">Tela Inicial</h2>
             </a>
@@ -130,7 +125,6 @@
               src="./assets/imgs/not_found_img.jpg"
               alt="Conteúdo vazio"
               class="template-img"
-              draggable="false"
             />
           </div>
         </dialog>
@@ -139,7 +133,7 @@
       <aside>
         <!--Lista responsável por organizar os links que levarão o usuário para as diferentes telas da plataforma-->
         <ul class="aside-menu">
-          <li class="aside-option">
+          <li class="aside-option active">
             <a href="#">
               <img
                 src="./assets/imgs/menu_icon.png"
@@ -149,7 +143,7 @@
               <span>Dashboard</span>
             </a>
           </li>
-          <li class="aside-option active" id="anotacoesTab">
+          <li class="aside-option">
             <a href="#">
               <img
                 src="./assets/imgs/notes_icon.png"
@@ -166,8 +160,6 @@
                 alt="Matérias icone"
                 class="option-icon"
               />
-
-
               <span>Matérias</span>
             </a>
           </li>
@@ -192,57 +184,81 @@
           <span>Modo Noturno</span>
         </div>
       </aside>
-      <main id="mainContainer">
-        <div class="container2">
-              <div class="retan1">
-                <button>
-                  <svg width="31" height="31" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="lapis" onclick="modal.showModal()">
-                      <circle cx="20.5" cy="20.5" r="20.5" fill="#8AA17B"/>
-                      <path d="M9 27.9993V33H14.0007L28.7561 18.2446L23.7554 13.2439L9 27.9993ZM32.6099 14.3907C33.13 13.8707 33.13 13.0239 32.6099 12.5038L29.4962 9.39005C28.9761 8.86998 28.1293 8.86998 27.6093 9.39005L25.1689 11.8304L30.1696 16.8311L32.6099 14.3907Z" fill="white"/>
-                  </svg>
-              </button>
-            </div>
-    
-            <div class="retan2">
-              <button>
-                <svg width="31" height="31" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="lapis" onclick="modal.showModal()">
-                    <circle cx="20.5" cy="20.5" r="20.5" fill="#8AA17B"/>
-                    <path d="M9 27.9993V33H14.0007L28.7561 18.2446L23.7554 13.2439L9 27.9993ZM32.6099 14.3907C33.13 13.8707 33.13 13.0239 32.6099 12.5038L29.4962 9.39005C28.9761 8.86998 28.1293 8.86998 27.6093 9.39005L25.1689 11.8304L30.1696 16.8311L32.6099 14.3907Z" fill="white"/>
-                </svg>
-            </button>
-            </div>
-    
-            <div class="retan3">
-              <button>
-                <svg width="31" height="31" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="lapis" onclick="modal.showModal()">
-                    <circle cx="20.5" cy="20.5" r="20.5" fill="#8AA17B"/>
-                    <path d="M9 27.9993V33H14.0007L28.7561 18.2446L23.7554 13.2439L9 27.9993ZM32.6099 14.3907C33.13 13.8707 33.13 13.0239 32.6099 12.5038L29.4962 9.39005C28.9761 8.86998 28.1293 8.86998 27.6093 9.39005L25.1689 11.8304L30.1696 16.8311L32.6099 14.3907Z" fill="white"/>
-                </svg>
-            </button>
-            </div>
-    
-            <div class="Btn">
-                <button id="btn" class="add"><img src="img/4d23be4d-0e7b-4c01-b806-fc3cbd4b98ab.jpg" class="add1"></button>
-            </div>
-        </div>
-    </main>
-    
 
-    <dialog id="modal">
-      <form id="note-form">
-          <input type="text" id="title" placeholder="Título" required>
-          <textarea id="note" placeholder="Digite sua nota" required></textarea>
-          <input type="date" id="date" required>
-          <button type="submit" form="note-form">Salvar Nota</button>
-          <button onclick="modal.close()">fechar Modal</button>
-      </form>
-  </dialog>
-    
-          
-      
-  </div>
-    
+      <main>
+        <!--CONTEÚDO DINAMICO-->
+
+        <!--Aqui é onde será adcionado as diferentes variações das telas, o conteúdo dinâmico do site-->
+        <section class="homescreen" id="homescreenView">
+          <h1 class="homescreen-title">Tarefas do dia</h1>
+          <form action="" method="get" class="search-bar-container">
+            <input
+              type="search"
+              name=""
+              placeholder="Buscar.."
+              aria-label="Search"
+              class="search-bar"
+            />
+
+            <img
+              src="./assets/imgs/loupe_icon.png"
+              alt="Lupa icone"
+              class="input-icon"
+            />
+
+            <button type="submit" class="submit-btn">
+              <img
+                src="./assets/imgs/search_icon.png"
+                alt="Botão de pesquisar"
+                class="submit-icon"
+              />
+            </button>
+          </form>
+
+          <section class="tasks-container">
+            <!--
+            <article class="task-preview note">
+              <a href="#"><h3 class="task-title">TAREFA 2</h3></a>
+
+              <a href="#" class="task-subject">História</a>
+              <p class="task-description">
+                Lorem ipsum is placeholder text commonly used in the graphic,
+                print, and publishing industries for previewing layouts and
+                visual mockups...
+              </p>
+              <button  class="task-details">
+                <img
+                  src="./assets/imgs/details_icon.png"
+                  alt="Detalhes icone"
+                  class="icon task-icon"
+                />
+              </button>
+            </article>-->
+          </section>
+
+          <section class="homescreen-task-info">
+            <article class="calendar-view">
+              <h3 class="task-info-title">
+                <strong>Quarta-feira</strong>, 24 de janeiro
+              </h3>
+              <img
+                src="./assets/imgs/calendar_placeholder.png"
+                alt="calendário"
+              />
+            </article>
+
+            <article class="progress-view">
+              <!--<h3 class="task-info-title">Progresso da disciplina</h3>-->
+              <img
+                src="./assets/imgs/progress_placeholder.png"
+                alt="Barras de progresso"
+              />
+            </article>
+          </section>
+        </section>
+        <!--CONTEÚDO DINAMICO-->
+      </main>
     </div>
-    <script src="./scripts/scriptRaphael.js" defer></script>
+    <script src="./scripts/script.js" defer></script>
   </body>
 </html>

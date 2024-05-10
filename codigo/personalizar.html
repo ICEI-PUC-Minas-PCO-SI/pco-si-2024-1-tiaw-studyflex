@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
       rel="stylesheet"
@@ -15,7 +14,7 @@
       type="image/x-icon"
       href="./assets/imgs/StudyFlex_logo.ico"
     />
-    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/persolanizar.css" />
     <title>StudyFlex</title>
   </head>
 
@@ -65,26 +64,11 @@
       </header>
 
       <nav>
-        <ul class="window-nav" id="windowNav">
-          <li
-            class="window-view active"
-            content-id="homescreenView"
-            id="viewTab"
-          >
+        <ul class="window-nav">
+          <li class="window-view active" content-id="homescreenView">
             <a href="#">
-              <h2 class="window-title">Tela Inicial</h2>
+              <h2 class="window-title">História</h2>
             </a>
-          </li>
-
-          <li class="add-button" id="addSubjectButton">
-            <button class="btn header-btn">
-              <img
-                src="./assets/imgs/add_icon.png"
-                alt="Notificações"
-                class="btn-img"
-                draggable="false"
-              />
-            </button>
           </li>
         </ul>
 
@@ -130,7 +114,6 @@
               src="./assets/imgs/not_found_img.jpg"
               alt="Conteúdo vazio"
               class="template-img"
-              draggable="false"
             />
           </div>
         </dialog>
@@ -139,7 +122,7 @@
       <aside>
         <!--Lista responsável por organizar os links que levarão o usuário para as diferentes telas da plataforma-->
         <ul class="aside-menu">
-          <li class="aside-option">
+          <li class="aside-option active">
             <a href="#">
               <img
                 src="./assets/imgs/menu_icon.png"
@@ -149,7 +132,7 @@
               <span>Dashboard</span>
             </a>
           </li>
-          <li class="aside-option active" id="anotacoesTab">
+          <li class="aside-option">
             <a href="#">
               <img
                 src="./assets/imgs/notes_icon.png"
@@ -166,8 +149,6 @@
                 alt="Matérias icone"
                 class="option-icon"
               />
-
-
               <span>Matérias</span>
             </a>
           </li>
@@ -192,57 +173,91 @@
           <span>Modo Noturno</span>
         </div>
       </aside>
-      <main id="mainContainer">
-        <div class="container2">
-              <div class="retan1">
-                <button>
-                  <svg width="31" height="31" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="lapis" onclick="modal.showModal()">
-                      <circle cx="20.5" cy="20.5" r="20.5" fill="#8AA17B"/>
-                      <path d="M9 27.9993V33H14.0007L28.7561 18.2446L23.7554 13.2439L9 27.9993ZM32.6099 14.3907C33.13 13.8707 33.13 13.0239 32.6099 12.5038L29.4962 9.39005C28.9761 8.86998 28.1293 8.86998 27.6093 9.39005L25.1689 11.8304L30.1696 16.8311L32.6099 14.3907Z" fill="white"/>
-                  </svg>
-              </button>
-            </div>
-    
-            <div class="retan2">
-              <button>
-                <svg width="31" height="31" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="lapis" onclick="modal.showModal()">
-                    <circle cx="20.5" cy="20.5" r="20.5" fill="#8AA17B"/>
-                    <path d="M9 27.9993V33H14.0007L28.7561 18.2446L23.7554 13.2439L9 27.9993ZM32.6099 14.3907C33.13 13.8707 33.13 13.0239 32.6099 12.5038L29.4962 9.39005C28.9761 8.86998 28.1293 8.86998 27.6093 9.39005L25.1689 11.8304L30.1696 16.8311L32.6099 14.3907Z" fill="white"/>
-                </svg>
-            </button>
-            </div>
-    
-            <div class="retan3">
-              <button>
-                <svg width="31" height="31" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="lapis" onclick="modal.showModal()">
-                    <circle cx="20.5" cy="20.5" r="20.5" fill="#8AA17B"/>
-                    <path d="M9 27.9993V33H14.0007L28.7561 18.2446L23.7554 13.2439L9 27.9993ZM32.6099 14.3907C33.13 13.8707 33.13 13.0239 32.6099 12.5038L29.4962 9.39005C28.9761 8.86998 28.1293 8.86998 27.6093 9.39005L25.1689 11.8304L30.1696 16.8311L32.6099 14.3907Z" fill="white"/>
-                </svg>
-            </button>
-            </div>
-    
-            <div class="Btn">
-                <button id="btn" class="add"><img src="img/4d23be4d-0e7b-4c01-b806-fc3cbd4b98ab.jpg" class="add1"></button>
-            </div>
-        </div>
-    </main>
-    
 
-    <dialog id="modal">
-      <form id="note-form">
-          <input type="text" id="title" placeholder="Título" required>
-          <textarea id="note" placeholder="Digite sua nota" required></textarea>
-          <input type="date" id="date" required>
-          <button type="submit" form="note-form">Salvar Nota</button>
-          <button onclick="modal.close()">fechar Modal</button>
-      </form>
-  </dialog>
-    
-          
+      <main>
+        <!--CONTEÚDO DINAMICO-->
+
+        <!--Aqui é onde será adcionado as diferentes variações das telas, o conteúdo dinâmico do site-->
+        
+        <article class="task-preview note">
+          <a href="#"><h3 class="task-title">TAREFA 3</h3></a>
       
-  </div>
-    
+          <a href="#" class="task-subject">História</a>
+          <p class="task-description">
+            Fazer uma apresentação de slides sobre a grécia antiga.
+          </p>
+         
+        <button id="openModalBtn" class="w3-button w3-black"><img src="assets/imgs/details_icon.png"
+          alt="Detalhes icone"
+          class="icon task-icon"
+        /> </button>
+      
+        <div id="id01" class="w3-modal" style="display: none;">
+          <div class="w3-modal-content">
+            <div class="w3-container">
+              <span id="closeModalBtn" class="w3-button w3-display-topright">&times;</span>
+              <h1>Editar tarefa</h1>
+              <div class="container">
+                <form action="#">
+                  <input type="text" id="nome" name="nome" placeholder="Nome da Tarefa..." required>
+                  <button type="submit">Enviar</button>
+                </form>
+                <div class="form-group">
+                  <form action="#">
+                    <input type="text" id="nome" name="nome" placeholder="Categoria" required>
+                    <select class="form-control" id="to">
+                    </select>
+                  </form>
+      
+                </div>
+      
+                <div class="form-groupdatas">
+      
+                  <form action="#">
+                    <input type="text" id="nome" name="nome" placeholder="Data Inicial" required>
+                    <select class="form-control" id="to">
+                    </select>
+                  </form>
+      
+                </div>
+                <div class="form-group">
+                  <form action="#">
+                    <input type="text" id="nome" name="nome" placeholder="Data fim" required>
+                    <select class="form-control" id="to">
+                    </select>
+                  </form>
+      
+                </div>
+                <form>
+                  <input type="checkbox" id="preference1" name="preference1" value="preference1">
+                  <label for="preference1">Priorização 1</label><br>
+                  <input type="checkbox" id="preference2" name="preference2" value="preference2">
+                  <label for="preference2">Priorização 2</label><br>
+                  <input type="checkbox" id="preference3" name="preference3" value="preference3">
+                  <label for="preference3">Priorização 3</label><br>
+                  <input type="checkbox" id="preference4" name="preference4" value="preference4">
+                  <label for="preference4">Priorização 4</label><br><br>
+      
+                  <div class="progress-container">
+                    <h3>Progresso</h3>
+                    <div id="progressBar" class="progress-bar">10%</div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+</body>
+
+</html>
+
+
+
+        
+        <!--CONTEÚDO DINAMICO-->
+      </main>
     </div>
-    <script src="./scripts/scriptRaphael.js" defer></script>
+    <script src="./scripts/tarefas.js" defer></script>
   </body>
 </html>
