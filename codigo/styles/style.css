@@ -446,9 +446,6 @@ nav {
   padding: 32px;
 }
 
-.add-subject-container::backdrop {
-}
-
 .close-btn {
   align-self: end;
   display: flex;
@@ -486,21 +483,6 @@ nav {
 .template-img {
   width: 300px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* CALENDARIO */
@@ -689,3 +671,10 @@ nav {
   width: 70px;
 }
  
+.salvar{
+  margin-top: -185px;
+  margin-left: 10px;
+  margin-bottom: 15px;
+  height: 90px;
+  width: 70px; 
+}
