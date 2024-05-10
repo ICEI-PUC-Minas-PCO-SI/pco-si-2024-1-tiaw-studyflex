@@ -594,9 +594,6 @@ nav {
 }
 
 /* FIM DO CALENDARIO */
-<<<<<<< HEAD
-=======
-
 .container2{
   display:flex;
   flex-wrap: wrap; 
@@ -680,7 +677,7 @@ nav {
   height: 90px;
   width: 70px; 
 }
-<<<<<<< HEAD
+
 
 #modal{
   margin:0 auto;
@@ -712,6 +709,4 @@ nav {
   padding: 10px;
   color: white;
 }
-=======
->>>>>>> 3bc197a29260153726839d97c355085b02394310
->>>>>>> ce6148ac5694036fe728f224045e033b55f44f3d
+
