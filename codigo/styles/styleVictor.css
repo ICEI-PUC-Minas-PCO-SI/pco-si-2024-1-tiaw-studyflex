@@ -120,7 +120,6 @@ aside {
   display: flex;
   flex-direction: column;
   gap: 48px;
-  
 }
 
 .aside-menu {
@@ -224,9 +223,6 @@ aside {
 /*NAVBAR*/
 nav {
   grid-column: 2/-1;
-  display: flex;
-  border-bottom: 1px solid #414b3b;
-  gap: 24px;
 }
 
 .window-nav {
@@ -240,7 +236,7 @@ nav {
 .window-view {
   display: flex;
   align-items: center;
-  padding: 8px 64px;
+  padding: 6px 64px;
   border: 2px solid transparent;
   border-radius: 20px 20px 0px 0px;
   background-image: linear-gradient(to right, #ffffff, #f5f5f5);
@@ -594,124 +590,3 @@ nav {
 }
 
 /* FIM DO CALENDARIO */
-<<<<<<< HEAD
-=======
-
-.container2{
-  display:flex;
-  flex-wrap: wrap; 
-  justify-content: center;
-  position: relative;
-  
-  
- }
- 
- .retan1{
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-     margin-left: 50px;
-     margin-right: 50px;
-     height: 400px;
-     width: 300px;
-     padding: 5px;
-     background-color: #E68B86;
-     ;
-     
-     
- 
- }
- 
- .retan-subtit{
-     margin-right: 10px;
-     color: black;
-     font-family: "Lato";
-     
- }
- 
- .retan2{
-     
-     margin-left: 50px;
-     margin-right: 50px;
-     height: 400px;
-     width: 300px;
-     padding: 5px;
-     border: 1px solid #ccc;
-     border-radius: 5px;
-     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-     background-color: #EDBF74;
- }
- 
- .retan3{
-     
-     margin-left: 50px;
-     margin-right: 50px;
-     height: 400px;
-     width: 300px;
-     border: 1px solid #ccc;
-     border-radius: 5px;
-     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-     padding: 5px;
-     background-color:  #9DAADF;
-     
- }
- 
- .Btn{
-  margin-top: 130px;
-  margin-left: 50px;
-  margin-right: 50px;
-  padding: 5px;
-  height: 70px;
-  width: 70px;
-  
-}
-
-.lapis{
-  margin-top: 310px;
-  margin-left: 210px;
-  height: 70px;
-  width: 70px;
-}
- 
-.salvar{
-  margin-top: -185px;
-  margin-left: 10px;
-  margin-bottom: 15px;
-  height: 90px;
-  width: 70px; 
-}
-<<<<<<< HEAD
-
-#modal{
-  margin:0 auto;
-  margin-top: 300px;
-  border-color: none;
-  border-radius: 15px;
-  height: 450px;
-  width: 550px;
-  border-color:rgba(0, 0, 0, 0.579);
-  background-color: rgb(232, 224, 224);
-  display: flex;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  align-items: center;
-}
-
-.salva{
-  background-color: rgb(21, 53, 21);
-  width: 120px;
-  height: 20px;
-  padding: 10px;
-  color:white;
-  margin-top: 290px;
-}
-
-.fechar{
-  background-color: rgb(21, 53, 21);
-  width: 120px;
-  height: 20px;
-  padding: 10px;
-  color: white;
-}
-=======
->>>>>>> 3bc197a29260153726839d97c355085b02394310
->>>>>>> ce6148ac5694036fe728f224045e033b55f44f3d

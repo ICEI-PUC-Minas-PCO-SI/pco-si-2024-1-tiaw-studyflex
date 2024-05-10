@@ -14,6 +14,10 @@
       type="image/x-icon"
       href="./assets/imgs/StudyFlex_logo.ico"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
     <link rel="stylesheet" href="./styles/style.css" />
     <title>StudyFlex</title>
   </head>
@@ -63,26 +67,27 @@
         </div>
       </header>
 
-      <nav>
-        <ul class="window-nav">
-          <li class="window-view active" content-id="homescreenView">
+      <nav id="navBar">
+        <ul class="window-nav" id="windowNav">
+          <li
+            class="window-view active"
+            content-id="homescreenView"
+            id="viewTab"
+          >
             <a href="#">
               <h2 class="window-title">Tela Inicial</h2>
             </a>
           </li>
-
-          <li class="add-button" id="addSubjectButton">
-            <button class="btn header-btn">
-              <img
-                src="./assets/imgs/add_icon.png"
-                alt="Notificações"
-                class="btn-img"
-                draggable="false"
-              />
-            </button>
-          </li>
         </ul>
 
+        <button class="btn add-button" id="addSubjectButton">
+          <img
+            src="./assets/imgs/add_icon.png"
+            alt="Notificações"
+            class="btn-img"
+            draggable="false"
+          />
+        </button>
         <!--MODAL PARA SELECIONAR MATÉRIA PARA INCLUIR NA NAVBAR-->
 
         <dialog class="add-subject-container" id="addSubjectModal">
@@ -125,6 +130,7 @@
               src="./assets/imgs/not_found_img.jpg"
               alt="Conteúdo vazio"
               class="template-img"
+              draggable="false"
             />
           </div>
         </dialog>
@@ -143,7 +149,7 @@
               <span>Dashboard</span>
             </a>
           </li>
-          <li class="aside-option">
+          <li class="aside-option" id="anotacoesTab">
             <a href="#">
               <img
                 src="./assets/imgs/notes_icon.png"
@@ -185,7 +191,7 @@
         </div>
       </aside>
 
-      <main>
+      <main id="mainContainer">
         <!--CONTEÚDO DINAMICO-->
 
         <!--Aqui é onde será adcionado as diferentes variações das telas, o conteúdo dinâmico do site-->
@@ -241,24 +247,43 @@
               <h3 class="task-info-title">
                 <strong>Quarta-feira</strong>, 24 de janeiro
               </h3>
-              <img
-                src="./assets/imgs/calendar_placeholder.png"
-                alt="calendário"
-              />
+              <div class="cal-modal-container">
+                <div class="cal-modal">
+                  <div class="current-date"></div>
+                  <div class="calendar-container">
+                    <!-- Nova div para centralizar -->
+                    <div id="calendar" class="small-calendar">
+                      <div class="placeholder"></div>
+                    </div>
+                  </div>
+                  <div class="calendar-overlay"></div>
+                </div>
+              </div>
+
+              <!-- Modal Grande -->
+              <div class="large-cal-modal-container hidden">
+                <div class="large-cal-modal">
+                  <button class="close-modal">×</button>
+                  <div id="large-calendar" class="large-calendar"></div>
+                </div>
+              </div>
             </article>
 
             <article class="progress-view">
               <!--<h3 class="task-info-title">Progresso da disciplina</h3>-->
-              <img
+              <!--- <img
                 src="./assets/imgs/progress_placeholder.png"
                 alt="Barras de progresso"
-              />
+              />-->
             </article>
           </section>
         </section>
         <!--CONTEÚDO DINAMICO-->
       </main>
     </div>
-    <script src="./scripts/script.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="./scripts/scriptMateus.js"></script>
+    <script src="./scripts/scriptVictor.js" defer></script>
   </body>
 </html>
