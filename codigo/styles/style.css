@@ -605,3 +605,52 @@ nav {
  
  
 
+/* FIM DO CALENDARIO */
+
+/* INÍCIO DISCIPLINAS*/
+
+.subject-box{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: #000000;
+  margin-bottom: 20px;
+
+}
+
+.subject-name{
+  flex-grow: 2;
+  color: #586352;
+  font-size: 24px;
+  text-transform: uppercase;
+  
+}
+
+.progress{
+  width: 40%;
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  margin-right: 20px;
+
+}
+
+.progress-bar-disc{
+  width: 60%;
+  height: 100%;
+  background-color: #8AA17B;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.tasks-disciplina{
+  font-size: 24px;
+  padding: 0 10px;
+}
+
+/* FIM DAS DISCIPLINAS */ 
