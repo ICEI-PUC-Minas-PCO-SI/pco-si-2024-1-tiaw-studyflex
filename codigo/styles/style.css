@@ -1,5 +1,5 @@
 /*
-SPACING SYSTEM (px)
+SACING SYSTEM (px)
 2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
 
 FONT SIZE SYSTEM (px)
@@ -72,7 +72,7 @@ main {
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 24px;
   color: #414b3b;
 }
 
@@ -223,6 +223,9 @@ aside {
 /*NAVBAR*/
 nav {
   grid-column: 2/-1;
+  display: flex;
+  border-bottom: 1px solid #414b3b;
+  gap: 24px;
 }
 
 .window-nav {
@@ -236,7 +239,7 @@ nav {
 .window-view {
   display: flex;
   align-items: center;
-  padding: 6px 64px;
+  padding: 8px 64px;
   border: 2px solid transparent;
   border-radius: 20px 20px 0px 0px;
   background-image: linear-gradient(to right, #ffffff, #f5f5f5);
@@ -314,7 +317,6 @@ nav {
 
 .search-bar {
   padding: 16px 32px 16px 64px;
-  border-radius: 160px;
   width: 100%;
   border: none;
   box-shadow: 0 5px 5px 1px hsla(210, 10%, 23%, 0.178);
@@ -441,7 +443,7 @@ nav {
   border-radius: 8px;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
   flex-direction: column;
-  padding: 16px;
+  padding: 32px;
 }
 
 .add-subject-container::backdrop {
@@ -454,10 +456,23 @@ nav {
   align-items: center;
   border-radius: 50%;
   transition: all 0.2s ease-in;
+  position: absolute;
+  right: 32px;
+  padding: 2px;
 }
 
 .close-btn:hover {
   background-color: #d9d9d9;
+}
+
+.add-subject-container h2 {
+  margin: 32px 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.add-subject-container input {
+  border-radius: 0;
 }
 
 .add-subject-content {
@@ -472,9 +487,236 @@ nav {
   width: 300px;
 }
 
-.add-subject-content .empty {
-  background: url(../assets/imgs/not_found_img.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+.container-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 80%;
 }
+
+.card1 {
+  width: 300px; /* Ajuste a largura conforme necessário */
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.Anotitle2 {
+  position: absolute;
+  width: 166px;
+  height: 24px;
+  left: 10px;
+  top: 020px;
+
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #000000;
+}
+
+.Anosubtitle2 {
+  /* Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups... */
+
+  position: absolute;
+  width: 222px;
+  height: 168px;
+  left: 10px;
+  top: 050px;
+
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #000000;
+
+  opacity: 0.5;
+}
+
+.card3 {
+  width: 300px; /* Ajuste a largura conforme necessário */
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* CALENDARIO */
+.cal-modal {
+  position: relative; /* Para o posicionamento relativo dos elementos filhos */
+}
+
+.large-cal-modal-container {
+  background: rgba(0, 0, 0, .4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+}
+
+.large-cal-modal {
+  background: #fff; /* Cor de fundo branca */
+  color: #000; /* Cor do texto preto */
+  padding: 40px;
+  text-align: center;
+  position: relative;
+  width: 80%; /* Largura do modal */
+  height: 80%; /* Altura do modal */
+  overflow-y: auto; /* Adiciona barra de rolagem vertical se necessário */
+  border-radius: 10px; /* Borda arredondada */
+}
+
+.large-cal-modal button.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #000000; /* Cor de fundo do botão */
+  border: none;
+  color: #fff; /* Cor do texto do botão */
+  font-size: 24px;
+  cursor: pointer;
+  width: 30px; /* Largura do botão */
+  height: 30px; /* Altura do botão */
+  border-radius: 50%; /* Transforma o botão em um círculo */
+}
+
+
+.large-cal-modal button.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #000000;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.large-calendar {
+  max-width: 80%; /* Ajuste conforme necessário */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  display: grid; /* Layout de grade */
+  grid-template-columns: repeat(3, 1fr); /* 3 colunas com largura igual */
+  grid-gap: 10px; /* Espaçamento entre as células */
+}
+
+.hidden {
+  display: none;
+}
+
+/* Estilos para a área de overlay do calendário */
+.calendar-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Outros estilos */
+.current-date {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.task {
+  margin-bottom: 5px;
+}
+
+.flatpickr-day.today {
+  background-color: #8AA17B !important;
+  border: none !important;
+}
+
+.calendar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ocupa toda a altura da .cal-modal */
+}
+
+#calendar {
+  max-width: 80%; /* Ajuste conforme necessário */
+  margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+
+/* FIM DO CALENDARIO */
+
+/* INÍCIO DISCIPLINAS*/
+
+.subject-box{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: #000000;
+  margin-bottom: 20px;
+
+}
+
+.subject-name{
+  flex-grow: 2;
+  color: #586352;
+  font-size: 24px;
+  text-transform: uppercase;
+  
+}
+
+.progress{
+  width: 40%;
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  margin-right: 20px;
+
+}
+
+.progress-bar-disc{
+  width: 60%;
+  height: 100%;
+  background-color: #8AA17B;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.tasks-disciplina{
+  font-size: 24px;
+  padding: 0 10px;
+}
+
+/* FIM DAS DISCIPLINAS */ 
