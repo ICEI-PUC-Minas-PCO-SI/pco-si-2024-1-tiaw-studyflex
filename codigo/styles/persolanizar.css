@@ -1,5 +1,5 @@
 /*
-SACING SYSTEM (px)
+SPACING SYSTEM (px)
 2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
 
 FONT SIZE SYSTEM (px)
@@ -72,7 +72,7 @@ main {
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 20px;
   color: #414b3b;
 }
 
@@ -120,7 +120,6 @@ aside {
   display: flex;
   flex-direction: column;
   gap: 48px;
-  
 }
 
 .aside-menu {
@@ -224,9 +223,6 @@ aside {
 /*NAVBAR*/
 nav {
   grid-column: 2/-1;
-  display: flex;
-  border-bottom: 1px solid #414b3b;
-  gap: 24px;
 }
 
 .window-nav {
@@ -240,7 +236,7 @@ nav {
 .window-view {
   display: flex;
   align-items: center;
-  padding: 8px 64px;
+  padding: 6px 64px;
   border: 2px solid transparent;
   border-radius: 20px 20px 0px 0px;
   background-image: linear-gradient(to right, #ffffff, #f5f5f5);
@@ -318,6 +314,7 @@ nav {
 
 .search-bar {
   padding: 16px 32px 16px 64px;
+  border-radius: 160px;
   width: 100%;
   border: none;
   box-shadow: 0 5px 5px 1px hsla(210, 10%, 23%, 0.178);
@@ -357,6 +354,7 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 32px;
+  
 }
 
 .task-preview {
@@ -370,6 +368,7 @@ nav {
   align-items: center;
   position: relative;
   border: 2px solid #d9d9d9;
+ 
 }
 
 .task-title {
@@ -417,243 +416,168 @@ nav {
   top: -2px;
   right: 32px;
 }
-
-/*TASK INFO*/
-.homescreen-task-info {
-  grid-column: 2/3;
-  grid-row: 1/-1;
+/*tamanho do retangulo*/
+.task-preview.note{
+  height: 400px;
+  width: 1000px;
 }
+/* modal */
 
-.task-info-title {
-  font-size: 24px;
+html,
+body {
+  font-family: Lato;
+  font-size: 15px;
+  line-height: 1.5;
+  grid-column: 1/2;
+  grid-row: 1/1;
+  height: auto;
   color: #586352;
-  padding-left: 32px;
-}
-
-.task-info-title strong {
-  font-weight: 900;
-}
-
-/*MODAL SUBJECT*/
-.add-subject-container {
-  left: 50%;
-  top: 50%;
-  width: 600px;
-  transform: translate(-50%, -50%);
-  border: none;
-  border-radius: 8px;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
-  flex-direction: column;
-  padding: 32px;
-}
-
-.close-btn {
-  align-self: end;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  transition: all 0.2s ease-in;
-  position: absolute;
-  right: 32px;
-  padding: 2px;
-}
-
-.close-btn:hover {
-  background-color: #d9d9d9;
-}
-
-.add-subject-container h2 {
-  margin: 16px 0;
-  font-size: 24px;
-  font-weight: 700;
-  border-bottom: 0 solid #414b3b;
-}
-
-.add-subject-container input {
-  border-radius: 0;
-}
-
-.add-subject-content {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 32px;
-}
-
-.template-img {
-  width: 300px;
-}
-
-/* CALENDARIO */
-.cal-modal {
-  position: relative; /* Para o posicionamento relativo dos elementos filhos */
-}
-
-.large-cal-modal-container {
-  background: rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 9999;
-}
-
-.large-cal-modal {
-  background: #fff; /* Cor de fundo branca */
-  color: #000; /* Cor do texto preto */
-  padding: 40px;
-  text-align: center;
-  position: relative;
-  width: 80%; /* Largura do modal */
-  height: 80%; /* Altura do modal */
-  overflow-y: auto; /* Adiciona barra de rolagem vertical se necessário */
-  border-radius: 10px; /* Borda arredondada */
-}
-
-.large-cal-modal button.close-modal {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #000000; /* Cor de fundo do botão */
-  border: none;
-  color: #fff; /* Cor do texto do botão */
-  font-size: 24px;
-  cursor: pointer;
-  width: 30px; /* Largura do botão */
-  height: 30px; /* Altura do botão */
-  border-radius: 50%; /* Transforma o botão em um círculo */
-}
-
-.large-cal-modal button.close-modal {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  color: #000000;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.large-calendar {
-  max-width: 80%; /* Ajuste conforme necessário */
-  margin: 0 auto; /* Centraliza horizontalmente */
-  display: grid; /* Layout de grade */
-  grid-template-columns: repeat(3, 1fr); /* 3 colunas com largura igual */
-  grid-gap: 10px; /* Espaçamento entre as células */
-}
-
-.hidden {
-  display: none;
-}
-
-/* Estilos para a área de overlay do calendário */
-.calendar-overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-/* Outros estilos */
-.current-date {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.task {
-  margin-bottom: 5px;
-}
-
-.flatpickr-day.today {
-  background-color: #8aa17b !important;
-  border: none !important;
-}
-
-.calendar-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%; /* Ocupa toda a altura da .cal-modal */
-}
-
-#calendar {
-  max-width: 80%; /* Ajuste conforme necessário */
-  margin: 0 auto; /* Centraliza horizontalmente */
-}
-
-/* FIM DO CALENDARIO */
-.container2{
-  display:flex;
-  flex-wrap: wrap; 
-  justify-content: center;
-  position: relative;
-  
-  
- }
+  text-align: center
  
- 
+}
 
-<<<<<<< HEAD
-/* FIM DO CALENDARIO */
-
-/* INÍCIO DISCIPLINAS*/
-
-.subject-box{
-  display: flex;
+.w3-container {
+  padding: 0.01em 16px;
+  border-radius: 16px;
+  height: 400px;
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  grid-template-rows: 1fr 1fr;
+  box-shadow: 5px 5px 5px 0 hsla(210, 10%, 23%, 0.178);
+  padding: 28px 32px;
+  gap: 16px;
   align-items: center;
-  justify-content: flex-start;
-  border: 1px solid;
-  padding: 10px;
-  border-radius: 20px;
-  box-shadow: #000000;
-  margin-bottom: 20px;
-
+  position: relative;
+  border: 2px solid #d9d9d9;
 }
 
-.subject-name{
-  flex-grow: 2;
-  color: #586352;
-  font-size: 24px;
-  text-transform: uppercase;
-  
+.w3-display-topright {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
-.progress{
-  width: 40%;
-  height: 10px;
-  background-color: #e0e0e0;
-  border-radius: 5px;
+.w3-button {
+  border: none;
+  display: inline-block;
+  padding: 8px 16px;
+  vertical-align: middle;
   overflow: hidden;
-  position: relative;
-  margin-right: 20px;
-
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: Verdana, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-.progress-bar-disc{
-  width: 60%;
+
+
+.w3-modal {
+  z-index: 3;
+  display: none;
+  padding-top: 100px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
   height: 100%;
-  background-color: #8AA17B;
-  border-radius: 5px;
-  margin-right: 20px;
+  overflow: auto;
+ 
 }
 
-.tasks-disciplina{
-  font-size: 24px;
-  padding: 0 10px;
+.w3-modal-content {
+  margin: auto;
+  background-color: #fff;
+  position: relative;
+  padding: 0;
+  outline: 0;
+  width: 600px;
+
+
 }
 
-/* FIM DAS DISCIPLINAS */ 
-=======
->>>>>>> b42b9edb9af2ee07bb14e7859edbb60acae46d20
+@media (max-width: 600px) {
+  .w3-modal-content {
+    margin: 0 10px;
+    width: auto !important;
+  }
+
+  .w3-modal {
+    padding-top: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .w3-modal-content {
+    width: 500px;
+  }
+
+  .w3-modal {
+    padding-top: 50px;
+  }
+}
+
+@media (min-width: 993px) {
+  .w3-modal-content {
+    width: 900px;
+  }
+  .progress-container {
+      width: 100%;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      margin: 20px 0;
+  }
+  .progress-bar {
+      width: 10%; /* Altere este valor para ajustar a porcentagem de conclusão */
+      height: 30px;
+      background-color: #75b875;
+      border-radius: 5px;
+     
+      line-height: 30px;
+      color: white;
+  }
+}
+
+
+/*  Checkbox priorizaçoes */
+
+.checkbox1 {
+    position: absolute;
+    width: 207px;
+    height: 41px;
+    left: 327px;
+    top: 695px;
+}
+
+.checkbox2 {
+    position: absolute;
+    width: 207px;
+    height: 41px;
+    left: 326px;
+    top: 744px;
+}
+
+.checkbox3 {
+    position: absolute;
+    width: 207px;
+    height: 40px;
+    left: 535px;
+    top: 699px;
+}
+
+.checkbox4 {
+    position: absolute;
+    width: 207px;
+    height: 41px;
+    left: 535px;
+    top: 744px;
+   
+}

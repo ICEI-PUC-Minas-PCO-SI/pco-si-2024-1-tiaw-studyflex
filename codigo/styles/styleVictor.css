@@ -120,7 +120,6 @@ aside {
   display: flex;
   flex-direction: column;
   gap: 48px;
-  
 }
 
 .aside-menu {
@@ -224,9 +223,6 @@ aside {
 /*NAVBAR*/
 nav {
   grid-column: 2/-1;
-  display: flex;
-  border-bottom: 1px solid #414b3b;
-  gap: 24px;
 }
 
 .window-nav {
@@ -240,7 +236,7 @@ nav {
 .window-view {
   display: flex;
   align-items: center;
-  padding: 8px 64px;
+  padding: 6px 64px;
   border: 2px solid transparent;
   border-radius: 20px 20px 0px 0px;
   background-image: linear-gradient(to right, #ffffff, #f5f5f5);
@@ -594,66 +590,3 @@ nav {
 }
 
 /* FIM DO CALENDARIO */
-.container2{
-  display:flex;
-  flex-wrap: wrap; 
-  justify-content: center;
-  position: relative;
-  
-  
- }
- 
- 
-
-<<<<<<< HEAD
-/* FIM DO CALENDARIO */
-
-/* INÍCIO DISCIPLINAS*/
-
-.subject-box{
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  border: 1px solid;
-  padding: 10px;
-  border-radius: 20px;
-  box-shadow: #000000;
-  margin-bottom: 20px;
-
-}
-
-.subject-name{
-  flex-grow: 2;
-  color: #586352;
-  font-size: 24px;
-  text-transform: uppercase;
-  
-}
-
-.progress{
-  width: 40%;
-  height: 10px;
-  background-color: #e0e0e0;
-  border-radius: 5px;
-  overflow: hidden;
-  position: relative;
-  margin-right: 20px;
-
-}
-
-.progress-bar-disc{
-  width: 60%;
-  height: 100%;
-  background-color: #8AA17B;
-  border-radius: 5px;
-  margin-right: 20px;
-}
-
-.tasks-disciplina{
-  font-size: 24px;
-  padding: 0 10px;
-}
-
-/* FIM DAS DISCIPLINAS */ 
-=======
->>>>>>> b42b9edb9af2ee07bb14e7859edbb60acae46d20

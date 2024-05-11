@@ -120,7 +120,6 @@ aside {
   display: flex;
   flex-direction: column;
   gap: 48px;
-  
 }
 
 .aside-menu {
@@ -447,6 +446,9 @@ nav {
   padding: 32px;
 }
 
+.add-subject-container::backdrop {
+}
+
 .close-btn {
   align-self: end;
   display: flex;
@@ -464,10 +466,9 @@ nav {
 }
 
 .add-subject-container h2 {
-  margin: 16px 0;
+  margin: 32px 0;
   font-size: 24px;
   font-weight: 700;
-  border-bottom: 0 solid #414b3b;
 }
 
 .add-subject-container input {
@@ -486,13 +487,29 @@ nav {
   width: 300px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* CALENDARIO */
 .cal-modal {
   position: relative; /* Para o posicionamento relativo dos elementos filhos */
 }
 
 .large-cal-modal-container {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, .4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -529,6 +546,7 @@ nav {
   height: 30px; /* Altura do botão */
   border-radius: 50%; /* Transforma o botão em um círculo */
 }
+
 
 .large-cal-modal button.close-modal {
   position: absolute;
@@ -577,7 +595,7 @@ nav {
 }
 
 .flatpickr-day.today {
-  background-color: #8aa17b !important;
+  background-color: #8AA17B !important;
   border: none !important;
 }
 
@@ -593,67 +611,114 @@ nav {
   margin: 0 auto; /* Centraliza horizontalmente */
 }
 
-/* FIM DO CALENDARIO */
-.container2{
-  display:flex;
-  flex-wrap: wrap; 
-  justify-content: center;
-  position: relative;
-  
-  
- }
- 
- 
 
-<<<<<<< HEAD
 /* FIM DO CALENDARIO */
 
-/* INÍCIO DISCIPLINAS*/
-
-.subject-box{
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  border: 1px solid;
-  padding: 10px;
-  border-radius: 20px;
-  box-shadow: #000000;
-  margin-bottom: 20px;
-
-}
-
-.subject-name{
-  flex-grow: 2;
-  color: #586352;
-  font-size: 24px;
-  text-transform: uppercase;
-  
-}
-
-.progress{
-  width: 40%;
-  height: 10px;
-  background-color: #e0e0e0;
+.retan1{
+  border: 1px solid #ccc;
   border-radius: 5px;
-  overflow: hidden;
-  position: relative;
-  margin-right: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+   margin-left: 50px;
+   margin-right: 50px;
+   height: 400px;
+   width: 300px;
+   padding: 5px;
+   background-color: #E68B86;
+   ;
+   
+   
 
 }
 
-.progress-bar-disc{
-  width: 60%;
-  height: 100%;
-  background-color: #8AA17B;
-  border-radius: 5px;
-  margin-right: 20px;
+.retan-subtit{
+   margin-right: 10px;
+   color: black;
+   font-family: "Lato";
+   
 }
 
-.tasks-disciplina{
-  font-size: 24px;
-  padding: 0 10px;
+.retan2{
+   
+   margin-left: 50px;
+   margin-right: 50px;
+   height: 400px;
+   width: 300px;
+   padding: 5px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+   background-color: #EDBF74;
 }
 
-/* FIM DAS DISCIPLINAS */ 
-=======
->>>>>>> b42b9edb9af2ee07bb14e7859edbb60acae46d20
+.retan3{
+   
+   margin-left: 50px;
+   margin-right: 50px;
+   height: 400px;
+   width: 300px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+   padding: 5px;
+   background-color:  #9DAADF;
+   
+}
+
+.Btn{
+margin-top: 130px;
+margin-left: 50px;
+margin-right: 50px;
+padding: 5px;
+height: 70px;
+width: 70px;
+
+}
+
+.lapis{
+margin-top: 310px;
+margin-left: 210px;
+height: 70px;
+width: 70px;
+}
+
+.salvar{
+margin-top: -185px;
+margin-left: 10px;
+margin-bottom: 15px;
+height: 90px;
+width: 70px; 
+}
+
+
+#modal{
+margin:0 auto;
+margin-top: 300px;
+border-color: none;
+border-radius: 15px;
+height: 450px;
+width: 550px;
+border-color:rgba(0, 0, 0, 0.579);
+background-color: rgb(232, 224, 224);
+
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+align-items: center;
+}
+
+.salva{
+background-color: rgb(21, 53, 21);
+width: 120px;
+height: 20px;
+padding: 10px;
+color:white;
+margin-top: 290px;
+}
+
+.fechar{
+background-color: rgb(21, 53, 21);
+width: 120px;
+height: 20px;
+padding: 10px;
+color: white;
+}
+ 
+ 
