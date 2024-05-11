@@ -72,7 +72,7 @@ document.getElementById('note-form').addEventListener('submit', function(e) {
     var date = document.getElementById('date').value;
   
     // Obter o ID do retângulo selecionado
-    var selectedRetanguloId = document.getElementsByClassName('retan1') // (obter o ID do retângulo aqui)
+    var selectedRetanguloId = retanId // (obter o ID do retângulo aqui)
   
     // Criar um objeto com os valores
     var noteObject = {
@@ -80,13 +80,15 @@ document.getElementById('note-form').addEventListener('submit', function(e) {
       note: noteText,
       date: date
     };
+    var selectedRetangulo = document.getElementById(selectedRetanguloId);
+    selectedRetangulo.querySelector('h3').textContent = noteObject.title;
+    selectedRetangulo.querySelector('p').textContent = noteObject.note;
   
     
 });
 
 
 function openNoteModal(retanId) {
-    // Abrir o modal
-    // ...
+
     selectedRetanguloId = retanId; 
   }
