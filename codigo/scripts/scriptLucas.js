@@ -1,112 +1,93 @@
+// Objeto para armazenar as informações das disciplinas
+var disciplinasData = {
+    disciplinas: []
+};
+
+// Função para salvar as informações das disciplinas em formato JSON
+function salvarDadosDisciplinas() {
+    var jsonDisciplinas = JSON.stringify(disciplinasData);
+    // Aqui você pode armazenar o JSON onde for necessário, como localStorage ou enviá-lo para um servidor
+    console.log(jsonDisciplinas); // Exemplo: exibindo no console
+}
+
+// Função para carregar os dados das disciplinas do armazenamento (se necessário)
+function carregarDadosDisciplinas() {
+    // Aqui você pode carregar o JSON armazenado, converter para objeto JavaScript e atribuir a disciplinasData
+    // Exemplo: disciplinasData = JSON.parse(jsonArmazenado);
+}
+
+// Função para editar o nome da disciplina
 function editarNomeDisciplina(element) {
-    // Cria um campo de entrada de texto para editar o nome da disciplina
+    var nomeAtual = element.querySelector('.subject-name').textContent;
     var inputNome = document.createElement('input');
-    inputNome.type = 'text'; // Tipo de entrada de texto
-    inputNome.value = element.querySelector('.subject-name').textContent; // Define o valor inicial como o nome atual da disciplina
-    
-    // Substitui o nome da disciplina pelo campo de entrada de texto
+    inputNome.type = 'text';
+    inputNome.value = nomeAtual;
     element.querySelector('.subject-name').replaceWith(inputNome);
-    
-    // Define o foco no campo de entrada de texto
     inputNome.focus();
-    
-    // Adiciona um evento para capturar a tecla "Enter" e salvar o novo nome da disciplina
+
     inputNome.addEventListener('keyup', function(event) {
         if (event.key === 'Enter') {
-            salvarNomeDisciplina(element, inputNome.value);
+            var novoNome = inputNome.value;
+            salvarNomeDisciplina(element, novoNome);
+            salvarDadosDisciplinas(); // Salva os dados das disciplinas após a edição
         }
     });
 
-    // Adiciona um evento para capturar o evento de foco perdido e salvar o novo nome da disciplina
     inputNome.addEventListener('blur', function() {
-        salvarNomeDisciplina(element, inputNome.value);
+        var novoNome = inputNome.value;
+        salvarNomeDisciplina(element, novoNome);
+        salvarDadosDisciplinas(); // Salva os dados das disciplinas após a edição
     });
 }
 
+// Função para salvar o nome da disciplina
 function salvarNomeDisciplina(element, novoNome) {
-    // Cria um novo elemento span para representar o nome atualizado da disciplina
     var spanNome = document.createElement('span');
     spanNome.className = 'subject-name';
-    spanNome.textContent = novoNome; // Define o texto como o novo nome da disciplina
-    
-    // Substitui o campo de entrada de texto pelo novo nome da disciplina
+    spanNome.textContent = novoNome;
     element.querySelector('input[type="text"]').replaceWith(spanNome);
+
+    // Atualiza as informações no objeto disciplinasData
+    var index = Array.from(element.parentElement.children).indexOf(element);
+    disciplinasData.disciplinas[index].nome = novoNome;
 }
 
-
+// Função para adicionar uma nova disciplina
 function adicionarDisciplina() {
-    // Cria um elemento div para representar uma nova disciplina
     var novaDisciplina = document.createElement('div');
-    novaDisciplina.className = 'subject-box'; // Adiciona a classe 'subject-box'
-    novaDisciplina.setAttribute('onclick', 'editarNomeDisciplina(this)'); // Adiciona o atributo de onclick para edição de nome
+    novaDisciplina.className = 'subject-box';
+    novaDisciplina.setAttribute('onclick', 'editarNomeDisciplina(this)');
 
-    // Cria um elemento span para representar o nome da disciplina
     var nomeDisciplina = document.createElement('span');
     nomeDisciplina.className = 'subject-name';
-    nomeDisciplina.textContent = 'Nova Disciplina'; // Define um nome padrão para a nova disciplina
+    nomeDisciplina.textContent = 'Nova Disciplina';
 
-    // Cria um elemento div para representar a barra de progresso
     var barraProgresso = document.createElement('div');
     barraProgresso.className = 'progress';
     
-    // Cria um elemento div para representar a barra de progresso real
     var progressoReal = document.createElement('div');
     progressoReal.className = 'progress-bar-disc';
-    progressoReal.style.width = '0'; // Define a largura como 0 (barra de progresso zerada)
+    progressoReal.style.width = '0';
 
-    // Adiciona a barra de progresso real como filho da barra de progresso
-    barraProgresso.appendChild(progressoReal);
-
-    // Cria um elemento span para representar o número de tarefas
     var numTarefas = document.createElement('span');
     numTarefas.className = 'tasks-disciplina';
-    numTarefas.textContent = 'N° Tarefas: 0'; // Define o número de tarefas como 0
+    numTarefas.textContent = 'N° Tarefas: 0';
 
-    // Adiciona os elementos à nova disciplina
     novaDisciplina.appendChild(nomeDisciplina);
     novaDisciplina.appendChild(barraProgresso);
     novaDisciplina.appendChild(numTarefas);
 
-    // Adiciona a nova disciplina ao container de sessões
     var containerSessoes = document.getElementById('containerSessoes');
     containerSessoes.appendChild(novaDisciplina);
-}
 
-function editarNomeDisciplina(element) {
-    // Obtém o nome atual da disciplina
-    var nomeAtual = element.querySelector('.subject-name').textContent;
-
-    // Cria um campo de entrada de texto para editar o nome da disciplina
-    var inputNome = document.createElement('input');
-    inputNome.type = 'text'; // Tipo de entrada de texto
-    inputNome.value = nomeAtual; // Define o valor inicial como o nome atual da disciplina
-    
-    // Substitui o nome da disciplina pelo campo de entrada de texto
-    element.querySelector('.subject-name').replaceWith(inputNome);
-    
-    // Define o foco no campo de entrada de texto
-    inputNome.focus();
-    
-    // Adiciona um evento para capturar a tecla "Enter" e salvar o novo nome da disciplina
-    inputNome.addEventListener('keyup', function(event) {
-        if (event.key === 'Enter') {
-            salvarNomeDisciplina(element, inputNome.value);
-        }
+    // Adiciona as informações da nova disciplina ao objeto disciplinasData
+    disciplinasData.disciplinas.push({
+        nome: nomeDisciplina.textContent,
+        numTarefas: 0
     });
 
-    // Adiciona um evento para capturar o evento de foco perdido e salvar o novo nome da disciplina
-    inputNome.addEventListener('blur', function() {
-        salvarNomeDisciplina(element, inputNome.value);
-    });
+    salvarDadosDisciplinas(); // Salva os dados das disciplinas após adicionar uma nova disciplina
 }
 
-function salvarNomeDisciplina(element, novoNome) {
-    // Cria um novo elemento span para representar o nome atualizado da disciplina
-    var spanNome = document.createElement('span');
-    spanNome.className = 'subject-name';
-    spanNome.textContent = novoNome; // Define o texto como o novo nome da disciplina
-    
-    // Substitui o campo de entrada de texto pelo novo nome da disciplina
-    element.querySelector('input[type="text"]').replaceWith(spanNome);
-}
-
+// Chamada para carregar os dados das disciplinas, se necessário
+// carregarDadosDisciplinas();
