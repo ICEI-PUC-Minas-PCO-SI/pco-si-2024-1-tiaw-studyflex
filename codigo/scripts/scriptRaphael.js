@@ -81,8 +81,12 @@ document.getElementById('note-form').addEventListener('submit', function(e) {
       date: date
     };
   
-    // Atualizar o conteúdo do retângulo selecionado
-    var selectedRetangulo = document.getElementsByClassName(selectedRetanguloId);
-    selectedRetangulo.querySelector('h3').textContent = noteObject.title;
-    selectedRetangulo.querySelector('p').textContent = noteObject.note;
+    
 });
+
+
+function openNoteModal(retanId) {
+    // Abrir o modal
+    // ...
+    selectedRetanguloId = retanId; 
+  }
