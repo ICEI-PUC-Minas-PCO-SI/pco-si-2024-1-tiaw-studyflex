@@ -1,0 +1,29 @@
+.tasks-container {
+    max-height: 100px;
+    display: none;
+}
+
+.add-tasks-button {
+    margin-top: 5px;
+    padding-top: 1em;
+    padding-bottom: 0.55em;
+    border: 0;
+    border-radius: 20px 20px 0px 0px;
+    transition: all 0.4s ease-in;
+    scale: -1;
+    height: 25px;
+}
+
+
+.add-tasks-button .btn-img-tasks {
+    width: 20px;
+    transition: all 0.2s ease-in;
+}
+
+.add-tasks-button:hover .btn-img-tasks {
+    filter: brightness(0) invert(1);
+}
+
+.add-tasks-button:hover {
+    background: #8AA17B;
+}
