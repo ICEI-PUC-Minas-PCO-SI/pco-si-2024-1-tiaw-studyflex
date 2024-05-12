@@ -687,7 +687,7 @@ margin:0 auto;
 margin-top: 300px;
 border-color: none;
 border-radius: 15px;
-height: 450px;
+height: 400px;
 width: 510px;
 border-color:rgba(0, 0, 0, 0.579);
 background-color: rgb(232, 224, 224);
@@ -698,13 +698,14 @@ align-items: center;
 
 .salvar{
 margin-left: 20px;
-margin-top: 260px;
+margin-top: 115px;
+
 }
 
 .fechar{
 padding: 10px;
 color: white;
-margin-top: 200px;
+
 margin-left: 300px;
 }
 
@@ -729,6 +730,35 @@ margin-left: 300px;
   
 }
 
+#title{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height:50px;
+  text-align: center;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  border: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 30px;
+
+}
+ #note{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height:50px;
+  text-align: center;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  border: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+ }
+
+ #date{
+  text-align: center;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  border: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+ }
 
  
  
