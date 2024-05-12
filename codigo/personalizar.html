@@ -14,7 +14,7 @@
       type="image/x-icon"
       href="./assets/imgs/StudyFlex_logo.ico"
     />
-    <link rel="stylesheet" href="./styles/persolanizar.css" />
+    <link rel="stylesheet" href="./styles/styleAna.css" />
     <title>StudyFlex</title>
   </head>
 
@@ -178,76 +178,107 @@
         <!--CONTEÚDO DINAMICO-->
 
         <!--Aqui é onde será adcionado as diferentes variações das telas, o conteúdo dinâmico do site-->
-        
-        <article class="task-preview note">
-          <a href="#"><h3 class="task-title">TAREFA 3</h3></a>
-      
-          <a href="#" class="task-subject">História</a>
-          <p class="task-description">
-            Fazer uma apresentação de slides sobre a grécia antiga.
-          </p>
-         
-        <button id="openModalBtn" class="w3-button w3-black"><img src="assets/imgs/details_icon.png"
-          alt="Detalhes icone"
-          class="icon task-icon"
-        /> </button>
-      
-        <div id="id01" class="w3-modal" style="display: none;">
-          <div class="w3-modal-content">
-            <div class="w3-container">
-              <span id="closeModalBtn" class="w3-button w3-display-topright">&times;</span>
-              <h1>Editar tarefa</h1>
-              <div class="container">
-                <form action="#">
-                  <input type="text" id="nome" name="nome" placeholder="Nome da Tarefa..." required>
-                  <button type="submit">Enviar</button>
-                </form>
-                <div class="form-group">
-                  <form action="#">
-                    <input type="text" id="nome" name="nome" placeholder="Categoria" required>
-                    <select class="form-control" id="to">
-                    </select>
-                  </form>
-      
-                </div>
-      
-                <div class="form-groupdatas">
-      
-                  <form action="#">
-                    <input type="text" id="nome" name="nome" placeholder="Data Inicial" required>
-                    <select class="form-control" id="to">
-                    </select>
-                  </form>
-      
-                </div>
-                <div class="form-group">
-                  <form action="#">
-                    <input type="text" id="nome" name="nome" placeholder="Data fim" required>
-                    <select class="form-control" id="to">
-                    </select>
-                  </form>
-      
-                </div>
-                <form>
-                  <input type="checkbox" id="preference1" name="preference1" value="preference1">
-                  <label for="preference1">Priorização 1</label><br>
-                  <input type="checkbox" id="preference2" name="preference2" value="preference2">
-                  <label for="preference2">Priorização 2</label><br>
-                  <input type="checkbox" id="preference3" name="preference3" value="preference3">
-                  <label for="preference3">Priorização 3</label><br>
-                  <input type="checkbox" id="preference4" name="preference4" value="preference4">
-                  <label for="preference4">Priorização 4</label><br><br>
-      
-                  <div class="progress-container">
-                    <h3>Progresso</h3>
-                    <div id="progressBar" class="progress-bar">10%</div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div>
+          <h1> Tarefas da disciplina</h1>
+          <form action="" method="dialog" class="search-bar-container">
+            <input
+              type="search"
+              name=""
+              placeholder="Buscar.."
+              aria-label="Search"
+              class="search-bar"
+            />
   
+            <img
+              src="./assets/imgs/loupe_icon.png"
+              alt="Lupa icone"
+              class="input-icon"
+            />
+  
+            <button type="submit" class="submit-btn">
+              <img
+                src="./assets/imgs/search_icon.png"
+                alt="Botão de pesquisar"
+                class="submit-icon"
+              />
+            </button>
+          </form>
+        </div>
+        <div>
+  <div>
+          <article class="task-preview note">
+            <a href="#"><h3 class="task-title">TAREFA 3</h3></a>
+            <button id="openModalBtn" class="w3-button w3-black"><img src="assets/imgs/details_icon.png"
+              alt="Detalhes icone"
+              class="icon task-icon"
+            /> </button>
+          <div>
+            <div class="progress-container">
+              <h3>Progresso</h3>
+              <div id="progressBar" class="progress-bar">10%</div>
+            </div>
+            <h4>Data de Inicio</h4>
+            <span id="startDate"><h1> Data de Inicio: </h1></span>
+            <h4>Data de Fim</h4>
+            <span id="endDate"><h1>  Data de Fim: </h1> </span>
+            
+            
+            <p class="task-description">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum, ipsum aspernatur. Tempora ipsam placeat consectetur debitis nemo nam dicta, obcaecati aliquam laudantium. Dicta quos maiores unde animi iure! Nihil aspernatur nulla ipsam voluptatem nisi? Dolore atque vitae placeat iusto nulla numquam, tempore, pariatur adipisci repudiandae aliquid asperiores iste praesentium mollitia.
+            </p>
+          </div>
+          
+        </div>
+       
+        <div id="id01" class="w3-modal">
+          <div class="w3-modal-content">
+              <div class="w3-container">
+                  <span id="closeModalBtn" class="w3-button w3-display-topright">&times;</span>
+                  <span>
+                  <h1>Editar tarefa</h1>
+                </span>
+                
+                <div class="form-groupdatas">
+                  <div><h3>Data de inicio:</h3><input type="date" id="startDateInput" name="startDate" required></div>
+                 
+                  <div><h3>Data de fim:</h3><input type="date" id="endDateInput" name="endDate" required></div>
+              </div>
+              <form>
+                        
+                <input type="checkbox" id="preference1" name="preference1" value="preference1">
+                <label for="preference1">Priorização 1</label><br>
+                <input type="checkbox" id="preference2" name="preference2" value="preference2">
+                <label for="preference2">Priorização 2</label><br>
+                <input type="checkbox" id="preference3" name="preference3" value="preference3">
+                <label for="preference3">Priorização 3</label><br>
+                <input type="checkbox" id="preference4" name="preference4" value="preference4">
+                <label for="preference4">Priorização 4</label><br><br>
+                <div class="progress-container">
+                    
+            </form>
+                  <div class="container">
+                      <form action="#">
+                          <input type="text" id="nome" name="nome" placeholder="Nome da Tarefa..." required>
+                          <button type="submit">Enviar</button>
+                      </form>
+                     
+                      <div class="form-group">
+                          <form action="#">
+                              <input type="text" id="nome" name="nome" placeholder="Categoria" required>
+                              <select class="form-control" id="to"></select>
+                          </form>
+                      </div>
+                      
+                      
+                      <div>
+                        <h3>Progresso</h3>
+                                <div id="progressBar" class="progress-bar">10%</div>
+                            </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
 </body>
 
 </html>
@@ -258,6 +289,6 @@
         <!--CONTEÚDO DINAMICO-->
       </main>
     </div>
-    <script src="./scripts/tarefas.js" defer></script>
+    <script src="./scripts/scriptAna.js" defer></script>
   </body>
 </html>
