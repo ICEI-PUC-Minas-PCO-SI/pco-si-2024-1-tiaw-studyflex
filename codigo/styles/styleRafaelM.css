@@ -1,6 +1,12 @@
 .website-logo{
     display: flex;
+}
 
+.menuInicial-title{
+    color: #586352;
+    grid-column: 1/2;
+    font-size: 30px;
+    text-align: left;
 }
 
 .tasks-container {
@@ -10,7 +16,7 @@
 
 
 
-.add-tasks-button {
+#addTasksButton {
     margin-top: 5px;
     padding-top: 1em;
     padding-bottom: 0.55em;
@@ -23,7 +29,7 @@
 }
 
 
-.add-tasks-button .btn-img-tasks {
+#addTasksButton .btn-img-tasks {
     width: 20px;
     transition: all 0.2s ease-in;    
     justify-content: center;
@@ -31,15 +37,16 @@
     
 }
 
-.add-tasks-button:hover .btn-img-tasks {
+#addTasksButton:hover .btn-img-tasks {
     filter: brightness(0) invert(1);
 }   
 
-.add-tasks-button:hover {
+#addTasksButton:hover {
     background: #8AA17B;
 }
 
 .container-progress {
+    position: fixed;
     margin-top: 25px;
     margin-left: 80px;
     margin-right: 80px;
@@ -56,16 +63,19 @@
 
 #name-task-progress{
     margin-top: 15px;
+    margin-left: 4px;
     text-align: left;
     display: flex;
+    position: fixed;
 }
 
 #progress-percentage{
-    margin-left: 195px;
+    margin-left: 225px;
+    position: fixed;
 }
 
 .progress-bar{ 
-    margin-top: 5px;
+    margin-top: 35px;
     width: 270px;
     height: 12.5px;
     border-radius: 10px;

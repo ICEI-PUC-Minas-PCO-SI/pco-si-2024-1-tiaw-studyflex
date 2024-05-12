@@ -119,7 +119,7 @@
 
       <!--Aqui é onde será adcionado as diferentes variações das telas, o conteúdo dinâmico do site-->
       <section class="homescreen" id="homescreenView">
-        <h1 class="homescreen-title">Tarefas da matéria</h1>
+        <h1 class="menuInicial-title">Tarefas da matéria</h1>
         <form action="" method="get" class="search-bar-container">
           <input type="search" name="" placeholder="BUSCAR TAREFA..." aria-label="Search" class="search-bar" />
 
@@ -154,7 +154,7 @@
 
         <!--Começo - Botão para criar uma nova tarefa -->
 
-        <button class="btn add-tasks-button" id="addTasksButton">
+        <button class="adicionarTarefa()" id="addTasksButton">
           <img src="./assets/imgs/add_icon.png" alt="Tarefas" class="btn-img-tasks" draggable="false" />
         </button>
 
@@ -196,11 +196,10 @@
           <div class="container-progress">
             <article class="task-progress">
               <h2 class="task-progress-info">Progresso da disciplina</h2>
-
               <div id="name-task-progress">
-                <h4>Tarefa</h4>
+                <h4 id="nomeTarefa">Tarefa</h4>
                 <div class="porcentagem" id="progress-percentage">
-                  <h4>100%</h4>
+                  <h4 id="nivelProgresso">100%</h4>
                 </div>
               </div>
               <div class="progress-bar">
