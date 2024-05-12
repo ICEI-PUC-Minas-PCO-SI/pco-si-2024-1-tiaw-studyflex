@@ -697,37 +697,28 @@ align-items: center;
 }
 
 .salvar{
-width: 120px;
-height: 20px;
-padding: 10px;
-color:white;
-margin-top: 340px;
-margin-right: 220px;
+margin-left: 20px;
+margin-top: 260px;
 }
 
 .fechar{
-width: 20px;
-height: 20px;
 padding: 10px;
 color: white;
+margin-top: 200px;
+margin-left: 300px;
 }
 
 .imgclose{
   height: 60px;
-  margin-right: 90px ;
-  margin-top: 20px;
-  margin-bottom: 20px;
+
 }
 
 .imgsaved{
   height: 50px;
-  margin-right: 90px;
-  margin-top: -150px;
+  
 }
 
-#note-form{
-  border-color: white;
-}
+
 
 .form2{
   display: flex;
@@ -737,5 +728,7 @@ color: white;
   margin-left: 10px;
   
 }
+
+
  
  
