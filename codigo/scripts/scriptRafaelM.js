@@ -1,6 +1,7 @@
-const progresso = document.querySelector(".progress-bar .level-progress");
 
+    const progresso = document.querySelector("#level-progress");
+     progresso.style.width = '65' + '%';
+     progresso.innerHTML = '' + '%';
 
-    progresso.setAttribute("style", "width: 100% "  );
-
+     
 
