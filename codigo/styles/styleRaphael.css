@@ -490,19 +490,6 @@ nav {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* CALENDARIO */
 .cal-modal {
   position: relative; /* Para o posicionamento relativo dos elementos filhos */
@@ -614,6 +601,11 @@ nav {
 
 /* FIM DO CALENDARIO */
 
+.container2{
+  flex-wrap: wrap;
+  display: flex;
+}
+
 .retan1{
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -696,7 +688,7 @@ margin-top: 300px;
 border-color: none;
 border-radius: 15px;
 height: 450px;
-width: 550px;
+width: 510px;
 border-color:rgba(0, 0, 0, 0.579);
 background-color: rgb(232, 224, 224);
 
@@ -704,21 +696,46 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 align-items: center;
 }
 
-.salva{
-background-color: rgb(21, 53, 21);
+.salvar{
 width: 120px;
 height: 20px;
 padding: 10px;
 color:white;
-margin-top: 290px;
+margin-top: 340px;
+margin-right: 220px;
 }
 
 .fechar{
-background-color: rgb(21, 53, 21);
-width: 120px;
+width: 20px;
 height: 20px;
 padding: 10px;
 color: white;
+}
+
+.imgclose{
+  height: 60px;
+  margin-right: 90px ;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.imgsaved{
+  height: 50px;
+  margin-right: 90px;
+  margin-top: -150px;
+}
+
+#note-form{
+  border-color: white;
+}
+
+.form2{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  
 }
  
  

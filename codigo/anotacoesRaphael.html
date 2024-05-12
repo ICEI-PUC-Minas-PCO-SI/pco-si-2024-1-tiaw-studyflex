@@ -230,11 +230,14 @@
 
     <dialog id="modal">
       <form id="note-form">
-          <input type="text" id="title" placeholder="Título" required>
-          <textarea id="note" placeholder="Digite sua nota" required></textarea>
-          <input type="date" id="date" required>
-          <button type="submit" form="note-form">Salvar Nota</button>
-          <button onclick="modal.close()">fechar Modal</button>
+          <div class="form2">
+            <input type="text" id="title" placeholder="Título" required>
+            <textarea id="note" placeholder="Digite sua nota" required></textarea>
+            <input type="date" id="date" required>
+          </div>
+            <button type="submit" form="note-form" class="salvar"><img src="img/save.svg" class="imgsaved"></button>
+          
+          <button onclick="modal.close()" class="fechar"><img class="imgclose" src="assets/imgs/close_icon.png"></button>
       </form>
   </dialog>
     
