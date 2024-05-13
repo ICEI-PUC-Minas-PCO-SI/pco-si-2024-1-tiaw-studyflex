@@ -18,14 +18,14 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
-    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/styleVictor.css" />
     <title>StudyFlex</title>
   </head>
 
   <body>
     <div class="container">
       <header>
-        <a href="./homescreen.html"
+        <a href="./HomeScreenVictor.html"
           ><img
             src="./assets/imgs/StudyFlex_page_logo.svg"
             alt="StudyFlex logo"
@@ -139,8 +139,8 @@
       <aside>
         <!--Lista responsável por organizar os links que levarão o usuário para as diferentes telas da plataforma-->
         <ul class="aside-menu">
-          <li class="aside-option active">
-            <a href="#">
+          <li class="aside-option active" id="dashboardTab">
+            <a href="./HomeScreenVictor.html">
               <img
                 src="./assets/imgs/menu_icon.png"
                 alt="Dashboard icone"
@@ -159,7 +159,7 @@
               <span>Anotações</span>
             </a>
           </li>
-          <li class="aside-option">
+          <li class="aside-option" id="materiasTab">
             <a href="#">
               <img
                 src="./assets/imgs/materias_icon.png"
@@ -169,7 +169,7 @@
               <span>Matérias</span>
             </a>
           </li>
-          <li class="aside-option">
+          <li class="aside-option" id="configTab">
             <a href="#">
               <img
                 src="./assets/imgs/config_icon.png"
@@ -221,27 +221,126 @@
             </button>
           </form>
 
-          <section class="tasks-container">
-            <!--
-            <article class="task-preview note">
-              <a href="#"><h3 class="task-title">TAREFA 2</h3></a>
+          <section class="tasks-container" id="taskContainer">
+            <button class="btn add-button" id="createTaskButton">
+              <img
+                src="./assets/imgs/add_icon.png"
+                alt="Notificações"
+                class="btn-img"
+                draggable="false"
+              />
+            </button>
 
-              <a href="#" class="task-subject">História</a>
-              <p class="task-description">
-                Lorem ipsum is placeholder text commonly used in the graphic,
-                print, and publishing industries for previewing layouts and
-                visual mockups...
-              </p>
-              <button  class="task-details">
+            <dialog class="create-task-container" id="creteTaskModal">
+              <button class="btn close-btn" id="closeTaskCreatorButton">
                 <img
-                  src="./assets/imgs/details_icon.png"
-                  alt="Detalhes icone"
-                  class="icon task-icon"
+                  src="./assets/imgs/close_icon.png"
+                  alt="Botão de fechar"
+                  draggable="false"
+                  class="close-icon"
                 />
               </button>
-            </article>-->
+
+              <!--FORMULARIO PARA CRIAR TAREFA-->
+              <form
+                class="create-task-form"
+                method="post"
+                id="newTaskForm"
+                action="http://localhost:3000/tarefas"
+              >
+                <div class="title-container">
+                  <input
+                    type="text"
+                    id="newTaskName"
+                    placeholder="Tarefa"
+                    required
+                  />
+                </div>
+
+                <div class="status-container info-container">
+                  <label for="statusViewButton">
+                    <img
+                      draggable="false"
+                      src="./assets/imgs/task-icons/status.svg"
+                      alt="status icone"
+                      class="task-form-icon"
+                    />
+                    <span>status</span>
+                  </label>
+
+                  <div class="select-container">
+                    <select name="status" id="statusOption" required>
+                      <option value="">-</option>
+                      <option value="do">A fazer</option>
+                      <option value="doing">Fazendo</option>
+                      <option value="done">Feito</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="final-date-container info-container">
+                  <label for="">
+                    <img
+                      draggable="false"
+                      src="./assets/imgs/task-icons/date.svg"
+                      alt="status icone"
+                      class="task-form-icon"
+                    />
+                    <span>data final</span>
+                  </label>
+
+                  <input
+                    type="date"
+                    name="finalDate"
+                    id="TaskEndDate"
+                    required
+                  />
+                </div>
+
+                <div class="subject-container info-container">
+                  <label for="">
+                    <img
+                      draggable="false"
+                      src="./assets/imgs/task-icons/subject.svg"
+                      alt="status icone"
+                      class="task-form-icon"
+                    />
+                    <span>matéria</span>
+                  </label>
+
+                  <div class="select-container">
+                    <select name="" id="subjectOption" name="subject" required>
+                      <option value="">-</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="priority-container info-container">
+                  <label for="">
+                    <img
+                      draggable="false"
+                      src="./assets/imgs/task-icons/priority.svg"
+                      alt="status icone"
+                      class="task-form-icon"
+                    />
+                    <span>prioridade</span>
+                  </label>
+
+                  <div class="select-container">
+                    <select name="prioridade" id="priorityOption" required>
+                      <option value="">-</option>
+                      <option value="urgente">Urgente</option>
+                      <option value="alta">Alta</option>
+                      <option value="normal">Normal</option>
+                      <option value="baixa">Baixa</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button id="submitNewTaskButton">criar</button>
+              </form>
+            </dialog>
           </section>
 
+          <!--CALENDÁRIO-->
           <section class="homescreen-task-info">
             <article class="calendar-view">
               <h3 class="task-info-title">
@@ -285,5 +384,9 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="./scripts/scriptMateus.js"></script>
     <script src="./scripts/scriptVictor.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
   </body>
 </html>
