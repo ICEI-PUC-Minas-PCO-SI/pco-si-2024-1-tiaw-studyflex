@@ -120,12 +120,14 @@ aside {
   display: flex;
   flex-direction: column;
   gap: 48px;
+  
 }
 
 .aside-menu {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  
 }
 
 .aside-option {
@@ -590,7 +592,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; /* Ocupa toda a altura da .cal-modal */
+   /* Ocupa toda a altura da .cal-modal */
 }
 
 #calendar {
@@ -604,22 +606,20 @@ nav {
 .container2{
   flex-wrap: wrap;
   display: flex;
+  
 }
 
 .retan1{
   border: 1px solid #ccc;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
    margin-left: 50px;
    margin-right: 50px;
    height: 400px;
    width: 300px;
    padding: 5px;
    background-color: #E68B86;
-   ;
-   
-   
-
+   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  border: none;
 }
 
 .retan-subtit{
@@ -638,8 +638,9 @@ nav {
    padding: 5px;
    border: 1px solid #ccc;
    border-radius: 5px;
-   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
    background-color: #EDBF74;
+   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  border: none;
 }
 
 .retan3{
@@ -653,6 +654,8 @@ nav {
    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
    padding: 5px;
    background-color:  #9DAADF;
+   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  border: none;
    
 }
 
