@@ -1,71 +1,79 @@
-.website-logo{
+.website-logo {
     display: flex;
+}
 
+.menuInicial-title {
+    color: #586352;
+    grid-column: 1/2;
+    font-size: 30px;
+    text-align: left;
+}
+
+.search-bar {
+    border-radius: 30px;
+    font-size: 14.5px;
 }
 
 .tasks-container {
     max-height: 100px;
-    display: none;
+    display: flex;
+    margin-bottom: 70px;
 }
 
 
 
-.add-tasks-button {
+#divisao {
+   margin-top: -19.53em;
+    
+}
+
+.conteiner-addTask {
+    position:relative;
+    margin-top: -20em;
+    margin-left: -11px;
+   
+}
+
+#addTasksButton {
     margin-top: 5px;
     padding-top: 1em;
     padding-bottom: 0.55em;
-    border: 0;
-    border-radius: 20px 20px 0px 0px;
-    transition: all 0.3s linear;
-    scale: -1;
     height: 25px;
-    
+
 }
 
-
-.add-tasks-button .btn-img-tasks {
-    width: 20px;
-    transition: all 0.2s ease-in;    
-    justify-content: center;
-    align-items: center;
-    
-}
-
-.add-tasks-button:hover .btn-img-tasks {
-    filter: brightness(0) invert(1);
-}   
-
-.add-tasks-button:hover {
-    background: #8AA17B;
+.task-info-title{
+    text-align: center;
 }
 
 .container-progress {
+    
+    display: flex;
     margin-top: 25px;
     margin-left: 80px;
-    margin-right: 80px;
-    width: 20.5em;
+    width: 19.5em;
     height: 15em;
     border-radius: 0.5em;
     padding: 15px;
-    box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.116);  
+    box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.116);
 }
 
-.task-progress-info{
+.task-progress-info {
     text-align: left;
 }
 
-#name-task-progress{
+#name-task-progress {
     margin-top: 15px;
+    margin-left: 4px;
     text-align: left;
     display: flex;
 }
 
-#progress-percentage{
-    margin-left: 195px;
+#progress-percentage {
+    margin-left: 188px;
 }
 
-.progress-bar{ 
-    margin-top: 5px;
+.progress-bar {
     width: 270px;
     height: 12.5px;
     border-radius: 10px;
@@ -73,7 +81,7 @@
     background-color: white;
 }
 
-.progress-bar #level-progress{
+.progress-bar #level-progress {
     height: 100%;
     border-radius: 10px;
     background-color: #8AA17B;

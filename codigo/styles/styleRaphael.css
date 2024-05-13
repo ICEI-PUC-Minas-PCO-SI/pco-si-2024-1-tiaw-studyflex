@@ -120,12 +120,14 @@ aside {
   display: flex;
   flex-direction: column;
   gap: 48px;
+  
 }
 
 .aside-menu {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  
 }
 
 .aside-option {
@@ -590,7 +592,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; /* Ocupa toda a altura da .cal-modal */
+   /* Ocupa toda a altura da .cal-modal */
 }
 
 #calendar {
@@ -604,22 +606,20 @@ nav {
 .container2{
   flex-wrap: wrap;
   display: flex;
+  
 }
 
 .retan1{
   border: 1px solid #ccc;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
    margin-left: 50px;
    margin-right: 50px;
    height: 400px;
    width: 300px;
    padding: 5px;
    background-color: #E68B86;
-   ;
-   
-   
-
+   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  border: none;
 }
 
 .retan-subtit{
@@ -638,8 +638,9 @@ nav {
    padding: 5px;
    border: 1px solid #ccc;
    border-radius: 5px;
-   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
    background-color: #EDBF74;
+   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  border: none;
 }
 
 .retan3{
@@ -653,6 +654,8 @@ nav {
    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
    padding: 5px;
    background-color:  #9DAADF;
+   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  border: none;
    
 }
 
@@ -687,7 +690,7 @@ margin:0 auto;
 margin-top: 300px;
 border-color: none;
 border-radius: 15px;
-height: 450px;
+height: 400px;
 width: 510px;
 border-color:rgba(0, 0, 0, 0.579);
 background-color: rgb(232, 224, 224);
@@ -698,13 +701,14 @@ align-items: center;
 
 .salvar{
 margin-left: 20px;
-margin-top: 260px;
+margin-top: 115px;
+
 }
 
 .fechar{
 padding: 10px;
 color: white;
-margin-top: 200px;
+
 margin-left: 300px;
 }
 
@@ -729,6 +733,35 @@ margin-left: 300px;
   
 }
 
+#title{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height:50px;
+  text-align: center;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  border: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 30px;
+
+}
+ #note{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height:50px;
+  text-align: center;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  border: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+ }
+
+ #date{
+  text-align: center;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  border: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+ }
 
  
  
