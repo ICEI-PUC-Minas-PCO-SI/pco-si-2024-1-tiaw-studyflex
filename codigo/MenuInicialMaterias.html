@@ -12,7 +12,6 @@
   <link rel="icon" type="image/x-icon" href="./assets/imgs/StudyFlex_logo.ico" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="./styles/style.css" />
-  <link rel="stylesheet" href="./styles/persolanizar.css">
   <link rel="stylesheet" href="./styles/styleRafaelM.css">
 
   <title>StudyFlex</title>
@@ -119,9 +118,9 @@
 
       <!--Aqui é onde será adcionado as diferentes variações das telas, o conteúdo dinâmico do site-->
       <section class="homescreen" id="homescreenView">
-        <h1 class="homescreen-title">Tarefas da matéria</h1>
+        <h1 class="menuInicial-title">Tarefas da matéria</h1>
         <form action="" method="get" class="search-bar-container">
-          <input type="search" name="" placeholder="BUSCAR TAREFA..." aria-label="Search" class="search-bar" />
+          <input type="search" name="" placeholder="Buscar tarefa..." aria-label="Search" class="search-bar" />
 
           <img src="./assets/imgs/loupe_icon.png" alt="Lupa icone" class="input-icon" />
 
@@ -132,12 +131,11 @@
 
         <!--Começo - Caixa de Tarefas -->
 
-        <section class="tasks-container">
+        <section class="tasks-container" id="tasks-box">
           <article class="task-preview note">
             <a href="#">
               <h3 class="task-title">TAREFA</h3>
             </a>
-
             <a href="#" class="task-subject">Matéria</a>
             <p class="task-description">
               Lorem ipsum is placeholder text commonly used in the graphic,
@@ -152,21 +150,26 @@
 
         <!--Final - Caixa de Tarefas -->
 
+        <div id="novastarefas">
+          <div id="divisao"></div>
+        </div>
+
         <!--Começo - Botão para criar uma nova tarefa -->
 
-        <button class="btn add-tasks-button" id="addTasksButton">
-          <img src="./assets/imgs/add_icon.png" alt="Tarefas" class="btn-img-tasks" draggable="false" />
-        </button>
+        <div class="conteiner-addTask">
+          <button onclick="criarTarefa()" class="adicionarTarefa()" id="addTasksButton">
+            <img src="./assets/imgs/add_icon.png" alt="Tarefas" class="btn-img-tasks" draggable="false" />
+          </button>
+        </div>
 
         <!--Final- Botão para criar uma nova tarefa -->
-
 
         <!-- Começo - Calendário -->
 
         <section class="homescreen-task-info">
           <article class="calendar-view">
             <h3 class="task-info-title">
-
+              <strong></strong>
             </h3>
             <div class="cal-modal-container">
               <div class="cal-modal">
@@ -196,11 +199,10 @@
           <div class="container-progress">
             <article class="task-progress">
               <h2 class="task-progress-info">Progresso da disciplina</h2>
-
               <div id="name-task-progress">
-                <h4>Tarefa</h4>
+                <h4 id="nomeTarefa">Tarefa</h4>
                 <div class="porcentagem" id="progress-percentage">
-                  <h4>100%</h4>
+                  <h4 id="nivelProgresso">100%</h4>
                 </div>
               </div>
               <div class="progress-bar">
