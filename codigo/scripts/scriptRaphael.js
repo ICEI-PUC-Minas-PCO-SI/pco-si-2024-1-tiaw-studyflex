@@ -46,6 +46,13 @@ function liberarEdicao(element) {
             exibirJSON();
         }
     });
+
+    inputTitulo.addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            salvarEdicao(element, id, inputTitulo.value, inputTextoNota.value);
+            exibirJSON();
+        }
+    });
 }
 
 // Função para salvar as edições
