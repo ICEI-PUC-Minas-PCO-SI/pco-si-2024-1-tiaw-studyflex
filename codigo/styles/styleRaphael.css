@@ -622,13 +622,6 @@ nav {
   border: none;
 }
 
-.retan-subtit{
-   margin-right: 10px;
-   color: black;
-   font-family: "Lato";
-   
-}
-
 .retan2{
    
    margin-left: 50px;
@@ -669,99 +662,7 @@ width: 70px;
 
 }
 
-.lapis{
-margin-top: 310px;
-margin-left: 210px;
-height: 70px;
-width: 70px;
-}
 
-.salvar{
-margin-top: -185px;
-margin-left: 10px;
-margin-bottom: 15px;
-height: 90px;
-width: 70px; 
-}
-
-
-#modal{
-margin:0 auto;
-margin-top: 300px;
-border-color: none;
-border-radius: 15px;
-height: 400px;
-width: 510px;
-border-color:rgba(0, 0, 0, 0.579);
-background-color: rgb(232, 224, 224);
-
-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-align-items: center;
-}
-
-.salvar{
-margin-left: 20px;
-margin-top: 115px;
-
-}
-
-.fechar{
-padding: 10px;
-color: white;
-
-margin-left: 300px;
-}
-
-.imgclose{
-  height: 60px;
-
-}
-
-.imgsaved{
-  height: 50px;
-  
-}
-
-
-
-.form2{
-  display: flex;
-  flex-direction: column;
-  margin-top: 10px;
-  margin-right: 10px;
-  margin-left: 10px;
-  
-}
-
-#title{
-  margin-top: 10px;
-  margin-bottom: 10px;
-  height:50px;
-  text-align: center;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-  border: none;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 30px;
-
-}
- #note{
-  margin-top: 10px;
-  margin-bottom: 10px;
-  height:50px;
-  text-align: center;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-  border: none;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 20px;
- }
-
- #date{
-  text-align: center;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-  border: none;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 20px;
- }
 
  
  
