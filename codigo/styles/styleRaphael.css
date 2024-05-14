@@ -606,6 +606,7 @@ nav {
 .container2{
   flex-wrap: wrap;
   display: flex;
+  padding:45px;
   
 }
 
@@ -620,6 +621,8 @@ nav {
    background-color: #E68B86;
    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   border: none;
+  margin-top:35px;
+  word-wrap: break-word;
 }
 
 .retan2{
@@ -634,6 +637,8 @@ nav {
    background-color: #EDBF74;
    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   border: none;
+  margin-top:35px;
+  word-wrap: break-word;
 }
 
 .retan3{
@@ -649,6 +654,8 @@ nav {
    background-color:  #9DAADF;
    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   border: none;
+  margin-top:35px;
+  word-wrap: break-word;
    
 }
 
@@ -661,6 +668,29 @@ height: 70px;
 width: 70px;
 
 }
+
+.lapis{
+  margin-top: 220px;
+  margin-left: 210px;
+  height: 70px;
+  width: 70px;
+  }
+
+  .h3{
+    margin-left: 20px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:30px;
+    margin-top: 20px;
+  }
+
+  .p{
+      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-size:20px;
+      margin-top: 30px;
+      margin-left: 20px;
+      color:rgb(86, 76, 76);
+    
+  }
 
 
 
