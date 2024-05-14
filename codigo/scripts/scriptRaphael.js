@@ -1,28 +1,22 @@
 var btn = document.querySelector(".add");
-var container = document.querySelector(".container2");
+var container = document.querySelector(".container");
+var lastCloned = null;
 
 btn.addEventListener("click", () => {
     var divClone;
-    if (container.children.length === 0) {
+    if (lastCloned === null || lastCloned.classList.contains("retan3")) {
         divClone = document.querySelector(".retan1").cloneNode(true);
-    } else {
-        var lastRetan = container.lastElementChild;
-        var rect = lastRetan.getBoundingClientRect();
-        var top = rect.top + window.scrollY + rect.height + 20; // 20 pixels de espaçamento entre retângulos
-        var left = rect.left + window.scrollX;
-
-        if (lastRetan.classList.contains("retan1")) {
-            divClone = document.querySelector(".retan2").cloneNode(true);
-        } else if (lastRetan.classList.contains("retan2")) {
-            divClone = document.querySelector(".retan3").cloneNode(true);
-        }
-
-        divClone.style.position = "absolute";
-        divClone.style.top = top + "px";
-        divClone.style.left = left + "px";
+    } else if (lastCloned.classList.contains("retan1")) {
+        divClone = document.querySelector(".retan2").cloneNode(true);
+    } else if (lastCloned.classList.contains("retan2")) {
+        divClone = document.querySelector(".retan3").cloneNode(true);
     }
+    
+    
+    
 
     container.appendChild(divClone);
+    lastCloned = divClone;
 });
 
 // Objeto para armazenar as notas
