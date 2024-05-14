@@ -1,5 +1,5 @@
 var btn = document.querySelector(".add");
-var container = document.querySelector(".container");
+var container = document.querySelector(".container2");
 var lastCloned = null;
 
 btn.addEventListener("click", () => {
