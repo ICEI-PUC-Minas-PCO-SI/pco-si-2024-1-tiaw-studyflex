@@ -12,11 +12,11 @@ btn.addEventListener("click", () => {
         divClone = document.querySelector(".retan3").cloneNode(true);
     }
     
-    
-    
-
     container.appendChild(divClone);
     lastCloned = divClone;
+
+    var addButton = document.querySelector(".Btn");
+    container.insertBefore(addButton, divClone.nextSibling);
 });
 
 // Objeto para armazenar as notas
@@ -71,6 +71,3 @@ function salvarEdicao(element, id, novoTitulo, novoTextoNota) {
 function exibirJSON() {
     console.log(JSON.stringify(notas, null, 2));
 }
-
-
-    
