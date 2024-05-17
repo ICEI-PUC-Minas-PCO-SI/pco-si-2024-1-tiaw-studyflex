@@ -670,7 +670,7 @@ width: 70px;
 }
 
 .lapis{
-  margin-top: 140px;
+  margin-top: 200px;
   margin-left: 210px;
   height: 70px;
   width: 70px;
@@ -693,7 +693,7 @@ width: 70px;
   }
 
   input{
-    margin-top: 20px;
+    margin-top: 0px;
     margin-left: 50px;
     height: 30px;
     text-align: center;
@@ -702,7 +702,7 @@ width: 70px;
 
   textarea{
     margin-left:50px;
-    margin-top: 30px;
+    margin-top: 5px;
     height: 100px;
     width: 170px;
     text-align: center;
