@@ -670,7 +670,7 @@ width: 70px;
 }
 
 .lapis{
-  margin-top: 220px;
+  margin-top: 140px;
   margin-left: 210px;
   height: 70px;
   width: 70px;
@@ -690,6 +690,23 @@ width: 70px;
       margin-left: 20px;
       color:rgb(86, 76, 76);
     
+  }
+
+  input{
+    margin-top: 20px;
+    margin-left: 50px;
+    height: 30px;
+    text-align: center;
+    font-family: arial;
+  }
+
+  textarea{
+    margin-left:50px;
+    margin-top: 30px;
+    height: 100px;
+    width: 170px;
+    text-align: center;
+    font-family: arial;
   }
 
 
