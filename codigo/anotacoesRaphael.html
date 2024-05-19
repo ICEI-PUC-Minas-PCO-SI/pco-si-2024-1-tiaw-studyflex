@@ -192,54 +192,45 @@
       </aside>
       <main id="mainContainer">
         <div class="container2">
-              <div class="retan1">
-                <h3 class="h3"></h3>
-                <p class="p"></p>
-                <button onclick="openNoteModal('0')">
-                  <svg width="31" height="31" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="lapis" onclick="modal.showModal('0')">
-                      <circle cx="20.5" cy="20.5" r="20.5" fill="#8AA17B"/>
-                      <path d="M9 27.9993V33H14.0007L28.7561 18.2446L23.7554 13.2439L9 27.9993ZM32.6099 14.3907C33.13 13.8707 33.13 13.0239 32.6099 12.5038L29.4962 9.39005C28.9761 8.86998 28.1293 8.86998 27.6093 9.39005L25.1689 11.8304L30.1696 16.8311L32.6099 14.3907Z" fill="white"/>
-                  </svg>
-              </button>
+            <div class="retan1 retan" data-id="0">
+                <h3 class="h3" id="titulo">Título </h3>
+                <p class="p" id="textoNota">Texto da Nota </p>
+                <button onclick="liberarEdicao(this.closest('.retan'))">
+                    <svg width="31" height="31" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="lapis">
+                        <circle cx="20.5" cy="20.5" r="20.5" fill="#8AA17B"/>
+                        <path d="M9 27.9993V33H14.0007L28.7561 18.2446L23.7554 13.2439L9 27.9993ZM32.6099 14.3907C33.13 13.8707 33.13 13.0239 32.6099 12.5038L29.4962 9.39005C28.9761 8.86998 28.1293 8.86998 27.6093 9.39005L25.1689 11.8304L30.1696 16.8311L32.6099 14.3907Z" fill="white"/>
+                    </svg>
+                </button>
             </div>
-    
-            <div class="retan2" onclick="openNoteModal('1')">
-              <button>
-                <svg width="31" height="31" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="lapis" onclick="modal.showModal('1')">
-                    <circle cx="20.5" cy="20.5" r="20.5" fill="#8AA17B"/>
-                    <path d="M9 27.9993V33H14.0007L28.7561 18.2446L23.7554 13.2439L9 27.9993ZM32.6099 14.3907C33.13 13.8707 33.13 13.0239 32.6099 12.5038L29.4962 9.39005C28.9761 8.86998 28.1293 8.86998 27.6093 9.39005L25.1689 11.8304L30.1696 16.8311L32.6099 14.3907Z" fill="white"/>
-                </svg>
-            </button>
+            <div class="retan2 retan" data-id="1">
+                <h3 class="h3" id="titulo">Título </h3>
+                <p class="p" id="textoNota">Texto da Nota </p>
+                <button onclick="liberarEdicao(this.closest('.retan'))">
+                    <svg width="31" height="31" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="lapis">
+                        <circle cx="20.5" cy="20.5" r="20.5" fill="#8AA17B"/>
+                        <path d="M9 27.9993V33H14.0007L28.7561 18.2446L23.7554 13.2439L9 27.9993ZM32.6099 14.3907C33.13 13.8707 33.13 13.0239 32.6099 12.5038L29.4962 9.39005C28.9761 8.86998 28.1293 8.86998 27.6093 9.39005L25.1689 11.8304L30.1696 16.8311L32.6099 14.3907Z" fill="white"/>
+                    </svg>
+                </button>
             </div>
-    
-            <div class="retan3">
-              <button onclick="openNoteModal('2')">
-                <svg width="31" height="31" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="lapis" onclick="modal.showModal() ">
-                    <circle cx="20.5" cy="20.5" r="20.5" fill="#8AA17B"/>
-                    <path d="M9 27.9993V33H14.0007L28.7561 18.2446L23.7554 13.2439L9 27.9993ZM32.6099 14.3907C33.13 13.8707 33.13 13.0239 32.6099 12.5038L29.4962 9.39005C28.9761 8.86998 28.1293 8.86998 27.6093 9.39005L25.1689 11.8304L30.1696 16.8311L32.6099 14.3907Z" fill="white"/>
-                </svg>
-            </button>
+            <div class="retan3 retan" data-id="2">
+                <h3 class="h3" id="titulo">Título </h3>
+                <p class="p" id="textoNota">Texto da Nota </p>
+                <button onclick="liberarEdicao(this.closest('.retan'))">
+                    <svg width="31" height="31" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="lapis">
+                        <circle cx="20.5" cy="20.5" r="20.5" fill="#8AA17B"/>
+                        <path d="M9 27.9993V33H14.0007L28.7561 18.2446L23.7554 13.2439L9 27.9993ZM32.6099 14.3907C33.13 13.8707 33.13 13.0239 32.6099 12.5038L29.4962 9.39005C28.9761 8.86998 28.1293 8.86998 27.6093 9.39005L25.1689 11.8304L30.1696 16.8311L32.6099 14.3907Z" fill="white"/>
+                    </svg>
+                </button>
             </div>
-    
             <div class="Btn">
-                <button id="btn" class="add"><img src="img/4d23be4d-0e7b-4c01-b806-fc3cbd4b98ab.jpg" class="add1"></button>
-            </div>
+              <button id="btn" class="add"><img src="img/4d23be4d-0e7b-4c01-b806-fc3cbd4b98ab.jpg" class="add1"></button>
+          </div>
         </div>
+        
     </main>
     
-
-    <dialog id="modal">
-      <form id="note-form">
-          <div class="form2">
-            <input type="text" id="title" placeholder="Título" required>
-            <textarea id="note" placeholder="Digite sua nota" required></textarea>
-            <input type="date" id="date" placeholder="dia/mês/ano" required>
-          </div>
-            <button type="submit" form="note-form" class="salvar"><img src="img/save.svg" class="imgsaved"></button>
-          
-          <button onclick="modal.close()" class="fechar"><img class="imgclose" src="assets/imgs/close_icon.png"></button>
-      </form>
-  </dialog>
+    
+    
     
           
       

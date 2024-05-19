@@ -35,7 +35,8 @@
 }
 
 #addTasksButton {
-    margin-top: 5px;
+    margin-top: 5em;
+    margin-left: -2em;
     padding-top: 1em;
     padding-bottom: 0.55em;
     height: 25px;
