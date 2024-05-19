@@ -39,6 +39,7 @@ const taskPriority = document.getElementById("priorityOption");
 const newTaskForm = document.getElementById("newTaskForm");
 
 // Make a GET request to the JSON server
+/*
 fetch(URL_MATERIAS)
   .then((response) => {
     // Check if the response is successful (status code 200)
@@ -59,7 +60,7 @@ fetch(URL_MATERIAS)
   .catch((error) => {
     // Handle any errors that occurred during the fetch
     console.error("Erro ao realizar a requisição", error);
-  });
+  });*/
 
 //Create task from homescreen
 createTaskButton.addEventListener("click", () => {
@@ -131,18 +132,10 @@ for (let asideOption of asideOptions) {
   });
 }
 
-fetch(URL_TAREFAS)
-  .then((response) => {
-    // Check if the response is successful (status code 200)
-    if (!response.ok) {
-      throw new Error("Erro ao realizar a requisição");
-    }
-    return response.json();
-  })
-  .then((data) => {
+/*
     // Use the JSON data
     for (let i = 0; i < data.length; i++) {
-      var taskHtmlElement = `
+      /*var taskHtmlElement = `
           <article class="task-preview note">
               <a href="#"><h3 class="task-title">${data[i].nome}</h3></a>
               <a href="#" class="task-subject">${data[i].materia}</a>
@@ -157,11 +150,116 @@ fetch(URL_TAREFAS)
                 />
               </button>
             </article>
-    `;
-      taskContainer.innerHTML += taskHtmlElement;
-    }
-  })
-  .catch((error) => {
-    // Handle any errors that occurred during the fetch
-    console.error("Erro ao realizar a requisição", error);
+    `;*/
+
+//SELECT SCRIPT
+lucide.createIcons();
+
+//STATUS SELECT
+let selectStatus = document.querySelector(".select-status"),
+  selectedValueStatus = document.getElementById("selected-value-status"),
+  optionsViewButtonStatus = document.getElementById(
+    "options-view-button-status"
+  ),
+  inputOptionsStatus = document.querySelectorAll(".option-status input"),
+  statusOption = document.querySelectorAll(".option-status"),
+  currentStatus = document.getElementById("currentStatus");
+
+const defaultIcon = document.getElementById("defaultIcon");
+const doIcon = document.getElementById("doIcon");
+const doingIcon = document.getElementById("doingIcon");
+const doneIcon = document.getElementById("doneIcon");
+
+inputOptionsStatus.forEach((input) => {
+  input.addEventListener("click", (event) => {
+    let statusTitle = input.dataset.label;
+    selectedValueStatus.textContent = statusTitle;
+    let statusDataSet = `[data-icon]`;
+    let statusIcon = document.querySelectorAll(statusDataSet);
+
+    statusIcon.forEach((status) => {
+      if (status.dataset.icon == statusTitle) {
+        status.classList.add("active");
+      } else {
+        status.classList.remove("active");
+      }
+    });
+
+    const isMouseOrTouch =
+      event.pointerType == "mouse" || event.pointerType == "touch";
+    isMouseOrTouch && optionsViewButtonStatus.click();
   });
+});
+
+window.addEventListener("keydown", (e) => {
+  if (!selectStatus.classList.contains("open")) return;
+
+  if (e.key == "Escape" || e.key == " ") {
+    optionsViewButtonStatus.click();
+  }
+});
+
+optionsViewButtonStatus.addEventListener("input", () => {
+  selectStatus.classList.toggle("open");
+
+  if (!selectStatus.classList.contains("open")) return;
+
+  const input =
+    document.querySelector(".option input:checked") ||
+    document.querySelector(".option input");
+  input.focus();
+});
+
+//FLAG SELECT
+let select = document.querySelector(".select"),
+  selectedValue = document.getElementById("selected-value"),
+  optionsViewButton = document.getElementById("options-view-button"),
+  inputOptions = document.querySelectorAll(".option input");
+
+const defaultFlagIcon = document.getElementById("defaultFlagIcon");
+
+inputOptions.forEach((input) => {
+  input.addEventListener("click", (event) => {
+    let statusTitle = input.dataset.label;
+    selectedValue.textContent = statusTitle;
+
+    if (statusTitle == "Normal") {
+      defaultFlagIcon.classList.remove("Alta");
+      defaultFlagIcon.classList.remove("Urgente");
+      defaultFlagIcon.classList.add("Normal");
+    } else if (statusTitle == "Alta") {
+      defaultFlagIcon.classList.remove("Normal");
+      defaultFlagIcon.classList.remove("Urgente");
+      defaultFlagIcon.classList.add("Alta");
+    } else {
+      defaultFlagIcon.classList.remove("Alta");
+      defaultFlagIcon.classList.remove("Normal");
+      defaultFlagIcon.classList.add("Urgente");
+    }
+
+    console.log(defaultFlagIcon.classList);
+
+    const isMouseOrTouch =
+      event.pointerType == "mouse" || event.pointerType == "touch";
+    isMouseOrTouch && optionsViewButton.click();
+  });
+});
+
+window.addEventListener("keydown", (e) => {
+  if (!select.classList.contains("open")) return;
+
+  if (e.key == "Escape" || e.key == " ") {
+    optionsViewButton.click();
+  }
+});
+
+optionsViewButton.addEventListener("input", () => {
+  select.classList.toggle("open");
+
+  if (!select.classList.contains("open")) return;
+
+  const input =
+    document.querySelector(".option input:checked") ||
+    document.querySelector(".option input");
+  input.focus();
+});

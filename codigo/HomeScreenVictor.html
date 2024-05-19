@@ -19,6 +19,7 @@
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
     <link rel="stylesheet" href="./styles/styleVictor.css" />
+    <link rel="stylesheet" href="./styles/styleFlag.css" />
     <title>StudyFlex</title>
   </head>
 
@@ -149,6 +150,17 @@
               <span>Dashboard</span>
             </a>
           </li>
+
+          <li class="aside-option" id="tarefasTab">
+            <a href="#">
+              <img
+                src="./assets/imgs/tasks_icon.png"
+                alt="Dashboard icone"
+                class="option-icon"
+              />
+              <span>Tarefas</span>
+            </a>
+          </li>
           <li class="aside-option" id="anotacoesTab">
             <a href="#">
               <img
@@ -242,101 +254,217 @@
               </button>
 
               <!--FORMULARIO PARA CRIAR TAREFA-->
-              <form
-                class="create-task-form"
-                method="post"
-                id="newTaskForm"
-                action="http://localhost:3000/tarefas"
-              >
-                <div class="title-container">
-                  <input
-                    type="text"
-                    id="newTaskName"
-                    placeholder="Tarefa"
-                    required
-                  />
-                </div>
-
-                <div class="status-container info-container">
-                  <label for="statusViewButton">
-                    <img
-                      draggable="false"
-                      src="./assets/imgs/task-icons/status.svg"
-                      alt="status icone"
-                      class="task-form-icon"
+              <div class="form-container">
+                <form action="" id="newTaskForm">
+                  <div class="form-group task-name">
+                    <input
+                      type="text"
+                      name="formTitle"
+                      id="taskTitle"
+                      placeholder="Nova Tarefa"
+                      required
                     />
-                    <span>status</span>
-                  </label>
-
-                  <div class="select-container">
-                    <select name="status" id="statusOption" required>
-                      <option value="">-</option>
-                      <option value="do">A fazer</option>
-                      <option value="doing">Fazendo</option>
-                      <option value="done">Feito</option>
-                    </select>
                   </div>
-                </div>
-                <div class="final-date-container info-container">
-                  <label for="">
-                    <img
-                      draggable="false"
-                      src="./assets/imgs/task-icons/date.svg"
-                      alt="status icone"
-                      class="task-form-icon"
-                    />
-                    <span>data final</span>
-                  </label>
 
-                  <input
-                    type="date"
-                    name="finalDate"
-                    id="TaskEndDate"
-                    required
-                  />
-                </div>
+                  <div class="form-group task-status">
+                    <label for="">
+                      <i data-lucide="loader-circle" class="label-icon"></i>
+                      <span>Status</span>
+                    </label>
 
-                <div class="subject-container info-container">
-                  <label for="">
-                    <img
-                      draggable="false"
-                      src="./assets/imgs/task-icons/subject.svg"
-                      alt="status icone"
-                      class="task-form-icon"
-                    />
-                    <span>matéria</span>
-                  </label>
+                    <div class="select-status">
+                      <div id="category-select-status">
+                        <input
+                          type="checkbox"
+                          id="options-view-button-status"
+                        />
 
-                  <div class="select-container">
-                    <select name="" id="subjectOption" name="subject" required>
-                      <option value="">-</option>
-                    </select>
+                        <div id="select-button-status">
+                          <div class="title-container-status">
+                            <div class="cont" id="currentStatus">
+                              <i
+                                data-lucide="loader-circle"
+                                id="defaultIconStatus"
+                                data-icon="Status"
+                                class="active"
+                              ></i>
+                              <i
+                                data-lucide="circle-dot"
+                                id="doIcon"
+                                data-icon="Fazer"
+                              ></i>
+                              <i
+                                data-lucide="circle-minus"
+                                id="doingIcon"
+                                data-icon="Fazendo"
+                              ></i>
+                              <i
+                                data-lucide="circle-check"
+                                id="doneIcon"
+                                data-icon="Feito"
+                              ></i>
+                            </div>
+
+                            <div id="selected-value-status">Status</div>
+                          </div>
+
+                          <div id="chevrons-status">
+                            <i data-lucide="chevron-down"></i>
+                            <i data-lucide="chevron-up"></i>
+                          </div>
+                        </div>
+                      </div>
+
+                      <ul id="options-status">
+                        <li class="option-status">
+                          <input
+                            type="radio"
+                            name="status"
+                            value="3"
+                            data-label="Fazer"
+                          />
+                          <i data-lucide="circle-dot"></i>
+                          <span class="label">Fazer</span>
+                          <i data-lucide="check"></i>
+                        </li>
+
+                        <li class="option-status">
+                          <input
+                            type="radio"
+                            name="status"
+                            value="2"
+                            data-label="Fazendo"
+                          />
+                          <i data-lucide="circle-minus"></i>
+                          <span class="label">Fazendo</span>
+                          <i data-lucide="check"></i>
+                        </li>
+
+                        <li class="option-status">
+                          <input
+                            type="radio"
+                            name="status"
+                            value="1"
+                            data-label="Feito"
+                          />
+                          <i data-lucide="circle-check"></i>
+                          <span class="label">Feito</span>
+                          <i data-lucide="check"></i>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                </div>
-                <div class="priority-container info-container">
-                  <label for="">
-                    <img
-                      draggable="false"
-                      src="./assets/imgs/task-icons/priority.svg"
-                      alt="status icone"
-                      class="task-form-icon"
-                    />
-                    <span>prioridade</span>
-                  </label>
 
-                  <div class="select-container">
-                    <select name="prioridade" id="priorityOption" required>
-                      <option value="">-</option>
-                      <option value="urgente">Urgente</option>
-                      <option value="alta">Alta</option>
-                      <option value="normal">Normal</option>
-                      <option value="baixa">Baixa</option>
-                    </select>
+                  <div class="form-group task-FormSubject">
+                    <label for="formSubject">
+                      <i data-lucide="book-marked" class="label-icon"></i>
+                      <span>Matéria</span>
+                    </label>
+
+                    <div class="select-container">
+                      <select name="formSubject" id="taskSubject"></select>
+                    </div>
                   </div>
-                </div>
 
-                <button id="submitNewTaskButton">criar</button>
-              </form>
+                  <div class="form-group task-finalDate">
+                    <label for="formFinalDate">
+                      <i data-lucide="calendar-days" class="label-icon"></i>
+                      <span>Data final</span>
+                    </label>
+
+                    <input type="date" name="finalDate" id="TaskEndDate" />
+                  </div>
+
+                  <div class="form-group task-priority">
+                    <label for="formPriority">
+                      <i data-lucide="flag" class="label-icon"></i>
+                      <span>Prioridade</span>
+                    </label>
+
+                    <div class="select">
+                      <div id="category-select">
+                        <input type="checkbox" id="options-view-button" />
+
+                        <div id="select-button">
+                          <div class="title-container">
+                            <div class="cont" id="currentStatus">
+                              <i
+                                data-lucide="flag"
+                                id="defaultFlagIcon"
+                                data-icon="Prioridade"
+                              ></i>
+                            </div>
+
+                            <div id="selected-value">Prioridade</div>
+                          </div>
+
+                          <div id="chevrons">
+                            <i data-lucide="chevron-down"></i>
+                            <i data-lucide="chevron-up"></i>
+                          </div>
+                        </div>
+                      </div>
+
+                      <ul id="options">
+                        <li class="option">
+                          <input
+                            type="radio"
+                            name="prioridade"
+                            value="1"
+                            data-label="Normal"
+                          />
+                          <i data-lucide="flag" class="normalFlag"></i>
+                          <span class="label">Normal</span>
+                          <i data-lucide="check"></i>
+                        </li>
+
+                        <li class="option">
+                          <input
+                            type="radio"
+                            name="prioridade"
+                            value="2"
+                            data-label="Alta"
+                          />
+                          <i data-lucide="flag" class="altaFlag"></i>
+                          <span class="label">Alta</span>
+                          <i data-lucide="check"></i>
+                        </li>
+
+                        <li class="option">
+                          <input
+                            type="radio"
+                            name="prioridade"
+                            value="3"
+                            data-label="Urgente"
+                          />
+                          <i data-lucide="flag" class="urgenteFlag"></i>
+                          <span class="label">Urgente</span>
+                          <i data-lucide="check"></i>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="form-group task-description">
+                    <label for="formDescription">
+                      <i
+                        data-lucide="message-square-more"
+                        class="label-icon"
+                      ></i>
+                      <span>Descrição</span>
+                    </label>
+
+                    <textarea
+                      name="formDescription"
+                      id="taskDescription"
+                    ></textarea>
+                  </div>
+
+                  <div class="button-container">
+                    <button type="submit">Criar tarefa</button>
+                  </div>
+                </form>
+              </div>
             </dialog>
           </section>
 
@@ -377,6 +505,7 @@
             </article>
           </section>
         </section>
+
         <!--CONTEÚDO DINAMICO-->
       </main>
     </div>
