@@ -23,7 +23,6 @@
 
 .tasks-container {
     max-height: 100px;
-    display: flex;
     margin-bottom: 70px;
 }
 
@@ -54,12 +53,7 @@
 }
 
 .conteiner-addTask {
-    position: relative;
-    margin-top: -20em;
-    left:50%;
-    top: 80%;
-    width: 100%;
-    transform: translate(-50%, -50%);
+    position: relative;   
 }
 
 #addTasksButton {

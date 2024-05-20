@@ -13,6 +13,7 @@ function criarTarefa() {
     var tarefaOriginal = document.getElementById('tasks-box');
     var novaTarefa = tarefaOriginal.cloneNode(true);
     var local= document.getElementById('divisao');
+    
     local.appendChild(novaTarefa);
 }
 
