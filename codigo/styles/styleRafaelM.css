@@ -1,6 +1,13 @@
+/* COMEÇO - LOGO DO SITE */
+
 .website-logo {
     display: flex;
 }
+
+/* FIM - LOGO DO SITE */
+
+
+/* COMEÇO - ÁREA DE TAREFAS */
 
 .menuInicial-title {
     color: #586352;
@@ -20,35 +27,56 @@
     margin-bottom: 70px;
 }
 
+#addTasksButton {
+    padding: 10px;
+    width: 56.5em;
+    border: 2px solid transparent;
+    border-radius: 20px 20px 20px 20px;
+    transition: all 0.2s ease-in;
+    text-align: center;
+}
 
+#addTasksButton .btn-img-tasks {
+    width: 20px;
+    transition: all 0.2s ease-in;
+}
 
-#divisao {
-   margin-top: -19.53em;
-    
+#addTasksButton:hover .btn-img-tasks {
+    filter: brightness(0) invert(1);
+}
+
+#addTasksButton:hover {
+    background-color: #8AA17B;
 }
 
 .conteiner-addTask {
-    position:relative;
+    position: relative;
     margin-top: -20em;
-    margin-left: -11px;
-   
+    left:43%;
+    top: 80%;
+    width: 800px;
+    transform: translate(-50%, -50%);
 }
 
 #addTasksButton {
-    margin-top: 5em;
-    margin-left: -2em;
+    margin-top: 1em;
     padding-top: 1em;
     padding-bottom: 0.55em;
     height: 25px;
 
 }
 
-.task-info-title{
+/* FIM - ÁREA DE TAREFAS */
+
+
+/* COMEÇO - PROGRESSOS DAS DISCIPLINAS */
+
+.task-info-title {
     text-align: center;
 }
 
 .container-progress {
-    
+
     display: flex;
     margin-top: 25px;
     margin-left: 80px;
@@ -87,3 +115,5 @@
     border-radius: 10px;
     background-color: #8AA17B;
 }
+
+/* FIM - PROGRESSOS DAS DISCIPLINAS */
