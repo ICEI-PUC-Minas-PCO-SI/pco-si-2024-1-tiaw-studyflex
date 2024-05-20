@@ -67,6 +67,17 @@
 /* FIM - ÁREA DE TAREFAS */
 
 
+/* COMEÇO - CALENDÁRIO E PROGRESSO DAS DISCIPLINAS */
+
+#lateral-modais{
+ align-content: center;
+ left: 50%;
+ top: 50%;
+}
+
+/*FIM - CALENDÁRIO E PROGRESSO DAS DISCIPLINAS */
+
+
 /* COMEÇO - PROGRESSOS DAS DISCIPLINAS */
 
 .task-info-title {
@@ -77,7 +88,7 @@
 
     display: flex;
     margin-top: 25px;
-    margin-left: 80px;
+    margin-left: 70px;
     width: 19.5em;
     height: 15em;
     border-radius: 0.5em;
