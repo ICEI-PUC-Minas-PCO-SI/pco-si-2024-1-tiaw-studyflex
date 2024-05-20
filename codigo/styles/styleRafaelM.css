@@ -56,11 +56,15 @@
     position: relative;   
 }
 
+.btn-img-tasks{
+    margin-top: -7px;
+}
+
 #addTasksButton {
     margin-top: 1em;
     padding-top: 1em;
     padding-bottom: 0.55em;
-    height: 25px;
+    height: 15px;
 
 }
 
