@@ -1104,7 +1104,6 @@ nav {
   grid-column: 1/3;
   display: flex;
   gap: 32px;
-  padding-right: 120px;
 }
 
 .tasks-header-container .search-bar-container {
@@ -1128,7 +1127,6 @@ nav {
 }
 
 .create-btn {
-  width: 200px;
 }
 
 .create-btn,
