@@ -1,44 +1,27 @@
 {
   "tarefas": [
     {
-      "nome": "Atividada prática SM 12",
-      "status": 1,
-      "data": "2024-05-19T14:56:00.000Z",
-      "materiaId": 2,
-      "prioridade": 3,
-      "descricao": "Entragar atividade de DIW",
+      "nome": "SPRINT 3",
+      "status": "3",
+      "dataFinal": "2024-05-15",
+      "prioridade": "3",
+      "descricao": "Merda",
       "id": 1
     },
     {
-      "id": "70b7",
-      "nome": "Resumo livro",
-      "status": 1,
-      "data": "2024-06-02T14:56:00.000Z",
-      "materiaId": 2,
-      "prioridade": 1,
-      "descricao": "Entregar atividade"
+      "nome": "SPRINT 3",
+      "status": "1",
+      "dataFinal": "2024-05-02",
+      "prioridade": "2",
+      "descricao": "Entregar Sprint 3",
+      "id": 2
+    },
+    {
+      "nome": "a",
+      "dataFinal": "",
+      "descricao": "",
+      "id": 3
     }
   ],
-  "materias": [
-    {
-      "id": 1,
-      "nome": "TIAW"
-    },
-    {
-      "id": 2,
-      "nome": "DIW"
-    },
-    {
-      "id": 3,
-      "nome": "ATP"
-    },
-    {
-      "id": 4,
-      "nome": "Filosofia"
-    },
-    {
-      "id": 5,
-      "nome": "Introdução a computação"
-    }
-  ]
+  "materias": []
 }
