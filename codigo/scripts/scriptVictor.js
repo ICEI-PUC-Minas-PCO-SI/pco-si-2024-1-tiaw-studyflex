@@ -1,3 +1,6 @@
+//SELECT SCRIPT
+lucide.createIcons();
+
 //URL API DE DADOS
 URL_TAREFAS = "http://localhost:3000/tarefas";
 URL_MATERIAS = "http://localhost:3000/materias";
@@ -31,13 +34,6 @@ const taskContainer = document.getElementById("taskContainer");
 
 //See if there is tasks to show
 
-const taskName = document.getElementById("newTaskName");
-const taskStatus = document.getElementById("statusOption");
-const taskDate = document.getElementById("TaskEndDate");
-const taskSubject = document.getElementById("subjectOption");
-const taskPriority = document.getElementById("priorityOption");
-const newTaskForm = document.getElementById("newTaskForm");
-
 // Make a GET request to the JSON server
 /*
 fetch(URL_MATERIAS)
@@ -65,41 +61,19 @@ fetch(URL_MATERIAS)
 //Create task from homescreen
 createTaskButton.addEventListener("click", () => {
   createTaskModal.showModal();
+  const newTaskForm = document.getElementById("newTaskForm");
+  newTaskForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    console.log(taskTitle.value);
+    console.log(taskStatus.textContent);
+    console.log(taskSubject.value);
+    console.log(taskFinalDate.value);
+    console.log(taskPriority.textContent);
+    console.log(taskDescription.value);
+  });
 });
 
 newTaskForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  var data = {
-    id: 1,
-    nome: taskName.value,
-    status: taskStatus.value,
-    data: taskDate.value,
-    materia: taskSubject.value,
-    prioridade: taskPriority.value,
-  };
-
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  };
-
-  fetch(URL_TAREFAS, options)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Erro ao realizar a requisição");
-      }
-      return response.json();
-    })
-    .then((responseData) => {
-      console.log("Response from server:", responseData);
-    })
-    .catch((error) => {
-      console.error("Erro ao realizar a requisição", error);
-    });
   createTaskModal.close();
 });
 
@@ -151,9 +125,6 @@ for (let asideOption of asideOptions) {
               </button>
             </article>
     `;*/
-
-//SELECT SCRIPT
-lucide.createIcons();
 
 //STATUS SELECT
 let selectStatus = document.querySelector(".select-status"),
@@ -263,3 +234,20 @@ optionsViewButton.addEventListener("input", () => {
     document.querySelector(".option input");
   input.focus();
 });
+
+//ADD TASK FORM
+const taskTitle = document.getElementById("taskTitle");
+const taskStatus = document.getElementById("selected-value-status");
+const taskSubject = document.getElementById("taskSubject");
+const taskFinalDate = document.getElementById("TaskEndDate");
+const taskPriority = document.getElementById("selected-value");
+const taskDescription = document.getElementById("taskDescription");
+
+function getTaskData() {
+  console.log(taskTitle.textContent);
+  console.log(taskStatus.textContent);
+  console.log(taskSubject.textContent);
+  console.log(taskFinalDate.textContent);
+  console.log(taskPriority.textContent);
+  console.log(taskDescription.textContent);
+}
