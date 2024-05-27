@@ -1,33 +1,72 @@
-var btn = document.querySelector(".add");
-var container = document.querySelector(".container2");
-var lastCloned = null;
+// Variável para controlar o tipo de retângulo a ser adicionado
+var proximoTipoRetangulo = 1;
 
-btn.addEventListener("click", () => {
+// Variável para controlar o ID do próximo retângulo a ser adicionado
+var proximoIdRetangulo = 0;
+
+// Função para adicionar retângulos
+function adicionarRetangulo() {
+    var container = document.querySelector(".container2");
     var divClone;
-    if (lastCloned === null || lastCloned.classList.contains("retan3")) {
+
+    // Determinar o tipo de retângulo a ser adicionado
+    if (proximoTipoRetangulo === 1) {
         divClone = document.querySelector(".retan1").cloneNode(true);
-    } else if (lastCloned.classList.contains("retan1")) {
+        proximoTipoRetangulo = 2;
+    } else if (proximoTipoRetangulo === 2) {
         divClone = document.querySelector(".retan2").cloneNode(true);
-    } else if (lastCloned.classList.contains("retan2")) {
+        proximoTipoRetangulo = 3;
+    } else if (proximoTipoRetangulo === 3) {
         divClone = document.querySelector(".retan3").cloneNode(true);
+        proximoTipoRetangulo = 1;
     }
     
-    container.appendChild(divClone);
-    lastCloned = divClone;
+    // Atribuir um ID único para o retângulo clonado
+    var idRetangulo = 'retangulo-' + proximoIdRetangulo;
+    divClone.setAttribute('id', idRetangulo);
+    proximoIdRetangulo++;
+    
+    container.insertBefore(divClone, container.lastElementChild);
 
     var addButton = document.querySelector(".Btn");
-    container.insertBefore(addButton, divClone.nextSibling);
-});
+    container.appendChild(addButton);
+    
+    // Adicionar evento de clique para o botão de exclusão do retângulo recém-adicionado
+    var botaoExcluir = divClone.querySelector('.delete');
+    botaoExcluir.addEventListener('click', function() {
+        excluirRetangulo(this); // Chamar a função excluirRetangulo quando o botão "x" for clicado
+    });
 
-// Objeto para armazenar as notas
-var notas = [];
+    // Adicionar evento de clique para o botão do lápis do retângulo recém-adicionado
+    var botaoLapis = divClone.querySelector('.lapis');
+    botaoLapis.addEventListener('click', function() {
+        liberarEdicao(this.closest('.retan')); // Chamar a função liberarEdicao quando o botão do lápis for clicado
+    });
+}
+
+// Função para excluir um retângulo
+function excluirRetangulo(element) {
+    var retangulo = element.closest('.retan'); // Encontrar o retângulo pai do botão "x"
+    retangulo.remove(); // Remover o retângulo do DOM
+    
+    // Verificar se há retângulos restantes
+    var retangulosRestantes = document.querySelectorAll('.retan');
+    if (retangulosRestantes.length === 0) {
+        // Se não houver retângulos restantes, adicionar um novo
+        adicionarRetangulo();
+    }
+}
 
 // Função para liberar os inputs para edição
 function liberarEdicao(element) {
     var id = element.dataset.id; // Obter o ID da nota
     var titulo = element.querySelector('.h3');
     var textoNota = element.querySelector('.p');
+    var lapis = element.querySelector('.lapis'); // Selecionar o botão do lápis
     
+    // Ocultar o botão do lápis
+    lapis.style.display = 'none';
+
     // Criar inputs para edição
     var inputTitulo = document.createElement('input');
     inputTitulo.type = 'text';
@@ -44,6 +83,11 @@ function liberarEdicao(element) {
         if (event.key === 'Enter') {
             salvarEdicao(element, id, inputTitulo.value, inputTextoNota.value);
             exibirJSON();
+            
+            // Restaurar o botão do lápis
+            inputTitulo.replaceWith(titulo);
+            inputTextoNota.replaceWith(textoNota);
+            lapis.style.display = 'block'; // Mostrar o botão do lápis novamente
         }
     });
 
@@ -51,6 +95,11 @@ function liberarEdicao(element) {
         if (event.key === 'Enter') {
             salvarEdicao(element, id, inputTitulo.value, inputTextoNota.value);
             exibirJSON();
+            
+            // Restaurar o botão do lápis
+            inputTitulo.replaceWith(titulo);
+            inputTextoNota.replaceWith(textoNota);
+            lapis.style.display = 'block'; // Mostrar o botão do lápis novamente
         }
     });
 }
@@ -67,6 +116,10 @@ function salvarEdicao(element, id, novoTitulo, novoTextoNota) {
     textoNota.textContent = novoTextoNota;
     element.querySelector('textarea').replaceWith(textoNota);
 
+    // Restaurar o botão do lápis
+    var lapis = element.querySelector('.lapis');
+    lapis.style.display = 'block';
+
     // Atualizar o objeto de notas
     notas[id] = {
         titulo: novoTitulo,
@@ -78,3 +131,21 @@ function salvarEdicao(element, id, novoTitulo, novoTextoNota) {
 function exibirJSON() {
     console.log(JSON.stringify(notas, null, 2));
 }
+
+// Adicionar evento de clique para o botão "+"
+var btnAdicionar = document.querySelector(".add");
+btnAdicionar.addEventListener("click", adicionarRetangulo);
+
+// Adicionar eventos de clique para os botões de exclusão dos retângulos iniciais
+document.querySelectorAll('.delete').forEach(function(botaoExcluir) {
+    botaoExcluir.addEventListener('click', function() {
+        excluirRetangulo(this);
+    });
+});
+
+// Adicionar eventos de clique para os botões do lápis dos retângulos iniciais
+document.querySelectorAll('.lapis').forEach(function(botaoLapis) {
+    botaoLapis.addEventListener('click', function() {
+        liberarEdicao(this.closest('.retan'));
+    });
+});
