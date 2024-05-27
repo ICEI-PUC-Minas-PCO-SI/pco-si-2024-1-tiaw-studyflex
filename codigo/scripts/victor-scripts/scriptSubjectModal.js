@@ -5,10 +5,10 @@ const createSubjectModal = document.getElementById("createSubjectModal");
 
 createSubjectBtn.addEventListener("click", () => {
   createSubjectModal.showModal();
-  console.log("abc");
+  c;
+  console.log(closeSubjectBtn);
 });
 
 closeSubjectBtn.addEventListener("click", () => {
-  createSubjectModal.close();
   console.log("123");
 });

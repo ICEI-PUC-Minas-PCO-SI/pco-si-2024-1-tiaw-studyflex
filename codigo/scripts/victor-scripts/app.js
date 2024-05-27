@@ -30,20 +30,7 @@ const taskContainer = document.getElementById("taskContainer");
 
 //FUNCTIONS --------------
 
-//See if there is tasks to show
-<<<<<<< HEAD:codigo/scripts/scriptVictor.js
-const taskName = document.getElementById("newTaskName");
-const taskStatus = document.getElementById("statusOption");
-const taskDate = document.getElementById("TaskEndDate");
-const taskSubject = document.getElementById("subjectOption");
-const taskPriority = document.getElementById("priorityOption");
-const newTaskForm = document.getElementById("newTaskForm");
-
-=======
-
-// Make a GET request to the JSON server
 /*
->>>>>>> f1d944b188fc152adbecc41c965d55ca32e645be:codigo/scripts/victor-scripts/app.js
 fetch(URL_MATERIAS)
   .then((response) => {
     if (!response.ok) {
