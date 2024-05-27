@@ -1,37 +1,7 @@
-//SELECT SCRIPT
-lucide.createIcons();
-
-//URL API DE DADOS
-const URL_TAREFAS = "http://localhost:3000/tarefas";
-const URL_MATERIAS = "http://localhost:3000/materias";
-
-//URL ATUAL
-let currentURL = window.location.href;
-
-//ADD NAV ELEMENT
-const addSubjectModal = document.getElementById("addSubjectModal");
-const openSubjectButton = document.getElementById("addSubjectButton");
-const closeSubjectButton = document.getElementById("closeSubjectButton");
-const navBar = document.getElementById("viewTab");
-const windowNav = document.getElementById("windowNav");
-
-//MAIN CONTAINER
-const mainContainer = document.getElementById("mainContainer");
-
-//ASIDE VARIABLES
-const asideOptions = document.getElementsByClassName("aside-option");
-const dashboard = document.getElementById("dashboardTab");
-const anotacoes = document.getElementById("anotacoesTab");
-const materias = document.getElementById("materiasTab");
-const config = document.getElementById("configTab");
-
 //TASK MODAL VARIABLES
 const createTaskModal = document.getElementById("creteTaskModal");
 const createTaskButton = document.getElementById("createTaskBtn");
 const closeTaskButton = document.getElementById("closeTaskCreatorButton");
-
-//TASK CONTAINER
-const taskContainer = document.getElementById("taskContainer");
 
 //FUNCTIONS --------------
 
@@ -68,31 +38,6 @@ newTaskForm.addEventListener("submit", () => {
 closeTaskButton.addEventListener("click", () => {
   createTaskModal.close();
 });
-
-//Add subject dialog
-openSubjectButton.addEventListener("click", () => {
-  addSubjectModal.showModal();
-});
-
-closeSubjectButton.addEventListener("click", () => {
-  addSubjectModal.close();
-});
-
-//Toggling active style in the aside options
-for (let asideOption of asideOptions) {
-  //function to toggle style
-  asideOption.addEventListener("click", () => {
-    let toAddStyle = document.getElementById(asideOption.id);
-
-    //checking the active option
-    for (let option of asideOptions) {
-      if (option.classList.contains("active")) {
-        option.classList.remove("active");
-      }
-    }
-    toAddStyle.classList.add("active");
-  });
-}
 
 /*
     // Use the JSON data
@@ -222,8 +167,6 @@ optionsViewButton.addEventListener("input", () => {
   input.focus();
 });
 
-//SUBJECT SELECT
-
 //ADD TASK FORM
 const taskTitle = document.getElementById("taskTitle");
 const taskStatus = document.getElementById("selected-value-status");
@@ -263,14 +206,4 @@ createTaskButton.addEventListener("click", () => {
       alert("Erro ao criar tarefa");
     }
   });
-});
-
-//CREATING A SUBJECT
-const createSubjectButton = document.getElementById("createSubjectBtn");
-const closeeSubjectButton = document.getElementById("closeSubjectButton");
-const createSubjectModal = document.getElementById("creteSubjectModal");
-
-createSubjectButton.addEventListener("click", () => {
-  createSubjectModal.showModal();
-  console.log("abc");
 });

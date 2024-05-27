@@ -66,7 +66,7 @@ button {
 main {
   grid-column: 2/4;
   grid-row: 3/4;
-  padding: 16px 24px;
+  padding: 16px 32px;
 }
 
 h2 {
@@ -261,7 +261,8 @@ nav {
   padding: 4px;
   border: 2px solid transparent;
   transition: all 0.2s ease-in;
-  width: 48px;
+  width: 32px;
+  border-radius: 0;
 }
 
 .window-view:hover {
@@ -472,7 +473,6 @@ nav {
   margin: 16px 0;
   font-size: 24px;
   font-weight: 700;
-  border-bottom: 0 solid #414b3b;
 }
 
 .add-subject-container input {
@@ -1126,9 +1126,6 @@ nav {
   justify-content: center;
 }
 
-.create-btn {
-}
-
 .create-btn,
 .search-task-button {
   color: #586352;
@@ -1160,3 +1157,5 @@ nav {
   width: 20px;
   color: #586352;
 }
+
+/*NEW SUBJECT MODAL*/
