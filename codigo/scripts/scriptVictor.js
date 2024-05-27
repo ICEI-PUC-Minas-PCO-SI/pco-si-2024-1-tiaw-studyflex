@@ -30,7 +30,6 @@ const taskContainer = document.getElementById("taskContainer");
 //FUNCTIONS --------------
 
 //See if there is tasks to show
-
 const taskName = document.getElementById("newTaskName");
 const taskStatus = document.getElementById("statusOption");
 const taskDate = document.getElementById("TaskEndDate");
@@ -38,18 +37,14 @@ const taskSubject = document.getElementById("subjectOption");
 const taskPriority = document.getElementById("priorityOption");
 const newTaskForm = document.getElementById("newTaskForm");
 
-// Make a GET request to the JSON server
 fetch(URL_MATERIAS)
   .then((response) => {
-    // Check if the response is successful (status code 200)
     if (!response.ok) {
       throw new Error("Erro ao realizar a requisição");
     }
-    // Parse the JSON response
     return response.json();
   })
   .then((data) => {
-    // Use the JSON data
     for (let i = 0; i < data.length; i++) {
       var childElement = document.createElement("option");
       childElement.textContent = data[i].nome;
