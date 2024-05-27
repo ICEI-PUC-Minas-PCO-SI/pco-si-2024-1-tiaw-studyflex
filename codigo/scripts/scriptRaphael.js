@@ -1,5 +1,5 @@
 var btn = document.querySelector(".add");
-var container = document.querySelector(".container");
+var container = document.querySelector(".container2");
 var lastCloned = null;
 
 btn.addEventListener("click", () => {
@@ -12,83 +12,69 @@ btn.addEventListener("click", () => {
         divClone = document.querySelector(".retan3").cloneNode(true);
     }
     
-    
-    
-
     container.appendChild(divClone);
     lastCloned = divClone;
+
+    var addButton = document.querySelector(".Btn");
+    container.insertBefore(addButton, divClone.nextSibling);
 });
 
-document.getElementById('note-form').addEventListener('submit', function(e) {
-    e.preventDefault();
+// Objeto para armazenar as notas
+var notas = [];
 
-    // Pegar os valores dos campos
-    var title = document.getElementById('title').value;
-    var noteText = document.getElementById('note').value;
-    var date = document.getElementById('date').value;
-
-    // Criar um objeto com os valores
-    var noteObject = {
-        title: title,
-        note: noteText,
-        date: date
-    };
-
-    // Adicionar a nota ao JSON
-    addNoteToJSON(noteObject);
-
-    // Exibir o JSON no console
-    displayJSON();
-
-    // Limpar os campos do formulário
-    document.getElementById('title').value = '';
-    document.getElementById('note').value = '';
-    document.getElementById('date').value = '';
-
+// Função para liberar os inputs para edição
+function liberarEdicao(element) {
+    var id = element.dataset.id; // Obter o ID da nota
+    var titulo = element.querySelector('.h3');
+    var textoNota = element.querySelector('.p');
     
-});
+    // Criar inputs para edição
+    var inputTitulo = document.createElement('input');
+    inputTitulo.type = 'text';
+    inputTitulo.value = titulo.textContent;
+    titulo.replaceWith(inputTitulo);
+    inputTitulo.focus();
 
-function addNoteToJSON(noteObject) {
-    var notes = JSON.parse(localStorage.getItem('notes')) || [];
-    notes.push(noteObject);
-    localStorage.setItem('notes', JSON.stringify(notes));
+    var inputTextoNota = document.createElement('textarea');
+    inputTextoNota.value = textoNota.textContent;
+    textoNota.replaceWith(inputTextoNota);
+
+    // Adicionar evento para salvar ao pressionar Enter
+    inputTextoNota.addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            salvarEdicao(element, id, inputTitulo.value, inputTextoNota.value);
+            exibirJSON();
+        }
+    });
+
+    inputTitulo.addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            salvarEdicao(element, id, inputTitulo.value, inputTextoNota.value);
+            exibirJSON();
+        }
+    });
 }
 
+// Função para salvar as edições
+function salvarEdicao(element, id, novoTitulo, novoTextoNota) {
+    var titulo = document.createElement('h3');
+    titulo.className = 'h3';
+    titulo.textContent = novoTitulo;
+    element.querySelector('input[type="text"]').replaceWith(titulo);
 
+    var textoNota = document.createElement('p');
+    textoNota.className = 'p';
+    textoNota.textContent = novoTextoNota;
+    element.querySelector('textarea').replaceWith(textoNota);
 
-function displayJSON() {
-    var notes = JSON.parse(localStorage.getItem('notes')) || [];
-    console.log(JSON.stringify(notes, null, 2));
+    // Atualizar o objeto de notas
+    notas[id] = {
+        titulo: novoTitulo,
+        textoNota: novoTextoNota
+    };
 }
 
-
-
-document.getElementById('note-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-  
-    // Pegar os valores dos campos
-    var title = document.getElementById('title').value;
-    var noteText = document.getElementById('note').value;
-    var date = document.getElementById('date').value;
-  
-    // Obter o ID do retângulo selecionado
-    var selectedRetanguloId = retanId // (obter o ID do retângulo aqui)
-  
-    // Criar um objeto com os valores
-    var noteObject = {
-      title: title,
-      note: noteText,
-      date: date
-    };
-    var selectedRetangulo = document.getElementById(selectedRetanguloId);
-    selectedRetangulo.querySelector('h3').textContent = noteObject.title;
-    selectedRetangulo.querySelector('p').textContent = noteObject.note;
-  
-    
-});
-
-
-function openNoteModal(retanId) {
-
-    selectedRetanguloId = retanId; 
-  }
+// Função para exibir o JSON no console
+function exibirJSON() {
+    console.log(JSON.stringify(notas, null, 2));
+}

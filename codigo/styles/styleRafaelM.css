@@ -1,10 +1,16 @@
+/* COMEÇO - LOGO DO SITE */
+
 .website-logo {
     display: flex;
 }
 
+/* FIM - LOGO DO SITE */
+
+
+/* COMEÇO - ÁREA DE TAREFAS */
+
 .menuInicial-title {
     color: #586352;
-    grid-column: 1/2;
     font-size: 30px;
     text-align: left;
 }
@@ -15,45 +21,76 @@
 }
 
 .tasks-container {
-    max-height: 100px;
-    display: flex;
-    margin-bottom: 70px;
+    max-height: 100vh;
+    margin-bottom: 26px;
 }
 
+.box-tarefa{
+    display: none;
+}
 
+#addTasksButton {
+    padding: 10px;
+    width: 50vw;
+    border: 2px solid transparent;
+    border-radius: 20px 20px 20px 20px;
+    transition: all 0.2s ease-in;
+    text-align: center;
+}
 
-#divisao {
-   margin-top: -19.53em;
-    
+#addTasksButton .btn-img-tasks {
+    width: 20px;
+    transition: all 0.2s ease-in;
+}
+
+#addTasksButton:hover .btn-img-tasks {
+    filter: brightness(0) invert(1);
+}
+
+#addTasksButton:hover {
+    background-color: #8AA17B;
 }
 
 .conteiner-addTask {
-    position:relative;
-    margin-top: -20em;
-    margin-left: -11px;
-   
+    position: relative;   
+}
+
+.btn-img-tasks{
+    margin-top: -7px;
 }
 
 #addTasksButton {
     margin-top: 5px;
-    padding-top: 1em;
-    padding-bottom: 0.55em;
-    height: 25px;
+    padding-top: 12px;
+    height: 14px;
 
 }
 
-.task-info-title{
+/* FIM - ÁREA DE TAREFAS */
+
+
+
+/* COMEÇO - CALENDÁRIO E PROGRESSO DAS DISCIPLINAS */
+
+
+
+/*FIM - CALENDÁRIO E PROGRESSO DAS DISCIPLINAS */
+.progresso-calendario{
+   
+   
+}
+/* COMEÇO - PROGRESSOS DAS DISCIPLINAS */
+.task-info-title {
     text-align: center;
 }
 
 .container-progress {
-    
     display: flex;
-    margin-top: 25px;
-    margin-left: 80px;
-    width: 19.5em;
-    height: 15em;
-    border-radius: 0.5em;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 300px;
+    height: 250px;
+    border-radius: 15px;
     padding: 15px;
     box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.116);
 }
@@ -86,3 +123,5 @@
     border-radius: 10px;
     background-color: #8AA17B;
 }
+
+/* FIM - PROGRESSOS DAS DISCIPLINAS */

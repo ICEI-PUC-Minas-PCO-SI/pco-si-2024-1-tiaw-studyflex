@@ -24,7 +24,6 @@
 
   <body>
     <div class="container">
-      <!-- Header  -->
       <header>
         <a href="./HomeScreenVictor.html"
           ><img
@@ -69,7 +68,6 @@
       </header>
 
       <nav id="navBar">
-        <!--Navbar para adicionar matéria que deseja acompanhar as tarefas-->
         <ul class="window-nav" id="windowNav">
           <li
             class="window-view active"
@@ -82,7 +80,6 @@
           </li>
         </ul>
 
-        <!--Botão para abrir modal de adicionar matéria na navbar-->
         <button class="btn add-button" id="addSubjectButton">
           <img
             src="./assets/imgs/add_icon.png"
@@ -91,8 +88,8 @@
             draggable="false"
           />
         </button>
-
         <!--MODAL PARA SELECIONAR MATÉRIA PARA INCLUIR NA NAVBAR-->
+
         <dialog class="add-subject-container" id="addSubjectModal">
           <button class="btn close-btn" id="closeSubjectButton">
             <img
@@ -137,13 +134,12 @@
             />
           </div>
         </dialog>
-        <!--MODAL PARA SELECIONAR MATÉRIA PARA INCLUIT NA NAVBAR-->
       </nav>
 
       <aside>
         <!--Lista responsável por organizar os links que levarão o usuário para as diferentes telas da plataforma-->
         <ul class="aside-menu">
-          <li class="aside-option active" id="dashboardTab">
+          <li class="aside-option" id="dashboardTab">
             <a href="./HomeScreenVictor.html">
               <img
                 src="./assets/imgs/menu_icon.png"
@@ -154,7 +150,7 @@
             </a>
           </li>
 
-          <li class="aside-option" id="tarefasTab">
+          <li class="aside-option active" id="tarefasTab">
             <a href="./tarefas.html">
               <img
                 src="./assets/imgs/tasks_icon.png"
@@ -196,7 +192,7 @@
           </li>
         </ul>
 
-        <!--Botão modo noturno-->
+        <!--BOTÃO MODO NOTURNO-->
         <div class="toggle-container">
           <input type="checkbox" id="check" />
           <label for="check" class="switch">
@@ -210,10 +206,11 @@
         <!--CONTEÚDO DINAMICO-->
 
         <!--Aqui é onde será adcionado as diferentes variações das telas, o conteúdo dinâmico do site-->
+
         <section class="homescreen" id="homescreenView">
-          <h1 class="homescreen-title">Tarefas do dia</h1>
-          <div class="dashboard-header-container">
-            <form method="get" class="search-bar-container">
+          <h1 class="homescreen-title">Tarefas</h1>
+          <div class="tasks-header-container">
+            <form action="" method="get" class="search-bar-container">
               <input
                 type="search"
                 name=""
@@ -238,29 +235,24 @@
             </form>
 
             <div class="add-btn-container">
-              <button class="tarefa-criar-button create-btn" id="createTaskBtn">
+              <button class="create-btn" id="createTaskBtn">
                 <i data-lucide="plus"></i>
                 <span>TAREFA</span>
               </button>
             </div>
+
+            <div class="search-task-options">
+              <button id="filterTask" class="search-task-button">
+                <i data-lucide="filter"></i>
+                <span>Filtrar</span>
+              </button>
+              <button id="sortTask" class="search-task-button">
+                <i data-lucide="arrow-up-down"></i>
+                <span>Ordenar</span>
+              </button>
+            </div>
           </div>
-
-          <!--Section para apresentar as tarefas ativas -->
           <section class="tasks-container" id="taskContainer">
-<<<<<<< HEAD
-            <!---->
-            <button class="btn add-button" id="createTaskButton">
-              <img
-                src="./assets/imgs/add_icon.png"
-                alt="Notificações"
-                class="btn-img"
-                draggable="false"
-              />
-            </button>
-
-            <!-- Modal para -->
-=======
->>>>>>> f1d944b188fc152adbecc41c965d55ca32e645be
             <dialog class="create-task-container" id="creteTaskModal">
               <button class="btn close-btn" id="closeTaskCreatorButton">
                 <img
@@ -490,41 +482,6 @@
           </section>
 
           <!--CALENDÁRIO-->
-          <section class="homescreen-task-info">
-            <article class="calendar-view">
-              <h3 class="task-info-title">
-                <strong>Quarta-feira</strong>, 24 de janeiro
-              </h3>
-              <div class="cal-modal-container">
-                <div class="cal-modal">
-                  <div class="current-date"></div>
-                  <div class="calendar-container">
-                    <!-- Nova div para centralizar -->
-                    <div id="calendar" class="small-calendar">
-                      <div class="placeholder"></div>
-                    </div>
-                  </div>
-                  <div class="calendar-overlay"></div>
-                </div>
-              </div>
-
-              <!-- Modal Grande -->
-              <div class="large-cal-modal-container hidden">
-                <div class="large-cal-modal">
-                  <button class="close-modal">×</button>
-                  <div id="large-calendar" class="large-calendar"></div>
-                </div>
-              </div>
-            </article>
-
-            <article class="progress-view">
-              <!--<h3 class="task-info-title">Progresso da disciplina</h3>-->
-              <!--- <img
-                src="./assets/imgs/progress_placeholder.png"
-                alt="Barras de progresso"
-              />-->
-            </article>
-          </section>
         </section>
 
         <!--CONTEÚDO DINAMICO-->
@@ -535,6 +492,5 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="./scripts/victor-scripts/scriptTaskModal.js" async></script>
     <script src="./scripts/victor-scripts/app.js" async></script>
-    <script src="./scripts/scriptMateus.js"></script>
   </body>
 </html>
