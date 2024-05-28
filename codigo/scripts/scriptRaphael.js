@@ -4,12 +4,20 @@ var proximoTipoRetangulo = 1;
 // Variável para controlar o ID do próximo retângulo a ser adicionado
 var proximoIdRetangulo = 0;
 
+// Variável para armazenar o tipo do último retângulo removido
+var tipoUltimoRetanguloRemovido = null;
+
 // Função para adicionar retângulos
 function adicionarRetangulo() {
     var container = document.querySelector(".container2");
     var divClone;
 
     // Determinar o tipo de retângulo a ser adicionado
+    if (tipoUltimoRetanguloRemovido !== null) {
+        proximoTipoRetangulo = tipoUltimoRetanguloRemovido;
+        tipoUltimoRetanguloRemovido = null; // Resetar o tipo do último retângulo removido
+    }
+
     if (proximoTipoRetangulo === 1) {
         divClone = document.querySelector(".retan1").cloneNode(true);
         proximoTipoRetangulo = 2;
