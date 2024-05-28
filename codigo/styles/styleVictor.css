@@ -1159,3 +1159,39 @@ nav {
 }
 
 /*NEW SUBJECT MODAL*/
+.subjectContainer {
+  position: relative;
+}
+
+#createSubjectModal {
+  width: 600px;
+  border: none;
+  padding: 24px;
+  position: absolute;
+}
+
+#createSubjectModal {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#newSubjectForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+#subjectTitle {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #586352;
+  font-size: 24px;
+  background-color: transparent;
+  margin-bottom: 12px;
+  color: #586352;
+  letter-spacing: 2px;
+  width: 100%;
+  padding-bottom: 6px;
+}

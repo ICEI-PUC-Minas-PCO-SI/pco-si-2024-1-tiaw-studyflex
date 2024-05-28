@@ -245,19 +245,33 @@
             </div>
           </div>
 
-          <section class="subject-container" id="subjectContainer">
+          <section class="subject-container">
             <dialog class="create-subject-container" id="createSubjectModal">
               <button class="btn close-btn" id="closeSubjectButton">
-                <img
-                  src="./assets/imgs/close_icon.png"
-                  alt="Botão de fechar"
-                  draggable="false"
-                  class="close-icon"
-                />
+                <i data-lucide="x"></i>
               </button>
 
               <!--FORMULARIO PARA CRIAR TAREFA-->
-              <div class="form-container"></div>
+              <div class="form-container">
+                <form action="" id="newSubjectForm">
+                  <div class="form-group subject-name">
+                    <input
+                      type="text"
+                      name="nome"
+                      id="subjectTitle"
+                      placeholder="Nova matéria"
+                      required
+                    />
+                  </div>
+
+                  <div class="button-container">
+                    <button type="submit" class="create-btn">
+                      <i data-lucide="plus"></i>
+                      <span>Adicionar</span>
+                    </button>
+                  </div>
+                </form>
+              </div>
             </dialog>
           </section>
 

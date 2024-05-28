@@ -24,6 +24,7 @@
 
   <body>
     <div class="container">
+      <!-- Header  -->
       <header>
         <a href="./HomeScreenVictor.html"
           ><img
@@ -68,6 +69,7 @@
       </header>
 
       <nav id="navBar">
+        <!--Navbar para adicionar matéria que deseja acompanhar as tarefas-->
         <ul class="window-nav" id="windowNav">
           <li
             class="window-view active"
@@ -80,6 +82,7 @@
           </li>
         </ul>
 
+        <!--Botão para abrir modal de adicionar matéria na navbar-->
         <button class="btn add-button" id="addSubjectButton">
           <img
             src="./assets/imgs/add_icon.png"
@@ -88,8 +91,8 @@
             draggable="false"
           />
         </button>
-        <!--MODAL PARA SELECIONAR MATÉRIA PARA INCLUIR NA NAVBAR-->
 
+        <!--MODAL PARA SELECIONAR MATÉRIA PARA INCLUIR NA NAVBAR-->
         <dialog class="add-subject-container" id="addSubjectModal">
           <button class="btn close-btn" id="closeSubjectButton">
             <img
@@ -134,6 +137,7 @@
             />
           </div>
         </dialog>
+        <!--MODAL PARA SELECIONAR MATÉRIA PARA INCLUIT NA NAVBAR-->
       </nav>
 
       <aside>
@@ -192,7 +196,7 @@
           </li>
         </ul>
 
-        <!--BOTÃO MODO NOTURNO-->
+        <!--Botão modo noturno-->
         <div class="toggle-container">
           <input type="checkbox" id="check" />
           <label for="check" class="switch">
@@ -241,7 +245,9 @@
             </div>
           </div>
 
+          <!--Section para apresentar as tarefas ativas -->
           <section class="tasks-container" id="taskContainer">
+            <!-- Modal para -->
             <dialog class="create-task-container" id="creteTaskModal">
               <button class="btn close-btn" id="closeTaskCreatorButton">
                 <img
