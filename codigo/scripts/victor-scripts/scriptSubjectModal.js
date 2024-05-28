@@ -1,11 +1,11 @@
 //CREATING A SUBJECT
 const createSubjectBtn = document.getElementById("createSubjectBtn");
-const closeSubjectBtn = document.getElementById("closeSubjectButton");
+const closeSubjectBtn = document.getElementById("closeSubjectBtn");
 const createSubjectModal = document.getElementById("createSubjectModal");
 
 createSubjectBtn.addEventListener("click", () => {
   createSubjectModal.showModal();
-});
+}); 
 
 closeSubjectBtn.addEventListener("click", () => {
   createSubjectModal.close();
