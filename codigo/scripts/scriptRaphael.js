@@ -120,7 +120,7 @@ async function salvarEdicao(element, id, novoTitulo, novoTextoNota) {
     };
 
     try {
-        const response = await fetch(`${URL_NOTAS}/${id}`, {
+        const response = await fetch(URL_NOTAS, {
             method: "PUT",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(notas[id]),
