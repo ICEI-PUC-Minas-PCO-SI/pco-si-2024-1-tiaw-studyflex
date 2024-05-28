@@ -584,7 +584,7 @@ nav {
 }
 
 .flatpickr-day.today {
-  background-color: #8AA17B !important;
+  background-color: #8aa17b !important;
   border: none !important;
 }
 
@@ -611,6 +611,7 @@ nav {
 }
 
 .retan1{
+  position: relative;
   border: 1px solid #ccc;
   border-radius: 5px;
    margin-left: 50px;
@@ -623,10 +624,11 @@ nav {
   border: none;
   margin-top:35px;
   word-wrap: break-word;
+  
 }
 
 .retan2{
-   
+  position: relative; 
    margin-left: 50px;
    margin-right: 50px;
    height: 400px;
@@ -642,14 +644,14 @@ nav {
 }
 
 .retan3{
-   
+  position: relative;
    margin-left: 50px;
    margin-right: 50px;
    height: 400px;
    width: 300px;
    border: 1px solid #ccc;
    border-radius: 5px;
-   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+   
    padding: 5px;
    background-color:  #9DAADF;
    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -675,13 +677,14 @@ width: 70px;
   height: 70px;
   width: 70px;
   position: absolute;
+  
   }
 
   .h3{
     margin-left: 20px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size:30px;
-    margin-top: 20px;
+    margin-top: 1px;
   }
 
   .p{
@@ -694,7 +697,7 @@ width: 70px;
   }
 
   input{
-    margin-top: 0px;
+    
     margin-left: 50px;
     height: 30px;
     text-align: center;
@@ -708,6 +711,12 @@ width: 70px;
     width: 170px;
     text-align: center;
     font-family: arial;
+  }
+
+  .delete{
+    margin-left: 250px;
+    margin-top: 10px;
+    color: white;
   }
 
 

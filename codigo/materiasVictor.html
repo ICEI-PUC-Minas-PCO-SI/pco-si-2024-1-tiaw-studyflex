@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
       rel="stylesheet"
@@ -15,7 +14,11 @@
       type="image/x-icon"
       href="./assets/imgs/StudyFlex_logo.ico"
     />
-    <link rel="stylesheet" href="./styles/styleRaphael.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <link rel="stylesheet" href="./styles/styleVictor.css" />
     <title>StudyFlex</title>
   </head>
 
@@ -64,7 +67,7 @@
         </div>
       </header>
 
-      <nav>
+      <nav id="navBar">
         <ul class="window-nav" id="windowNav">
           <li
             class="window-view active"
@@ -75,19 +78,16 @@
               <h2 class="window-title">Tela Inicial</h2>
             </a>
           </li>
-
-          <li class="add-button" id="addSubjectButton">
-            <button class="btn header-btn">
-              <img
-                src="./assets/imgs/add_icon.png"
-                alt="Notificações"
-                class="btn-img"
-                draggable="false"
-              />
-            </button>
-          </li>
         </ul>
 
+        <button class="btn add-button" id="addSubjectButton">
+          <img
+            src="./assets/imgs/add_icon.png"
+            alt="Notificações"
+            class="btn-img"
+            draggable="false"
+          />
+        </button>
         <!--MODAL PARA SELECIONAR MATÉRIA PARA INCLUIR NA NAVBAR-->
 
         <dialog class="add-subject-container" id="addSubjectModal">
@@ -139,8 +139,8 @@
       <aside>
         <!--Lista responsável por organizar os links que levarão o usuário para as diferentes telas da plataforma-->
         <ul class="aside-menu">
-          <li class="aside-option">
-            <a href="#">
+          <li class="aside-option" id="dashboardTab">
+            <a href="./HomeScreenVictor.html">
               <img
                 src="./assets/imgs/menu_icon.png"
                 alt="Dashboard icone"
@@ -149,8 +149,19 @@
               <span>Dashboard</span>
             </a>
           </li>
-          <li class="aside-option active" id="anotacoesTab">
-            <a href="#">
+
+          <li class="aside-option" id="tarefasTab">
+            <a href="./tarefas.html">
+              <img
+                src="./assets/imgs/tasks_icon.png"
+                alt="Dashboard icone"
+                class="option-icon"
+              />
+              <span>Tarefas</span>
+            </a>
+          </li>
+          <li class="aside-option" id="anotacoesTab">
+            <a href="./anotacoesRaphael.html">
               <img
                 src="./assets/imgs/notes_icon.png"
                 alt="Anotações icone"
@@ -159,7 +170,7 @@
               <span>Anotações</span>
             </a>
           </li>
-          <li class="aside-option">
+          <li class="aside-option active" id="materiasTab">
             <a href="#">
               <img
                 src="./assets/imgs/materias_icon.png"
@@ -169,7 +180,7 @@
               <span>Matérias</span>
             </a>
           </li>
-          <li class="aside-option">
+          <li class="aside-option" id="configTab">
             <a href="#">
               <img
                 src="./assets/imgs/config_icon.png"
@@ -190,78 +201,90 @@
           <span>Modo Noturno</span>
         </div>
       </aside>
+
       <main id="mainContainer">
-        <div class="container2">
-            <div class="retan1 retan" data-id="0">
+        <!--CONTEÚDO DINAMICO-->
 
-              <button onclick="excluirNota">
-                  
-                <?xml version="1.0" ?><svg width="31" height="31" class="delete" viewBox="0 0 16 16"  xmlns="http://www.w3.org/2000/svg"><polygon fill-rule="evenodd" points="8 9.414 3.707 13.707 2.293 12.293 6.586 8 2.293 3.707 3.707 2.293 8 6.586 12.293 2.293 13.707 3.707 9.414 8 13.707 12.293 12.293 13.707 8 9.414"/></svg>
-                
+        <!--Aqui é onde será adcionado as diferentes variações das telas, o conteúdo dinâmico do site-->
+
+        <section class="homescreen" id="homescreenView">
+          <h1 class="homescreen-title">Matérias</h1>
+          <div class="tasks-header-container">
+            <form action="" class="search-bar-container">
+              <input
+                type="search"
+                name=""
+                placeholder="Buscar.."
+                aria-label="Search"
+                class="search-bar"
+              />
+
+              <img
+                src="./assets/imgs/loupe_icon.png"
+                alt="Lupa icone"
+                class="input-icon"
+              />
+
+              <button type="submit" class="submit-btn">
+                <img
+                  src="./assets/imgs/search_icon.png"
+                  alt="Botão de pesquisar"
+                  class="submit-icon"
+                />
               </button>
+            </form>
 
-                <h3 class="h3" id="titulo">Título </h3>
-                <p class="p" id="textoNota">Texto da Nota </p>
-                <button onclick="liberarEdicao(this.closest('.retan'))">
-                    <svg width="31" height="31" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="lapis">
-                        <circle cx="20.5" cy="20.5" r="20.5" fill="#8AA17B"/>
-                        <path d="M9 27.9993V33H14.0007L28.7561 18.2446L23.7554 13.2439L9 27.9993ZM32.6099 14.3907C33.13 13.8707 33.13 13.0239 32.6099 12.5038L29.4962 9.39005C28.9761 8.86998 28.1293 8.86998 27.6093 9.39005L25.1689 11.8304L30.1696 16.8311L32.6099 14.3907Z" fill="white"/>
-                    </svg>
-                </button>
-
-                
-                
-                
-            </div>
-            <div class="retan2 retan" data-id="1">
-
-              <button onclick="excluirNota">
-                  
-                <?xml version="1.0" ?><svg width="31" height="31" class="delete" viewBox="0 0 16 16"  xmlns="http://www.w3.org/2000/svg"><polygon fill-rule="evenodd" points="8 9.414 3.707 13.707 2.293 12.293 6.586 8 2.293 3.707 3.707 2.293 8 6.586 12.293 2.293 13.707 3.707 9.414 8 13.707 12.293 12.293 13.707 8 9.414"/></svg>
-                
+            <div class="add-btn-container">
+              <button
+                class="tarefa-criar-button create-btn"
+                id="createSubjectBtn"
+              >
+                <i data-lucide="plus"></i>
+                <span>MATÉRIA</span>
               </button>
-              
-                <h3 class="h3" id="titulo">Título </h3>
-                <p class="p" id="textoNota">Texto da Nota </p>
-                <button onclick="liberarEdicao(this.closest('.retan'))">
-                    <svg width="31" height="31" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="lapis">
-                        <circle cx="20.5" cy="20.5" r="20.5" fill="#8AA17B"/>
-                        <path d="M9 27.9993V33H14.0007L28.7561 18.2446L23.7554 13.2439L9 27.9993ZM32.6099 14.3907C33.13 13.8707 33.13 13.0239 32.6099 12.5038L29.4962 9.39005C28.9761 8.86998 28.1293 8.86998 27.6093 9.39005L25.1689 11.8304L30.1696 16.8311L32.6099 14.3907Z" fill="white"/>
-                    </svg>
-                </button>
             </div>
-            <div class="retan3 retan" data-id="2">
-
-<button onclick="excluirNota">
-                  
-                  <?xml version="1.0" ?><svg width="31" height="31" class="delete" viewBox="0 0 16 16"  xmlns="http://www.w3.org/2000/svg"><polygon fill-rule="evenodd" points="8 9.414 3.707 13.707 2.293 12.293 6.586 8 2.293 3.707 3.707 2.293 8 6.586 12.293 2.293 13.707 3.707 9.414 8 13.707 12.293 12.293 13.707 8 9.414"/></svg>
-                  
-                </button>
-
-                <h3 class="h3" id="titulo">Título </h3>
-                <p class="p" id="textoNota">Texto da Nota </p>
-                <button onclick="liberarEdicao(this.closest('.retan'))">
-                    <svg width="31" height="31" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="lapis">
-                        <circle cx="20.5" cy="20.5" r="20.5" fill="#8AA17B"/>
-                        <path d="M9 27.9993V33H14.0007L28.7561 18.2446L23.7554 13.2439L9 27.9993ZM32.6099 14.3907C33.13 13.8707 33.13 13.0239 32.6099 12.5038L29.4962 9.39005C28.9761 8.86998 28.1293 8.86998 27.6093 9.39005L25.1689 11.8304L30.1696 16.8311L32.6099 14.3907Z" fill="white"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="Btn">
-              <button id="btn" class="add"><img src="img/4d23be4d-0e7b-4c01-b806-fc3cbd4b98ab.jpg" class="add1"></button>
           </div>
-        </div>
-        
-    </main>
-    
-    
-    
-    
-          
-      
-  </div>
-    
+
+          <section class="subject-container">
+            <dialog class="create-subject-container" id="createSubjectModal">
+              <button class="btn close-btn" id="closeSubjectButton">
+                <i data-lucide="x"></i>
+              </button>
+
+              <!--FORMULARIO PARA CRIAR TAREFA-->
+              <div class="form-container">
+                <form action="" id="newSubjectForm">
+                  <div class="form-group subject-name">
+                    <input
+                      type="text"
+                      name="nome"
+                      id="subjectTitle"
+                      placeholder="Nova matéria"
+                      required
+                    />
+                  </div>
+
+                  <div class="button-container">
+                    <button type="submit" class="create-btn">
+                      <i data-lucide="plus"></i>
+                      <span>Adicionar</span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </dialog>
+          </section>
+
+          <!--CALENDÁRIO-->
+        </section>
+
+        <!--CONTEÚDO DINAMICO-->
+      </main>
     </div>
-    <script src="./scripts/scriptRaphael.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="./scripts/victor-scripts/scriptSubjectModal.js" async></script>
+    <script src="./scripts/victor-scripts/app.js" async></script>
   </body>
 </html>

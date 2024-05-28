@@ -1,42 +1,11 @@
-//URL API DE DADOS
-URL_TAREFAS = "http://localhost:3000/tarefas";
-URL_MATERIAS = "http://localhost:3000/materias";
-
-//ADD NAV ELEMENT
-const addSubjectModal = document.getElementById("addSubjectModal");
-const openModal = document.getElementById("addSubjectButton");
-const closeModal = document.getElementById("closeSubjectButton");
-const navBar = document.getElementById("viewTab");
-const windowNav = document.getElementById("windowNav");
-
-//MAIN CONTAINER
-const mainContainer = document.getElementById("mainContainer");
-
-//ASIDE VARIABLES
-const asideOptions = document.getElementsByClassName("aside-option");
-const dashboard = document.getElementById("dashboardTab");
-const anotacoes = document.getElementById("anotacoesTab");
-const materias = document.getElementById("materiasTab");
-const config = document.getElementById("configTab");
-
 //TASK MODAL VARIABLES
 const createTaskModal = document.getElementById("creteTaskModal");
-const createTaskButton = document.getElementById("createTaskButton");
+const createTaskButton = document.getElementById("createTaskBtn");
 const closeTaskButton = document.getElementById("closeTaskCreatorButton");
-
-//TASK CONTAINER
-const taskContainer = document.getElementById("taskContainer");
 
 //FUNCTIONS --------------
 
 //See if there is tasks to show
-
-const taskName = document.getElementById("newTaskName");
-const taskStatus = document.getElementById("statusOption");
-const taskDate = document.getElementById("TaskEndDate");
-const taskSubject = document.getElementById("subjectOption");
-const taskPriority = document.getElementById("priorityOption");
-const newTaskForm = document.getElementById("newTaskForm");
 
 // Make a GET request to the JSON server
 /*
@@ -62,75 +31,13 @@ fetch(URL_MATERIAS)
     console.error("Erro ao realizar a requisição", error);
   });*/
 
-//Create task from homescreen
-createTaskButton.addEventListener("click", () => {
-  createTaskModal.showModal();
-});
-
-newTaskForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  var data = {
-    id: 1,
-    nome: taskName.value,
-    status: taskStatus.value,
-    data: taskDate.value,
-    materia: taskSubject.value,
-    prioridade: taskPriority.value,
-  };
-
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  };
-
-  fetch(URL_TAREFAS, options)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Erro ao realizar a requisição");
-      }
-      return response.json();
-    })
-    .then((responseData) => {
-      console.log("Response from server:", responseData);
-    })
-    .catch((error) => {
-      console.error("Erro ao realizar a requisição", error);
-    });
+newTaskForm.addEventListener("submit", () => {
   createTaskModal.close();
 });
 
 closeTaskButton.addEventListener("click", () => {
   createTaskModal.close();
 });
-
-//Add subject dialog
-openModal.addEventListener("click", () => {
-  addSubjectModal.showModal();
-});
-
-closeModal.addEventListener("click", () => {
-  addSubjectModal.close();
-});
-
-//Toggling active style in the aside options
-for (let asideOption of asideOptions) {
-  //function to toggle style
-  asideOption.addEventListener("click", () => {
-    let toAddStyle = document.getElementById(asideOption.id);
-
-    //checking the active option
-    for (let option of asideOptions) {
-      if (option.classList.contains("active")) {
-        option.classList.remove("active");
-      }
-    }
-    toAddStyle.classList.add("active");
-  });
-}
 
 /*
     // Use the JSON data
@@ -152,9 +59,6 @@ for (let asideOption of asideOptions) {
             </article>
     `;*/
 
-//SELECT SCRIPT
-lucide.createIcons();
-
 //STATUS SELECT
 let selectStatus = document.querySelector(".select-status"),
   selectedValueStatus = document.getElementById("selected-value-status"),
@@ -165,6 +69,7 @@ let selectStatus = document.querySelector(".select-status"),
   statusOption = document.querySelectorAll(".option-status"),
   currentStatus = document.getElementById("currentStatus");
 
+//STATUS VARIABLES
 const defaultIcon = document.getElementById("defaultIcon");
 const doIcon = document.getElementById("doIcon");
 const doingIcon = document.getElementById("doingIcon");
@@ -237,8 +142,6 @@ inputOptions.forEach((input) => {
       defaultFlagIcon.classList.add("Urgente");
     }
 
-    console.log(defaultFlagIcon.classList);
-
     const isMouseOrTouch =
       event.pointerType == "mouse" || event.pointerType == "touch";
     isMouseOrTouch && optionsViewButton.click();
@@ -262,4 +165,45 @@ optionsViewButton.addEventListener("input", () => {
     document.querySelector(".option input:checked") ||
     document.querySelector(".option input");
   input.focus();
+});
+
+//ADD TASK FORM
+const taskTitle = document.getElementById("taskTitle");
+const taskStatus = document.getElementById("selected-value-status");
+const taskSubject = document.getElementById("taskSubject");
+const taskFinalDate = document.getElementById("TaskEndDate");
+const taskPriority = document.getElementById("selected-value");
+const taskDescription = document.getElementById("taskDescription");
+
+//Create task from homescreen
+createTaskButton.addEventListener("click", () => {
+  createTaskModal.showModal();
+  const newTaskForm = document.getElementById("newTaskForm");
+  newTaskForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const jsonObject = {};
+
+    formData.forEach((value, key) => {
+      jsonObject[key] = value;
+    });
+
+    try {
+      const reponse = await fetch(URL_TAREFAS, {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(jsonObject),
+      });
+
+      if (reponse.ok) {
+        alert("Tarefa criada com sucesso");
+      } else {
+        alert("Erro ao criar tarefa");
+      }
+    } catch (error) {
+      console.log("Error:", error);
+      alert("Erro ao criar tarefa");
+    }
+  });
 });

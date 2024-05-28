@@ -66,7 +66,7 @@ button {
 main {
   grid-column: 2/4;
   grid-row: 3/4;
-  padding: 16px 24px;
+  padding: 16px 32px;
 }
 
 h2 {
@@ -260,8 +260,9 @@ nav {
 .add-button {
   padding: 4px;
   border: 2px solid transparent;
-  border-radius: 20px 20px 0px 0px;
   transition: all 0.2s ease-in;
+  width: 32px;
+  border-radius: 0;
 }
 
 .window-view:hover {
@@ -305,12 +306,19 @@ nav {
   font-size: 30px;
 }
 
-.search-bar-container {
+.dashboard-header-container {
+  display: flex;
+  gap: 32px;
+  justify-content: space-between;
   grid-column: 1/2;
   grid-row: 2;
+}
+
+.search-bar-container {
   display: flex;
   align-items: center;
   position: relative;
+  width: 100%;
 }
 
 .search-bar {
@@ -465,7 +473,6 @@ nav {
   margin: 16px 0;
   font-size: 24px;
   font-weight: 700;
-  border-bottom: 0 solid #414b3b;
 }
 
 .add-subject-container input {
@@ -482,6 +489,16 @@ nav {
 
 .template-img {
   width: 300px;
+}
+
+#addSubjectButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  margin-left: -16px;
 }
 
 /* CALENDARIO */
@@ -784,7 +801,10 @@ nav {
 #options-status {
   margin-top: 0.25rem;
   border: 1px solid #586352;
+  background-color: white;
   display: none;
+  position: absolute;
+  z-index: 999;
 }
 
 .option-status {
@@ -967,7 +987,9 @@ nav {
 #options {
   margin-top: 0.25rem;
   border: 1px solid #586352;
+  background-color: white;
   display: none;
+  position: absolute;
 }
 
 .option {
@@ -1029,9 +1051,6 @@ nav {
   color: #586352;
 }
 
-.select:has(.option input:checked) #selected-value {
-}
-
 /*Subject*/
 
 /*Description*/
@@ -1047,7 +1066,6 @@ nav {
   width: 100%;
   outline: none;
   border: none;
-  padding: 0;
   border-bottom: 1px solid #586352;
 }
 
@@ -1076,4 +1094,104 @@ nav {
 
 #newTaskForm button:hover {
   background-color: #8aa17b;
+}
+
+/*PÁGINA DE TAREFAS*/
+
+/**/
+.tasks-header-container {
+  grid-row: 2;
+  grid-column: 1/3;
+  display: flex;
+  gap: 32px;
+}
+
+.tasks-header-container .search-bar-container {
+  width: 100%;
+}
+
+.search-task-options {
+  display: flex;
+  gap: 32px;
+}
+
+.search-task-button:hover svg,
+.search-task-button:hover {
+  color: #ffffff;
+  background-color: #8aa17b;
+}
+
+.add-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.create-btn,
+.search-task-button {
+  color: #586352;
+  border: 1px solid #8aa17b;
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: none;
+  box-shadow: 0 5px 5px 1px hsla(210, 10%, 23%, 0.178);
+}
+
+.create-btn:hover,
+.create-btn:hover svg {
+  color: #ffffff;
+  background-color: #8aa17b;
+}
+
+.create-btn .active,
+.search-task-button .active,
+.search-task-button .active svg {
+  background-color: #8aa17b;
+  color: #ffffff;
+}
+
+.create-btn svg,
+.search-task-button svg {
+  width: 20px;
+  color: #586352;
+}
+
+/*NEW SUBJECT MODAL*/
+.subjectContainer {
+  position: relative;
+}
+
+#createSubjectModal {
+  width: 600px;
+  border: none;
+  padding: 24px;
+  position: absolute;
+}
+
+#createSubjectModal {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#newSubjectForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+#subjectTitle {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #586352;
+  font-size: 24px;
+  background-color: transparent;
+  margin-bottom: 12px;
+  color: #586352;
+  letter-spacing: 2px;
+  width: 100%;
+  padding-bottom: 6px;
 }

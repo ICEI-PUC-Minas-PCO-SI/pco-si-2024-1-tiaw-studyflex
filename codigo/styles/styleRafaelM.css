@@ -11,7 +11,6 @@
 
 .menuInicial-title {
     color: #586352;
-    grid-column: 1/2;
     font-size: 30px;
     text-align: left;
 }
@@ -22,8 +21,8 @@
 }
 
 .tasks-container {
-    max-height: 100px;
-    margin-bottom: 70px;
+    max-height: 100vh;
+    margin-bottom: 26px;
 }
 
 .box-tarefa{
@@ -32,7 +31,7 @@
 
 #addTasksButton {
     padding: 10px;
-    width: 56.5em;
+    width: 50vw;
     border: 2px solid transparent;
     border-radius: 20px 20px 20px 20px;
     transition: all 0.2s ease-in;
@@ -61,41 +60,37 @@
 }
 
 #addTasksButton {
-    margin-top: 1em;
-    padding-top: 1em;
-    padding-bottom: 0.55em;
-    height: 15px;
+    margin-top: 5px;
+    padding-top: 12px;
+    height: 14px;
 
 }
 
 /* FIM - ÁREA DE TAREFAS */
 
 
+
 /* COMEÇO - CALENDÁRIO E PROGRESSO DAS DISCIPLINAS */
 
-#lateral-modais{
- align-content: center;
- left: 50%;
- top: 50%;
-}
+
 
 /*FIM - CALENDÁRIO E PROGRESSO DAS DISCIPLINAS */
-
-
+.progresso-calendario{
+   
+   
+}
 /* COMEÇO - PROGRESSOS DAS DISCIPLINAS */
-
 .task-info-title {
     text-align: center;
 }
 
 .container-progress {
-
     display: flex;
-    margin-top: 25px;
-    margin-left: 70px;
-    width: 19.5em;
-    height: 15em;
-    border-radius: 0.5em;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 300px;
+    height: 250px;
+    border-radius: 15px;
     padding: 15px;
     box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.116);
 }
