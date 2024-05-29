@@ -88,19 +88,19 @@ function liberarEdicao(element) {
 
     inputTextoNota.addEventListener('keyup', function(event) {
         if (event.key === 'Enter') {
-            salvarEdicao(element, id, inputTitulo.value, inputTextoNota.value);
+            salvarEdicao(element, inputTitulo.value, inputTextoNota.value);
         }
     });
 
     inputTitulo.addEventListener('keyup', function(event) {
         if (event.key === 'Enter') {
-            salvarEdicao(element, id, inputTitulo.value, inputTextoNota.value);
+            salvarEdicao(element, inputTitulo.value, inputTextoNota.value);
         }
     });
 }
 
 // Função para salvar as edições e enviar para o servidor
-async function salvarEdicao(element, id, novoTitulo, novoTextoNota) {
+async function salvarEdicao(element, novoTitulo, novoTextoNota) {
     var titulo = document.createElement('h3');
     titulo.className = 'h3';
     titulo.textContent = novoTitulo;
@@ -114,27 +114,34 @@ async function salvarEdicao(element, id, novoTitulo, novoTextoNota) {
     var lapis = element.querySelector('.lapis');
     lapis.style.display = 'block';
 
-    notas[id] = {
-        titulo: novoTitulo,
-        Nota: novoTextoNota
-    };
+    var id = element.id;
+    if (!notas[id]) {
+        notas[id] = {
+            id: proximoIdRetangulo,
+            titulo: novoTitulo,
+            Nota: novoTextoNota
+        };
+    } else {
+        notas[id].titulo = novoTitulo;
+        notas[id].Nota = novoTextoNota;
+    }
 
     try {
         const response = await fetch(URL_NOTAS, {
-            method: "PUT",
+            method: "POST",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(notas[id]),
         });
 
         if (response.ok) {
-            alert("Nota editada com sucesso");
+            alert("Nota salva com sucesso");
         } else {
             console.log("Failed response:", response);
-            alert("Erro ao editar nota");
+            alert("Erro ao salvar nota");
         }
     } catch (error) {
         console.log("Error:", error);
-        alert("Erro ao editar nota");
+        alert("Erro ao salvar nota");
     }
 }
 
