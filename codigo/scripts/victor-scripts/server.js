@@ -37,4 +37,5 @@ app.post("/submit", (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${URL_TAREFAS}`);
+  console.log(`Server is running on ${URL_NOTAS}`);
 });
