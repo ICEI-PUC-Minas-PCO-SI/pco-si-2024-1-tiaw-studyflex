@@ -1,10 +1,6 @@
 //SELECT SCRIPT
 lucide.createIcons();
 
-//URL API DE DADOS
-const URL_TAREFAS = "http://localhost:3000/tarefas";
-const URL_MATERIAS = "http://localhost:3000/materias";
-
 //URL ATUAL
 let currentURL = window.location.href;
 

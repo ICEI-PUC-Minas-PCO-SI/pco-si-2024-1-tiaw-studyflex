@@ -1,3 +1,6 @@
+//URL API DE DADOS
+const URL_TAREFAS = "http://localhost:3000/tarefas";
+
 //TASK MODAL VARIABLES
 const createTaskModal = document.getElementById("creteTaskModal");
 const createTaskButton = document.getElementById("createTaskBtn");
@@ -175,16 +178,20 @@ const taskFinalDate = document.getElementById("TaskEndDate");
 const taskPriority = document.getElementById("selected-value");
 const taskDescription = document.getElementById("taskDescription");
 
-//Create task from homescreen
+//Create task from homescreen - POST METHOD
 createTaskButton.addEventListener("click", () => {
   createTaskModal.showModal();
+
+  //Getting knowladge about the form to create a task
   const newTaskForm = document.getElementById("newTaskForm");
   newTaskForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    //Create a formData to get key/values
     const formData = new FormData(e.target);
     const jsonObject = {};
 
+    //Passing data to the json object
     formData.forEach((value, key) => {
       jsonObject[key] = value;
     });
