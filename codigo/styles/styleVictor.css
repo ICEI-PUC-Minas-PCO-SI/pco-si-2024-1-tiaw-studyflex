@@ -1156,7 +1156,7 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 
 .task-preview-title {

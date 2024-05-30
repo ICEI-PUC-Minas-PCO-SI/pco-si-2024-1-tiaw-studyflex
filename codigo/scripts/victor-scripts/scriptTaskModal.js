@@ -37,15 +37,18 @@ fetch(URL_MATERIAS)
     // Handle any errors that occurred during the fetch
     console.error("Erro ao realizar a requisição", error);
   });*/
-let page = 1;
+let page = 3;
 const taskPerPage = 4;
 const skip = (page - 1) * taskPerPage;
 const URL_TAREFAS_PAGE = `http://localhost:3000/tarefas?_limit=${taskPerPage}&skip=${skip}`;
 
+//PAGINATION
+const prevButton = document.getElementById("prevPage");
+const nextButton = document.getElementById("nextPage");
+
 async function fetchTasks() {
   try {
     //Fetching tasks
-
     fetch(URL_TAREFAS_PAGE).then(async (response) => {
       if (response.ok) {
         const taskData = await response.json();
@@ -117,7 +120,8 @@ async function fetchTasks() {
       </article>
       `;
           taskPreview.innerHTML = taskListContent;
-          tasksList.appendChild(taskPreview);
+          tasksList;
+          console.log(taskPreview);
         }
       } else {
       }
@@ -128,6 +132,15 @@ async function fetchTasks() {
     }
   }
 }
+
+prevButton.addEventListener("click", () => {
+  if (page == 1) {
+    return;
+  } else {
+    page++;
+    fetchTasks();
+  }
+});
 
 fetchTasks();
 
