@@ -186,10 +186,12 @@ createTaskButton.addEventListener("click", () => {
   const newTaskForm = document.getElementById("newTaskForm");
   newTaskForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+    console.log(e.target);
 
     //Create a formData to get key/values
     const formData = new FormData(e.target);
     const jsonObject = {};
+    console.log(formData);
 
     //Passing data to the json object
     formData.forEach((value, key) => {
