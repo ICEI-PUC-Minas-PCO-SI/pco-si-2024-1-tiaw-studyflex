@@ -46,18 +46,3 @@ createSubjectForm.addEventListener("submit", async (e) => {
 closeSubjectBtn.addEventListener("click", () => {
   createSubjectModal.close();
 });
-
-/*
-FORM DATA {
-  [nome, sprint3],
-  [status, 3],
-  [datafinal, 3]
-}
-jsonobject 
-{
-  nome:sprint3,
-  status: 3, 
-  datafinal: hoje
-}
-
-*/
