@@ -1,6 +1,9 @@
 //URL API DE DADOS
 const URL_TAREFAS = "http://localhost:3000/tarefas";
 
+//WHAT PAGE ARE WE IN?
+let pageTitle = document.querySelector(".homescreen-title").textContent;
+
 //TASK MODAL VARIABLES
 const createTaskModal = document.getElementById("creteTaskModal");
 const createTaskButton = document.getElementById("createTaskBtn");
@@ -10,48 +13,40 @@ const closeTaskButton = document.getElementById("closeTaskCreatorButton");
 const tasksContainer = document.getElementById("tasksContainer");
 const tasksList = document.getElementById("taskList");
 
-//FUNCTIONS --------------
-
-//See if there is tasks to show
-
-// Make a GET request to the JSON server
-/*
-fetch(URL_MATERIAS)
-  .then((response) => {
-    // Check if the response is successful (status code 200)
-    if (!response.ok) {
-      throw new Error("Erro ao realizar a requisição");
-    }
-    // Parse the JSON response
-    return response.json();
-  })
-  .then((data) => {
-    // Use the JSON data
-    for (let i = 0; i < data.length; i++) {
-      var childElement = document.createElement("option");
-      childElement.textContent = data[i].nome;
-      childElement.childElement = taskSubject.appendChild(childElement);
-    }
-  })
-  .catch((error) => {
-    // Handle any errors that occurred during the fetch
-    console.error("Erro ao realizar a requisição", error);
-  });*/
-
 //PAGINATION
 const prevButton = document.getElementById("prevPage");
 const nextButton = document.getElementById("nextPage");
 let page = 1;
 let skip;
+
 //Fetching tasks
 const taskPerPage = 2;
-
 let URL_TAREFAS_PAGE;
 
 async function fetchTasks() {
   try {
+    const response = await fetch(URL_TAREFAS);
+    if (response.ok) {
+      const data = await response.json();
+
+      if (data.length > taskPerPage) {
+        prevButton.classList.remove("hide");
+        nextButton.classList.remove("hide");
+      }
+    }
+  } catch (error) {}
+}
+
+fetchTasks();
+
+async function fetchTasksPages() {
+  try {
     skip = (page - 1) * taskPerPage;
-    URL_TAREFAS_PAGE = `http://localhost:3000/tarefas?_page=${page}&_limit=${taskPerPage}`;
+    if (pageTitle === "Dashboard") {
+      URL_TAREFAS_PAGE = `http://localhost:3000/tarefas?status=2&status=3&_page=${page}&_limit=${taskPerPage}`;
+    } else if (pageTitle === "Tarefas") {
+      URL_TAREFAS_PAGE = `http://localhost:3000/tarefas?_page=${page}&_limit=${taskPerPage}`;
+    }
 
     const response = await fetch(URL_TAREFAS_PAGE);
 
@@ -60,6 +55,7 @@ async function fetchTasks() {
 
       if (taskData.length === 0) {
         page--;
+
         return;
       }
       tasksList.innerHTML = "";
@@ -145,22 +141,21 @@ async function fetchTasks() {
     }
   }
 }
+fetchTasksPages();
 
 prevButton.addEventListener("click", () => {
   if (page === 1) {
     return;
   } else {
     page--;
-    fetchTasks();
+    fetchTasksPages();
   }
 });
 
 nextButton.addEventListener("click", () => {
   page++;
-  fetchTasks();
+  fetchTasksPages();
 });
-
-fetchTasks();
 
 newTaskForm.addEventListener("submit", () => {
   createTaskModal.close();

@@ -1265,3 +1265,8 @@ auto .add-button:hover {
 #nextPage {
   padding: 12px 36px;
 }
+
+#prevPage.hide,
+#nextPage.hide {
+  display: none;
+}
