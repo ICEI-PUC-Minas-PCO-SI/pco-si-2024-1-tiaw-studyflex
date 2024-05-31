@@ -37,55 +37,70 @@ fetch(URL_MATERIAS)
     // Handle any errors that occurred during the fetch
     console.error("Erro ao realizar a requisição", error);
   });*/
-let page = 3;
-const taskPerPage = 4;
-const skip = (page - 1) * taskPerPage;
-const URL_TAREFAS_PAGE = `http://localhost:3000/tarefas?_limit=${taskPerPage}&skip=${skip}`;
 
 //PAGINATION
 const prevButton = document.getElementById("prevPage");
 const nextButton = document.getElementById("nextPage");
+let page = 1;
+let skip;
+//Fetching tasks
+const taskPerPage = 2;
+
+let URL_TAREFAS_PAGE;
 
 async function fetchTasks() {
   try {
-    //Fetching tasks
-    fetch(URL_TAREFAS_PAGE).then(async (response) => {
-      if (response.ok) {
-        const taskData = await response.json();
-        console.log(taskData);
+    skip = (page - 1) * taskPerPage;
+    URL_TAREFAS_PAGE = `http://localhost:3000/tarefas?_page=${page}&_limit=${taskPerPage}`;
 
-        for (let i = 0; i < taskData.length; i++) {
-          let taskStatus;
-          let taskPreview = document.createElement("l1");
-          taskPreview.classList.add("task-item");
+    const response = await fetch(URL_TAREFAS_PAGE);
 
-          if (taskData[i].status == 3) {
-            taskStatus = "Fazer";
-          } else if (taskData[i].status == 2) {
-            taskStatus = "Fazendo";
-          } else {
-            taskStatus = "Feito";
-          }
+    if (response.ok) {
+      const taskData = await response.json();
 
-          let taskPriority;
-          if (taskData[i].prioridade == 3) {
-            taskPriority = "Urgente";
-          } else if (taskData[i].prioridade == 2) {
-            taskPriority = "Alta";
-          } else {
-            taskPriority = "Normal";
-          }
+      if (taskData.length === 0) {
+        page--;
+        return;
+      }
+      tasksList.innerHTML = "";
+      let taskPreview, taskListContent;
 
-          let subjectContent;
-          if (taskData[i].materia === undefined) {
-            subjectContent = "<span class='no-subject'></span>";
-          } else {
-            subjectContent = `<span>${taskData[i].materia}</span>`;
-          }
+      if (taskData.length == 0) {
+      }
+      for (let i = 0; i < taskData.length; i++) {
+        let taskStatus;
+        taskPreview = document.createElement("l1");
+        taskPreview.innerHTML = "";
 
-          let finalDate = new Date(taskData[i].dataFinal);
-          finalDate.setDate(finalDate.getDate() + 1);
-          let taskListContent = `
+        taskPreview.classList.add("task-item");
+
+        if (taskData[i].status == 3) {
+          taskStatus = "Fazer";
+        } else if (taskData[i].status == 2) {
+          taskStatus = "Fazendo";
+        } else {
+          taskStatus = "Feito";
+        }
+
+        let taskPriority;
+        if (taskData[i].prioridade == 3) {
+          taskPriority = "Urgente";
+        } else if (taskData[i].prioridade == 2) {
+          taskPriority = "Alta";
+        } else {
+          taskPriority = "Normal";
+        }
+
+        let subjectContent;
+        if (taskData[i].materia === undefined) {
+          subjectContent = "<span class='no-subject'></span>";
+        } else {
+          subjectContent = `<span>${taskData[i].materia}</span>`;
+        }
+
+        let finalDate = new Date(taskData[i].dataFinal);
+        finalDate.setDate(finalDate.getDate() + 1);
+        taskListContent = `
         <article class="task-item-preview">
         <div class="task-preview-title">
           <h2>${taskData[i].nome}</h2>
@@ -119,13 +134,11 @@ async function fetchTasks() {
         </div>
       </article>
       `;
-          taskPreview.innerHTML = taskListContent;
-          tasksList;
-          console.log(taskPreview);
-        }
-      } else {
+        taskPreview.innerHTML += taskListContent;
+        tasksList.appendChild(taskPreview);
       }
-    });
+    } else {
+    }
   } catch (error) {
     {
       alert(error);
@@ -134,12 +147,17 @@ async function fetchTasks() {
 }
 
 prevButton.addEventListener("click", () => {
-  if (page == 1) {
+  if (page === 1) {
     return;
   } else {
-    page++;
+    page--;
     fetchTasks();
   }
+});
+
+nextButton.addEventListener("click", () => {
+  page++;
+  fetchTasks();
 });
 
 fetchTasks();
