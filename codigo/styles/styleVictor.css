@@ -1270,3 +1270,99 @@ auto .add-button:hover {
 #nextPage.hide {
   display: none;
 }
+
+/*filter/sort elements*/
+
+#filterTask,
+#sortTask {
+  position: relative;
+}
+
+.filter-group-title:hover {
+  background-color: #d8d8d8;
+}
+
+.search-task-modal {
+  position: absolute;
+  border: 1px solid #8aa17b;
+  border-bottom: none;
+  margin-top: 64px;
+  color: #414b3b;
+}
+
+.search-task-modal li {
+  cursor: pointer;
+}
+
+.filter-options li {
+  transition: all 0.2s ease;
+}
+
+.filter-options li:hover {
+  background-color: #d8d8d8;
+}
+
+.search-task-modal .search-task-modal span {
+  color: #8aa17b;
+}
+
+.filter-group svg {
+  width: 20px;
+}
+
+.filter-group > span {
+  border-bottom: 1px solid #8aa17b;
+  padding: 6px 24px;
+  width: 100%;
+  display: inline-block;
+}
+
+.filter-group-title {
+  border-bottom: 1px solid #8aa17b;
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.filter-options li {
+  border-bottom: 1px solid #8aa17b;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  background-color: #f1f1f1;
+  gap: 12px;
+}
+
+.filter-options li .active {
+  display: flex;
+}
+
+.filter-options li svg {
+  width: 18px;
+}
+
+#statusGroup > .filter-options li:nth-child(1) svg {
+  color: #e68b86;
+}
+
+#statusGroup > .filter-options li:nth-child(2) svg {
+  color: #edbf74;
+}
+
+#statusGroup > .filter-options li:nth-child(3) svg {
+  color: #8aa17b;
+}
+
+#priorityGroup > .filter-options li:nth-child(1) svg {
+  color: #1481ba;
+}
+
+#priorityGroup > .filter-options li:nth-child(2) svg {
+  color: #edbf74;
+}
+
+#priorityGroup > .filter-options li:nth-child(3) svg {
+  color: #e68b86;
+}

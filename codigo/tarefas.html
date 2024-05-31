@@ -250,7 +250,28 @@
               <!--MODAL PARA FILTRO-->
               <div class="search-task-modal">
                 <ul id="filterOptions">
-                  <li class="filter-option"></li>
+                  <li class="filter-group" id="statusGroup">
+                    <div class="filter-group-title">
+                      <span>Status</span>
+                      <i data-lucide="chevron-down"></i>
+                    </div>
+                    <ul  class="filter-options">
+                      <li><i data-lucide="circle-dot"></i><span>Fazer</span></li>
+                      <li><i data-lucide="circle-minus"></i><span>Fazendo</span></li>
+                      <li><i data-lucide="circle-check"></i><span>Feito</span></li>
+                    </ul>
+                  </li>
+                  <li class="filter-group" id="priorityGroup">
+                    <div class="filter-group-title">
+                      <span>Prioridade</span>
+                      <i data-lucide="chevron-down"></i>
+                    </div>
+                    <ul class="filter-options">
+                      <li><i data-lucide="flag"></i></i><span>Normal</span></li>
+                      <li><i data-lucide="flag"></i><span>Alta</span></li>
+                      <li><i data-lucide="flag"></i></i><span>Urgente</span></li>
+                    </ul>
+                  </li>
                 </ul>
               </div>
 
