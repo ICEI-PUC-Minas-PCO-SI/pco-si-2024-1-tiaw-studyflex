@@ -1,8 +1,11 @@
 // Função para mostrar o progresso da tarefa da disciplina
+var nomeTarefa = document.querySelector("#nomeTarefa");
+nomeTarefa.innerHTML = 'Java';
+
 //JSON Exemplo
 const dadosTarefas = {
-    "totalTarefas": 279,
-    "tarefasFeitas": 14
+    "totalTarefas": 21,
+    "tarefasFeitas": 22
 };
 
 // Função para calcular a porcentagem de tarefas concluídas e atualizar o progresso
