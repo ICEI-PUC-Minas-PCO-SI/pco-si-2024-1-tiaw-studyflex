@@ -1,3 +1,8 @@
+body{
+    width: 100vw;
+    height: 100vh;
+}
+
 /* COMEÇO - LOGO DO SITE */
 
 .website-logo {
@@ -72,13 +77,13 @@
 
 /* COMEÇO - CALENDÁRIO E PROGRESSO DAS DISCIPLINAS */
 
-
+.container-calendar-total{
+    width: 350px;
+  
+}
 
 /*FIM - CALENDÁRIO E PROGRESSO DAS DISCIPLINAS */
-.progresso-calendario{
-   
-   
-}
+
 /* COMEÇO - PROGRESSOS DAS DISCIPLINAS */
 .task-info-title {
     text-align: center;
