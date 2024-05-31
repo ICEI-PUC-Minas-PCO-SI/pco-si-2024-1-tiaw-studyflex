@@ -3,24 +3,24 @@ document.addEventListener("DOMContentLoaded", function() {
     const closeModalBtn = document.getElementById('closeModalBtn');
     const modal = document.getElementById('id01');
 
-    // Função para carregar dados do armazenamento local
+    
     function loadTaskData() {
-        // Verifica se há dados no armazenamento local
+       
         if (localStorage.getItem('taskData')) {
-            // Se houver, carrega os dados do armazenamento local
+            
             taskData = JSON.parse(localStorage.getItem('taskData'));
-            // Atualiza as datas no container da tarefa
+         
             updateTaskDates();
         }
     }
 
-    // Objeto JSON para armazenar informações da tarefa
+    // JSON para armazenar informações da tarefa
     let taskData = {
         startDate: "Data de Início",
         endDate: "Data de Fim"
     };
 
-    // Função para atualizar as datas no container da tarefa
+   
     function updateTaskDates() {
         const startDateSpan = document.getElementById('startDate');
         const endDateSpan = document.getElementById('endDate');
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
         modal.style.display = 'none';
     });
 
-    // Event listeners para atualizar o objeto JSON e o armazenamento local quando as datas forem modificadas no modal
+    
     const startDateInput = document.getElementById('startDateInput');
     const endDateInput = document.getElementById('endDateInput');
 
@@ -56,9 +56,79 @@ document.addEventListener("DOMContentLoaded", function() {
         updateTaskDates();
     });
 
-    // Carrega os dados do armazenamento local ao carregar a página
+
     loadTaskData();
+    
 });
+document.addEventListener('DOMContentLoaded', () => {
+    
+    const storedPreferences = JSON.parse(localStorage.getItem('preferences')) || {};
+
+   
+    Object.keys(storedPreferences).forEach(preferenceId => {
+        const checkbox = document.getElementById(preferenceId);
+        const icon = document.getElementById(`icon${preferenceId.charAt(0).toUpperCase() + preferenceId.slice(1)}`);
+        const taskIcon = document.getElementById(`taskIcon${preferenceId.charAt(0).toUpperCase() + preferenceId.slice(1)}`);
+
+        if (storedPreferences[preferenceId]) {
+            checkbox.checked = true;
+            icon.style.display = 'inline';
+            taskIcon.style.display = 'inline';
+        }
+    });
+});
+
+function updateIcon(preferenceId) {
+    const checkbox = document.getElementById(preferenceId);
+    const icon = document.getElementById(`icon${preferenceId.charAt(0).toUpperCase() + preferenceId.slice(1)}`);
+    const taskIcon = document.getElementById(`taskIcon${preferenceId.charAt(0).toUpperCase() + preferenceId.slice(1)}`);
+
+    if (checkbox.checked) {
+        
+        hideAllIconsAndCheckboxes();
+
+        
+        icon.style.display = 'inline';
+        taskIcon.style.display = 'inline';
+        checkbox.checked = true;
+
+       
+        savePreferences(preferenceId, true);
+    } else {
+      
+        icon.style.display = 'none';
+        taskIcon.style.display = 'none';
+        checkbox.checked = false;
+
+        
+        savePreferences(preferenceId, false);
+    }
+}
+
+function hideAllIconsAndCheckboxes() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const icons = document.querySelectorAll('.priority-icon');
+
+    checkboxes.forEach((checkbox) => {
+        checkbox.checked = false;
+    });
+
+    icons.forEach((icon) => {
+        icon.style.display = 'none';
+    });
+}
+
+function savePreferences(preferenceId, isChecked) {
+    
+    const storedPreferences = JSON.parse(localStorage.getItem('preferences')) || {};
+
+    
+    storedPreferences[preferenceId] = isChecked;
+
+    
+    localStorage.setItem('preferences', JSON.stringify(storedPreferences));
+}
+
 
 
 

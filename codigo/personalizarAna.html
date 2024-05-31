@@ -206,78 +206,68 @@
         </div>
         <div>
   <div>
-          <article class="task-preview note">
-            <a href="#"><h3 class="task-title">TAREFA 3</h3></a>
-            <button id="openModalBtn" class="w3-button w3-black"><img src="assets/imgs/details_icon.png"
-              alt="Detalhes icone"
-              class="icon task-icon"
-            /> </button>
-          <div>
-            <div class="progress-container">
-              <h3>Progresso</h3>
-              <div id="progressBar" class="progress-bar">10%</div>
-            </div>
-            <h4>Data de Inicio</h4>
-            <span id="startDate"><h1> Data de Inicio: </h1></span>
-            <h4>Data de Fim</h4>
-            <span id="endDate"><h1>  Data de Fim: </h1> </span>
-            
-            
-            <p class="task-description">
+    <article class="task-preview note">
+      <a href="#"><h3 class="task-title">TAREFA 3</h3></a>
+      <button id="openModalBtn" class="w3-button w3-black">
+          <img src="assets/imgs/details_icon.png" alt="Detalhes icone" class="icon task-icon">
+      </button>
+      <div>
+          <h4>Data de Inicio</h4>
+          <span id="startDate"><h1> Data de Inicio: </h1></span>
+          <h4>Data de Fim</h4>
+          <span id="endDate"><h1>  Data de Fim: </h1> </span>
+          <p class="task-description">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum, ipsum aspernatur. Tempora ipsam placeat consectetur debitis nemo nam dicta, obcaecati aliquam laudantium. Dicta quos maiores unde animi iure! Nihil aspernatur nulla ipsam voluptatem nisi? Dolore atque vitae placeat iusto nulla numquam, tempore, pariatur adipisci repudiandae aliquid asperiores iste praesentium mollitia.
-            </p>
-          </div>
-          
-        </div>
-       
-        <div id="id01" class="w3-modal">
-          <div class="w3-modal-content">
-              <div class="w3-container">
-                  <span id="closeModalBtn" class="w3-button w3-display-topright">&times;</span>
-                  <span>
-                  <h1>Editar tarefa</h1>
-                </span>
-                
-                <div class="form-groupdatas">
+          </p>
+          <div>
+              <img id="taskIconPreference1" src="assets/imgs/note_icon_red.png" alt="Ícone Prioridade 1" class="priority-icon">
+              <img id="taskIconPreference2" src="assets/imgs/note_icon_yellow.png" alt="Ícone Prioridade 2" class="priority-icon">
+              <img id="taskIconPreference3" src="assets/imgs/Untitledicongreentask.png"alt="Ícone Prioridade 3" class="priority-icon">
+      </div>
+  </article>
+  
+  <div id="id01" class="w3-modal">
+      <div class="w3-modal-content">
+          <div class="w3-container">
+              <span id="closeModalBtn" class="w3-button w3-display-topright">&times;</span>
+              <h1>Editar tarefa</h1>
+              <div class="form-groupdatas">
                   <div><h3>Data de inicio:</h3><input type="date" id="startDateInput" name="startDate" required></div>
-                 
                   <div><h3>Data de fim:</h3><input type="date" id="endDateInput" name="endDate" required></div>
               </div>
-              <form>
-                        
-                <input type="checkbox" id="preference1" name="preference1" value="preference1">
-                <label for="preference1">Priorização 1</label><br>
-                <input type="checkbox" id="preference2" name="preference2" value="preference2">
-                <label for="preference2">Priorização 2</label><br>
-                <input type="checkbox" id="preference3" name="preference3" value="preference3">
-                <label for="preference3">Priorização 3</label><br>
-                <input type="checkbox" id="preference4" name="preference4" value="preference4">
-                <label for="preference4">Priorização 4</label><br><br>
-                <div class="progress-container">
-                    
-            </form>
-                  <div class="container">
+              <form id="preferencesForm">
+                  <div>
+                      <input type="checkbox" id="preference1" name="preference1" value="preference1" onchange="updateIcon('preference1')">
+                      <label for="preference1">Prioridade 1</label>
+                      <img id="iconPreference1" src="assets/imgs/note_icon_red.png" alt="Ícone Prioridade 1" class="priority-icon">
+                  </div>
+                  <div>
+                      <input type="checkbox" id="preference2" name="preference2" value="preference2" onchange="updateIcon('preference2')">
+                      <label for="preference2">Prioridade 2</label>
+                      <img id="iconPreference2" src="assets/imgs/note_icon_yellow.png" alt="Ícone Prioridade 2" class="priority-icon">
+                  </div>
+                  <div>
+                      <input type="checkbox" id="preference3" name="preference3" value="preference3" onchange="updateIcon('preference3')">
+                      <label for="preference3">Prioridade 3</label>
+                      <img id="iconPreference3" src="assets/imgs/Untitledicongreentask.png" alt="Ícone Prioridade 3" class="priority-icon">
+                  </div>
+              </form>
+              <div class="container">
+                  <form action="#">
+                      <input type="text" id="nome" name="nome" placeholder="Nome da Tarefa..." required>
+                      <button type="submit">Enviar</button>
+                  </form>
+                  <div class="form-group">
                       <form action="#">
-                          <input type="text" id="nome" name="nome" placeholder="Nome da Tarefa..." required>
-                          <button type="submit">Enviar</button>
+                          <input type="text" id="nome" name="nome" placeholder="Categoria" required>
+                          <select class="form-control" id="to"></select>
                       </form>
-                     
-                      <div class="form-group">
-                          <form action="#">
-                              <input type="text" id="nome" name="nome" placeholder="Categoria" required>
-                              <select class="form-control" id="to"></select>
-                          </form>
-                      </div>
-                      
-                      
-                      <div>
-                        <h3>Progresso</h3>
-                                <div id="progressBar" class="progress-bar">10%</div>
-                            </div>
                   </div>
               </div>
           </div>
       </div>
+  </div>
+  
       
 </body>
 
