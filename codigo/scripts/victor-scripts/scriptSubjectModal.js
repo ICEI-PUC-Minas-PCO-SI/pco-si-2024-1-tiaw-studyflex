@@ -6,10 +6,21 @@ const createSubjectBtn = document.getElementById("createSubjectBtn");
 const closeSubjectBtn = document.getElementById("closeSubjectBtn");
 const createSubjectModal = document.getElementById("createSubjectModal");
 
-//SENDING THE NEW SUBJECT TO RHE DB.JSON - POST METHOD
-createSubjectBtn.addEventListener("click", () => {
-  createSubjectModal.showModal();
-});
+//GETTING THE SUBJECTS
+async function fetchSubjects() {
+  try {
+    const response = await fetch(URL_MATERIAS);
+    if (response.ok) {
+      const subjectData = await response.json();
+      for (let i = 0; i < subjectData.lenght; i++) {
+        console.log(subjectData[i]);
+      }
+      console.log("Es");
+    }
+  } catch (error) {}
+}
+
+fetchSubjects();
 
 //Getting knowladge about the form to create a suject
 const createSubjectForm = document.getElementById("newSubjectForm");
@@ -33,16 +44,18 @@ createSubjectForm.addEventListener("submit", async (e) => {
     });
 
     if (reponse.ok) {
-      alert("Matéria criada com sucesso");
     } else {
-      alert("Erro ao criar matéria");
     }
   } catch (error) {
-    console.log("Error:", error);
     alert("Erro ao criar matéria");
   }
 });
 
 closeSubjectBtn.addEventListener("click", () => {
   createSubjectModal.close();
+});
+
+//SENDING THE NEW SUBJECT TO RHE DB.JSON - POST METHOD
+createSubjectBtn.addEventListener("click", () => {
+  createSubjectModal.showModal();
 });

@@ -97,6 +97,14 @@
     {
       "nome": "TIAW",
       "id": 16
+    },
+    {
+      "nome": "Filosofia",
+      "id": 17
+    },
+    {
+      "nome": "Introdução a computação",
+      "id": 18
     }
   ]
 }
