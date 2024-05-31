@@ -522,8 +522,6 @@ nav {
   height: 80%;
   max-height: 800px; /* Limite máximo de altura */
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
 }
 
 .close {
