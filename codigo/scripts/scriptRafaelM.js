@@ -1,56 +1,88 @@
-  // JSON Exemplo
-  const dbjson = {
-    "nomeMateria": "Javagdfs",
-    "totalTarefas": 4,
-    "tarefasFeitas": 3
-};
-
-// Obter os valores do JSON e atualizar a página
-const nomeMateria = dbjson.nomeMateria;
-const totalTarefas = dbjson.totalTarefas;
-const tarefasFeitas = dbjson.tarefasFeitas;
-
-// Mostrar o nome da matéria
-mostrarNomeMateria(nomeMateria);
-
-// Calcular a porcentagem de progresso
-calcularPorcentagem(totalTarefas, tarefasFeitas);
-
-// Função para mostrar o nome da matéria
-function mostrarNomeMateria(nome) {
-    var nomeTarefa = document.querySelector("#nomeTarefa");
-    nomeTarefa.innerHTML = nome;
-}
-
-// Função para calcular a porcentagem de tarefas concluídas e atualizar o progresso
-function calcularPorcentagem(total, feitas) {
-   
-    // Calcular a porcentagem
-    const porcentagem = (feitas / total) * 100;
-
-    // Limitar a porcentagem entre 0 e 100
-    const porcentagemLimite = Math.max(0, Math.min(100, porcentagem));
-
-    const progresso = document.querySelector("#level-progress");
-    const contador = document.querySelector("#nivelProgresso");
-
-    // Verificador de valor (Se é inteiro ou não)
-    let porcentagemContador;
-    if (Number.isInteger(porcentagemLimite)) {
-        porcentagemContador = porcentagemLimite.toString();
-    } 
-    else {
-        porcentagemContador = porcentagemLimite.toFixed(1);
-
-        // Verificador caso a casa decimal comece com 0 (Não mostrar caso ocorra)
-        if (porcentagemContador.endsWith('.0')) {
-            porcentagemContador = porcentagemLimite.toFixed(0);
-        }
+ // Example JSON
+ const dbjson = [
+    {
+        "nomeMateria": "Javagdfs",
+        "totalTarefas": 8,
+        "tarefasFeitas": 5
+    },
+    {
+        "nomeMateria": "Sinuca",
+        "totalTarefas": 20,
+        "tarefasFeitas": 20
+    },
+    {
+        "nomeMateria": "Tiaw",
+        "totalTarefas": 20,
+        "tarefasFeitas": 10
+    },
+    {
+        "nomeMateria": "Introdução à Computação",
+        "totalTarefas": 12,
+        "tarefasFeitas": 10
+    },
+    {
+        "nomeMateria": "DIW",
+        "totalTarefas": 8,
+        "tarefasFeitas": 3
     }
+];
 
-    progresso.style.width = porcentagemLimite + '%';
-    contador.innerHTML = `${porcentagemContador}%`;
+
+function createAndAppendProgressItems(data) {
+    const progressoBloco = document.getElementById('blocodeprogresso');
+    data.forEach(item => {
+        // Create elements
+        const flexContainer = document.createElement('div');
+        flexContainer.className = 'flex-container';
+
+        const nomeTarefaClone = document.createElement('h4');
+        nomeTarefaClone.textContent = item.nomeMateria;
+
+        const porcentagemClone = document.createElement('div');
+        porcentagemClone.className = 'porcentagemClone';
+
+        const nivelProgressoClone = document.createElement('h4');
+        porcentagemClone.appendChild(nivelProgressoClone);
+
+        flexContainer.appendChild(nomeTarefaClone);
+        flexContainer.appendChild(porcentagemClone);
+
+        const progressBarClone = document.createElement('div');
+        progressBarClone.className = 'progress-barClone';
+
+        const levelProgressClone = document.createElement('div');
+        levelProgressClone.className = 'level-progressClone';
+
+        progressBarClone.appendChild(levelProgressClone);
+
+        progressoBloco.appendChild(flexContainer);
+        progressoBloco.appendChild(progressBarClone);
+
+        // Calcular a porcentagem
+        const porcentagem = (item.tarefasFeitas / item.totalTarefas) * 100;
+        const porcentagemLimite = Math.max(0, Math.min(100, porcentagem));
+        let porcentagemContador;
+        
+        //IF para limitar a porcentagem de 0 a 100 
+        if (Number.isInteger(porcentagemLimite)) {
+            porcentagemContador = porcentagemLimite.toString();
+        } 
+        else {
+            porcentagemContador = porcentagemLimite.toFixed(1);
+           
+            //IF para verificar se a primeira casa decimal é 0 (Não mostrar caso ocorra)
+            if (porcentagemContador.endsWith('.0')) {
+                porcentagemContador = porcentagemLimite.toFixed(0);
+            }
+        }
+
+        levelProgressClone.style.width = porcentagemLimite + '%';
+        nivelProgressoClone.textContent = `${item.tarefasFeitas} / ${item.totalTarefas} (${porcentagemContador}%)`;
+    });
 }
+
+
+createAndAppendProgressItems(dbjson);
 
 //Função para criar tarefas
 function criarTarefa() {
