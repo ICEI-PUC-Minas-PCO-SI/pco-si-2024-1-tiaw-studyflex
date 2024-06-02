@@ -250,10 +250,63 @@
                   <i data-lucide="filter"></i>
                   <span>Filtrar</span>
                 </button>
+  
+                <!--MODAL PARA FILTRO-->
+                <div class="search-task-modal" id="filterTaskModal">
+                  <ul id="filterOptions">
+                    <li class="filter-group" id="statusGroup">
+                      <div class="filter-group-title">
+                        <span>Status</span>
+                        <i data-lucide="chevron-down"></i>
+                      </div>
+                      <ul  class="filter-options" id="statusOptions">
+                        <li class="filter-option"><i data-lucide="circle-dot"></i><span>Fazer</span></li>
+                        <li class="filter-option"><i data-lucide="circle-minus"></i><span>Fazendo</span></li>
+                      </ul>
+                    </li>
+                    <li class="filter-group" id="priorityGroup">
+                      <div class="filter-group-title">
+                        <span>Prioridade</span>
+                        <i data-lucide="chevron-down"></i>
+                      </div>
+                      <ul class="filter-options" id="priorityOptions">
+                        <li class="filter-option"><i data-lucide="flag"></i></i><span>Normal</span></li>
+                        <li class="filter-option"><i data-lucide="flag"></i><span>Alta</span></li>
+                        <li class="filter-option"><i data-lucide="flag"></i></i><span>Urgente</span></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+  
                 <button id="sortTask" class="search-task-button">
                   <i data-lucide="arrow-up-down"></i>
                   <span>Ordenar</span>
                 </button>
+  
+                <!--MODAL PARA ORDEM-->
+                <div class="search-task-modal" id="sortTaskModal">
+                  <ul id="sortOptions">
+                    <li class="sort-option dataFinal">
+                      <span>Data final crescente</span>     
+                    </li>
+                    <li class="sort-option  dataFinal" >
+                      <span>Data final decrescente</span>           
+                    </li>
+                    <li class="sort-option status" >   
+                      <span>Status crescente</span>
+                    </li>
+                    <li class="sort-option status" >   
+                      <span>Status decrescente</span>
+                    </li>
+                    <li class="sort-option prioridade">
+                      <span>Prioridade crescente</span>             
+                    </li>
+                    <li class="sort-option prioridade">
+                      <span>Prioridade decrescente</span>             
+                    </li>
+                  </ul>
+                </div>
+  
               </div>
             </div>
           </div>

@@ -66,7 +66,7 @@ button {
 main {
   grid-column: 2/4;
   grid-row: 3/4;
-  padding: 16px 32px;
+  padding: 16px 64px;
 }
 
 h2 {
@@ -1392,16 +1392,18 @@ auto .add-button:hover {
 #sortTaskModal {
   position: absolute;
   margin-left: 150px;
+  width: fit-content;
 }
 
 .sort-option-title {
   display: flex;
   align-items: center;
   gap: 6px;
+  font-size: 14px;
 }
 
 .sort-type {
-  display: none;
+  display: inline;
 }
 
 .sort-type.active {
