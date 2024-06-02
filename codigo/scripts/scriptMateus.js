@@ -1,82 +1,128 @@
-// Simulação de dados de tarefas em JSON
-var tasks = {
-  "2024-05-09": ["Tarefa 1", "Tarefa 2"],
-  "2024-05-15": ["Tarefa 3"]
-};
+$(document).ready(function () {
+  // Inicialmente, as tarefas estão vazias. Elas serão carregadas da API.
+  let tasks = [];
 
-var flatpickr;
+  // Função para carregar tarefas do servidor
+  function loadTasks() {
+    return fetch("http://localhost:3000/tarefas")
+      .then((response) => response.json())
+      .then((data) => {
+        // Mapeando os dados recebidos para o formato necessário
+        tasks = data.map((item) => ({
+          date: item.dataFinal,
+          title: item.nome,
+        }));
+      })
+      .catch((error) => {
+        console.error("Erro ao carregar tarefas:", error);
+      });
+  }
 
-var maxDate = {
-  1: new Date(new Date().setMonth(new Date().getMonth() + 5)),
-  2: new Date(new Date().setMonth(new Date().getMonth() + 4)),
-  3: new Date(new Date().setMonth(new Date().getMonth() + 3)),
-  4: new Date(new Date().setMonth(new Date().getMonth() + 2)),
-  5: new Date(new Date().setMonth(new Date().getMonth() + 1)),
-  6: new Date()
-};
+  // Atualiza o título do dia atual
+  function updateTitle(dateStr) {
+    const formattedDate = moment(dateStr).format("dddd, D [de] MMMM");
+    const taskInfoTitle = document.querySelector(".task-info-title");
+    taskInfoTitle.innerHTML = `<strong>${
+      formattedDate.split(",")[0]
+    }</strong>, ${formattedDate.split(",")[1]}`;
+  }
 
-// Função para exibir tarefas
-function showTasks(date) {
-  var contents = '';
-  if (tasks[date]) {
-    tasks[date].forEach(function (task) {
-      contents += task + ' ';
+  // Inicialização do calendário pequeno
+  function initializeSmallCalendar() {
+    flatpickr("#smallCalendar", {
+      inline: true,
+      locale: "pt", // Define o idioma para português
+      appendTo: document.getElementById("smallCalendarPlaceholder"),
+      onDayCreate: function (dObj, dStr, fp, dayElem) {
+        const date = dayElem.dateObj.toISOString().split("T")[0];
+        const task = tasks.find((task) => task.date === date);
+        if (task) {
+          dayElem.classList.add("task-day");
+        }
+      },
+      onChange: function (selectedDates, dateStr, instance) {
+        showModal(dateStr);
+        console.log("ABRIU");
+      },
     });
-  } else {
-    contents = 'Nenhuma tarefa neste dia.';
   }
-  alert(contents);
-}
 
-// Flatpickr para o calendário pequeno
-var smallFlatpickr = $('#calendar .placeholder').flatpickr({
-  inline: true,
-  defaultDate: "today",
-  onChange: function (selectedDates, dateStr, instance) {
-    showTasks(dateStr);
-  }
-});
+  function showModal(dateStr) {
+    const modal = document.getElementById("calendarModal");
+    const eventDetails = document.getElementById("eventDetails");
+    const selectedDate = document.getElementById("selectedDate");
 
-// Flatpickr para o calendário grande
-var largeFlatpickr = $('#large-calendar').flatpickr({
-  mode: "single",
-  defaultDate: "today",
-  inline: true,
-  onChange: function (selectedDates, dateStr, instance) {
-    showTasks(dateStr);
-  }
-});
+    // Limpar conteúdo anterior
+    eventDetails.innerHTML = "";
 
-function eventCalendarResize($el) {
-  var width = $el.width();
-  if (flatpickr.selectedDates.length) {
-    flatpickr.clear();
-  }
-  if (width >= 992) {
-    flatpickr.set('showMonths', 3);
-    flatpickr.set('maxDate', maxDate[3]);
-  }
-  if (width < 992 && width >= 768) {
-    flatpickr.set('showMonths', 2);
-    flatpickr.set('maxDate', maxDate[2]);
-  }
-  if (width < 768) {
-    flatpickr.set('showMonths', 1);
-    flatpickr.set('maxDate', maxDate[1]);
-    $('.flatpickr-calendar').css('width', '');
-  }
-}
+    // Adicionar detalhes do evento (ou data clicada)
+    const dateTasks = tasks.filter((task) => task.date === dateStr);
+    const formattedDate = moment(dateStr).format("dddd, D [de] MMMM");
 
-// Atualizar data atual
-var currentDate = new Date();
-$('.task-info-title').text(currentDate.toLocaleDateString("pt-BR", { day: "2-digit", weekday: "long", year: "numeric" }));
+    selectedDate.innerHTML = formattedDate;
 
-// Evento para abrir o modal grande
-$('.calendar-overlay').on('click', function () {
-  $('.large-cal-modal-container').removeClass('hidden');
-});
+    if (dateTasks.length > 0) {
+      dateTasks.forEach((task) => {
+        const div = document.createElement("div");
+        div.innerText = task.title;
+        eventDetails.appendChild(div);
+      });
+    } else {
+      eventDetails.innerHTML = "<div>Sem tarefas</div>";
+    }
 
-// Evento para fechar o modal grande
-$('.close-modal').on('click', function () {
-  $('.large-cal-modal-container').addClass('hidden');
+    // Inicializar o calendário grande dentro do modal
+    $("#largeCalendar").fullCalendar("destroy");
+    $("#largeCalendar").fullCalendar({
+      header: {
+        left: "prev,next today",
+        center: "title",
+        right: "month,agendaWeek,agendaDay",
+      },
+      locale: "pt-br", // Define o idioma para português
+      defaultDate: dateStr,
+      navLinks: true,
+      editable: true,
+      eventLimit: true,
+      contentHeight: "auto", // Ajustar a altura do conteúdo
+      events: tasks.map((task) => ({
+        title: task.title,
+        start: task.date,
+      })),
+      dayClick: function (date, jsEvent, view) {
+        showModal(date.format());
+        console.log("ABRIU");
+      },
+    });
+
+    // Exibir o modal
+    modal.style.display = "block";
+  }
+
+  var closeBtn = document.querySelector("#calendarModal .close");
+
+  closeBtn.onclick = function () {
+    var modal = document.getElementById("calendarModal");
+    modal.style.display = "none";
+  };
+
+  window.onclick = function (event) {
+    var modal = document.getElementById("calendarModal");
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+
+  // Carregar as tarefas e inicializar o calendário após o carregamento
+  loadTasks().then(() => {
+    initializeSmallCalendar();
+    console.log("ABRIU");
+
+    // Atualiza o título com a data de hoje ao carregar a página
+    const today = moment().format("YYYY-MM-DD");
+    updateTitle(today);
+  });
+
+  // Configurar Moment.js para português
+  moment.locale("pt-br");
 });

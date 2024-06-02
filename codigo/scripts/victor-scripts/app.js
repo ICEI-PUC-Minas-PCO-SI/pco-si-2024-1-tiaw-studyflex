@@ -1,10 +1,6 @@
 //SELECT SCRIPT
 lucide.createIcons();
 
-//URL API DE DADOS
-const URL_TAREFAS = "http://localhost:3000/tarefas";
-const URL_MATERIAS = "http://localhost:3000/materias";
-
 //URL ATUAL
 let currentURL = window.location.href;
 
@@ -30,21 +26,15 @@ const taskContainer = document.getElementById("taskContainer");
 
 //FUNCTIONS --------------
 
-//See if there is tasks to show
-
-// Make a GET request to the JSON server
 /*
 fetch(URL_MATERIAS)
   .then((response) => {
-    // Check if the response is successful (status code 200)
     if (!response.ok) {
       throw new Error("Erro ao realizar a requisição");
     }
-    // Parse the JSON response
     return response.json();
   })
   .then((data) => {
-    // Use the JSON data
     for (let i = 0; i < data.length; i++) {
       var childElement = document.createElement("option");
       childElement.textContent = data[i].nome;

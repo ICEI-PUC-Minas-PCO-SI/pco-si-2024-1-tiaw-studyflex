@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8" />
@@ -13,7 +13,16 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="./styles/style.css" />
   <link rel="stylesheet" href="./styles/styleRafaelM.css">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="./assets/imgs/StudyFlex_logo.ico" />
+  <!-- Flatpickr CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <!-- FullCalendar CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
   <title>StudyFlex</title>
 </head>
 
@@ -169,55 +178,51 @@
         <!-- Começo - Calendário -->
 
         <section class="homescreen-task-info">
-          <div id="lateral-modais">
-            <div class="progresso-calendario">
-              <article class="calendar-view">
-                <h3 class="task-info-title">
-                  <strong>Quarta-feira</strong>, 24 de janeiro
-                </h3>
+          <div class="container-calendar-total">
+            <article class="calendar-view">
+              <h3 class="task-info-title">
 
-                <div class="cal-modal-container">
-                  <div class="cal-modal">
-                    <div class="current-date"></div>
-                    <div class="calendar-container">
-                      <!-- Nova div para centralizar -->
-                      <div id="calendar" class="small-calendar">
-                        <div class="placeholder"></div>
-                      </div>
-                    </div>
-                    <div class="calendar-overlay"></div>
+                <strong>Quarta-feira</strong>, 24 de janeiro
+              </h3>
+              <input type="text" id="smallCalendar" placeholder="Select Date" style="visibility: hidden;">
+              <div id="smallCalendarContainer">
+                <div id="smallCalendarPlaceholder"></div>
+              </div>
+              <div id="calendarModal">
+                <div class="modal-header">
+                  <h3 id="selectedDate"></h3>
+                  <span class="close">&times;</span>
+                </div>
+                <div class="calendar-container">
+                  <div id="largeCalendar"></div>
+                  <div id="eventDetails"></div>
+                </div>
+              </div>
+            </article>
+            <!-- Final - Calendário -->
+
+            <!--Começo - Progresso da disciplina-->
+
+            <div class="container-progress">
+              <article class="task-progress">
+                <h2 class="task-progress-info">Progresso das disciplinas</h2>
+                <div id="name-task-progress" class="flex-container">
+                  <h4 id="nomeTarefa">Tarefa</h4>
+                  <div class="porcentagem" id="progress-percentage">
+                    <h4 id="nivelProgresso"></h4>
                   </div>
                 </div>
-
-                <!-- Modal Grande -->
-                <div class="large-cal-modal-container hidden">
-                  <div class="large-cal-modal">
-                    <button class="close-modal">×</button>
-                    <div id="large-calendar" class="large-calendar"></div>
-                  </div>
+                <div class="progress-bar">
+                  <div id="level-progress"></div>
                 </div>
               </article>
-              <!-- Final - Calendário -->
-
-              <!--Começo - Progresso da disciplina-->
-
-              <div class="container-progress">
-                <article class="task-progress">
-                  <h2 class="task-progress-info">Progresso da disciplina</h2>
-                  <div id="name-task-progress">
-                    <h4 id="nomeTarefa">Tarefa</h4>
-                    <div class="porcentagem" id="progress-percentage">
-                      <h4 id="nivelProgresso">100%</h4>
-                    </div>
-                  </div>
-                  <div class="progress-bar">
-                    <div id="level-progress"></div>
-                  </div>
-                </article>
-              </div>
             </div>
           </div>
+
   </div>
+
+
+
   <!--Final - Progresso da disciplina-->
 
   </section>
@@ -226,10 +231,16 @@
   </main>
   </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="./scripts/victor-scripts/scriptTaskModal.js" async></script>
+<script src="./scripts/victor-scripts/app.js" async></script>
 <script src="./scripts/scriptMateus.js"></script>
-<script src="./scripts/scriptVictor.js" defer></script>
 <script src="scripts/scriptRafaelM.js"></script>
+
+
 
 </html>

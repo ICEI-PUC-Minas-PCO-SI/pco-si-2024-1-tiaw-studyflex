@@ -1,3 +1,8 @@
+body{
+    width: 100vw;
+    height: 100vh;
+}
+
 /* COMEÇO - LOGO DO SITE */
 
 .website-logo {
@@ -72,17 +77,16 @@
 
 /* COMEÇO - CALENDÁRIO E PROGRESSO DAS DISCIPLINAS */
 
-
+.container-calendar-total{
+    width: 350px;
+    align-items: center;
+    justify-content: center;
+}
 
 /*FIM - CALENDÁRIO E PROGRESSO DAS DISCIPLINAS */
-.progresso-calendario{
-   
-   
-}
+
 /* COMEÇO - PROGRESSOS DAS DISCIPLINAS */
-.task-info-title {
-    text-align: center;
-}
+
 
 .container-progress {
     display: flex;
@@ -96,32 +100,27 @@
 }
 
 .task-progress-info {
-    text-align: left;
+    margin-bottom: 10px;
 }
 
-#name-task-progress {
-    margin-top: 15px;
-    margin-left: 4px;
-    text-align: left;
+.flex-container {
     display: flex;
-}
-
-#progress-percentage {
-    margin-left: 188px;
+    justify-content: space-between; 
+    align-items: center; 
 }
 
 .progress-bar {
-    width: 270px;
-    height: 12.5px;
-    border-radius: 10px;
-    border: 2px solid black;
-    background-color: white;
+    width: 100%;
+    height: 12px;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 30px;
+    overflow: hidden;
 }
 
-.progress-bar #level-progress {
+#level-progress {
     height: 100%;
-    border-radius: 10px;
     background-color: #8AA17B;
+    
 }
-
 /* FIM - PROGRESSOS DAS DISCIPLINAS */
