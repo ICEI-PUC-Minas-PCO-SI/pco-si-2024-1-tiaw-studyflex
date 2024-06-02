@@ -400,7 +400,5 @@ sortButton.addEventListener("click", () => {
   sortModal.classList.toggle("active");
 
   const sortOption = document.querySelectorAll(".sort-option");
-  sortOption.forEach((option) => {
-    console.log(option);
-  });
+  sortOption.forEach((option) => {});
 });
