@@ -1,35 +1,49 @@
-// Função para mostrar o progresso da tarefa da disciplina
-var nomeTarefa = document.querySelector("#nomeTarefa");
-nomeTarefa.innerHTML = 'Java';
-
-//JSON Exemplo
-const dadosTarefas = {
-    "totalTarefas": 21,
-    "tarefasFeitas": 22
+  // JSON Exemplo
+  const dbjson = {
+    "nomeMateria": "Javagdfs",
+    "totalTarefas": 4,
+    "tarefasFeitas": 3
 };
+
+// Obter os valores do JSON e atualizar a página
+const nomeMateria = dbjson.nomeMateria;
+const totalTarefas = dbjson.totalTarefas;
+const tarefasFeitas = dbjson.tarefasFeitas;
+
+// Mostrar o nome da matéria
+mostrarNomeMateria(nomeMateria);
+
+// Calcular a porcentagem de progresso
+calcularPorcentagem(totalTarefas, tarefasFeitas);
+
+// Função para mostrar o nome da matéria
+function mostrarNomeMateria(nome) {
+    var nomeTarefa = document.querySelector("#nomeTarefa");
+    nomeTarefa.innerHTML = nome;
+}
 
 // Função para calcular a porcentagem de tarefas concluídas e atualizar o progresso
 function calcularPorcentagem(total, feitas) {
-
-    //Calcular a porcentagem
+   
+    // Calcular a porcentagem
     const porcentagem = (feitas / total) * 100;
 
-    //Limite de 0 a 100
+    // Limitar a porcentagem entre 0 e 100
     const porcentagemLimite = Math.max(0, Math.min(100, porcentagem));
 
     const progresso = document.querySelector("#level-progress");
     const contador = document.querySelector("#nivelProgresso");
-    
-    //Verificador se o valor é inteiro
+
+    // Verificador de valor (Se é inteiro ou não)
     let porcentagemContador;
-    if (Number.isInteger(porcentagemLimite)){
+    if (Number.isInteger(porcentagemLimite)) {
         porcentagemContador = porcentagemLimite.toString();
-    }
-    else{
+    } 
+    else {
         porcentagemContador = porcentagemLimite.toFixed(1);
-        
-        //Verificador caso a casa decimal comece com 0 (Não mostrar caso ocorra)
-        if (porcentagemContador.endsWith('.0')){
+
+        // Verificador caso a casa decimal comece com 0 (Não mostrar caso ocorra)
+        if (porcentagemContador.endsWith('.0')) {
             porcentagemContador = porcentagemLimite.toFixed(0);
         }
     }
@@ -37,11 +51,6 @@ function calcularPorcentagem(total, feitas) {
     progresso.style.width = porcentagemLimite + '%';
     contador.innerHTML = `${porcentagemContador}%`;
 }
-
-// Obter os valores do JSON e calcular a porcentagem de progresso
-const totalTarefas = dadosTarefas.totalTarefas;
-const tarefasFeitas = dadosTarefas.tarefasFeitas;
-calcularPorcentagem(totalTarefas, tarefasFeitas);
 
 //Função para criar tarefas
 function criarTarefa() {
