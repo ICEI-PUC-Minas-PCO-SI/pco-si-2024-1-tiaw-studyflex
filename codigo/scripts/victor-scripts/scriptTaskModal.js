@@ -21,7 +21,7 @@ let skip;
 let keyFilter, valueFilter;
 
 //Fetching tasks
-const taskPerPage = 2;
+const taskPerPage = 4;
 let URL_TAREFAS_PAGE;
 
 async function fetchTasks() {
@@ -337,11 +337,12 @@ createTaskButton.addEventListener("click", () => {
   });
 });
 
-//GETTING TASKS (METHOD:GET)
+//FILTERING TASKS
 
 const filterButton = document.getElementById("filterTask");
 const sortButton = document.getElementById("sortTask");
 const filterModal = document.getElementById("filterTaskModal");
+const sortModal = document.getElementById("sortTaskModal");
 const statusFilter = document.getElementById("statusGroup");
 const priorityFilter = document.getElementById("priorityGroup");
 const statusOptions = document.getElementById("statusOptions");
@@ -390,5 +391,16 @@ filterButton.addEventListener("click", () => {
   priorityFilter.addEventListener("click", () => {
     statusOptions.classList.remove("active");
     priorityOptions.classList.toggle("active");
+  });
+});
+
+//SORT TASKS
+
+sortButton.addEventListener("click", () => {
+  sortModal.classList.toggle("active");
+
+  const sortOption = document.querySelectorAll(".sort-option");
+  sortOption.forEach((option) => {
+    console.log(option);
   });
 });
