@@ -1271,8 +1271,7 @@ auto .add-button:hover {
   display: none;
 }
 
-/*filter/sort elements*/
-
+/* filter/sort elements */
 #filterTask,
 #sortTask {
   position: relative;
@@ -1282,12 +1281,21 @@ auto .add-button:hover {
   background-color: #d8d8d8;
 }
 
+.filter-group-title {
+  background-color: #ffffff;
+}
+
 .search-task-modal {
   position: absolute;
   border: 1px solid #8aa17b;
   border-bottom: none;
   margin-top: 64px;
   color: #414b3b;
+  display: none;
+}
+
+.search-task-modal.active {
+  display: block;
 }
 
 .search-task-modal li {
@@ -1324,6 +1332,14 @@ auto .add-button:hover {
   padding: 6px;
   justify-content: space-between;
   gap: 12px;
+}
+
+.filter-options {
+  display: none;
+}
+
+.filter-options.active {
+  display: block;
 }
 
 .filter-options li {
