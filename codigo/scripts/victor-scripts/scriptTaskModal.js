@@ -379,7 +379,6 @@ filterButton.addEventListener("click", () => {
       valueFilter = value;
       page = 1;
       fetchTasksPages(key, value);
-      filterModal.classList.remove("active");
     });
   });
 
