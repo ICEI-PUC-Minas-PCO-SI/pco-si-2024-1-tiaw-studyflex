@@ -1,10 +1,6 @@
- // Example JSON
- const dbjson = [
-    {
-        "nomeMateria": "Javagdfs",
-        "totalTarefas": 8,
-        "tarefasFeitas": 5
-    },
+//Exemplo JSON
+const dbjson = [
+
     {
         "nomeMateria": "Sinuca",
         "totalTarefas": 20,
@@ -24,14 +20,19 @@
         "nomeMateria": "DIW",
         "totalTarefas": 8,
         "tarefasFeitas": 3
+    },
+    {
+        "nomeMateria": "Java",
+        "totalTarefas": 8,
+        "tarefasFeitas": 5
     }
 ];
 
 
-function createAndAppendProgressItems(data) {
+function atualizarProgresso(data) {
     const progressoBloco = document.getElementById('blocodeprogresso');
     data.forEach(item => {
-        // Create elements
+
         const flexContainer = document.createElement('div');
         flexContainer.className = 'flex-container';
 
@@ -58,18 +59,18 @@ function createAndAppendProgressItems(data) {
         progressoBloco.appendChild(flexContainer);
         progressoBloco.appendChild(progressBarClone);
 
-        // Calcular a porcentagem
+        //Calcular a porcentagem
         const porcentagem = (item.tarefasFeitas / item.totalTarefas) * 100;
         const porcentagemLimite = Math.max(0, Math.min(100, porcentagem));
         let porcentagemContador;
-        
+
         //IF para limitar a porcentagem de 0 a 100 
         if (Number.isInteger(porcentagemLimite)) {
             porcentagemContador = porcentagemLimite.toString();
-        } 
+        }
         else {
             porcentagemContador = porcentagemLimite.toFixed(1);
-           
+
             //IF para verificar se a primeira casa decimal é 0 (Não mostrar caso ocorra)
             if (porcentagemContador.endsWith('.0')) {
                 porcentagemContador = porcentagemLimite.toFixed(0);
@@ -82,7 +83,7 @@ function createAndAppendProgressItems(data) {
 }
 
 
-createAndAppendProgressItems(dbjson);
+atualizarProgresso(dbjson);
 
 //Função para criar tarefas
 function criarTarefa() {
