@@ -1,15 +1,14 @@
 //Exemplo JSON
 const dbjson = [
-
     {
-        "nomeMateria": "Sinuca",
+        "nomeMateria": "ATP",
         "totalTarefas": 20,
         "tarefasFeitas": 20
     },
     {
         "nomeMateria": "Tiaw",
-        "totalTarefas": 20,
-        "tarefasFeitas": 10
+        "totalTarefas": 9,
+        "tarefasFeitas": 4
     },
     {
         "nomeMateria": "Introdução à Computação",
@@ -19,12 +18,12 @@ const dbjson = [
     {
         "nomeMateria": "DIW",
         "totalTarefas": 8,
-        "tarefasFeitas": 3
+        "tarefasFeitas": 5
     },
     {
         "nomeMateria": "Java",
-        "totalTarefas": 8,
-        "tarefasFeitas": 5
+        "totalTarefas": 15,
+        "tarefasFeitas": 0
     }
 ];
 
