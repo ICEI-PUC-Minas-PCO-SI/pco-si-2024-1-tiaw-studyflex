@@ -104,6 +104,11 @@ body{
     box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.116);
 }
 
+.tituloProgresso{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
 .task-progress-info {
     margin-bottom: 20px;
 }
