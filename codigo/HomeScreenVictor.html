@@ -148,6 +148,73 @@
               <span>TAREFA</span>
             </button>
           </div>
+        </dialog>
+        <!--MODAL PARA SELECIONAR MATÉRIA PARA INCLUIT NA NAVBAR-->
+      </nav>
+
+      <aside>
+        <!--Lista responsável por organizar os links que levarão o usuário para as diferentes telas da plataforma-->
+        <ul class="aside-menu">
+          <li class="aside-option active" id="dashboardTab">
+            <a href="./HomeScreenVictor.html">
+              <img
+                src="./assets/imgs/menu_icon.png"
+                alt="Dashboard icone"
+                class="option-icon"
+              />
+              <span>Dashboard</span>
+            </a>
+          </li>
+
+          <li class="aside-option" id="tarefasTab">
+            <a href="./tarefas.html">
+              <img
+                src="./assets/imgs/tasks_icon.png"
+                alt="Dashboard icone"
+                class="option-icon"
+              />
+              <span>Tarefas</span>
+            </a>
+          </li>
+          <li class="aside-option" id="anotacoesTab">
+            <a href="#">
+              <img
+                src="./assets/imgs/notes_icon.png"
+                alt="Anotações icone"
+                class="option-icon"
+              />
+              <span>Anotações</span>
+            </a>
+          </li>
+          <li class="aside-option" id="materiasTab">
+            <a href="./materiasVictor.html">
+              <img
+                src="./assets/imgs/materias_icon.png"
+                alt="Matérias icone"
+                class="option-icon"
+              />
+              <span>Matérias</span>
+            </a>
+          </li>
+          <li class="aside-option" id="configTab">
+            <a href="#">
+              <img
+                src="./assets/imgs/config_icon.png"
+                alt="Configurações icone"
+                class="option-icon"
+              />
+              <span>Configurações</span>
+            </a>
+          </li>
+        </ul>
+
+        <!--Botão modo noturno-->
+        <div class="toggle-container">
+          <input type="checkbox" id="check" />
+          <label for="check" class="switch">
+            <span class="slider"></span>
+          </label>
+          <span>Modo Noturno</span>
         </div>
 
         <!--Section para apresentar as tarefas ativas -->
@@ -158,11 +225,74 @@
               <img src="./assets/imgs/close_icon.png" alt="Botão de fechar" draggable="false" class="close-icon" />
             </button>
 
+        <!--Aqui é onde será adcionado as diferentes variações das telas, o conteúdo dinâmico do site-->
+        <section class="homescreen" id="homescreenView">
+          <h1 class="homescreen-title">Dashboard</h1>
+          <div class="tasks-header-container dashboard-page">
+            <form action="" method="get" class="search-bar-container">
+              <input
+                type="search"
+                name=""
+                placeholder="Buscar.."
+                aria-label="Search"
+                class="search-bar"
+              />
+
+                <div class="form-group task-status">
+                  <label for="">
+                    <i data-lucide="loader-circle" class="label-icon"></i>
+                    <span>Status</span>
+                  </label>
+
+                  <div class="select-status">
+                    <div id="category-select-status">
+                      <input type="checkbox" id="options-view-button-status" />
+
+            <div class="task-control-container">
+              <div class="add-btn-container">
+                <button class="create-btn" id="createTaskBtn">
+                  <i data-lucide="plus"></i>
+                  <span>TAREFA</span>
+                </button>
+              </div>
+
+              <div class="search-task-options">
+                <button id="filterTask" class="search-task-button">
+                  <i data-lucide="filter"></i>
+                  <span>Filtrar</span>
+                </button>
+                <button id="sortTask" class="search-task-button">
+                  <i data-lucide="arrow-up-down"></i>
+                  <span>Ordenar</span>
+                </button>
+              </div>
+            </div>
+          </dialog>
+        </section>
+
+          <!-- POP UP PARA CRIAR TAREFA -->
+          <dialog class="create-task-container" id="creteTaskModal">
+            <button class="btn close-btn" id="closeTaskCreatorButton">
+              <img
+                src="./assets/imgs/close_icon.png"
+                alt="Botão de fechar"
+                draggable="false"
+                class="close-icon"
+              />
+            </button>
+
             <!--FORMULARIO PARA CRIAR TAREFA-->
             <div class="form-container">
               <form action="" id="newTaskForm">
                 <div class="form-group task-name">
-                  <input type="text" name="nome" id="taskTitle" placeholder="Nova Tarefa" value="" required />
+                  <input
+                    type="text"
+                    name="nome"
+                    id="taskTitle"
+                    placeholder="Nova Tarefa"
+                    value=""
+                    required
+                  />
                 </div>
 
                 <div class="form-group task-status">
@@ -178,10 +308,27 @@
                       <div id="select-button-status">
                         <div class="title-container-status">
                           <div class="cont" id="currentStatus">
-                            <i data-lucide="loader-circle" id="defaultIconStatus" data-icon="Status" class="active"></i>
-                            <i data-lucide="circle-dot" id="doIcon" data-icon="Fazer"></i>
-                            <i data-lucide="circle-minus" id="doingIcon" data-icon="Fazendo"></i>
-                            <i data-lucide="circle-check" id="doneIcon" data-icon="Feito"></i>
+                            <i
+                              data-lucide="loader-circle"
+                              id="defaultIconStatus"
+                              data-icon="Status"
+                              class="active"
+                            ></i>
+                            <i
+                              data-lucide="circle-dot"
+                              id="doIcon"
+                              data-icon="Fazer"
+                            ></i>
+                            <i
+                              data-lucide="circle-minus"
+                              id="doingIcon"
+                              data-icon="Fazendo"
+                            ></i>
+                            <i
+                              data-lucide="circle-check"
+                              id="doneIcon"
+                              data-icon="Feito"
+                            ></i>
                           </div>
 
                           <div id="selected-value-status">Status</div>
@@ -195,22 +342,40 @@
                     </div>
 
                     <ul id="options-status">
-                      <li class="option-status">
-                        <input type="radio" name="status" value="3" data-label="Fazer" />
+                      <li class="option-status" re>
+                        <input
+                          type="radio"
+                          name="status"
+                          value="3"
+                          data-label="Fazer"
+                          required
+                        />
                         <i data-lucide="circle-dot"></i>
                         <span class="label">Fazer</span>
                         <i data-lucide="check"></i>
                       </li>
 
                       <li class="option-status">
-                        <input type="radio" name="status" value="2" data-label="Fazendo" />
+                        <input
+                          type="radio"
+                          name="status"
+                          value="2"
+                          data-label="Fazendo"
+                          required
+                        />
                         <i data-lucide="circle-minus"></i>
                         <span class="label">Fazendo</span>
                         <i data-lucide="check"></i>
                       </li>
 
                       <li class="option-status">
-                        <input type="radio" name="status" value="1" data-label="Feito" />
+                        <input
+                          type="radio"
+                          name="status"
+                          value="1"
+                          data-label="Feito"
+                          required
+                        />
                         <i data-lucide="circle-check"></i>
                         <span class="label">Feito</span>
                         <i data-lucide="check"></i>
@@ -226,7 +391,7 @@
                   </label>
 
                   <div class="select-container">
-                    <select name="formSubject" id="taskSubject"></select>
+                    <select name="materia" id="taskSubject"></select>
                   </div>
                 </div>
 
@@ -236,7 +401,12 @@
                     <span>Data final</span>
                   </label>
 
-                  <input type="date" name="dataFinal" id="TaskEndDate" value="" />
+                  <input
+                    type="date"
+                    name="dataFinal"
+                    id="TaskEndDate"
+                    required
+                  />
                 </div>
 
                 <div class="form-group task-priority">
@@ -252,7 +422,11 @@
                       <div id="select-button">
                         <div class="title-container">
                           <div class="cont" id="currentStatus">
-                            <i data-lucide="flag" id="defaultFlagIcon" data-icon="Prioridade"></i>
+                            <i
+                              data-lucide="flag"
+                              id="defaultFlagIcon"
+                              data-icon="Prioridade"
+                            ></i>
                           </div>
 
                           <div id="selected-value">Prioridade</div>
@@ -267,21 +441,39 @@
 
                     <ul id="options">
                       <li class="option">
-                        <input type="radio" name="prioridade" value="1" data-label="Normal" />
+                        <input
+                          type="radio"
+                          name="prioridade"
+                          value="1"
+                          data-label="Normal"
+                          required
+                        />
                         <i data-lucide="flag" class="normalFlag"></i>
                         <span class="label">Normal</span>
                         <i data-lucide="check"></i>
                       </li>
 
                       <li class="option">
-                        <input type="radio" name="prioridade" value="2" data-label="Alta" />
+                        <input
+                          type="radio"
+                          name="prioridade"
+                          value="2"
+                          data-label="Alta"
+                          required
+                        />
                         <i data-lucide="flag" class="altaFlag"></i>
                         <span class="label">Alta</span>
                         <i data-lucide="check"></i>
                       </li>
 
                       <li class="option">
-                        <input type="radio" name="prioridade" value="3" data-label="Urgente" />
+                        <input
+                          type="radio"
+                          name="prioridade"
+                          value="3"
+                          data-label="Urgente"
+                          required
+                        />
                         <i data-lucide="flag" class="urgenteFlag"></i>
                         <span class="label">Urgente</span>
                         <i data-lucide="check"></i>
@@ -305,37 +497,70 @@
               </form>
             </div>
           </dialog>
-        </section>
 
-        <!--CALENDÁRIO-->
-        <section class="homescreen-task-info">
-          <article class="calendar-view">
-            <h3 class="task-info-title">
-              <strong>Quarta-feira</strong>, 24 de janeiro
-            </h3>
-            <input type="text" id="smallCalendar" placeholder="Select Date" style="visibility: hidden;">
-            <div id="smallCalendarContainer">
-              <div id="smallCalendarPlaceholder"></div>
+          <!-- LISTA DE TAREFAS ATIVAS -->
+          <section class="tasks-container" id="tasksContainer">
+            <!--LISTA DE TAREFAS CRIADAS -->
+
+            <ul id="taskList"></ul>
+
+            <div class="task-pageButtons-container">
+              <button class="search-task-button" id="prevPage">
+                <i data-lucide="arrow-left"></i>
+              </button>
+              <button class="search-task-button hide" id="nextPage">
+                <i data-lucide="arrow-right"></i>
+              </button>
             </div>
-            <div id="calendarModal">
-              <div class="modal-header">
-                <h3 id="selectedDate"></h3>
-                <span class="close">&times;</span>
-              </div>
-              <div class="calendar-container">
-                <div id="largeCalendar"></div>
-                <div id="eventDetails"></div>
+          </section>
+
+          <!-- DETALHES DA TAREFA -->
+          <dialog class="task-information" id="taskDetailsModal">
+            <button id="editTaskButton"><i data-lucide="pencil"></i></button>
+            <div class="task-information-title">
+              <h2>SPRINT 3</h2>
+              <span>TIAW</span>
+            </div>
+          </dialog>
+
+          <!--CALENDÁRIO-->
+          <section class="homescreen-task-info">
+            <article class="calendar-view">
+              <h3 class="task-info-title">
+                <strong>Quarta-feira</strong>, 24 de janeiro
+              </h3>
+              <div class="cal-modal-container">
+                <div class="cal-modal">
+                  <div class="current-date"></div>
+                  <div class="calendar-container">
+                    <!-- Nova div para centralizar -->
+                    <div id="calendar" class="small-calendar">
+                      <div class="placeholder"></div>
+                    </div>
+                  </div>
+                  <div class="calendar-overlay"></div>
+                </div>
               </div>
             </div>
           </article>
 
-          <article class="progress-view">
-            <!--<h3 class="task-info-title">Progresso da disciplina</h3>-->
-            <!--- <img
-                src="./assets/imgs/progress_placeholder.png"
-                alt="Barras de progresso"
-              />-->
-          </article>
+              <!-- Modal Grande -->
+              <div class="large-cal-modal-container hidden">
+                <div class="large-cal-modal">
+                  <button class="close-modal">×</button>
+                  <div id="large-calendar" class="large-calendar"></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="progress-view">
+              <!--<h3 class="task-info-title">Progresso da disciplina</h3>-->
+              <!--- <img
+      src="./assets/imgs/progress_placeholder.png"
+      alt="Barras de progresso"
+    />-->
+            </article>
+          </section>
         </section>
       </section>
 
@@ -346,6 +571,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/locale/pt-br.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="./scripts/victor-scripts/scriptTaskModal.js" async></script>
   <script src="./scripts/victor-scripts/app.js" async></script>

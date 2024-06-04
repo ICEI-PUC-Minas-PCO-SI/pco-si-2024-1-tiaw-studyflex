@@ -1,35 +1,161 @@
+//URL API DE DADOS
+const URL_TAREFAS = "http://localhost:3000/tarefas";
+
+//WHAT PAGE ARE WE IN?
+let pageTitle = document.querySelector(".homescreen-title").textContent;
+
 //TASK MODAL VARIABLES
 const createTaskModal = document.getElementById("creteTaskModal");
 const createTaskButton = document.getElementById("createTaskBtn");
 const closeTaskButton = document.getElementById("closeTaskCreatorButton");
 
-//FUNCTIONS --------------
+//TASK CONTAINER VARIABLES
+const tasksContainer = document.getElementById("tasksContainer");
+const tasksList = document.getElementById("taskList");
 
-//See if there is tasks to show
+//PAGINATION
+const prevButton = document.getElementById("prevPage");
+const nextButton = document.getElementById("nextPage");
+let page = 1;
+let skip;
 
-// Make a GET request to the JSON server
-/*
-fetch(URL_MATERIAS)
-  .then((response) => {
-    // Check if the response is successful (status code 200)
-    if (!response.ok) {
-      throw new Error("Erro ao realizar a requisição");
+//Fetching tasks
+const taskPerPage = 2;
+let URL_TAREFAS_PAGE;
+
+async function fetchTasks() {
+  try {
+    const response = await fetch(URL_TAREFAS);
+    if (response.ok) {
+      const data = await response.json();
+
+      if (data.length > taskPerPage) {
+        prevButton.classList.remove("hide");
+        nextButton.classList.remove("hide");
+      }
     }
-    // Parse the JSON response
-    return response.json();
-  })
-  .then((data) => {
-    // Use the JSON data
-    for (let i = 0; i < data.length; i++) {
-      var childElement = document.createElement("option");
-      childElement.textContent = data[i].nome;
-      childElement.childElement = taskSubject.appendChild(childElement);
+  } catch (error) {}
+}
+
+fetchTasks();
+
+async function fetchTasksPages() {
+  try {
+    skip = (page - 1) * taskPerPage;
+    if (pageTitle === "Dashboard") {
+      URL_TAREFAS_PAGE = `http://localhost:3000/tarefas?status=2&status=3&_page=${page}&_limit=${taskPerPage}`;
+    } else if (pageTitle === "Tarefas") {
+      URL_TAREFAS_PAGE = `http://localhost:3000/tarefas?_page=${page}&_limit=${taskPerPage}`;
     }
-  })
-  .catch((error) => {
-    // Handle any errors that occurred during the fetch
-    console.error("Erro ao realizar a requisição", error);
-  });*/
+
+    const response = await fetch(URL_TAREFAS_PAGE);
+
+    if (response.ok) {
+      const taskData = await response.json();
+
+      if (taskData.length === 0) {
+        page--;
+
+        return;
+      }
+      tasksList.innerHTML = "";
+      let taskPreview, taskListContent;
+
+      if (taskData.length == 0) {
+      }
+      for (let i = 0; i < taskData.length; i++) {
+        let taskStatus;
+        taskPreview = document.createElement("l1");
+        taskPreview.innerHTML = "";
+
+        taskPreview.classList.add("task-item");
+
+        if (taskData[i].status == 3) {
+          taskStatus = "Fazer";
+        } else if (taskData[i].status == 2) {
+          taskStatus = "Fazendo";
+        } else {
+          taskStatus = "Feito";
+        }
+
+        let taskPriority;
+        if (taskData[i].prioridade == 3) {
+          taskPriority = "Urgente";
+        } else if (taskData[i].prioridade == 2) {
+          taskPriority = "Alta";
+        } else {
+          taskPriority = "Normal";
+        }
+
+        let subjectContent;
+        if (taskData[i].materia === undefined) {
+          subjectContent = "<span class='no-subject'></span>";
+        } else {
+          subjectContent = `<span>${taskData[i].materia}</span>`;
+        }
+
+        let finalDate = new Date(taskData[i].dataFinal);
+        finalDate.setDate(finalDate.getDate() + 1);
+        taskListContent = `
+        <article class="task-item-preview">
+        <div class="task-preview-title">
+          <h2>${taskData[i].nome}</h2>
+          ${subjectContent}
+        </div>
+
+        <div class="task-preview-details">
+          <div class="details-container status-preview">
+          <img src="./assets/imgs/task-icons/status-icon.png" alt="status"> 
+            <span> ${taskStatus}</span>
+          </div>
+          <div class="details-container proridade-preview">
+          <img src="./assets/imgs/task-icons/flag-icon.png" alt="status"/>
+            <span>${taskPriority}</span>
+          </div>
+          <div class="details-container dataFinal-preview">
+          <img src="./assets/imgs/task-icons/calendar-icon.png" alt="status"/>
+            <span>${finalDate.toLocaleDateString("pt-BR", {
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit",
+            })}</span>
+          </div>
+        </div>
+
+        <div class="task-preview-description">
+        <h3>DESCRIÇÃO</h3>
+          <p>
+          ${taskData[i].descricao}
+          </p>
+        </div>
+      </article>
+      `;
+        taskPreview.innerHTML += taskListContent;
+        tasksList.appendChild(taskPreview);
+      }
+    } else {
+    }
+  } catch (error) {
+    {
+      alert(error);
+    }
+  }
+}
+fetchTasksPages();
+
+prevButton.addEventListener("click", () => {
+  if (page === 1) {
+    return;
+  } else {
+    page--;
+    fetchTasksPages();
+  }
+});
+
+nextButton.addEventListener("click", () => {
+  page++;
+  fetchTasksPages();
+});
 
 newTaskForm.addEventListener("submit", () => {
   createTaskModal.close();
@@ -38,26 +164,6 @@ newTaskForm.addEventListener("submit", () => {
 closeTaskButton.addEventListener("click", () => {
   createTaskModal.close();
 });
-
-/*
-    // Use the JSON data
-    for (let i = 0; i < data.length; i++) {
-      /*var taskHtmlElement = `
-          <article class="task-preview note">
-              <a href="#"><h3 class="task-title">${data[i].nome}</h3></a>
-              <a href="#" class="task-subject">${data[i].materia}</a>
-              <p class="task-description">
-              ${data[i].descricao}
-              </p>
-              <button  class="task-details">
-                <img
-                  src="./assets/imgs/details_icon.png"
-                  alt="Detalhes icone"
-                  class="icon task-icon"
-                />
-              </button>
-            </article>
-    `;*/
 
 //STATUS SELECT
 let selectStatus = document.querySelector(".select-status"),
@@ -175,16 +281,22 @@ const taskFinalDate = document.getElementById("TaskEndDate");
 const taskPriority = document.getElementById("selected-value");
 const taskDescription = document.getElementById("taskDescription");
 
-//Create task from homescreen
+//Create task from homescreen - POST METHOD
 createTaskButton.addEventListener("click", () => {
   createTaskModal.showModal();
+
+  //Getting knowladge about the form to create a task
   const newTaskForm = document.getElementById("newTaskForm");
   newTaskForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+    console.log(e.target);
 
+    //Create a formData to get key/values
     const formData = new FormData(e.target);
     const jsonObject = {};
+    console.log(formData);
 
+    //Passing data to the json object
     formData.forEach((value, key) => {
       jsonObject[key] = value;
     });
@@ -195,15 +307,11 @@ createTaskButton.addEventListener("click", () => {
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(jsonObject),
       });
-
-      if (reponse.ok) {
-        alert("Tarefa criada com sucesso");
-      } else {
-        alert("Erro ao criar tarefa");
-      }
     } catch (error) {
       console.log("Error:", error);
       alert("Erro ao criar tarefa");
     }
   });
 });
+
+//GETTING TASKS (METHOD:GET)

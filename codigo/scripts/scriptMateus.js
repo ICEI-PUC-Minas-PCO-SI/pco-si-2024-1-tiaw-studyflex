@@ -1,46 +1,49 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // Inicialmente, as tarefas estão vazias. Elas serão carregadas da API.
   let tasks = [];
 
   // Função para carregar tarefas do servidor
   function loadTasks() {
-    return fetch('http://localhost:3000/tarefas')
-      .then(response => response.json())
-      .then(data => {
+    return fetch("http://localhost:3000/tarefas")
+      .then((response) => response.json())
+      .then((data) => {
         // Mapeando os dados recebidos para o formato necessário
-        tasks = data.map(item => ({
+        tasks = data.map((item) => ({
           date: item.dataFinal,
-          title: item.nome
+          title: item.nome,
         }));
       })
-      .catch(error => {
-        console.error('Erro ao carregar tarefas:', error);
+      .catch((error) => {
+        console.error("Erro ao carregar tarefas:", error);
       });
   }
 
   // Atualiza o título do dia atual
   function updateTitle(dateStr) {
-    const formattedDate = moment(dateStr).format('dddd, D [de] MMMM');
-    const taskInfoTitle = document.querySelector('.task-info-title');
-    taskInfoTitle.innerHTML = `<strong>${formattedDate.split(',')[0]}</strong>, ${formattedDate.split(',')[1]}`;
+    const formattedDate = moment(dateStr).format("dddd, D [de] MMMM");
+    const taskInfoTitle = document.querySelector(".task-info-title");
+    taskInfoTitle.innerHTML = `<strong>${
+      formattedDate.split(",")[0]
+    }</strong>, ${formattedDate.split(",")[1]}`;
   }
 
   // Inicialização do calendário pequeno
   function initializeSmallCalendar() {
     flatpickr("#smallCalendar", {
       inline: true,
-      locale: 'pt', // Define o idioma para português
-      appendTo: document.getElementById('smallCalendarPlaceholder'),
-      onDayCreate: function(dObj, dStr, fp, dayElem) {
-        const date = dayElem.dateObj.toISOString().split('T')[0];
-        const task = tasks.find(task => task.date === date);
+      locale: "pt", // Define o idioma para português
+      appendTo: document.getElementById("smallCalendarPlaceholder"),
+      onDayCreate: function (dObj, dStr, fp, dayElem) {
+        const date = dayElem.dateObj.toISOString().split("T")[0];
+        const task = tasks.find((task) => task.date === date);
         if (task) {
-          dayElem.classList.add('task-day');
+          dayElem.classList.add("task-day");
         }
       },
-      onChange: function(selectedDates, dateStr, instance) {
+      onChange: function (selectedDates, dateStr, instance) {
         showModal(dateStr);
-      }
+        console.log("ABRIU");
+      },
     });
   }
 
@@ -50,45 +53,46 @@ $(document).ready(function() {
     const selectedDate = document.getElementById("selectedDate");
 
     // Limpar conteúdo anterior
-    eventDetails.innerHTML = '';
+    eventDetails.innerHTML = "";
 
     // Adicionar detalhes do evento (ou data clicada)
-    const dateTasks = tasks.filter(task => task.date === dateStr);
-    const formattedDate = moment(dateStr).format('dddd, D [de] MMMM');
+    const dateTasks = tasks.filter((task) => task.date === dateStr);
+    const formattedDate = moment(dateStr).format("dddd, D [de] MMMM");
 
     selectedDate.innerHTML = formattedDate;
 
     if (dateTasks.length > 0) {
-      dateTasks.forEach(task => {
-        const div = document.createElement('div');
+      dateTasks.forEach((task) => {
+        const div = document.createElement("div");
         div.innerText = task.title;
         eventDetails.appendChild(div);
       });
     } else {
-      eventDetails.innerHTML = '<div>Sem tarefas</div>';
+      eventDetails.innerHTML = "<div>Sem tarefas</div>";
     }
 
     // Inicializar o calendário grande dentro do modal
-    $('#largeCalendar').fullCalendar('destroy');
-    $('#largeCalendar').fullCalendar({
+    $("#largeCalendar").fullCalendar("destroy");
+    $("#largeCalendar").fullCalendar({
       header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay'
+        left: "prev,next today",
+        center: "title",
+        right: "month,agendaWeek,agendaDay",
       },
-      locale: 'pt-br', // Define o idioma para português
+      locale: "pt-br", // Define o idioma para português
       defaultDate: dateStr,
       navLinks: true,
       editable: true,
       eventLimit: true,
-      contentHeight: 'auto', // Ajustar a altura do conteúdo
-      events: tasks.map(task => ({
+      contentHeight: "auto", // Ajustar a altura do conteúdo
+      events: tasks.map((task) => ({
         title: task.title,
-        start: task.date
+        start: task.date,
       })),
-      dayClick: function(date, jsEvent, view) {
+      dayClick: function (date, jsEvent, view) {
         showModal(date.format());
-      }
+        console.log("ABRIU");
+      },
     });
 
     // Exibir o modal
@@ -97,27 +101,28 @@ $(document).ready(function() {
 
   var closeBtn = document.querySelector("#calendarModal .close");
 
-  closeBtn.onclick = function() {
+  closeBtn.onclick = function () {
     var modal = document.getElementById("calendarModal");
     modal.style.display = "none";
-  }
+  };
 
-  window.onclick = function(event) {
+  window.onclick = function (event) {
     var modal = document.getElementById("calendarModal");
     if (event.target == modal) {
       modal.style.display = "none";
     }
-  }
+  };
 
   // Carregar as tarefas e inicializar o calendário após o carregamento
   loadTasks().then(() => {
     initializeSmallCalendar();
+    console.log("ABRIU");
 
     // Atualiza o título com a data de hoje ao carregar a página
-    const today = moment().format('YYYY-MM-DD');
+    const today = moment().format("YYYY-MM-DD");
     updateTitle(today);
   });
 
   // Configurar Moment.js para português
-  moment.locale('pt-br');
+  moment.locale("pt-br");
 });

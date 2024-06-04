@@ -1,9 +1,9 @@
 {
   "tarefas": [
     {
-      "nome": "SPRINT 3",
-      "status": "3",
-      "dataFinal": "2024-05-15",
+      "nome": "SPRINT 3 ",
+      "status": "2",
+      "dataFinal": "2024-05-23",
       "prioridade": "3",
       "descricao": "Merda",
       "id": "1"
@@ -21,6 +21,17 @@
       "dataFinal": "",
       "descricao": "",
       "id": "3"
+<<<<<<< HEAD
+=======
+    },
+    {
+      "nome": "a",
+      "status": "1",
+      "dataFinal": "2024-06-07",
+      "prioridade": "3",
+      "descricao": "mANO TENHO QUE FAZER ISSO RÁPIDO!!!!!",
+      "id": "4"
+>>>>>>> 54734bf0be9040a5e486484614003826398730ff
     },
     {
       "nome": "SPRINT 4",
@@ -28,6 +39,7 @@
       "dataFinal": "2024-05-29",
       "prioridade": "3",
       "descricao": "mANO TENHO QUE FAZER ISSO RÁPIDO!!!!!",
+<<<<<<< HEAD
       "id": "4"
     },
     {
@@ -36,6 +48,8 @@
       "dataFinal": "2024-05-29",
       "prioridade": "3",
       "descricao": "mANO TENHO QUE FAZER ISSO RÁPIDO!!!!!",
+=======
+>>>>>>> 54734bf0be9040a5e486484614003826398730ff
       "id": "5"
     },
     {
@@ -69,12 +83,48 @@
       "prioridade": "2",
       "descricao": "teste do lucas galo doido",
       "id": "9"
+<<<<<<< HEAD
+=======
+    },
+    {
+      "id": "5c63",
+      "nome": "asdsadsaas",
+      "status": "3",
+      "dataFinal": "2002-05-07",
+      "prioridade": "1",
+      "descricao": ""
+    },
+    {
+      "id": "0f6e",
+      "nome": "asdassa",
+      "status": "3",
+      "dataFinal": "2201-02-05",
+      "prioridade": "1",
+      "descricao": ""
+    },
+    {
+      "id": "3b2e",
+      "nome": "nova tarefa",
+      "status": "3",
+      "dataFinal": "2024-05-31",
+      "prioridade": "1",
+      "descricao": ""
+    },
+    {
+      "id": "dfe4",
+      "nome": "TULIAO",
+      "status": "3",
+      "dataFinal": "2024-05-31",
+      "prioridade": "1",
+      "descricao": ""
+>>>>>>> 54734bf0be9040a5e486484614003826398730ff
     }
   ],
   "materias": [],
   "notas": [
     {
       "id": 0,
+<<<<<<< HEAD
       "titulo": "Título ",
       "Nota": "Texto da Nota "
     },
@@ -90,3 +140,10 @@
     }
   ]
 }
+=======
+      "titulo": "Título asss",
+      "Nota": "Texto da Nota asdasds\n"
+    }
+  ]
+}
+>>>>>>> 54734bf0be9040a5e486484614003826398730ff
