@@ -412,7 +412,7 @@ nav {
   content: "";
   width: 32px;
   height: 40px;
-  background-image: url(../assets/imgs/note_icon_red.png);
+  
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
@@ -529,36 +529,12 @@ body {
         width: 900px;
     }
 
-    .progress-container {
-        text-align: center;
-        width: 100%;
-        background-color: #f0f0f0;
-        border-radius: 5px;
-        margin: 20px 0;
-        position: relative;
-        height: 30px;
-    }
-
-    .progress-bar {
-        height: 100%;
-        background-color: #b1cc9f;
-        border-radius: 5px;
-        width: var(--progress-width, 10%);
-        transition: width 0.3s ease;
-    }
-
-    .progress-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-family: 'Lato', sans-serif;
-        font-weight: 700;
-        font-size: 14px;
-        color: #586352;
-        pointer-events: none;
-    }
-
+    .priority-icon {
+      display: none;
+      width: 20px;
+      height: 20px;
+  }
+  
     /* Checkbox priorizações */
     .checkbox1 {
         position: absolute;

@@ -88,39 +88,50 @@ body{
 /* COMEÇO - PROGRESSOS DAS DISCIPLINAS */
 
 
+#progress-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
 .container-progress {
     display: flex;
-    margin: 0 auto;
-    margin-top: 20px;
-    width: 300px;
-    height: 250px;
+    flex-direction: column;
+    width: 320px;
+    padding: 20px;
     border-radius: 15px;
-    padding: 15px;
+    background-color: #ffffff;
     box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.116);
 }
 
-.task-progress-info {
+.tituloProgresso{
+    text-align: center;
     margin-bottom: 10px;
+}
+
+.task-progress-info {
+    margin-bottom: 20px;
 }
 
 .flex-container {
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
-.progress-bar {
+.progress-barClone {
     width: 100%;
     height: 12px;
     background-color: #ffffff;
     border: 1px solid #000000;
     border-radius: 30px;
     overflow: hidden;
+    margin-bottom: 15px;
 }
 
-#level-progress {
+.level-progressClone {
     height: 100%;
     background-color: #8AA17B;
-    
 }
 /* FIM - PROGRESSOS DAS DISCIPLINAS */

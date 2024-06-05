@@ -2,64 +2,114 @@ document.addEventListener("DOMContentLoaded", function() {
     const openModalBtn = document.getElementById('openModalBtn');
     const closeModalBtn = document.getElementById('closeModalBtn');
     const modal = document.getElementById('id01');
+    const taskName = document.getElementById('taskName');
+    const taskNameInput = document.getElementById('taskNameInput');
+    const taskNameForm = document.getElementById('taskNameForm');
+    const startDateSpan = document.getElementById('startDate');
+    const endDateSpan = document.getElementById('endDate');
+    const startDateInput = document.getElementById('startDateInput');
+    const endDateInput = document.getElementById('endDateInput');
 
-    // Função para carregar dados do armazenamento local
-    function loadTaskData() {
-        // Verifica se há dados no armazenamento local
-        if (localStorage.getItem('taskData')) {
-            // Se houver, carrega os dados do armazenamento local
-            taskData = JSON.parse(localStorage.getItem('taskData'));
-            // Atualiza as datas no container da tarefa
-            updateTaskDates();
-        }
-    }
-
-    // Objeto JSON para armazenar informações da tarefa
     let taskData = {
+        name: "TAREFA 3",
         startDate: "Data de Início",
         endDate: "Data de Fim"
     };
 
-    // Função para atualizar as datas no container da tarefa
-    function updateTaskDates() {
-        const startDateSpan = document.getElementById('startDate');
-        const endDateSpan = document.getElementById('endDate');
+    function loadTaskData() {
+        if (localStorage.getItem('taskData')) {
+            taskData = JSON.parse(localStorage.getItem('taskData'));
+            updateTaskDetails();
+        }
+    }
+
+    function updateTaskDetails() {
+        taskName.textContent = taskData.name;
         startDateSpan.textContent = taskData.startDate;
         endDateSpan.textContent = taskData.endDate;
     }
 
-    // Abrir o modal
     openModalBtn.addEventListener('click', function() {
         modal.style.display = 'block';
     });
 
-    // Fechar o modal
     closeModalBtn.addEventListener('click', function() {
         modal.style.display = 'none';
     });
 
-    // Event listeners para atualizar o objeto JSON e o armazenamento local quando as datas forem modificadas no modal
-    const startDateInput = document.getElementById('startDateInput');
-    const endDateInput = document.getElementById('endDateInput');
-
     startDateInput.addEventListener('input', function() {
         taskData.startDate = startDateInput.value;
-        // Salva os dados atualizados no armazenamento local
         localStorage.setItem('taskData', JSON.stringify(taskData));
-        updateTaskDates();
+        updateTaskDetails();
     });
 
     endDateInput.addEventListener('input', function() {
         taskData.endDate = endDateInput.value;
-        // Salva os dados atualizados no armazenamento local
         localStorage.setItem('taskData', JSON.stringify(taskData));
-        updateTaskDates();
+        updateTaskDetails();
     });
 
-    // Carrega os dados do armazenamento local ao carregar a página
+    taskNameForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        if (taskNameInput.value.trim() !== "") {
+            taskData.name = taskNameInput.value.trim();
+            localStorage.setItem('taskData', JSON.stringify(taskData));
+            updateTaskDetails();
+            modal.style.display = 'none';
+        }
+    });
+
     loadTaskData();
+    
+    const storedPreferences = JSON.parse(localStorage.getItem('preferences')) || {};
+
+    Object.keys(storedPreferences).forEach(preferenceId => {
+        const checkbox = document.getElementById(preferenceId);
+        const icon = document.getElementById(`icon${preferenceId.charAt(0).toUpperCase() + preferenceId.slice(1)}`);
+        const taskIcon = document.getElementById(`taskIcon${preferenceId.charAt(0).toUpperCase() + preferenceId.slice(1)}`);
+
+        if (storedPreferences[preferenceId]) {
+            checkbox.checked = true;
+            icon.style.display = 'inline';
+            taskIcon.style.display = 'inline';
+        }
+    });
 });
 
+function updateIcon(preferenceId) {
+    const checkbox = document.getElementById(preferenceId);
+    const icon = document.getElementById(`icon${preferenceId.charAt(0).toUpperCase() + preferenceId.slice(1)}`);
+    const taskIcon = document.getElementById(`taskIcon${preferenceId.charAt(0).toUpperCase() + preferenceId.slice(1)}`);
 
+    if (checkbox.checked) {
+        hideAllIconsAndCheckboxes();
+        icon.style.display = 'inline';
+        taskIcon.style.display = 'inline';
+        checkbox.checked = true;
+        savePreferences(preferenceId, true);
+    } else {
+        icon.style.display = 'none';
+        taskIcon.style.display = 'none';
+        checkbox.checked = false;
+        savePreferences(preferenceId, false);
+    }
+}
 
-  
+function hideAllIconsAndCheckboxes() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const icons = document.querySelectorAll('.priority-icon');
+
+    checkboxes.forEach((checkbox) => {
+        checkbox.checked = false;
+    });
+
+    icons.forEach((icon) => {
+        icon.style.display = 'none';
+    });
+}
+
+function savePreferences(preferenceId, isChecked) {
+    const storedPreferences = JSON.parse(localStorage.getItem('preferences')) || {};
+    storedPreferences[preferenceId] = isChecked;
+    localStorage.setItem('preferences', JSON.stringify(storedPreferences));
+}
