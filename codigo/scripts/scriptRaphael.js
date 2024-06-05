@@ -3,15 +3,14 @@ var proximoIdRetangulo = 0;
 var tipoUltimoRetanguloRemovido = null;
 var notas = {};
 
-// URL para onde os dados serão enviados
+
 const URL_NOTAS = "http://localhost:3000/notas";
 
-// Função para adicionar retângulos
 function adicionarRetangulo() {
     var container = document.querySelector(".container2");
     var divClone;
 
-    // Garantir que os elementos originais estão no DOM
+ 
     if (!document.querySelector(".retan1")) {
         var retan1 = document.createElement('div');
         retan1.className = 'retan1 retan';
@@ -94,11 +93,11 @@ function adicionarRetangulo() {
     var addButton = document.querySelector(".Btn");
     container.appendChild(addButton);
 
-    // Adiciona eventos aos botões de editar e excluir do novo retângulo
+  
     adicionarEventos(divClone);
 }
 
-// Função para adicionar eventos de clique aos botões de editar e excluir
+
 function adicionarEventos(retangulo) {
     var botaoExcluir = retangulo.querySelector('.delete');
     botaoExcluir.addEventListener('click', function() {
@@ -111,7 +110,6 @@ function adicionarEventos(retangulo) {
     });
 }
 
-// Função para excluir um retângulo
 function excluirRetangulo(element) {
     var retangulo = element.closest('.retan');
     tipoUltimoRetanguloRemovido = proximoTipoRetangulo;
@@ -123,7 +121,6 @@ function excluirRetangulo(element) {
     }
 }
 
-// Função para liberar os inputs para edição
 function liberarEdicao(element) {
     var id = element.id;
     var tituloOriginal = element.querySelector('.h3').textContent;
@@ -163,7 +160,7 @@ function liberarEdicao(element) {
     });
 }
 
-// Função para salvar as edições e enviar para o servidor
+
 async function salvarEdicao(element, novoTitulo, novoTextoNota) {
     var titulo = document.createElement('h3');
     titulo.className = 'h3';
@@ -209,11 +206,9 @@ async function salvarEdicao(element, novoTitulo, novoTextoNota) {
     }
 }
 
-// Adicionar evento de clique para o botão "+"
 var btnAdicionar = document.querySelector(".add");
 btnAdicionar.addEventListener("click", adicionarRetangulo);
 
-// Adiciona eventos de clique aos botões de editar e excluir dos retângulos existentes
 document.querySelectorAll('.retan').forEach(function(retangulo) {
     adicionarEventos(retangulo);
 });
