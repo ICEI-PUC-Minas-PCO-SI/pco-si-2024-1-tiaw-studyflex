@@ -66,7 +66,7 @@ button {
 main {
   grid-column: 2/4;
   grid-row: 3/4;
-  padding: 16px 32px;
+  padding: 16px 64px;
 }
 
 h2 {
@@ -1249,15 +1249,17 @@ auto .add-button:hover {
   display: none;
 }
 
-/*filter/sort elements*/
-
-#filterTask,
-#sortTask {
+/* filter/sort elements */
+#filterTask {
   position: relative;
 }
 
 .filter-group-title:hover {
   background-color: #d8d8d8;
+}
+
+.filter-group-title {
+  background-color: #ffffff;
 }
 
 .search-task-modal {
@@ -1266,6 +1268,11 @@ auto .add-button:hover {
   border-bottom: none;
   margin-top: 64px;
   color: #414b3b;
+  display: none;
+}
+
+.search-task-modal.active {
+  display: block;
 }
 
 .search-task-modal li {
@@ -1276,7 +1283,8 @@ auto .add-button:hover {
   transition: all 0.2s ease;
 }
 
-.filter-options li:hover {
+.filter-options li:hover,
+.sort-option:hover {
   background-color: #d8d8d8;
 }
 
@@ -1304,7 +1312,16 @@ auto .add-button:hover {
   gap: 12px;
 }
 
-.filter-options li {
+.filter-options {
+  display: none;
+}
+
+.filter-options.active {
+  display: block;
+}
+
+.filter-options li,
+.sort-option {
   border-bottom: 1px solid #8aa17b;
   padding: 6px;
   display: flex;
@@ -1317,7 +1334,8 @@ auto .add-button:hover {
   display: flex;
 }
 
-.filter-options li svg {
+.filter-options li svg,
+.sort-option svg {
   width: 18px;
 }
 
@@ -1343,4 +1361,40 @@ auto .add-button:hover {
 
 #priorityGroup > .filter-options li:nth-child(3) svg {
   color: #e68b86;
+}
+
+#sortTask {
+  position: relative;
+}
+
+#sortTaskModal {
+  position: absolute;
+  margin-left: 150px;
+  width: fit-content;
+}
+
+.sort-option-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.sort-type {
+  display: inline;
+}
+
+.sort-type.active {
+  display: block;
+}
+
+.sort-option svg {
+  width: 18px;
+}
+
+.sort-option {
+  border-bottom: 1px solid #8aa17b;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
 }

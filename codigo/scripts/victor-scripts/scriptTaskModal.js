@@ -18,9 +18,11 @@ const prevButton = document.getElementById("prevPage");
 const nextButton = document.getElementById("nextPage");
 let page = 1;
 let skip;
+let keyFilter, valueFilter;
+let SORT_URL;
 
 //Fetching tasks
-const taskPerPage = 2;
+const taskPerPage = 3;
 let URL_TAREFAS_PAGE;
 
 async function fetchTasks() {
@@ -39,13 +41,54 @@ async function fetchTasks() {
 
 fetchTasks();
 
-async function fetchTasksPages() {
+function returnURL(key, value, sorting) {
+  let URL_DASHBOARD = `http://localhost:3000/tarefas?status=2&status=3&_page=${page}&_limit=${taskPerPage}`;
+  let URL_TAREFAS = `http://localhost:3000/tarefas?_page=${page}&_limit=${taskPerPage}`;
+
+  if (!key && !value && !sorting) {
+    if (pageTitle === "Dashboard") {
+      return URL_DASHBOARD;
+    } else if (pageTitle === "Tarefas") {
+      return URL_TAREFAS;
+    }
+  } else if (!key && !value && sorting) {
+    if (pageTitle === "Dashboard") {
+      return URL_DASHBOARD + sorting;
+    } else if (pageTitle === "Tarefas") {
+      return URL_TAREFAS + sorting;
+    }
+  }
+
+  if (pageTitle === "Dashboard") {
+    URL_DASHBOARD = `http://localhost:3000/tarefas?${key}=${value}&_page=${page}&_limit=${taskPerPage}`;
+    if (sorting) {
+      return URL_DASHBOARD + sorting;
+    }
+    return URL_DASHBOARD;
+  } else if (pageTitle === "Tarefas") {
+    URL_TAREFAS = `http://localhost:3000/tarefas?${key}=${value}&_page=${page}&_limit=${taskPerPage}`;
+    if (sorting) {
+      return URL_TAREFAS + sorting;
+    }
+    return URL_TAREFAS;
+  }
+}
+
+async function fetchTasksPages(key, value, sorting) {
   try {
     skip = (page - 1) * taskPerPage;
-    if (pageTitle === "Dashboard") {
-      URL_TAREFAS_PAGE = `http://localhost:3000/tarefas?status=2&status=3&_page=${page}&_limit=${taskPerPage}`;
-    } else if (pageTitle === "Tarefas") {
-      URL_TAREFAS_PAGE = `http://localhost:3000/tarefas?_page=${page}&_limit=${taskPerPage}`;
+    if (!key && !value) {
+      if (sorting) {
+        URL_TAREFAS_PAGE = returnURL(null, null, sorting);
+      } else {
+        URL_TAREFAS_PAGE = returnURL();
+      }
+    } else {
+      if (sorting) {
+        URL_TAREFAS_PAGE = returnURL(key, value, sorting);
+      } else {
+        URL_TAREFAS_PAGE = returnURL(key, value);
+      }
     }
 
     const response = await fetch(URL_TAREFAS_PAGE);
@@ -141,6 +184,7 @@ async function fetchTasksPages() {
     }
   }
 }
+
 fetchTasksPages();
 
 prevButton.addEventListener("click", () => {
@@ -148,13 +192,13 @@ prevButton.addEventListener("click", () => {
     return;
   } else {
     page--;
-    fetchTasksPages();
+    fetchTasksPages(keyFilter, valueFilter, SORT_URL);
   }
 });
 
 nextButton.addEventListener("click", () => {
   page++;
-  fetchTasksPages();
+  fetchTasksPages(keyFilter, valueFilter, SORT_URL);
 });
 
 newTaskForm.addEventListener("submit", () => {
@@ -289,7 +333,6 @@ createTaskButton.addEventListener("click", () => {
   const newTaskForm = document.getElementById("newTaskForm");
   newTaskForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    console.log(e.target);
 
     //Create a formData to get key/values
     const formData = new FormData(e.target);
@@ -314,4 +357,82 @@ createTaskButton.addEventListener("click", () => {
   });
 });
 
-//GETTING TASKS (METHOD:GET)
+//FILTERING TASKS
+
+const filterButton = document.getElementById("filterTask");
+const sortButton = document.getElementById("sortTask");
+const filterModal = document.getElementById("filterTaskModal");
+const sortModal = document.getElementById("sortTaskModal");
+const statusFilter = document.getElementById("statusGroup");
+const priorityFilter = document.getElementById("priorityGroup");
+const statusOptions = document.getElementById("statusOptions");
+const priorityOptions = document.getElementById("priorityOptions");
+
+function getOption(option) {
+  switch (option) {
+    case "Fazer":
+      return ["3", "status"];
+    case "Fazendo":
+      return ["2", "status"];
+    case "Feito":
+      return ["1", "status"];
+    case "Urgente":
+      return ["3", "prioridade"];
+    case "Alta":
+      return ["2", "prioridade"];
+    case "Normal":
+      return ["1", "prioridade"];
+    default:
+      return "";
+  }
+}
+
+filterButton.addEventListener("click", () => {
+  filterModal.classList.toggle("active");
+
+  const filterOption = document.querySelectorAll(".filter-option");
+  filterOption.forEach((option) => {
+    option.addEventListener("click", () => {
+      let optionChosen = option.textContent;
+      let value = getOption(optionChosen)[0];
+      let key = getOption(optionChosen)[1];
+      keyFilter = key;
+      valueFilter = value;
+      page = 1;
+      fetchTasksPages(key, value);
+    });
+  });
+
+  statusFilter.addEventListener("click", () => {
+    priorityOptions.classList.remove("active");
+    statusOptions.classList.toggle("active");
+  });
+
+  priorityFilter.addEventListener("click", () => {
+    statusOptions.classList.remove("active");
+    priorityOptions.classList.toggle("active");
+  });
+});
+
+//SORT TASKS
+
+sortButton.addEventListener("click", () => {
+  sortModal.classList.toggle("active");
+
+  const sortOption = document.querySelectorAll(".sort-option");
+  sortOption.forEach((option) => {
+    option.addEventListener("click", () => {
+      let sortOrder;
+      let sortInfo = option.textContent.trim().split(" ").at(-1);
+      let sortObject = option.classList[1];
+      if (sortInfo === "crescente") {
+        sortOrder = "asc";
+      } else {
+        sortOrder = "desc";
+      }
+      //SORT URL
+      SORT_URL = `&_sort=${sortObject}&_order=${sortOrder}`;
+      fetchTasksPages(keyFilter, valueFilter, SORT_URL);
+    });
+  });
+});

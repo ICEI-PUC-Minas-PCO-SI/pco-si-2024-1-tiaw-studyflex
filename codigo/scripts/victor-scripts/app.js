@@ -89,4 +89,6 @@ for (let asideOption of asideOptions) {
                 />
               </button>
             </article>
-    `;*/
+`;*/
+
+//FILTER AND SORT OPTIONS
