@@ -23,11 +23,11 @@ const dbjson = [
     {
         "nomeMateria": "Java",
         "totalTarefas": 15,
-        "tarefasFeitas": 0
+        "tarefasFeitas": 7
     }
 ];
 
-
+//Função do progresso das disciplinas
 function atualizarProgresso(data) {
     const progressoBloco = document.getElementById('blocodeprogresso');
     data.forEach(item => {
