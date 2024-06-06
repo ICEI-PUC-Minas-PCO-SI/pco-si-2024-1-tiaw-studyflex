@@ -3,18 +3,21 @@ var proximoIdRetangulo = 0;
 var tipoUltimoRetanguloRemovido = null;
 var notas = {};
 
-
 const URL_NOTAS = "http://localhost:3000/notas";
 
 function adicionarRetangulo() {
     var container = document.querySelector(".container2");
     var divClone;
 
- 
-    if (!document.querySelector(".retan1")) {
-        var retan1 = document.createElement('div');
-        retan1.className = 'retan1 retan';
-        retan1.innerHTML = `
+    if (tipoUltimoRetanguloRemovido !== null) {
+        proximoTipoRetangulo = tipoUltimoRetanguloRemovido;
+        tipoUltimoRetanguloRemovido = null;
+    }
+
+    if (proximoTipoRetangulo === 1) {
+        divClone = document.createElement('div');
+        divClone.className = 'retan1 retan';
+        divClone.innerHTML = `
         <button>
             <?xml version="1.0" ?><svg width="31" height="31" class="delete" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><polygon fill-rule="evenodd" points="8 9.414 3.707 13.707 2.293 12.293 6.586 8 2.293 3.707 3.707 2.293 8 6.586 12.293 2.293 13.707 3.707 9.414 8 13.707 12.293 12.293 13.707 8 9.414"/></svg>
         </button>
@@ -27,13 +30,11 @@ function adicionarRetangulo() {
             </svg>
         </button>
         `;
-        container.appendChild(retan1);
-    }
-
-    if (!document.querySelector(".retan2")) {
-        var retan2 = document.createElement('div');
-        retan2.className = 'retan2 retan';
-        retan2.innerHTML = `
+        proximoTipoRetangulo = 2;
+    } else if (proximoTipoRetangulo === 2) {
+        divClone = document.createElement('div');
+        divClone.className = 'retan2 retan';
+        divClone.innerHTML = `
         <button>
             <?xml version="1.0" ?><svg width="31" height="31" class="delete" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><polygon fill-rule="evenodd" points="8 9.414 3.707 13.707 2.293 12.293 6.586 8 2.293 3.707 3.707 2.293 8 6.586 12.293 2.293 13.707 3.707 9.414 8 13.707 12.293 12.293 13.707 8 9.414"/></svg>
         </button>
@@ -46,13 +47,11 @@ function adicionarRetangulo() {
             </svg>
         </button>
         `;
-        container.appendChild(retan2);
-    }
-
-    if (!document.querySelector(".retan3")) {
-        var retan3 = document.createElement('div');
-        retan3.className = 'retan3 retan';
-        retan3.innerHTML = `
+        proximoTipoRetangulo = 3;
+    } else if (proximoTipoRetangulo === 3) {
+        divClone = document.createElement('div');
+        divClone.className = 'retan3 retan';
+        divClone.innerHTML = `
         <button>
             <?xml version="1.0" ?><svg width="31" height="31" class="delete" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><polygon fill-rule="evenodd" points="8 9.414 3.707 13.707 2.293 12.293 6.586 8 2.293 3.707 3.707 2.293 8 6.586 12.293 2.293 13.707 3.707 9.414 8 13.707 12.293 12.293 13.707 8 9.414"/></svg>
         </button>
@@ -65,22 +64,6 @@ function adicionarRetangulo() {
             </svg>
         </button>
         `;
-        container.appendChild(retan3);
-    }
-
-    if (tipoUltimoRetanguloRemovido !== null) {
-        proximoTipoRetangulo = tipoUltimoRetanguloRemovido;
-        tipoUltimoRetanguloRemovido = null;
-    }
-
-    if (proximoTipoRetangulo === 1) {
-        divClone = document.querySelector(".retan1").cloneNode(true);
-        proximoTipoRetangulo = 2;
-    } else if (proximoTipoRetangulo === 2) {
-        divClone = document.querySelector(".retan2").cloneNode(true);
-        proximoTipoRetangulo = 3;
-    } else if (proximoTipoRetangulo === 3) {
-        divClone = document.querySelector(".retan3").cloneNode(true);
         proximoTipoRetangulo = 1;
     }
 
@@ -88,15 +71,10 @@ function adicionarRetangulo() {
     divClone.setAttribute('id', idRetangulo);
     proximoIdRetangulo++;
 
-    container.insertBefore(divClone, container.lastElementChild);
+    container.appendChild(divClone);
 
-    var addButton = document.querySelector(".Btn");
-    container.appendChild(addButton);
-
-  
     adicionarEventos(divClone);
 }
-
 
 function adicionarEventos(retangulo) {
     var botaoExcluir = retangulo.querySelector('.delete');
@@ -110,14 +88,15 @@ function adicionarEventos(retangulo) {
     });
 }
 
-function excluirRetangulo(element) {
+async function excluirRetangulo(element) {
     var retangulo = element.closest('.retan');
+    var id = retangulo.id;
     tipoUltimoRetanguloRemovido = proximoTipoRetangulo;
+
     retangulo.remove();
 
-    var retangulosRestantes = document.querySelectorAll('.retan');
-    if (retangulosRestantes.length === 0) {
-        adicionarRetangulo();
+    if (document.querySelectorAll('.retan').length === 0) {
+        tipoUltimoRetanguloRemovido = null;
     }
 }
 
@@ -159,7 +138,6 @@ function liberarEdicao(element) {
         }
     });
 }
-
 
 async function salvarEdicao(element, novoTitulo, novoTextoNota) {
     var titulo = document.createElement('h3');
