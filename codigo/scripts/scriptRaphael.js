@@ -9,6 +9,18 @@ function adicionarRetangulo() {
     var container = document.querySelector(".container2");
     var divClone;
 
+    var idRetangulo = 'retangulo-' + proximoIdRetangulo;
+    divClone.setAttribute('id', idRetangulo);
+    
+    
+    notas[idRetangulo] = {
+        id: idRetangulo,
+        titulo: 'Título padrão',
+        Nota: 'Texto padrão da nota'
+    };
+
+    proximoIdRetangulo++;
+
     if (tipoUltimoRetanguloRemovido !== null) {
         proximoTipoRetangulo = tipoUltimoRetanguloRemovido;
         tipoUltimoRetanguloRemovido = null;
@@ -73,6 +85,10 @@ function adicionarRetangulo() {
 
     container.appendChild(divClone);
 
+    // Mover o botão de adicionar para o final
+    var addButton = document.querySelector(".add");
+    container.appendChild(addButton);
+
     adicionarEventos(divClone);
 }
 
@@ -90,15 +106,33 @@ function adicionarEventos(retangulo) {
 
 async function excluirRetangulo(element) {
     var retangulo = element.closest('.retan');
-    var id = retangulo.id;
-    tipoUltimoRetanguloRemovido = proximoTipoRetangulo;
+    var id = retangulo.id; // Aqui está correto, você está pegando o ID do retângulo
 
-    retangulo.remove();
+    try {
+        const response = await fetch(URL_NOTAS + "/" + id, { // Aqui você acrescenta o ID à URL
+            method: "DELETE",
+        });
 
-    if (document.querySelectorAll('.retan').length === 0) {
-        tipoUltimoRetanguloRemovido = null;
+        if (response.ok) {
+            retangulo.remove();
+            if (document.querySelectorAll('.retan').length === 0) {
+                tipoUltimoRetanguloRemovido = null;
+            }
+            // Mover o botão de adicionar para o final
+            var container = document.querySelector(".container2");
+            var addButton = document.querySelector(".add");
+            container.appendChild(addButton);
+            alert("Nota excluída com sucesso");
+        } else {
+            console.log("Failed response:", response);
+            alert("Erro ao excluir nota");
+        }
+    } catch (error) {
+        console.log("Error:", error);
+        alert("Erro ao excluir nota");
     }
 }
+
 
 function liberarEdicao(element) {
     var id = element.id;

@@ -614,8 +614,8 @@ nav {
   position: relative;
   border: 1px solid #ccc;
   border-radius: 5px;
-   margin-left: 50px;
-   margin-right: 50px;
+   margin-left: 20px;
+   margin-right: 30px;
    height: 400px;
    width: 300px;
    padding: 5px;
@@ -629,8 +629,8 @@ nav {
 
 .retan2{
   position: relative; 
-   margin-left: 50px;
-   margin-right: 50px;
+   margin-left: 20px;
+   margin-right: 30px;
    height: 400px;
    width: 300px;
    padding: 5px;
@@ -645,13 +645,12 @@ nav {
 
 .retan3{
   position: relative;
-   margin-left: 50px;
-   margin-right: 50px;
+   margin-left: 20px;
+   margin-right: 30px;
    height: 400px;
    width: 300px;
    border: 1px solid #ccc;
    border-radius: 5px;
-   
    padding: 5px;
    background-color:  #9DAADF;
    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -661,9 +660,11 @@ nav {
    
 }
 
+
+
 .Btn{
-margin-top: 130px;
-margin-left: 50px;
+margin-top: 250px;
+margin-left: 20px;
 margin-right: 50px;
 padding: 5px;
 height: 70px;
@@ -702,6 +703,7 @@ width: 70px;
     height: 30px;
     text-align: center;
     font-family: arial;
+    background-color: none;
   }
 
   textarea{
@@ -711,6 +713,7 @@ width: 70px;
     width: 170px;
     text-align: center;
     font-family: arial;
+    background-color: none;
   }
 
   .delete{
