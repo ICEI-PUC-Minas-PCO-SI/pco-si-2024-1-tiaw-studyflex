@@ -1,6 +1,7 @@
 {
   "tarefas": [
     {
+<<<<<<< HEAD
       "materia": "TIAW",
       "nome": "SPRINT 3 ",
       "status": "2",
@@ -62,6 +63,14 @@
       "prioridade": "3",
       "descricao": ":)",
       "id": 6
+=======
+      "id": "fc13",
+      "nome": "sim",
+      "status": "2",
+      "dataFinal": "2024-06-10",
+      "prioridade": "3",
+      "descricao": ""
+>>>>>>> 1bbeb80c5d5ab00e000935655dc1291f04680208
     }
   ],
   "materias": [],
