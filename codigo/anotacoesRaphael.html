@@ -64,17 +64,15 @@
         </div>
       </header>
 
-      <nav>
+      <nav id="navBar">
+        <!--Navbar para adicionar matéria que deseja acompanhar as tarefas-->
         <ul class="window-nav" id="windowNav">
-          <li
-            class="window-view active"
-            content-id="homescreenView"
-            id="viewTab"
-          >
+          <li class="window-view active" content-id="homescreenView" id="viewTab">
             <a href="#">
               <h2 class="window-title">Tela Inicial</h2>
             </a>
           </li>
+        </ul>
 
           <li class="add-button" id="addSubjectButton">
             <button class="btn header-btn">
@@ -139,49 +137,40 @@
       <aside>
         <!--Lista responsável por organizar os links que levarão o usuário para as diferentes telas da plataforma-->
         <ul class="aside-menu">
-          <li class="aside-option">
-            <a href="#">
-              <img
-                src="./assets/imgs/menu_icon.png"
-                alt="Dashboard icone"
-                class="option-icon"
-              />
+          <li class="aside-option" id="dashboardTab">
+            <a href="./HomeScreenVictor.html">
+              <img src="./assets/imgs/menu_icon.png" alt="Dashboard icone" class="option-icon" />
               <span>Dashboard</span>
             </a>
           </li>
+  
+          <li class="aside-option" id="tarefasTab">
+            <a href="./tarefas.html">
+              <img src="./assets/imgs/tasks_icon.png" alt="Dashboard icone" class="option-icon" />
+              <span>Tarefas</span>
+            </a>
+          </li>
           <li class="aside-option active" id="anotacoesTab">
-            <a href="#">
-              <img
-                src="./assets/imgs/notes_icon.png"
-                alt="Anotações icone"
-                class="option-icon"
-              />
+            <a href="./anotacoesRaphael.html">
+              <img src="./assets/imgs/notes_icon.png" alt="Anotações icone" class="option-icon" />
               <span>Anotações</span>
             </a>
           </li>
-          <li class="aside-option">
-            <a href="#">
-              <img
-                src="./assets/imgs/materias_icon.png"
-                alt="Matérias icone"
-                class="option-icon"
-              />
+          <li class="aside-option" id="materiasTab">
+            <a href="./materiasVictor.html">
+              <img src="./assets/imgs/materias_icon.png" alt="Matérias icone" class="option-icon" />
               <span>Matérias</span>
             </a>
           </li>
-          <li class="aside-option">
+          <li class="aside-option" id="configTab">
             <a href="#">
-              <img
-                src="./assets/imgs/config_icon.png"
-                alt="Configurações icone"
-                class="option-icon"
-              />
+              <img src="./assets/imgs/config_icon.png" alt="Configurações icone" class="option-icon" />
               <span>Configurações</span>
             </a>
           </li>
         </ul>
-
-        <!--BOTÃO MODO NOTURNO-->
+  
+        <!--Botão modo noturno-->
         <div class="toggle-container">
           <input type="checkbox" id="check" />
           <label for="check" class="switch">
@@ -191,7 +180,8 @@
         </div>
       </aside>
       <main id="mainContainer">
-        <div class="container2">
+        <input class="data" placeholder="Insira a Data">
+        <div class="container2">          
             <div class="retan1 retan" data-id="0">
                 <button>
                     <?xml version="1.0" ?><svg width="31" height="31" class="delete" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><polygon fill-rule="evenodd" points="8 9.414 3.707 13.707 2.293 12.293 6.586 8 2.293 3.707 3.707 2.293 8 6.586 12.293 2.293 13.707 3.707 9.414 8 13.707 12.293 12.293 13.707 8 9.414"/></svg>

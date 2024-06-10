@@ -86,10 +86,17 @@
     <aside>
       <!--Lista responsável por organizar os links que levarão o usuário para as diferentes telas da plataforma-->
       <ul class="aside-menu">
-        <li class="aside-option active">
-          <a href="#">
+        <li class="aside-option active" id="dashboardTab">
+          <a href="./HomeScreenVictor.html">
             <img src="./assets/imgs/menu_icon.png" alt="Dashboard icone" class="option-icon" />
             <span>Dashboard</span>
+          </a>
+        </li>
+
+        <li class="aside-option" id="tarefasTab">
+          <a href="./tarefas.html">
+            <img src="./assets/imgs/tasks_icon.png" alt="Dashboard icone" class="option-icon" />
+            <span>Tarefas</span>
           </a>
         </li>
         <li class="aside-option" id="anotacoesTab">
@@ -98,13 +105,13 @@
             <span>Anotações</span>
           </a>
         </li>
-        <li class="aside-option">
-          <a href="#">
+        <li class="aside-option" id="materiasTab">
+          <a href="./materiasVictor.html">
             <img src="./assets/imgs/materias_icon.png" alt="Matérias icone" class="option-icon" />
             <span>Matérias</span>
           </a>
         </li>
-        <li class="aside-option">
+        <li class="aside-option" id="configTab">
           <a href="#">
             <img src="./assets/imgs/config_icon.png" alt="Configurações icone" class="option-icon" />
             <span>Configurações</span>
@@ -143,10 +150,10 @@
           <div class="box-tarefa">
             <section class="tasks-container" id="tasks-box">
               <article class="task-preview note">
-                <a href="#">
+                <a href="./personalizarAna.html">
                   <h3 class="task-title">TAREFA</h3>
                 </a>
-                <a href="#" class="task-subject">Matéria</a>
+                <a href="./materiasVictor.html" class="task-subject">Matéria</a>
                 <p class="task-description">
                   Lorem ipsum is placeholder text commonly used in the graphic,
                   print, and publishing industries for previewing layouts and
@@ -178,10 +185,10 @@
         <!-- Começo - Calendário -->
 
         <section class="homescreen-task-info">
-          <div class="container-calendar-total">
-            <article class="calendar-view">
-              <h3 class="task-info-title">
 
+          <article class="calendar-view">
+            <div class="container-calendar-total">
+              <h3 class="task-info-title">
                 <strong>Quarta-feira</strong>, 24 de janeiro
               </h3>
               <input type="text" id="smallCalendar" placeholder="Select Date" style="visibility: hidden;">
@@ -198,25 +205,25 @@
                   <div id="eventDetails"></div>
                 </div>
               </div>
-            </article>
-            <!-- Final - Calendário -->
 
-            <!--Começo - Progresso da disciplina-->
+              <!-- Final - Calendário -->
 
-            <div id="progress-container">
-              <div class="container-progress" id="blocodeprogresso">
-                <h3 class="tituloProgresso">Progresso das Disciplinas</h2>
+              <!--Começo - Progresso da disciplina-->
+
+              <div id="progress-container">
+                <div class="container-progress" id="blocodeprogresso">
+                  <h3 class="tituloProgresso">Progresso das Disciplinas</h3>
+                </div>
               </div>
-              </div>
-          </div>
+            </div>
+          </article>
         </section>
-<!--Final - Progresso da disciplina-->
   </div>
-  </section>
-  </section>
+
+  <!--Final - Progresso da disciplina-->
+  
   <!--CONTEÚDO DINAMICO-->
   </main>
-  </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>

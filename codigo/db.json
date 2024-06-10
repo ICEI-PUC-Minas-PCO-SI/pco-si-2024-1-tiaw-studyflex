@@ -1,116 +1,78 @@
 {
   "tarefas": [
     {
+      "materia": "TIAW",
       "nome": "SPRINT 3 ",
       "status": "2",
-      "dataFinal": "2024-05-23",
+      "dataFinal": "2024-06-04",
       "prioridade": "3",
-      "descricao": "TESTE",
-      "id": "1"
+      "descricao": "asasadadfa",
+      "id": 1
     },
     {
-      "nome": "SPRINT 4",
+      "materia": "Sinuca",
+      "nome": "ssadsadsa",
       "status": "3",
-      "dataFinal": "2024-05-31",
-      "prioridade": "3",
-      "descricao": "ASASASASASSASAASASASADSDSAFDSAFFASF\nSDSADA\nSAFSAFASFSA\nFSAFSA\nFDSAFA\n",
-      "id": "2"
-    },
-    {
-      "nome": "TESTE",
-      "status": "2",
-      "dataFinal": "2024-06-07",
+      "dataFinal": "2024-06-15",
       "prioridade": "1",
-      "descricao": "A",
-      "id": "3"
+      "descricao": "sdasdSSADS",
+      "id": 2
     },
     {
-      "nome": "a",
-      "status": "1",
-      "dataFinal": "2024-06-07",
-      "prioridade": "3",
-      "descricao": "a",
-      "id": "4"
-    },
-    {
-      "nome": "TESTE FAZER",
+      "materia": "TIAW",
+      "nome": "dsa",
       "status": "3",
-      "dataFinal": "2024-06-22",
-      "prioridade": "1",
+      "dataFinal": "2024-06-14",
+      "prioridade": "3",
+      "descricao": "SSADADASD",
+      "id": 3
+    },
+    {
+      "materia": "Sinuca",
+      "nome": "DSADSADSA",
+      "status": "3",
+      "dataFinal": "2024-06-29",
+      "prioridade": "2",
+      "descricao": "S",
+      "id": 4
+    },
+    {
+      "materia": "Sinuca",
+      "nome": "DSFSDF",
+      "status": "3",
+      "dataFinal": "2024-06-27",
+      "prioridade": "2",
       "descricao": "",
       "id": "5"
     },
     {
-      "nome": "TESTE FAZENDO",
-      "status": "2",
-      "dataFinal": "2024-06-14",
-      "prioridade": "2",
-      "descricao": "AAAA",
-      "id": "6"
-    },
-    {
-      "nome": "TESTE FEITO",
+      "materia": "ATP",
+      "nome": "ENGRAVIDAR O RENATOLA",
       "status": "1",
-      "dataFinal": "2024-06-29",
-      "prioridade": "2",
-      "descricao": "",
-      "id": "7"
-    },
-    {
-      "nome": "TESTE NORMAL",
-      "status": "3",
-      "dataFinal": "2024-06-01",
-      "prioridade": "1",
-      "descricao": "",
-      "id": "8"
-    },
-    {
-      "nome": "TESTE ALTA",
-      "status": "3",
-      "dataFinal": "2024-06-26",
-      "prioridade": "2",
-      "descricao": "",
-      "id": "9"
-    },
-    {
-      "nome": "TESTE URGENTE",
-      "status": "2",
-      "dataFinal": "2024-06-07",
+      "dataFinal": "2024-06-21",
       "prioridade": "3",
-      "descricao": "",
-      "id": "10"
+      "descricao": ":)",
+      "id": 6
     },
     {
-      "nome": "SPRINT 3",
-      "status": "3",
-      "dataFinal": "2024-07-05",
-      "prioridade": "2",
-      "descricao": "fAZER ISSO AGORA!",
-      "id": "11"
+      "materia": "L",
+      "nome": "ENGRAVIDAR O RENATOLA",
+      "status": "1",
+      "dataFinal": "2024-06-21",
+      "prioridade": "3",
+      "descricao": ":)",
+      "id": 6
     },
     {
-      "id": "260b",
-      "nome": "lucao da flauta",
-      "status": "3",
-      "dataFinal": "2024-06-07",
+      "materia": "",
+      "id": "fc13",
+      "nome": "sim",
+      "status": "2",
+      "dataFinal": "2024-06-10",
       "prioridade": "3",
       "descricao": ""
     }
   ],
   "materias": [],
-  "notas": [],
-  "usuarios": [
-    {
-      "id": "0bf4",
-      "username": "botellhx",
-      "email": "maat9779@gmaill.com",
-      "password": "123456"
-    },
-    {
-      "id": "ecc2",
-      "username": "Raphael",
-      "email": "raphael6x1@gmail.com",
-      "password": "123456"
-    }
-  ]
+  "notas": []
 }

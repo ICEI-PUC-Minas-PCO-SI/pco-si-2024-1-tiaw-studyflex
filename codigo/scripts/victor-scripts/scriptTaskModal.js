@@ -36,7 +36,9 @@ async function fetchTasks() {
         nextButton.classList.remove("hide");
       }
     }
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 fetchTasks();
@@ -415,7 +417,6 @@ filterButton.addEventListener("click", () => {
 });
 
 //SORT TASKS
-
 sortButton.addEventListener("click", () => {
   sortModal.classList.toggle("active");
 

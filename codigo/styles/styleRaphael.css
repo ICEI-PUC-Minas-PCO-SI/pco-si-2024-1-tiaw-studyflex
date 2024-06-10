@@ -20,14 +20,12 @@ WHITE: #FFFFFF
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Lato", sans-serif;
 }
 
 /* ------------------------ */
 /* GENERAL STYLES */
 /* ------------------------ */
-body {
-  font-family: "Lato", sans-serif;
-}
 
 .container {
   margin: 0 auto;
@@ -68,7 +66,7 @@ button {
 main {
   grid-column: 2/4;
   grid-row: 3/4;
-  padding: 16px 24px;
+  padding: 16px 64px;
 }
 
 h2 {
@@ -120,22 +118,22 @@ aside {
   display: flex;
   flex-direction: column;
   gap: 48px;
-  
 }
 
 .aside-menu {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  
 }
 
 .aside-option {
   display: flex;
   align-items: center;
+  border-radius: 0 20px 20px 0;
+  border: 2px solid transparent;
 }
 
-.aside-option a:hover {
+.aside-option:hover {
   border: 2px solid #8aa17b;
   border-left: 2px solid transparent;
 }
@@ -144,8 +142,6 @@ aside {
   padding: 16px 16px 16px 32px;
   border-radius: 0 20px 20px 0;
   width: 100%;
-  border: 2px solid transparent;
-
   display: flex;
   align-items: center;
   gap: 8px;
@@ -162,7 +158,7 @@ aside {
 }
 
 /*ACTIVE*/
-.aside-option.active a {
+.aside-option.active {
   background-color: #8aa17b;
   color: #ffffff;
 }
@@ -264,8 +260,9 @@ nav {
 .add-button {
   padding: 4px;
   border: 2px solid transparent;
-  border-radius: 20px 20px 0px 0px;
   transition: all 0.2s ease-in;
+  width: 32px;
+  border-radius: 0;
 }
 
 .window-view:hover {
@@ -280,8 +277,7 @@ nav {
 .add-button:hover .btn-img {
   filter: brightness(0) invert(1);
 }
-
-.add-button:hover {
+auto .add-button:hover {
   background-color: #414b3b;
 }
 
@@ -299,22 +295,31 @@ nav {
 .homescreen {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto auto auto 1fr;
+  column-gap: 32px;
   row-gap: 32px;
-  column-gap: 64px;
 }
 .homescreen-title {
   color: #586352;
   grid-column: 1/2;
   font-size: 30px;
+  grid-row: 1;
+  padding: 0;
+}
+
+.dashboard-header-container {
+  display: flex;
+  gap: 32px;
+  justify-content: space-between;
+  grid-column: 1/2;
+  grid-row: 2;
 }
 
 .search-bar-container {
-  grid-column: 1/2;
-  grid-row: 2;
   display: flex;
   align-items: center;
   position: relative;
+  width: 100%;
 }
 
 .search-bar {
@@ -352,89 +357,6 @@ nav {
   transform: rotate(90deg);
 }
 
-/*TASK CONTAINER*/
-.tasks-container {
-  grid-row: 3/3;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-.task-preview {
-  border-radius: 16px;
-  display: grid;
-  grid-template-columns: auto auto 1fr auto;
-  grid-template-rows: 1fr 1fr;
-  box-shadow: 5px 5px 5px 0 hsla(210, 10%, 23%, 0.178);
-  padding: 28px 32px;
-  gap: 16px;
-  align-items: center;
-  position: relative;
-  border: 2px solid #d9d9d9;
-}
-
-.task-title {
-  grid-column: 1/2;
-  grid-row: 1/1;
-  height: auto;
-  color: #586352;
-}
-
-.task-subject {
-  grid-column: 2/3;
-  grid-row: 1;
-  background-color: #8aa17b;
-  color: #ffffff;
-  padding: 8px 16px;
-  border-radius: 150px;
-}
-
-.task-description {
-  grid-row: 2/3;
-  grid-column: 1/4;
-  color: #586352;
-  font-size: 14px;
-  align-self: start;
-}
-
-.task-details {
-  grid-row: 2/3;
-  grid-column: 4/5;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.task-preview.note::before {
-  content: "";
-  width: 32px;
-  height: 40px;
-  background-image: url(../assets/imgs/note_icon_red.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: -2px;
-  right: 32px;
-}
-
-/*TASK INFO*/
-.homescreen-task-info {
-  grid-column: 2/3;
-  grid-row: 1/-1;
-}
-
-.task-info-title {
-  font-size: 24px;
-  color: #586352;
-  padding-left: 32px;
-}
-
-.task-info-title strong {
-  font-weight: 900;
-}
-
 /*MODAL SUBJECT*/
 .add-subject-container {
   left: 50%;
@@ -448,9 +370,6 @@ nav {
   padding: 32px;
 }
 
-.add-subject-container::backdrop {
-}
-
 .close-btn {
   align-self: end;
   display: flex;
@@ -459,7 +378,8 @@ nav {
   border-radius: 50%;
   transition: all 0.2s ease-in;
   position: absolute;
-  right: 32px;
+  right: 16px;
+  top: 16px;
   padding: 2px;
 }
 
@@ -468,7 +388,7 @@ nav {
 }
 
 .add-subject-container h2 {
-  margin: 32px 0;
+  margin: 16px 0;
   font-size: 24px;
   font-weight: 700;
 }
@@ -487,6 +407,16 @@ nav {
 
 .template-img {
   width: 300px;
+}
+
+#addSubjectButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  margin-left: -16px;
 }
 
 
@@ -608,14 +538,15 @@ nav {
   display: flex;
   padding:45px;
   
+  
 }
 
 .retan1{
   position: relative;
   border: 1px solid #ccc;
   border-radius: 5px;
-   margin-left: 50px;
-   margin-right: 50px;
+   margin-left: 20px;
+   margin-right: 30px;
    height: 400px;
    width: 300px;
    padding: 5px;
@@ -629,8 +560,8 @@ nav {
 
 .retan2{
   position: relative; 
-   margin-left: 50px;
-   margin-right: 50px;
+   margin-left: 20px;
+   margin-right: 30px;
    height: 400px;
    width: 300px;
    padding: 5px;
@@ -645,13 +576,12 @@ nav {
 
 .retan3{
   position: relative;
-   margin-left: 50px;
-   margin-right: 50px;
+   margin-left: 20px;
+   margin-right: 30px;
    height: 400px;
    width: 300px;
    border: 1px solid #ccc;
    border-radius: 5px;
-   
    padding: 5px;
    background-color:  #9DAADF;
    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -661,9 +591,11 @@ nav {
    
 }
 
+
+
 .Btn{
-margin-top: 130px;
-margin-left: 50px;
+margin-top: 250px;
+margin-left: 20px;
 margin-right: 50px;
 padding: 5px;
 height: 70px;
@@ -702,6 +634,7 @@ width: 70px;
     height: 30px;
     text-align: center;
     font-family: arial;
+    background-color: none;
   }
 
   textarea{
@@ -711,6 +644,7 @@ width: 70px;
     width: 170px;
     text-align: center;
     font-family: arial;
+    background-color: none;
   }
 
   .delete{
@@ -719,7 +653,26 @@ width: 70px;
     color: white;
   }
 
+.data{
+margin-top:30px;
+width: 279px;
+height: 58px;
+left: 810px;
+top: 314px;
+margin-left: 400px;
+font-family: 'Lato';
+font-style: normal;
+font-weight: 800;
+font-size: 24px;
+line-height: 29px;
+text-align: center;
+color: #586352;
+outline: 0;
+border: none; 
+outline: none;
+box-shadow: none; 
 
+}
 
  
  
