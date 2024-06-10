@@ -608,6 +608,7 @@ nav {
   display: flex;
   padding:45px;
   
+  
 }
 
 .retan1{
@@ -722,7 +723,26 @@ width: 70px;
     color: white;
   }
 
+.data{
+margin-top:30px;
+width: 279px;
+height: 58px;
+left: 810px;
+top: 314px;
+margin-left: 400px;
+font-family: 'Lato';
+font-style: normal;
+font-weight: 800;
+font-size: 24px;
+line-height: 29px;
+text-align: center;
+color: #586352;
+outline: 0;
+border: none; /* Remove a borda */
+outline: none; /* Remove o destaque ao focar */
+box-shadow: none; /* Remove qualquer sombra */
 
+}
 
  
  

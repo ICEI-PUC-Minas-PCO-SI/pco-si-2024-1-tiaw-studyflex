@@ -1,5 +1,5 @@
 var proximoTipoRetangulo = 1;
-var proximoIdRetangulo = 0;
+var proximoIdRetangulo = 1; // Iniciar com 1 porque já existe o retângulo inicial com ID 0
 var tipoUltimoRetanguloRemovido = null;
 var notas = {};
 
@@ -9,88 +9,50 @@ function adicionarRetangulo() {
     var container = document.querySelector(".container2");
     var divClone;
 
-    var idRetangulo = 'retangulo-' + proximoIdRetangulo;
-    divClone.setAttribute('id', idRetangulo);
-    
-    
-    notas[idRetangulo] = {
-        id: idRetangulo,
-        titulo: 'Título padrão',
-        Nota: 'Texto padrão da nota'
-    };
-
-    proximoIdRetangulo++;
-
-    if (tipoUltimoRetanguloRemovido !== null) {
-        proximoTipoRetangulo = tipoUltimoRetanguloRemovido;
-        tipoUltimoRetanguloRemovido = null;
-    }
-
     if (proximoTipoRetangulo === 1) {
         divClone = document.createElement('div');
         divClone.className = 'retan1 retan';
-        divClone.innerHTML = `
-        <button>
-            <?xml version="1.0" ?><svg width="31" height="31" class="delete" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><polygon fill-rule="evenodd" points="8 9.414 3.707 13.707 2.293 12.293 6.586 8 2.293 3.707 3.707 2.293 8 6.586 12.293 2.293 13.707 3.707 9.414 8 13.707 12.293 12.293 13.707 8 9.414"/></svg>
-        </button>
-        <div class="h3">Título </div>
-        <div class="p">Texto da Nota </div>
-        <button>
-            <svg width="31" height="31" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="lapis">
-                <circle cx="20.5" cy="20.5" r="20.5" fill="#8AA17B"/>
-                <path d="M9 27.9993V33H14.0007L28.7561 18.2446L23.7554 13.2439L9 27.9993ZM32.6099 14.3907C33.13 13.8707 33.13 13.0239 32.6099 12.5038L29.4962 9.39005C28.9761 8.86998 28.1293 8.86998 27.6093 9.39005L25.1689 11.8304L30.1696 16.8311L32.6099 14.3907Z" fill="white"/>
-            </svg>
-        </button>
-        `;
         proximoTipoRetangulo = 2;
     } else if (proximoTipoRetangulo === 2) {
         divClone = document.createElement('div');
         divClone.className = 'retan2 retan';
-        divClone.innerHTML = `
-        <button>
-            <?xml version="1.0" ?><svg width="31" height="31" class="delete" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><polygon fill-rule="evenodd" points="8 9.414 3.707 13.707 2.293 12.293 6.586 8 2.293 3.707 3.707 2.293 8 6.586 12.293 2.293 13.707 3.707 9.414 8 13.707 12.293 12.293 13.707 8 9.414"/></svg>
-        </button>
-        <div class="h3">Título</div>
-        <div class="p">Texto da Nota </div>
-        <button>
-            <svg width="31" height="31" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="lapis">
-                <circle cx="20.5" cy="20.5" r="20.5" fill="#8AA17B"/>
-                <path d="M9 27.9993V33H14.0007L28.7561 18.2446L23.7554 13.2439L9 27.9993ZM32.6099 14.3907C33.13 13.8707 33.13 13.0239 32.6099 12.5038L29.4962 9.39005C28.9761 8.86998 28.1293 8.86998 27.6093 9.39005L25.1689 11.8304L30.1696 16.8311L32.6099 14.3907Z" fill="white"/>
-            </svg>
-        </button>
-        `;
         proximoTipoRetangulo = 3;
     } else if (proximoTipoRetangulo === 3) {
         divClone = document.createElement('div');
         divClone.className = 'retan3 retan';
-        divClone.innerHTML = `
+        proximoTipoRetangulo = 1;
+    }
+
+    var idRetangulo = proximoIdRetangulo;
+    divClone.setAttribute('id', idRetangulo);
+    divClone.innerHTML = `
         <button>
-            <?xml version="1.0" ?><svg width="31" height="31" class="delete" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><polygon fill-rule="evenodd" points="8 9.414 3.707 13.707 2.293 12.293 6.586 8 2.293 3.707 3.707 2.293 8 6.586 12.293 2.293 13.707 3.707 9.414 8 13.707 12.293 12.293 13.707 8 9.414"/></svg>
+            <svg width="31" height="31" class="delete" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><polygon fill-rule="evenodd" points="8 9.414 3.707 13.707 2.293 12.293 6.586 8 2.293 3.707 3.707 2.293 8 6.586 12.293 2.293 13.707 3.707 9.414 8 13.707 12.293 12.293 13.707 8 9.414"/></svg>
         </button>
-        <div class="h3">Título</div>
-        <div class="p">Texto da Nota</div>
+        <h3 class="h3">Título</h3>
+        <p class="p">Texto da Nota</p>
         <button>
             <svg width="31" height="31" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="lapis">
                 <circle cx="20.5" cy="20.5" r="20.5" fill="#8AA17B"/>
                 <path d="M9 27.9993V33H14.0007L28.7561 18.2446L23.7554 13.2439L9 27.9993ZM32.6099 14.3907C33.13 13.8707 33.13 13.0239 32.6099 12.5038L29.4962 9.39005C28.9761 8.86998 28.1293 8.86998 27.6093 9.39005L25.1689 11.8304L30.1696 16.8311L32.6099 14.3907Z" fill="white"/>
             </svg>
         </button>
-        `;
-        proximoTipoRetangulo = 1;
-    }
+    `;
 
-    var idRetangulo = 'retangulo-' + proximoIdRetangulo;
-    divClone.setAttribute('id', idRetangulo);
+    
     proximoIdRetangulo++;
 
     container.appendChild(divClone);
 
-    // Mover o botão de adicionar para o final
-    var addButton = document.querySelector(".add");
+    
+    var addButton = document.querySelector("#btn");
     container.appendChild(addButton);
 
+   
     adicionarEventos(divClone);
 }
+
+
 
 function adicionarEventos(retangulo) {
     var botaoExcluir = retangulo.querySelector('.delete');
@@ -100,16 +62,16 @@ function adicionarEventos(retangulo) {
 
     var botaoLapis = retangulo.querySelector('.lapis');
     botaoLapis.addEventListener('click', function() {
-        liberarEdicao(this.closest('.retan'));
+        liberarEdicao(retangulo);
     });
 }
 
 async function excluirRetangulo(element) {
     var retangulo = element.closest('.retan');
-    var id = retangulo.id; // Aqui está correto, você está pegando o ID do retângulo
+    var id = retangulo.id;
 
     try {
-        const response = await fetch(URL_NOTAS + "/" + id, { // Aqui você acrescenta o ID à URL
+        const response = await fetch(URL_NOTAS + "/" + id, {
             method: "DELETE",
         });
 
@@ -133,9 +95,7 @@ async function excluirRetangulo(element) {
     }
 }
 
-
 function liberarEdicao(element) {
-    var id = element.id;
     var tituloOriginal = element.querySelector('.h3').textContent;
     var textoOriginal = element.querySelector('.p').textContent;
 
@@ -174,6 +134,14 @@ function liberarEdicao(element) {
 }
 
 async function salvarEdicao(element, novoTitulo, novoTextoNota) {
+    var id = element.id;
+
+    // Incrementar o ID do retângulo para o próximo
+    proximoIdRetangulo++;
+
+    console.log("ID:", id);
+    console.log("Notas:", notas);
+
     var titulo = document.createElement('h3');
     titulo.className = 'h3';
     titulo.textContent = novoTitulo;
@@ -187,40 +155,39 @@ async function salvarEdicao(element, novoTitulo, novoTextoNota) {
     var lapis = element.querySelector('.lapis');
     lapis.style.display = 'block';
 
-    var id = element.id;
-    if (!notas[id]) {
-        notas[id] = {
-            id: proximoIdRetangulo,
-            titulo: novoTitulo,
-            Nota: novoTextoNota
-        };
-    } else {
-        notas[id].titulo = novoTitulo;
-        notas[id].Nota = novoTextoNota;
-    }
+    
+    notas[id] = {
+        id: id,
+        titulo: novoTitulo,
+        Nota: novoTextoNota
+    };
 
     try {
         const response = await fetch(URL_NOTAS, {
             method: "POST",
-            headers: { "Content-type": "application/json" },
-            body: JSON.stringify(notas[id]),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: id,
+                titulo: novoTitulo,
+                Nota: novoTextoNota
+            })
         });
 
-        if (response.ok) {
-            alert("Nota salva com sucesso");
+        if (!response.ok) {
+            console.error("Failed response:", response);
+            alert("Erro ao salvar alterações");
         } else {
-            console.log("Failed response:", response);
-            alert("Erro ao salvar nota");
+            alert("Nota editada com sucesso");
         }
     } catch (error) {
-        console.log("Error:", error);
-        alert("Erro ao salvar nota");
+        console.error("Error:", error);
+        alert("Erro ao salvar alterações");
     }
 }
 
-var btnAdicionar = document.querySelector(".add");
-btnAdicionar.addEventListener("click", adicionarRetangulo);
 
-document.querySelectorAll('.retan').forEach(function(retangulo) {
-    adicionarEventos(retangulo);
-});
+document.getElementById("btn").addEventListener("click", adicionarRetangulo);
+document.querySelectorAll('.retan').forEach(adicionarEventos);
+
