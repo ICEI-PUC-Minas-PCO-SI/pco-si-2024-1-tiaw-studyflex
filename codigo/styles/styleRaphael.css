@@ -738,9 +738,9 @@ line-height: 29px;
 text-align: center;
 color: #586352;
 outline: 0;
-border: none; /* Remove a borda */
-outline: none; /* Remove o destaque ao focar */
-box-shadow: none; /* Remove qualquer sombra */
+border: none; 
+outline: none;
+box-shadow: none; 
 
 }
 
