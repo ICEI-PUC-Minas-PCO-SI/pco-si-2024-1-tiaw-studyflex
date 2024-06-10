@@ -6,7 +6,7 @@
       "dataFinal": "2024-05-23",
       "prioridade": "3",
       "descricao": "TESTE",
-      "id": 1
+      "id": "1"
     },
     {
       "nome": "SPRINT 4",
@@ -14,7 +14,7 @@
       "dataFinal": "2024-05-31",
       "prioridade": "3",
       "descricao": "ASASASASASSASAASASASADSDSAFDSAFFASF\nSDSADA\nSAFSAFASFSA\nFSAFSA\nFDSAFA\n",
-      "id": 2
+      "id": "2"
     },
     {
       "nome": "TESTE",
@@ -22,7 +22,7 @@
       "dataFinal": "2024-06-07",
       "prioridade": "1",
       "descricao": "A",
-      "id": 3
+      "id": "3"
     },
     {
       "nome": "a",
@@ -30,7 +30,7 @@
       "dataFinal": "2024-06-07",
       "prioridade": "3",
       "descricao": "a",
-      "id": 4
+      "id": "4"
     },
     {
       "nome": "TESTE FAZER",
@@ -38,7 +38,7 @@
       "dataFinal": "2024-06-22",
       "prioridade": "1",
       "descricao": "",
-      "id": 5
+      "id": "5"
     },
     {
       "nome": "TESTE FAZENDO",
@@ -46,7 +46,7 @@
       "dataFinal": "2024-06-14",
       "prioridade": "2",
       "descricao": "AAAA",
-      "id": 6
+      "id": "6"
     },
     {
       "nome": "TESTE FEITO",
@@ -54,7 +54,7 @@
       "dataFinal": "2024-06-29",
       "prioridade": "2",
       "descricao": "",
-      "id": 7
+      "id": "7"
     },
     {
       "nome": "TESTE NORMAL",
@@ -62,7 +62,7 @@
       "dataFinal": "2024-06-01",
       "prioridade": "1",
       "descricao": "",
-      "id": 8
+      "id": "8"
     },
     {
       "nome": "TESTE ALTA",
@@ -70,7 +70,7 @@
       "dataFinal": "2024-06-26",
       "prioridade": "2",
       "descricao": "",
-      "id": 9
+      "id": "9"
     },
     {
       "nome": "TESTE URGENTE",
@@ -78,7 +78,7 @@
       "dataFinal": "2024-06-07",
       "prioridade": "3",
       "descricao": "",
-      "id": 10
+      "id": "10"
     },
     {
       "nome": "SPRINT 3",
@@ -86,9 +86,31 @@
       "dataFinal": "2024-07-05",
       "prioridade": "2",
       "descricao": "fAZER ISSO AGORA!",
-      "id": 11
+      "id": "11"
+    },
+    {
+      "id": "260b",
+      "nome": "lucao da flauta",
+      "status": "3",
+      "dataFinal": "2024-06-07",
+      "prioridade": "3",
+      "descricao": ""
     }
   ],
   "materias": [],
-  "notas": []
+  "notas": [],
+  "usuarios": [
+    {
+      "id": "0bf4",
+      "username": "botellhx",
+      "email": "maat9779@gmaill.com",
+      "password": "123456"
+    },
+    {
+      "id": "ecc2",
+      "username": "Raphael",
+      "email": "raphael6x1@gmail.com",
+      "password": "123456"
+    }
+  ]
 }
