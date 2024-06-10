@@ -139,49 +139,40 @@
       <aside>
         <!--Lista responsável por organizar os links que levarão o usuário para as diferentes telas da plataforma-->
         <ul class="aside-menu">
-          <li class="aside-option">
-            <a href="#">
-              <img
-                src="./assets/imgs/menu_icon.png"
-                alt="Dashboard icone"
-                class="option-icon"
-              />
+          <li class="aside-option" id="dashboardTab">
+            <a href="./HomeScreenVictor.html">
+              <img src="./assets/imgs/menu_icon.png" alt="Dashboard icone" class="option-icon" />
               <span>Dashboard</span>
+            </a>
+          </li>
+  
+          <li class="aside-option" id="tarefasTab">
+            <a href="./tarefas.html">
+              <img src="./assets/imgs/tasks_icon.png" alt="Dashboard icone" class="option-icon" />
+              <span>Tarefas</span>
             </a>
           </li>
           <li class="aside-option active" id="anotacoesTab">
             <a href="#">
-              <img
-                src="./assets/imgs/notes_icon.png"
-                alt="Anotações icone"
-                class="option-icon"
-              />
+              <img src="./assets/imgs/notes_icon.png" alt="Anotações icone" class="option-icon" />
               <span>Anotações</span>
             </a>
           </li>
-          <li class="aside-option">
-            <a href="#">
-              <img
-                src="./assets/imgs/materias_icon.png"
-                alt="Matérias icone"
-                class="option-icon"
-              />
+          <li class="aside-option" id="materiasTab">
+            <a href="./materiasVictor.html">
+              <img src="./assets/imgs/materias_icon.png" alt="Matérias icone" class="option-icon" />
               <span>Matérias</span>
             </a>
           </li>
-          <li class="aside-option">
+          <li class="aside-option" id="configTab">
             <a href="#">
-              <img
-                src="./assets/imgs/config_icon.png"
-                alt="Configurações icone"
-                class="option-icon"
-              />
+              <img src="./assets/imgs/config_icon.png" alt="Configurações icone" class="option-icon" />
               <span>Configurações</span>
             </a>
           </li>
         </ul>
-
-        <!--BOTÃO MODO NOTURNO-->
+  
+        <!--Botão modo noturno-->
         <div class="toggle-container">
           <input type="checkbox" id="check" />
           <label for="check" class="switch">
