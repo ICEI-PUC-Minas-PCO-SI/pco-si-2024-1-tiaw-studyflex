@@ -1,42 +1,23 @@
-//Exemplo JSON
-const dbjson = [
-    {
-        "nomeMateria": "ATP",
-        "totalTarefas": 20,
-        "tarefasFeitas": 20
-    },
-    {
-        "nomeMateria": "Tiaw",
-        "totalTarefas": 9,
-        "tarefasFeitas": 4
-    },
-    {
-        "nomeMateria": "Introdução à Computação",
-        "totalTarefas": 12,
-        "tarefasFeitas": 10
-    },
-    {
-        "nomeMateria": "DIW",
-        "totalTarefas": 8,
-        "tarefasFeitas": 5
-    },
-    {
-        "nomeMateria": "Java",
-        "totalTarefas": 15,
-        "tarefasFeitas": 7
-    }
-];
+// Função para contar o total de tarefas
+function TotalTarefas(tarefas) {
+    return tarefas.length;
+}
 
-//Função do progresso das disciplinas
+// Função para adquirir apenas as tarefas já feitas
+function contarTarefasFeitas(tarefas) {
+    return tarefas.filter(tarefa => tarefa.status === "3").length;
+}
+
 function atualizarProgresso(data) {
     const progressoBloco = document.getElementById('blocodeprogresso');
-    data.forEach(item => {
+   
 
+    data.tarefas.forEach(item => {
         const flexContainer = document.createElement('div');
         flexContainer.className = 'flex-container';
 
         const nomeTarefaClone = document.createElement('h4');
-        nomeTarefaClone.textContent = item.nomeMateria;
+        nomeTarefaClone.textContent = item.nome;
 
         const porcentagemClone = document.createElement('div');
         porcentagemClone.className = 'porcentagemClone';
@@ -58,31 +39,39 @@ function atualizarProgresso(data) {
         progressoBloco.appendChild(flexContainer);
         progressoBloco.appendChild(progressBarClone);
 
-        //Calcular a porcentagem
-        const porcentagem = (item.tarefasFeitas / item.totalTarefas) * 100;
+        const totalTarefas = TotalTarefas(data.tarefas);
+        const tarefasFeitas = contarTarefasFeitas(data.tarefas);
+        const porcentagem = (tarefasFeitas / totalTarefas) * 100;
         const porcentagemLimite = Math.max(0, Math.min(100, porcentagem));
         let porcentagemContador;
 
-        //IF para limitar a porcentagem de 0 a 100 
+        // Limitar a porcentagem de 0 a 100
         if (Number.isInteger(porcentagemLimite)) {
             porcentagemContador = porcentagemLimite.toString();
-        }
-        else {
+        } else {
             porcentagemContador = porcentagemLimite.toFixed(1);
-
-            //IF para verificar se a primeira casa decimal é 0 (Não mostrar caso ocorra)
             if (porcentagemContador.endsWith('.0')) {
                 porcentagemContador = porcentagemLimite.toFixed(0);
             }
         }
 
         levelProgressClone.style.width = porcentagemLimite + '%';
-        nivelProgressoClone.textContent = `${item.tarefasFeitas} / ${item.totalTarefas} (${porcentagemContador}%)`;
+        nivelProgressoClone.textContent = `${tarefasFeitas} / ${totalTarefas} (${porcentagemContador}%)`;
     });
 }
 
-
-atualizarProgresso(dbjson);
+//Função para carregar o JSON e atualizar o progresso
+function carregarDados() {
+    fetch('db.json')
+        .then(response => response.json())
+        .then(data => {
+            atualizarProgresso(data);
+        })
+        .catch(error => {
+            console.error('Erro ao carregar os dados:', error);
+        });
+}
+document.addEventListener('DOMContentLoaded', carregarDados);
 
 //Função para criar tarefas
 function criarTarefa() {
