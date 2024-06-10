@@ -24,7 +24,9 @@ function adicionarRetangulo() {
     }
 
     var idRetangulo = proximoIdRetangulo;
-    divClone.setAttribute('id', idRetangulo);
+    divClone.setAttribute('id', idRetangulo); // Atribui o ID único à nota
+    proximoIdRetangulo++; // Incrementa o próximo ID disponível
+
     divClone.innerHTML = `
         <button>
             <svg width="31" height="31" class="delete" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><polygon fill-rule="evenodd" points="8 9.414 3.707 13.707 2.293 12.293 6.586 8 2.293 3.707 3.707 2.293 8 6.586 12.293 2.293 13.707 3.707 9.414 8 13.707 12.293 12.293 13.707 8 9.414"/></svg>
@@ -39,19 +41,13 @@ function adicionarRetangulo() {
         </button>
     `;
 
-    
-    proximoIdRetangulo++;
-
     container.appendChild(divClone);
 
-    
     var addButton = document.querySelector("#btn");
     container.appendChild(addButton);
 
-   
     adicionarEventos(divClone);
 }
-
 
 
 function adicionarEventos(retangulo) {
@@ -80,7 +76,6 @@ async function excluirRetangulo(element) {
             if (document.querySelectorAll('.retan').length === 0) {
                 tipoUltimoRetanguloRemovido = null;
             }
-            // Mover o botão de adicionar para o final
             var container = document.querySelector(".container2");
             var addButton = document.querySelector(".add");
             container.appendChild(addButton);
@@ -136,7 +131,7 @@ function liberarEdicao(element) {
 async function salvarEdicao(element, novoTitulo, novoTextoNota) {
     var id = element.id;
 
-    // Incrementar o ID do retângulo para o próximo
+    
     proximoIdRetangulo++;
 
     console.log("ID:", id);
@@ -187,7 +182,21 @@ async function salvarEdicao(element, novoTitulo, novoTextoNota) {
     }
 }
 
+function atribuirIdsNotas() {
+    var notasExistentes = document.querySelectorAll('.retan');
+    notasExistentes.forEach(function(nota) {
+        if (!nota.id) {
+            nota.setAttribute('id', proximoIdRetangulo);
+            proximoIdRetangulo++;
+        }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    atribuirIdsNotas(); // Atribui IDs às notas existentes quando a página é carregada
+    document.querySelectorAll('.retan').forEach(adicionarEventos);
+});
 
 document.getElementById("btn").addEventListener("click", adicionarRetangulo);
-document.querySelectorAll('.retan').forEach(adicionarEventos);
+
 
