@@ -15,7 +15,8 @@ document.getElementById('signup-form').addEventListener('submit', async function
 
     if (response.ok) {
         alert('Usuário cadastrado com sucesso!');
-        document.getElementById('signup-form').reset();
+        window.location.href = './login.html';
+        // document.getElementById('signup-form').reset();
     } else {
         alert('Erro ao cadastrar usuário.');
     }

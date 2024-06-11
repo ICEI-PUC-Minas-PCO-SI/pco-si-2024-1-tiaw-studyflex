@@ -74,5 +74,19 @@
     }
   ],
   "materias": [],
-  "notas": []
+  "notas": [],
+  "usuarios": [
+    {
+      "id": "5afc",
+      "username": "Victor O Desgraçadão",
+      "email": "victor.alvessalcantara@gmail.com",
+      "password": "testesenha123"
+    },
+    {
+      "id": "664a",
+      "username": "rafao",
+      "email": "rafao@gmail.com",
+      "password": "123456"
+    }
+  ]
 }
