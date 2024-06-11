@@ -5,6 +5,27 @@ var notas = {};
 
 const URL_NOTAS = "http://localhost:3000/notas";
 
+async function carregarNotas() {
+    try {
+        const response = await fetch(URL_NOTAS);
+        if (response.ok) {
+            const data = await response.json();
+            // Processar os dados recebidos, se necessário
+            console.log("Notas carregadas:", data);
+        } else {
+            console.error("Falha na requisição GET:", response);
+            alert("Erro ao carregar as notas");
+        }
+    } catch (error) {
+        console.error("Erro:", error);
+        alert("Erro ao carregar as notas");
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    carregarNotas();
+});
+
 function adicionarRetangulo() {
     var container = document.querySelector(".container2");
     var divClone;
@@ -24,8 +45,8 @@ function adicionarRetangulo() {
     }
 
     var idRetangulo = proximoIdRetangulo;
-    divClone.setAttribute('id', idRetangulo); // Atribui o ID único à nota
-    proximoIdRetangulo++; // Incrementa o próximo ID disponível
+    divClone.setAttribute('id', idRetangulo); 
+    proximoIdRetangulo++; 
 
     divClone.innerHTML = `
         <button>
@@ -191,10 +212,6 @@ function atribuirIdsNotas() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    atribuirIdsNotas(); // Atribui IDs às notas existentes
+    atribuirIdsNotas(); 
     document.querySelectorAll('.retan').forEach(adicionarEventos);
 });
-
-
-
-
