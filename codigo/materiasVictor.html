@@ -20,6 +20,7 @@
     />
     <link rel="stylesheet" href="./styles/styleVictor.css" />
     <title>StudyFlex</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   </head>
 
   <body>
@@ -161,7 +162,7 @@
             </a>
           </li>
           <li class="aside-option" id="anotacoesTab">
-            <a href="#">
+            <a href="./anotacoesRaphael.html">
               <img
                 src="./assets/imgs/notes_icon.png"
                 alt="Anotações icone"
@@ -204,7 +205,9 @@
 
       <main id="mainContainer">
         <!--CONTEÚDO DINAMICO-->
+
         <!--Aqui é onde será adcionado as diferentes variações das telas, o conteúdo dinâmico do site-->
+
         <section class="homescreen" id="homescreenView">
           <h1 class="homescreen-title">Matérias</h1>
           <div class="tasks-header-container">
@@ -251,11 +254,11 @@
 
               <!--FORMULARIO PARA CRIAR TAREFA-->
               <div class="form-container">
-                <form id="newSubjectForm">
+                <form action="" id="newSubjectForm">
                   <div class="form-group subject-name">
                     <input
                       type="text"
-                      name="nome"
+                      name="nome" 
                       id="subjectTitle"
                       placeholder="Nova matéria"
                       required
@@ -263,7 +266,7 @@
                   </div>
 
                   <div class="button-container">
-                    <button type="submit" class="create-btn">
+                    <button id="adcSubject" type="submit" class="create-btn">
                       <i data-lucide="plus"></i>
                       <span>Adicionar</span>
                     </button>
@@ -273,8 +276,15 @@
             </dialog>
           </section>
 
-          <!--CALENDÁRIO-->
+          <div id="subjectsList" class="subjects-list">
+            <ul id="subjectListUl"></ul>
+          </div>
+          
+          
+
+
         </section>
+          <!--CALENDÁRIO-->
 
         <!--CONTEÚDO DINAMICO-->
       </main>

@@ -75,16 +75,16 @@
   ],
   "materias": [
     {
-      "nome": "dkdmd",
-      "id": 1
-    },
-    {
       "nome": "Matéria de vilão",
       "id": 2
     },
     {
       "nome": "Mastodontico Clube Atlético Mineiro",
       "id": 3
+    },
+    {
+      "nome": "teste nunca é demais",
+      "id": 4
     }
   ],
   "notas": [
