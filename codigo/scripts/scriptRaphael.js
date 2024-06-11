@@ -62,8 +62,7 @@ function adicionarEventos(retangulo) {
     });
 }
 
-async function excluirRetangulo(element) {
-    var retangulo = element.closest('.retan');
+async function excluirRetangulo(retangulo) {
     var id = retangulo.id;
 
     try {
@@ -89,6 +88,7 @@ async function excluirRetangulo(element) {
         alert("Erro ao excluir nota");
     }
 }
+
 
 function liberarEdicao(element) {
     var tituloOriginal = element.querySelector('.h3').textContent;
@@ -173,9 +173,7 @@ async function salvarEdicao(element, novoTitulo, novoTextoNota) {
         if (!response.ok) {
             console.error("Failed response:", response);
             alert("Erro ao salvar alterações");
-        } else {
-            alert("Nota editada com sucesso");
-        }
+        } 
     } catch (error) {
         console.error("Error:", error);
         alert("Erro ao salvar alterações");
@@ -193,10 +191,10 @@ function atribuirIdsNotas() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    atribuirIdsNotas(); // Atribui IDs às notas existentes quando a página é carregada
+    atribuirIdsNotas(); // Atribui IDs às notas existentes
     document.querySelectorAll('.retan').forEach(adicionarEventos);
 });
 
-document.getElementById("btn").addEventListener("click", adicionarRetangulo);
+
 
 
