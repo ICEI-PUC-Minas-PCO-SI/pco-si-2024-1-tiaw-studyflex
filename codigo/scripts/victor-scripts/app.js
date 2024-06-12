@@ -1,6 +1,11 @@
 //SELECT SCRIPT
 lucide.createIcons();
 
+//URL API DE DADOS
+const URL_TAREFAS = "http://localhost:3000/tarefas";
+
+const URL_NOTAS = "http://localhost:3000/notas";
+
 //URL ATUAL
 let currentURL = window.location.href;
 
@@ -89,6 +94,4 @@ for (let asideOption of asideOptions) {
                 />
               </button>
             </article>
-`;*/
-
-//FILTER AND SORT OPTIONS
+    `;*/

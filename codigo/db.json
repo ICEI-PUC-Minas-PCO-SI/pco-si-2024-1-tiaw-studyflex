@@ -1,6 +1,92 @@
 {
-  "tarefas": [],
-  "materias": [],
+  "tarefas": [
+    {
+      "materia": "TIAW",
+      "nome": "SPRINT 3 ",
+      "status": "2",
+      "dataFinal": "2024-06-04",
+      "prioridade": "3",
+      "descricao": "asasadadfa",
+      "id": "1"
+    },
+    {
+      "materia": "Sinuca",
+      "nome": "ssadsadsa",
+      "status": "3",
+      "dataFinal": "2024-06-15",
+      "prioridade": "1",
+      "descricao": "sdasdSSADS",
+      "id": "2"
+    },
+    {
+      "materia": "TIAW",
+      "nome": "dsa",
+      "status": "3",
+      "dataFinal": "2024-06-14",
+      "prioridade": "3",
+      "descricao": "SSADADASD",
+      "id": "3"
+    },
+    {
+      "materia": "Sinucas",
+      "nome": "DSADSADSA",
+      "status": "3",
+      "dataFinal": "2024-06-29",
+      "prioridade": "2",
+      "descricao": "S",
+      "id": "4"
+    },
+    {
+      "materia": "Sinuca",
+      "nome": "DSFSDF",
+      "status": "3",
+      "dataFinal": "2024-06-27",
+      "prioridade": "2",
+      "descricao": "",
+      "id": "5"
+    },
+    {
+      "materia": "ATP",
+      "nome": "ENGRAVIDAR O RENATOLA",
+      "status": "1",
+      "dataFinal": "2024-06-21",
+      "prioridade": "3",
+      "descricao": ":)",
+      "id": "6"
+    },
+    {
+      "materia": "L",
+      "nome": "ENGRAVIDAR O RENATOLA",
+      "status": "1",
+      "dataFinal": "2024-06-21",
+      "prioridade": "3",
+      "descricao": ":)",
+      "id": "6"
+    },
+    {
+      "materia": "",
+      "id": "fc13",
+      "nome": "sim",
+      "status": "2",
+      "dataFinal": "2024-06-10",
+      "prioridade": "3",
+      "descricao": ""
+    }
+  ],
+  "materias": [
+    {
+      "nome": "Matéria de vilão",
+      "id": 2
+    },
+    {
+      "nome": "Mastodontico Clube Atlético Mineiro",
+      "id": 3
+    },
+    {
+      "nome": "teste nunca é demais",
+      "id": 4
+    }
+  ],
   "notas": [
     {
       "id": "bac9",
