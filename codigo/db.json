@@ -1,118 +1,14 @@
 {
-  "tarefas": [
-    {
-      "materia": "TIAW",
-      "nome": "SPRINT 3 ",
-      "status": "2",
-      "dataFinal": "2024-06-04",
-      "prioridade": "3",
-      "descricao": "asasadadfa",
-      "id": "1"
-    },
-    {
-      "materia": "Sinuca",
-      "nome": "ssadsadsa",
-      "status": "3",
-      "dataFinal": "2024-06-15",
-      "prioridade": "1",
-      "descricao": "sdasdSSADS",
-      "id": "2"
-    },
-    {
-      "materia": "TIAW",
-      "nome": "dsa",
-      "status": "3",
-      "dataFinal": "2024-06-14",
-      "prioridade": "3",
-      "descricao": "SSADADASD",
-      "id": "3"
-    },
-    {
-      "materia": "Sinucas",
-      "nome": "DSADSADSA",
-      "status": "3",
-      "dataFinal": "2024-06-29",
-      "prioridade": "2",
-      "descricao": "S",
-      "id": "4"
-    },
-    {
-      "materia": "Sinuca",
-      "nome": "DSFSDF",
-      "status": "3",
-      "dataFinal": "2024-06-27",
-      "prioridade": "2",
-      "descricao": "",
-      "id": "5"
-    },
-    {
-      "materia": "ATP",
-      "nome": "ENGRAVIDAR O RENATOLA",
-      "status": "1",
-      "dataFinal": "2024-06-21",
-      "prioridade": "3",
-      "descricao": ":)",
-      "id": "6"
-    },
-    {
-      "materia": "L",
-      "nome": "ENGRAVIDAR O RENATOLA",
-      "status": "1",
-      "dataFinal": "2024-06-21",
-      "prioridade": "3",
-      "descricao": ":)",
-      "id": "6"
-    },
-    {
-      "materia": "",
-      "id": "fc13",
-      "nome": "sim",
-      "status": "2",
-      "dataFinal": "2024-06-10",
-      "prioridade": "3",
-      "descricao": ""
-    }
-  ],
+  "tarefas": [],
   "materias": [],
   "notas": [
     {
-      "id": "1",
-      "titulo": "oi",
-      "nota": "Texto da Nota"
-    },
-    {
-      "id": "1",
-      "titulo": "oi",
-      "nota": "Texto da Nota"
-    },
-    {
-      "id": "1",
-      "titulo": "Título ",
-      "Nota": "Texto da Nota "
-    },
-    {
-      "id": "1",
-      "titulo": "",
-      "Nota": "Texto da Nota "
-    },
-    {
-      "id": "1",
-      "titulo": "victor",
-      "Nota": "sim som\n"
+      "id": "bac9",
+      "title": "Título da Nota",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "date": "quarta-feira, 12 de junho de 2024",
+      "colorClass": "note-red"
     }
   ],
-  "usuarios": [
-    {
-      "id": "5afc",
-      "username": "Victor O Desgraçadão",
-      "email": "victor.alvessalcantara@gmail.com",
-      "password": "testesenha123"
-    },
-    {
-      "id": "664a",
-      "username": "rafao",
-      "email": "rafao@gmail.com",
-      "password": "123456"
-    }
-  ]
+  "usuarios": []
 }
