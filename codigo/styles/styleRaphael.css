@@ -522,7 +522,7 @@ auto .add-button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-   /* Ocupa toda a altura da .cal-modal */
+   
 }
 
 #calendar {
@@ -578,12 +578,7 @@ auto .add-button:hover {
   cursor: pointer;
 }
 
-.note .delete {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  cursor: pointer;
-}
+
 
 .Btn {
   text-align: center;
@@ -610,10 +605,7 @@ auto .add-button:hover {
   background: #9DAADF;
 }
 
-.lapis {
-  height: 50px;
-  width: 50px;
-}
+
 
 .tit {
   width: 166px;
@@ -641,7 +633,17 @@ auto .add-button:hover {
 .date {
   position: absolute;
   margin-top: 50px;
-  right: 70px;
+  right: 100px;
+  font-size: 12px;
+  color: #000000;
+  font-family: 'Lato';
+}
+
+.delete{
+  position: absolute;
+  margin-top: -200px;
+  right: 10px;
   font-size: 12px;
   color: #555;
+  cursor: pointer;
 }
