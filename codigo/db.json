@@ -76,101 +76,38 @@
   "materias": [
     {
       "nome": "Matéria de vilão",
-      "id": 2
+      "id": "2"
     },
     {
       "nome": "Mastodontico Clube Atlético Mineiro",
-      "id": 3
+      "id": "3"
     },
     {
       "nome": "teste nunca é demais",
-      "id": 4
+      "id": "4"
     }
   ],
   "notas": [
     {
-      "id": "5331",
-      "title": "Título da Nota",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "date": "quarta-feira, 12 de junho de 2024",
-      "colorClass": "note-red"
+      "title": "Mateus Botelhox",
+      "content": "OI",
+      "colorClass": "note-red",
+      "date": "sexta-feira, 14 de junho de 2024",
+      "id": "1b3d"
     },
     {
-      "id": "e1b1",
-      "title": "Título da Nota",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "date": "quarta-feira, 12 de junho de 2024",
-      "colorClass": "note-red"
+      "title": "mmoiewi020e320i30832282",
+      "content": "eififnwnfi9ew",
+      "colorClass": "note-yellow",
+      "date": "sexta-feira, 14 de junho de 2024",
+      "id": "7cc1"
     },
     {
-      "id": "c800",
-      "title": "Título da Nota",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "date": "quarta-feira, 12 de junho de 2024",
-      "colorClass": "note-red"
-    },
-    {
-      "id": "27cd",
-      "title": "Título da Nota",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "date": "quarta-feira, 12 de junho de 2024",
-      "colorClass": "note-red"
-    },
-    {
-      "id": "e663",
-      "title": "Título da Nota",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "date": "quarta-feira, 12 de junho de 2024",
-      "colorClass": "note-red"
-    },
-    {
-      "id": "c7b7",
-      "title": "Título da Nota",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "date": "quarta-feira, 12 de junho de 2024",
-      "colorClass": "note-red"
-    },
-    {
-      "id": "0b83",
-      "title": "Título da Nota",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "date": "quarta-feira, 12 de junho de 2024",
-      "colorClass": "note-red"
-    },
-    {
-      "id": "ffa9",
-      "title": "Título da Nota",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "date": "quarta-feira, 12 de junho de 2024",
-      "colorClass": "note-red"
-    },
-    {
-      "id": "f3fa",
-      "title": "Título da Nota",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "date": "quarta-feira, 12 de junho de 2024",
-      "colorClass": "note-red"
-    },
-    {
-      "id": "17f6",
-      "title": "Título da Nota",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "date": "quarta-feira, 12 de junho de 2024",
-      "colorClass": "note-red"
-    },
-    {
-      "id": "b8ee",
-      "title": "Título da Nota",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "date": "quarta-feira, 12 de junho de 2024",
-      "colorClass": "note-red"
-    },
-    {
-      "id": "b95c",
-      "title": "Título da Nota",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "date": "quarta-feira, 12 de junho de 2024",
-      "colorClass": "note-red"
+      "title": "ewuewhue",
+      "content": "fkwofokew",
+      "colorClass": "note-blue",
+      "date": "sexta-feira, 14 de junho de 2024",
+      "id": "842c"
     }
   ],
   "usuarios": []

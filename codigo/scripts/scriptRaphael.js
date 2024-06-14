@@ -1,6 +1,6 @@
 const URL_NOTAS = "http://localhost:3000/notas";
 let colorIndex = 0;
-const colors = ['note-red', 'note-blue', 'note-yellow'];
+const colors = ['note-red', 'note-yellow', 'note-blue'];
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn').addEventListener('click', addNote);
@@ -42,8 +42,8 @@ function displayNote(note) {
     noteDiv.className = `note ${note.colorClass}`; // Usa a cor armazenada
     noteDiv.dataset.id = note.id; // Adiciona o ID da nota como atributo de dados
     noteDiv.innerHTML = `
-        <h2 class="tit" contenteditable="true">${note.title}</h2>
-        <p class="subtit" contenteditable="true">${note.content}</p>
+        <h2 class="tit">${note.title}</h2>
+        <p class="subtit">${note.content}</p>
         <span class="date">${note.date}</span>
         <span class="edit">
             <svg width="50" height="50" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,42 +52,62 @@ function displayNote(note) {
             </svg>
         </span>
         <span class="delete">
-
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="56" height="26" viewBox="0 0 256 256" xml:space="preserve">
-
-<defs>
-</defs>
-<g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
-	<path d="M 8 90 c -2.047 0 -4.095 -0.781 -5.657 -2.343 c -3.125 -3.125 -3.125 -8.189 0 -11.314 l 74 -74 c 3.125 -3.124 8.189 -3.124 11.314 0 c 3.124 3.124 3.124 8.189 0 11.313 l -74 74 C 12.095 89.219 10.047 90 8 90 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
-	<path d="M 82 90 c -2.048 0 -4.095 -0.781 -5.657 -2.343 l -74 -74 c -3.125 -3.124 -3.125 -8.189 0 -11.313 c 3.124 -3.124 8.189 -3.124 11.313 0 l 74 74 c 3.124 3.125 3.124 8.189 0 11.314 C 86.095 89.219 84.048 90 82 90 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
-</g>
-</svg>
-
-
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="56" height="26" viewBox="0 0 256 256" xml:space="preserve">
+                <defs></defs>
+                <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                    <path d="M 8 90 c -2.047 0 -4.095 -0.781 -5.657 -2.343 c -3.125 -3.125 -3.125 -8.189 0 -11.314 l 74 -74 c 3.125 -3.124 8.189 -3.124 11.314 0 c 3.124 3.124 3.124 8.189 0 11.313 l -74 74 C 12.095 89.219 10.047 90 8 90 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform="matrix(1 0 0 1 0 0)" stroke-linecap="round" />
+                    <path d="M 82 90 c -2.048 0 -4.095 -0.781 -5.657 -2.343 l -74 -74 c -3.125 -3.124 -3.125 -8.189 0 -11.313 c 3.124 -3.124 8.189 -3.124 11.313 0 l 74 74 c 3.124 3.125 3.124 8.189 0 11.314 C 86.095 89.219 84.048 90 82 90 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform="matrix(1 0 0 1 0 0)" stroke-linecap="round" />
+                </g>
+            </svg>
         </span>
     `;
     
-    noteDiv.querySelector('.edit').addEventListener('click', () => {
-        enableEdit(noteDiv);
+    const editIcon = noteDiv.querySelector('.edit');
+    const deleteIcon = noteDiv.querySelector('.delete');
+
+    editIcon.addEventListener('click', () => {
+        toggleEditMode(noteDiv);
     });
-    
-    noteDiv.querySelector('.delete').addEventListener('click', () => {
+
+    deleteIcon.addEventListener('click', () => {
         deleteNote(note.id, noteDiv);
     });
-    
+
     notesContainer.appendChild(noteDiv);
 }
 
-function updateNote(id, noteDiv) {
+function toggleEditMode(noteDiv) {
+    const titleElement = noteDiv.querySelector('h2');
+    const contentElement = noteDiv.querySelector('p');
+    const editIcon = noteDiv.querySelector('.edit');
+
+    const isEditing = titleElement.getAttribute('contenteditable') === 'true';
+
+    if (!isEditing) {
+        titleElement.setAttribute('contenteditable', 'true');
+        contentElement.setAttribute('contenteditable', 'true');
+        editIcon.style.fill = '#FFD700'; // Altera a cor do ícone do lápis para indicar que está em modo de edição
+    } else {
+        saveNoteChanges(noteDiv);
+        titleElement.setAttribute('contenteditable', 'false');
+        contentElement.setAttribute('contenteditable', 'false');
+        editIcon.style.fill = 'white'; // Volta a cor original do ícone do lápis
+    }
+}
+
+function saveNoteChanges(noteDiv) {
+    const id = noteDiv.dataset.id;
     const title = noteDiv.querySelector('h2').innerText;
     const content = noteDiv.querySelector('p').innerText;
-    
+    const colorClass = noteDiv.className.split(' ').find(cls => colors.includes(cls));
+    const date = noteDiv.querySelector('.date').innerText;
+
     fetch(`${URL_NOTAS}/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ title, content })
+        body: JSON.stringify({ title, content, colorClass, date })
     })
     .then(response => {
         if (response.ok) {
@@ -125,6 +145,7 @@ function fetchNotes() {
     .then(notes => {
         notes.forEach(note => {
             displayNote(note);
+            getNextColorClass(); // Avança o índice para a próxima cor
         });
     });
 }
