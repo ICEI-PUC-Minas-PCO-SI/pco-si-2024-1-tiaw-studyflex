@@ -548,7 +548,7 @@ auto .add-button:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: center;
+  justify-content:flex-start;
 }
 
 .note {
@@ -580,9 +580,7 @@ auto .add-button:hover {
 
 
 
-.Btn {
-  text-align: center;
-}
+
 
 .add {
   border: none;
@@ -590,6 +588,8 @@ auto .add-button:hover {
   padding: 15px;
   border-radius: 50%;
   cursor: pointer;
+  
+  display: flex;
 }
 
 /* Cores diferentes para as notas */
