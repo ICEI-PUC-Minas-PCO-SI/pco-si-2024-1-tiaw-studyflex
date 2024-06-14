@@ -15,6 +15,7 @@
   <!-- FullCalendar CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
   <link rel="stylesheet" href="./styles/styleVictor.css" />
+  <link rel="stylesheet" href="./styles/styleRafaelM.css">
   <title>StudyFlex</title>
 </head>
 
@@ -396,8 +397,9 @@
         </dialog>
 
         <!--CALENDÁRIO-->
-        <section class="homescreen-task-info">
+        <section class="homescreen-task-info">    
           <article class="calendar-view">
+            <div class="container-calendar-total">
             <h3 class="task-info-title">
               <strong>Quarta-feira</strong>, 24 de janeiro
             </h3>
@@ -415,6 +417,13 @@
                 <div id="eventDetails"></div>
               </div>
             </div>
+
+            <div id="progress-container">
+              <div class="container-progress" id="blocodeprogresso">
+                <h3 class="tituloProgresso">Progresso das Disciplinas</h3>
+              </div>
+            </div>
+          </div> 
           </article>
         </section>
       </section>
@@ -432,6 +441,7 @@
   <script src="./scripts/victor-scripts/scriptTaskModal.js" async></script>
   <script src="./scripts/victor-scripts/app.js" async></script>
   <script src="/codigo/scripts/mateus-scripts/scriptMateus.js"></script>
+  <script src="./scripts/scriptRafaelM.js"></script>
 </body>
 
 </html>
