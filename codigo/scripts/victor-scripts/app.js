@@ -1,5 +1,4 @@
 //SELECT SCRIPT
-lucide.createIcons();
 
 //URL ATUAL
 let currentURL = window.location.href;

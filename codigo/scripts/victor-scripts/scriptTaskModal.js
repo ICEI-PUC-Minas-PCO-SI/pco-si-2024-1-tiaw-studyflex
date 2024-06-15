@@ -148,8 +148,8 @@ async function fetchTasksPages(key, value, sorting) {
           </div>
 
           <div class="task-preview-options">
-              <i data-lucide="pen"></i>
-              <i data-lucide="x"></i>
+            <div class="options-icon-container"><i data-lucide="pen"></i></div>
+            <div class="options-icon-container"><i data-lucide="x"></i></div>
           </div>
         </div>
        
@@ -184,6 +184,7 @@ async function fetchTasksPages(key, value, sorting) {
         taskPreview.innerHTML += taskListContent;
         tasksList.appendChild(taskPreview);
       }
+      lucide.createIcons();
     } else {
     }
   } catch (error) {

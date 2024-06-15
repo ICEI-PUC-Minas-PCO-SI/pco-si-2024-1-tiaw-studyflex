@@ -325,9 +325,9 @@ auto .add-button:hover {
 .search-bar {
   padding: 16px 32px 16px 64px;
   width: 100%;
-  border: none;
   box-shadow: 0 5px 5px 1px hsla(210, 10%, 23%, 0.178);
   border: 1px solid #8aa17b;
+  border-radius: 500px;
 }
 
 .search-bar:focus {
@@ -1146,7 +1146,7 @@ auto .add-button:hover {
   flex-direction: column;
   box-shadow: 5px 5px 5px 0 hsla(210, 10%, 23%, 0.178);
   padding: 24px;
-  gap: 6px;
+  gap: 12px;
   border: 2px solid #d9d9d9;
   transition: all 0.5s ease-in-out;
 }
@@ -1154,16 +1154,38 @@ auto .add-button:hover {
 /*TASK INFO*/
 
 .task-item-header {
-  border: 1px solid red;
   display: flex;
+  justify-content: space-between;
+}
+
+.options-icon-container {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all ease-in 0.2s;
+}
+
+.options-icon-container:hover {
+  background-color: #d8d8d8;
 }
 
 .task-preview-options {
-  border: 1px solid blue;
+  display: flex;
+  gap: 16px;
+}
+
+.task-preview-options i {
+  background-color: #586352;
 }
 
 .task-preview-options svg {
-  color: #1481ba;
+  color: #414b3b;
+  width: 18px;
+  height: 18px;
 }
 
 .task-info-title {
@@ -1186,7 +1208,6 @@ auto .add-button:hover {
 .task-preview-title {
   display: flex;
   flex-direction: column;
-  gap: 6px;
 }
 
 .task-preview-title h2 {
@@ -1214,7 +1235,6 @@ auto .add-button:hover {
 .task-preview-details {
   display: flex;
   gap: 16px;
-  border: 1px solid #1481ba;
 }
 
 .details-container {
@@ -1234,14 +1254,9 @@ auto .add-button:hover {
   align-self: center;
 }
 
-.task-preview-description {
-  border: 1px solid #1481ba;
-}
-
 .task-preview-description h3 {
   color: #414b3b;
   margin-bottom: 12px;
-  border: 1px solid green;
 }
 
 .task-preview-description p {
@@ -1417,4 +1432,14 @@ auto .add-button:hover {
   background-color: #ffffff;
   display: flex;
   justify-content: space-between;
+}
+
+.options-button {
+  border-radius: 500px;
+  font-size: 12px;
+  padding: 10px 16px;
+}
+.options-button svg {
+  width: 14px;
+  height: 14px;
 }
