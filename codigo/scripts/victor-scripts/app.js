@@ -2,8 +2,6 @@
 lucide.createIcons();
 
 //URL API DE DADOS
-const URL_TAREFAS = "http://localhost:3000/tarefas";
-
 const URL_NOTAS = "http://localhost:3000/notas";
 
 //URL ATUAL

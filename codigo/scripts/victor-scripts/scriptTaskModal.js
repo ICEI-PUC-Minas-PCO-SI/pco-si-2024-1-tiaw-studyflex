@@ -339,7 +339,6 @@ createTaskButton.addEventListener("click", () => {
     //Create a formData to get key/values
     const formData = new FormData(e.target);
     const jsonObject = {};
-    console.log(formData);
 
     //Passing data to the json object
     formData.forEach((value, key) => {
@@ -360,7 +359,6 @@ createTaskButton.addEventListener("click", () => {
 });
 
 //FILTERING TASKS
-
 const filterButton = document.getElementById("filterTask");
 const sortButton = document.getElementById("sortTask");
 const filterModal = document.getElementById("filterTaskModal");
