@@ -76,56 +76,39 @@
   "materias": [
     {
       "nome": "Matéria de vilão",
-      "id": 2
+      "id": "2"
     },
     {
       "nome": "Mastodontico Clube Atlético Mineiro",
-      "id": 3
+      "id": "3"
     },
     {
       "nome": "teste nunca é demais",
-      "id": 4
+      "id": "4"
     }
   ],
   "notas": [
     {
-      "id": "1",
-      "titulo": "oi",
-      "nota": "Texto da Nota"
+      "title": "FISICA",
+      "content": "FORÇA CENTRI FUGA",
+      "colorClass": "note-red",
+      "date": "sexta-feira, 14 de junho de 2024",
+      "id": "417a"
     },
     {
-      "id": "1",
-      "titulo": "oi",
-      "nota": "Texto da Nota"
+      "title": "Sinuca no P9",
+      "content": "Mateus é muito ruim na Sinuca,sem pressão aqui é o Rafão",
+      "colorClass": "note-yellow",
+      "date": "sexta-feira, 14 de junho de 2024",
+      "id": "05da"
     },
     {
-      "id": "1",
-      "titulo": "Título ",
-      "Nota": "Texto da Nota "
-    },
-    {
-      "id": "1",
-      "titulo": "",
-      "Nota": "Texto da Nota "
-    },
-    {
-      "id": "1",
-      "titulo": "victor",
-      "Nota": "sim som\n"
+      "title": "AVISO",
+      "content": "2+2=4",
+      "colorClass": "note-blue",
+      "date": "sexta-feira, 14 de junho de 2024",
+      "id": "43db"
     }
   ],
-  "usuarios": [
-    {
-      "id": "5afc",
-      "username": "Victor O Desgraçadão",
-      "email": "victor.alvessalcantara@gmail.com",
-      "password": "testesenha123"
-    },
-    {
-      "id": "664a",
-      "username": "rafao",
-      "email": "rafao@gmail.com",
-      "password": "123456"
-    }
-  ]
+  "usuarios": []
 }

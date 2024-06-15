@@ -1,217 +1,157 @@
-var proximoTipoRetangulo = 1;
-var proximoIdRetangulo = 1; // Iniciar com 1 porque já existe o retângulo inicial com ID 0
-var tipoUltimoRetanguloRemovido = null;
-var notas = {};
-
 const URL_NOTAS = "http://localhost:3000/notas";
+let colorIndex = 0;
+const colors = ['note-red', 'note-yellow', 'note-blue'];
 
-async function carregarNotas() {
-    try {
-        const response = await fetch(URL_NOTAS);
-        if (response.ok) {
-            const data = await response.json();
-            // Processar os dados recebidos, se necessário
-            console.log("Notas carregadas:", data);
-        } else {
-            console.error("Falha na requisição GET:", response);
-            alert("Erro ao carregar as notas");
-        }
-    } catch (error) {
-        console.error("Erro:", error);
-        alert("Erro ao carregar as notas");
-    }
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-    carregarNotas();
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('btn').addEventListener('click', addNote);
+    fetchNotes();
 });
 
-function adicionarRetangulo() {
-    var container = document.querySelector(".container2");
-    var divClone;
+function addNote() {
+    const date = new Date().toLocaleDateString('pt-BR', {
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    });
 
-    if (proximoTipoRetangulo === 1) {
-        divClone = document.createElement('div');
-        divClone.className = 'retan1 retan';
-        proximoTipoRetangulo = 2;
-    } else if (proximoTipoRetangulo === 2) {
-        divClone = document.createElement('div');
-        divClone.className = 'retan2 retan';
-        proximoTipoRetangulo = 3;
-    } else if (proximoTipoRetangulo === 3) {
-        divClone = document.createElement('div');
-        divClone.className = 'retan3 retan';
-        proximoTipoRetangulo = 1;
-    }
+    const note = {
+        title: 'Título da Nota',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        date: date,
+        colorClass: getNextColorClass()
+    };
 
-    var idRetangulo = proximoIdRetangulo;
-    divClone.setAttribute('id', idRetangulo); 
-    proximoIdRetangulo++; 
+    fetch(URL_NOTAS, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(note)
+    })
+    .then(response => response.json())
+    .then(newNote => {
+        displayNote(newNote);
+    })
+    .catch(error => {
+        console.error('Erro ao adicionar a nota:', error);
+    });
+}
 
-    divClone.innerHTML = `
-        <button>
-            <svg width="31" height="31" class="delete" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><polygon fill-rule="evenodd" points="8 9.414 3.707 13.707 2.293 12.293 6.586 8 2.293 3.707 3.707 2.293 8 6.586 12.293 2.293 13.707 3.707 9.414 8 13.707 12.293 12.293 13.707 8 9.414"/></svg>
-        </button>
-        <h3 class="h3">Título</h3>
-        <p class="p">Texto da Nota</p>
-        <button>
-            <svg width="31" height="31" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="lapis">
+function displayNote(note) {
+    const notesContainer = document.getElementById('notesContainer');
+    
+    const noteDiv = document.createElement('div');
+    noteDiv.className = `note ${note.colorClass}`; // Usa a cor armazenada
+    noteDiv.dataset.id = note.id; // Adiciona o ID da nota como atributo de dados
+    noteDiv.innerHTML = `
+        <h2 class="tit">${note.title}</h2>
+        <p class="subtit">${note.content}</p>
+        <span class="date">${note.date}</span>
+        <span class="edit">
+            <svg width="50" height="50" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="20.5" cy="20.5" r="20.5" fill="#8AA17B"/>
                 <path d="M9 27.9993V33H14.0007L28.7561 18.2446L23.7554 13.2439L9 27.9993ZM32.6099 14.3907C33.13 13.8707 33.13 13.0239 32.6099 12.5038L29.4962 9.39005C28.9761 8.86998 28.1293 8.86998 27.6093 9.39005L25.1689 11.8304L30.1696 16.8311L32.6099 14.3907Z" fill="white"/>
             </svg>
-        </button>
+        </span>
+        <span class="delete">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="56" height="26" viewBox="0 0 256 256" xml:space="preserve">
+                <defs></defs>
+                <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                    <path d="M 8 90 c -2.047 0 -4.095 -0.781 -5.657 -2.343 c -3.125 -3.125 -3.125 -8.189 0 -11.314 l 74 -74 c 3.125 -3.124 8.189 -3.124 11.314 0 c 3.124 3.124 3.124 8.189 0 11.313 l -74 74 C 12.095 89.219 10.047 90 8 90 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform="matrix(1 0 0 1 0 0)" stroke-linecap="round" />
+                    <path d="M 82 90 c -2.048 0 -4.095 -0.781 -5.657 -2.343 l -74 -74 c -3.125 -3.124 -3.125 -8.189 0 -11.313 c 3.124 -3.124 8.189 -3.124 11.313 0 l 74 74 c 3.124 3.125 3.124 8.189 0 11.314 C 86.095 89.219 84.048 90 82 90 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform="matrix(1 0 0 1 0 0)" stroke-linecap="round" />
+                </g>
+            </svg>
+        </span>
     `;
+    
+    const editIcon = noteDiv.querySelector('.edit');
+    const deleteIcon = noteDiv.querySelector('.delete');
 
-    container.appendChild(divClone);
-
-    var addButton = document.querySelector("#btn");
-    container.appendChild(addButton);
-
-    adicionarEventos(divClone);
-}
-
-
-function adicionarEventos(retangulo) {
-    var botaoExcluir = retangulo.querySelector('.delete');
-    botaoExcluir.addEventListener('click', function() {
-        excluirRetangulo(this);
+    editIcon.addEventListener('click', () => {
+        toggleEditMode(noteDiv);
     });
 
-    var botaoLapis = retangulo.querySelector('.lapis');
-    botaoLapis.addEventListener('click', function() {
-        liberarEdicao(retangulo);
+    deleteIcon.addEventListener('click', () => {
+        deleteNote(note.id, noteDiv);
     });
+
+    notesContainer.appendChild(noteDiv);
 }
 
-async function excluirRetangulo(retangulo) {
-    var id = retangulo.id;
+function toggleEditMode(noteDiv) {
+    const titleElement = noteDiv.querySelector('h2');
+    const contentElement = noteDiv.querySelector('p');
+    const editIcon = noteDiv.querySelector('.edit');
 
-    try {
-        const response = await fetch(URL_NOTAS + "/" + id, {
-            method: "DELETE",
-        });
+    const isEditing = titleElement.getAttribute('contenteditable') === 'true';
 
+    if (!isEditing) {
+        titleElement.setAttribute('contenteditable', 'true');
+        contentElement.setAttribute('contenteditable', 'true');
+        editIcon.style.fill = '#FFD700'; // Altera a cor do ícone do lápis para indicar que está em modo de edição
+    } else {
+        saveNoteChanges(noteDiv);
+        titleElement.setAttribute('contenteditable', 'false');
+        contentElement.setAttribute('contenteditable', 'false');
+        editIcon.style.fill = 'white'; // Volta a cor original do ícone do lápis
+    }
+}
+
+function saveNoteChanges(noteDiv) {
+    const id = noteDiv.dataset.id;
+    const title = noteDiv.querySelector('h2').innerText;
+    const content = noteDiv.querySelector('p').innerText;
+    const colorClass = noteDiv.className.split(' ').find(cls => colors.includes(cls));
+    const date = noteDiv.querySelector('.date').innerText;
+
+    fetch(`${URL_NOTAS}/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ title, content, colorClass, date })
+    })
+    .then(response => {
         if (response.ok) {
-            retangulo.remove();
-            if (document.querySelectorAll('.retan').length === 0) {
-                tipoUltimoRetanguloRemovido = null;
-            }
-            var container = document.querySelector(".container2");
-            var addButton = document.querySelector(".add");
-            container.appendChild(addButton);
-            alert("Nota excluída com sucesso");
+            console.log('Nota atualizada com sucesso');
         } else {
-            console.log("Failed response:", response);
-            alert("Erro ao excluir nota");
+            console.error('Erro ao atualizar a nota:', response.statusText);
         }
-    } catch (error) {
-        console.log("Error:", error);
-        alert("Erro ao excluir nota");
-    }
-}
-
-
-function liberarEdicao(element) {
-    var tituloOriginal = element.querySelector('.h3').textContent;
-    var textoOriginal = element.querySelector('.p').textContent;
-
-    var lapis = element.querySelector('.lapis');
-
-    if (!tituloOriginal || !textoOriginal || !lapis) {
-        console.error("Elementos não encontrados dentro do retângulo para edição.");
-        return;
-    }
-
-    lapis.style.display = 'none';
-
-    var inputTitulo = document.createElement('input');
-    inputTitulo.type = 'text';
-    inputTitulo.value = tituloOriginal;
-    var titulo = element.querySelector('.h3');
-    titulo.replaceWith(inputTitulo);
-    inputTitulo.focus();
-
-    var inputTextoNota = document.createElement('textarea');
-    inputTextoNota.value = textoOriginal;
-    var textoNota = element.querySelector('.p');
-    textoNota.replaceWith(inputTextoNota);
-
-    inputTextoNota.addEventListener('keyup', function(event) {
-        if (event.key === 'Enter') {
-            salvarEdicao(element, inputTitulo.value, inputTextoNota.value);
-        }
-    });
-
-    inputTitulo.addEventListener('keyup', function(event) {
-        if (event.key === 'Enter') {
-            salvarEdicao(element, inputTitulo.value, inputTextoNota.value);
-        }
+    })
+    .catch(error => {
+        console.error('Erro ao atualizar a nota:', error);
     });
 }
 
-async function salvarEdicao(element, novoTitulo, novoTextoNota) {
-    var id = element.id;
+function deleteNote(id, noteDiv) {
+    console.log(`Tentando deletar nota com id: ${id}`);
+    fetch(`${URL_NOTAS}/${id}`, {
+        method: 'DELETE'
+    })
+    .then(response => {
+        if (response.ok) {
+            noteDiv.remove();
+            console.log(`Nota com id ${id} excluída com sucesso.`);
+        } else {
+            console.error('Erro ao deletar a nota:', response.statusText);
+        }
+    })
+    .catch(error => {
+        console.error('Erro ao deletar a nota:', error);
+    });
+}
 
-    
-    proximoIdRetangulo++;
-
-    console.log("ID:", id);
-    console.log("Notas:", notas);
-
-    var titulo = document.createElement('h3');
-    titulo.className = 'h3';
-    titulo.textContent = novoTitulo;
-    element.querySelector('input[type="text"]').replaceWith(titulo);
-
-    var textoNota = document.createElement('p');
-    textoNota.className = 'p';
-    textoNota.textContent = novoTextoNota;
-    element.querySelector('textarea').replaceWith(textoNota);
-
-    var lapis = element.querySelector('.lapis');
-    lapis.style.display = 'block';
-
-    
-    notas[id] = {
-        id: id,
-        titulo: novoTitulo,
-        Nota: novoTextoNota
-    };
-
-    try {
-        const response = await fetch(URL_NOTAS, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                id: id,
-                titulo: novoTitulo,
-                Nota: novoTextoNota
-            })
+function fetchNotes() {
+    fetch(URL_NOTAS)
+    .then(response => response.json())
+    .then(notes => {
+        notes.forEach(note => {
+            displayNote(note);
+            getNextColorClass(); // Avança o índice para a próxima cor
         });
-
-        if (!response.ok) {
-            console.error("Failed response:", response);
-            alert("Erro ao salvar alterações");
-        } 
-    } catch (error) {
-        console.error("Error:", error);
-        alert("Erro ao salvar alterações");
-    }
-}
-
-function atribuirIdsNotas() {
-    var notasExistentes = document.querySelectorAll('.retan');
-    notasExistentes.forEach(function(nota) {
-        if (!nota.id) {
-            nota.setAttribute('id', proximoIdRetangulo);
-            proximoIdRetangulo++;
-        }
     });
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    atribuirIdsNotas(); 
-    document.querySelectorAll('.retan').forEach(adicionarEventos);
-});
+function getNextColorClass() {
+    const nextColorClass = colors[colorIndex];
+    colorIndex = (colorIndex + 1) % colors.length;
+    return nextColorClass;
+}

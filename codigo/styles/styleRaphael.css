@@ -522,7 +522,7 @@ auto .add-button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-   /* Ocupa toda a altura da .cal-modal */
+   
 }
 
 #calendar {
@@ -533,146 +533,117 @@ auto .add-button:hover {
 
 /* FIM DO CALENDARIO */
 
-.container2{
-  flex-wrap: wrap;
+#mainContainer {
+  padding: 20px;
+}
+
+.tituloo {
+  text-align: center;
+  font-weight: 700;
+  font-size: 32px;
+  color: #586352;
+}
+
+#notesContainer {
   display: flex;
-  padding:45px;
-  
-  
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content:flex-start;
 }
 
-.retan1{
+.note {
+  background-color: #f9f9f9;
+  border-radius: 19px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.525); 
+  padding: 20px;
+  width: 300px;
+  height: 300px;
   position: relative;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-   margin-left: 20px;
-   margin-right: 30px;
-   height: 400px;
-   width: 300px;
-   padding: 5px;
-   background-color: #E68B86;
-   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-  border: none;
-  margin-top:35px;
-  word-wrap: break-word;
-  
+  margin-top: 40px;
 }
 
-.retan2{
-  position: relative; 
-   margin-left: 20px;
-   margin-right: 30px;
-   height: 400px;
-   width: 300px;
-   padding: 5px;
-   border: 1px solid #ccc;
-   border-radius: 5px;
-   background-color: #EDBF74;
-   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-  border: none;
-  margin-top:35px;
-  word-wrap: break-word;
+.note h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
-.retan3{
-  position: relative;
-   margin-left: 20px;
-   margin-right: 30px;
-   height: 400px;
-   width: 300px;
-   border: 1px solid #ccc;
-   border-radius: 5px;
-   padding: 5px;
-   background-color:  #9DAADF;
-   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-  border: none;
-  margin-top:35px;
-  word-wrap: break-word;
-   
+.note p {
+  font-size: 14px;
 }
 
-
-
-.Btn{
-margin-top: 250px;
-margin-left: 20px;
-margin-right: 50px;
-padding: 5px;
-height: 70px;
-width: 70px;
-
-}
-
-.lapis{
-  margin-top: 200px;
-  margin-left: 210px;
-  height: 70px;
-  width: 70px;
+.note .edit {
   position: absolute;
-  
-  }
-
-  .h3{
-    margin-left: 20px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size:30px;
-    margin-top: 1px;
-  }
-
-  .p{
-      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-      font-size:20px;
-      margin-top: 30px;
-      margin-left: 20px;
-      color:rgb(86, 76, 76);
-    
-  }
-
-  input{
-    
-    margin-left: 50px;
-    height: 30px;
-    text-align: center;
-    font-family: arial;
-    background-color: none;
-  }
-
-  textarea{
-    margin-left:50px;
-    margin-top: 5px;
-    height: 100px;
-    width: 170px;
-    text-align: center;
-    font-family: arial;
-    background-color: none;
-  }
-
-  .delete{
-    margin-left: 250px;
-    margin-top: 10px;
-    color: white;
-  }
-
-.data{
-margin-top:30px;
-width: 279px;
-height: 58px;
-left: 810px;
-top: 314px;
-margin-left: 400px;
-font-family: 'Lato';
-font-style: normal;
-font-weight: 800;
-font-size: 24px;
-line-height: 29px;
-text-align: center;
-color: #586352;
-outline: 0;
-border: none; 
-outline: none;
-box-shadow: none; 
-
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
 }
 
- 
- 
+
+
+
+
+.add {
+  border: none;
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  
+  display: flex;
+}
+
+/* Cores diferentes para as notas */
+.note-red {
+  background: #E68B86;
+}
+
+.note-yellow {
+  background: #EDBF74;
+}
+
+.note-blue {
+  background: #9DAADF;
+}
+
+
+
+.tit {
+  width: 166px;
+  height: 24px;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000000;
+}
+
+.subtit {
+  width: 222px;
+  height: 168px;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000000;
+  opacity: 0.5;
+}
+
+.date {
+  position: absolute;
+  margin-top: 50px;
+  right: 100px;
+  font-size: 12px;
+  color: #000000;
+  font-family: 'Lato';
+}
+
+.delete{
+  position: absolute;
+  margin-top: -200px;
+  right: 10px;
+  font-size: 12px;
+  color: #555;
+  cursor: pointer;
+}
