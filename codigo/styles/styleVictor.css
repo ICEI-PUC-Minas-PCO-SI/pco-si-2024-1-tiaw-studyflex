@@ -1122,9 +1122,6 @@ auto .add-button:hover {
   padding: 0;
 }
 
-.homescreen-title {
-}
-
 .homescreen {
   grid-column: 1/3;
   grid-row: 1/3;
@@ -1149,12 +1146,26 @@ auto .add-button:hover {
   flex-direction: column;
   box-shadow: 5px 5px 5px 0 hsla(210, 10%, 23%, 0.178);
   padding: 24px;
-  gap: 24px;
+  gap: 6px;
   border: 2px solid #d9d9d9;
   transition: all 0.5s ease-in-out;
 }
 
 /*TASK INFO*/
+
+.task-item-header {
+  border: 1px solid red;
+  display: flex;
+}
+
+.task-preview-options {
+  border: 1px solid blue;
+}
+
+.task-preview-options svg {
+  color: #1481ba;
+}
+
 .task-info-title {
   font-size: 24px;
   color: #586352;
@@ -1181,18 +1192,19 @@ auto .add-button:hover {
 .task-preview-title h2 {
   color: #414b3b;
   letter-spacing: 1.2px;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .task-preview-title span {
   margin-top: 6px;
-  font-size: 12px;
-  letter-spacing: 1.5px;
+  font-size: 10px;
+  letter-spacing: 1.2px;
   width: fit-content;
   padding: 6px 12px;
   border-radius: 500px;
   color: #ffffff;
   background-color: #414b3b;
+  font-weight: 600;
 }
 
 .task-preview-title .no-subject {
@@ -1202,6 +1214,7 @@ auto .add-button:hover {
 .task-preview-details {
   display: flex;
   gap: 16px;
+  border: 1px solid #1481ba;
 }
 
 .details-container {
@@ -1212,22 +1225,29 @@ auto .add-button:hover {
   border: 1px solid #414b3b;
   padding: 4px 12px;
   border-radius: 500px;
+  font-size: 12px;
 }
 
 .details-container img {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   align-self: center;
+}
+
+.task-preview-description {
+  border: 1px solid #1481ba;
 }
 
 .task-preview-description h3 {
   color: #414b3b;
   margin-bottom: 12px;
+  border: 1px solid green;
 }
 
 .task-preview-description p {
   color: #414b3b;
-  font-style: italic;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 /*PAGINATION*/

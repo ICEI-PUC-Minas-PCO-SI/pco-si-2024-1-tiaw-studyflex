@@ -141,11 +141,18 @@ async function fetchTasksPages(key, value, sorting) {
         finalDate.setDate(finalDate.getDate() + 1);
         taskListContent = `
         <article class="task-item-preview">
-        <div class="task-preview-title">
-          <h2>${taskData[i].nome}</h2>
-          ${subjectContent}
-        </div>
+        <div class="task-item-header">
+          <div class="task-preview-title">
+            <h2>${taskData[i].nome}</h2>
+            ${subjectContent}
+          </div>
 
+          <div class="task-preview-options">
+              <i data-lucide="pen"></i>
+              <i data-lucide="x"></i>
+          </div>
+        </div>
+       
         <div class="task-preview-details">
           <div class="details-container status-preview">
           <img src="./assets/imgs/task-icons/status-icon.png" alt="status"> 
@@ -166,9 +173,10 @@ async function fetchTasksPages(key, value, sorting) {
         </div>
 
         <div class="task-preview-description">
-        <h3>DESCRIÇÃO</h3>
-          <p>
+     
+          <p>"
           ${taskData[i].descricao}
+          "
           </p>
         </div>
       </article>
