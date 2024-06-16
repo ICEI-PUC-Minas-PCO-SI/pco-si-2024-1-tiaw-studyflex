@@ -33,36 +33,13 @@
         /></a>
 
         <div class="header-box">
-          <button class="btn header-btn">
-            <img
-              src="./assets/imgs/notification_icon.svg"
-              alt="Notificações"
-              class="btn-img"
-              draggable="false"
-            />
+          <button class="btn header-btn" id="notificationButton">
+            <i data-lucide="messages-square" class="main-icon"></i>
           </button>
 
-          <button class="btn header-btn">
-            <img
-              src="./assets/imgs/profile_icon.svg"
-              alt="Perfil do usuário"
-              class="btn-img"
-              draggable="false"
-            />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="btn-svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="m19.5 8.25-7.5 7.5-7.5-7.5"
-              />
-            </svg>
+          <button class="btn header-btn"  id="profileButton">
+            <i data-lucide="user" class="main-icon"></i>
+            <i data-lucide="chevron-down" class="secondary-icon"></i>
           </button>
         </div>
       </header>
@@ -110,18 +87,8 @@
               class="search-bar"
             />
 
-            <img
-              src="./assets/imgs/loupe_icon.png"
-              alt="Lupa icone"
-              class="input-icon"
-            />
-
             <button type="submit" class="submit-btn">
-              <img
-                src="./assets/imgs/search_icon.png"
-                alt="Botão de pesquisar"
-                class="submit-icon"
-              />
+            
             </button>
           </form>
 
@@ -218,19 +185,8 @@
                 aria-label="Search"
                 class="search-bar"
               />
-
-              <img
-                src="./assets/imgs/loupe_icon.png"
-                alt="Lupa icone"
-                class="input-icon"
-              />
-
               <button type="submit" class="submit-btn">
-                <img
-                  src="./assets/imgs/search_icon.png"
-                  alt="Botão de pesquisar"
-                  class="submit-icon"
-                />
+             
               </button>
             </form>
 
@@ -539,12 +495,28 @@
           <section class="tasks-container task-page" id="tasksContainer">
             <!--LISTA DE TAREFAS CRIADAS -->
 
+            <!--MODAL PARA EXCLUIR TAREFA-->
+            <dialog class="delete-message-modal message-modal" id="deleteMessage">
+              <div class="alert-message">
+                <p>Tem certeza que deseja <span>excluir</span> a tarefa?</p>       
+              </div>
+              <div class="alert-options">
+                <button id="deleteButton" class="message-option-button">Sim</button>
+                <button id="dontDeleteButton" class="message-option-button">Cancelar</button>
+              </div>
+            </dialog>
+             <!--MODAL PARA EXCLUIR TAREFA-->
+
             <ul id="taskList"></ul>
+
 
             <div class="task-pageButtons-container">
               <button class="search-task-button" id="prevPage">
                 <i data-lucide="arrow-left"></i>
               </button>
+
+              <div id="pageCounter"></div>
+
               <button class="search-task-button" id="nextPage">
                 <i data-lucide="arrow-right"></i>
               </button>
@@ -553,10 +525,11 @@
 
           <!-- DETALHES DA TAREFA -->
           <dialog class="task-information" id="taskDetailsModal">
-            <button id="editTaskButton"><i data-lucide="pencil"></i></button>
-            <div class="task-information-title">
-              <h2>SPRINT 3</h2>
-              <span>TIAW</span>
+            <div class="task-detail-container">
+              <button class="btn close-btn"><i data-lucide="x"></i></button>
+              <div class="task-details-header">
+                
+              </div>
             </div>
           </dialog>
           <!--CALENDÁRIO-->

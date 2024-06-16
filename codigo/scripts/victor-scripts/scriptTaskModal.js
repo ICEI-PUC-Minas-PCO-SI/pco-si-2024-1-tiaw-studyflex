@@ -41,6 +41,24 @@ async function fetchTasks() {
 
 fetchTasks();
 
+function deleteTaskURL(url) {
+  fetch(url, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Houve um erro ao excluir a tarefa!");
+      }
+      return response.json();
+    })
+    .then(() => {})
+    .catch((error) => {
+      console.error("Houve um problema ao exluir a tarefa:", error);
+      throw error;
+    });
+}
+
 function returnURL(key, value, sorting) {
   let URL_DASHBOARD = `http://localhost:3000/tarefas?status=2&status=3&_page=${page}&_limit=${taskPerPage}`;
   let URL_TAREFAS = `http://localhost:3000/tarefas?_page=${page}&_limit=${taskPerPage}`;
@@ -148,8 +166,12 @@ async function fetchTasksPages(key, value, sorting) {
           </div>
 
           <div class="task-preview-options">
-            <div class="options-icon-container"><i data-lucide="pen"></i></div>
-            <div class="options-icon-container"><i data-lucide="x"></i></div>
+            <button class="options-icon-container edit-button" id="editTaskButton" data-taskid="${
+              taskData[i].id
+            }"><i data-lucide="pen"></i></button>
+            <button class="options-icon-container delete-button" id="deleteTaskButton" data-taskid="${
+              taskData[i].id
+            }"><i data-lucide="trash-2"></i></button>
           </div>
         </div>
        
@@ -173,10 +195,8 @@ async function fetchTasksPages(key, value, sorting) {
         </div>
 
         <div class="task-preview-description">
-     
-          <p>"
+          <p>
           ${taskData[i].descricao}
-          "
           </p>
         </div>
       </article>
@@ -184,6 +204,25 @@ async function fetchTasksPages(key, value, sorting) {
         taskPreview.innerHTML += taskListContent;
         tasksList.appendChild(taskPreview);
       }
+
+      const deleteTaskButton = document.querySelectorAll(".delete-button");
+      const editTaskButton = document.querySelectorAll(".edit-button");
+
+      for (let button of deleteTaskButton) {
+        button.addEventListener("click", () => {
+          deleteTask(button);
+        });
+      }
+
+      for (let button of editTaskButton) {
+        button.addEventListener("click", () => {
+          editTask(button);
+        });
+      }
+
+      const pageCounter = document.getElementById("pageCounter");
+      pageCounter.innerHTML = `<p>${page}</p>`;
+
       lucide.createIcons();
     } else {
     }
@@ -346,7 +385,6 @@ createTaskButton.addEventListener("click", () => {
     //Create a formData to get key/values
     const formData = new FormData(e.target);
     const jsonObject = {};
-    console.log(formData);
 
     //Passing data to the json object
     formData.forEach((value, key) => {
@@ -445,3 +483,31 @@ sortButton.addEventListener("click", () => {
     });
   });
 });
+
+//EDIT AND DELETE TASKS
+function deleteTask(taskButton) {
+  const message = document.getElementById("deleteMessage");
+  message.showModal();
+
+  const deleteButton = document.getElementById("deleteButton");
+  const cancelDeleteButton = document.getElementById("dontDeleteButton");
+
+  deleteButton.addEventListener("click", () => {
+    let taskId = taskButton.dataset.taskid;
+    deleteTaskURL(`http://localhost:3000/tarefas/${taskId}`);
+    message.close();
+  });
+
+  cancelDeleteButton.addEventListener("click", () => {
+    message.close();
+  });
+}
+
+function editTask(taskButton) {
+  console.log(taskButton);
+}
+/*
+ */
+
+taskDetailsModal = document.getElementById("taskDetailsModal");
+taskDetailsModal.showModal();

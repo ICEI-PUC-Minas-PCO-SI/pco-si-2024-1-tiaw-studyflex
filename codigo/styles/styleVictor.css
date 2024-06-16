@@ -66,7 +66,7 @@ button {
 main {
   grid-column: 2/4;
   grid-row: 3/4;
-  padding: 16px 64px;
+  padding: 16px 32px;
 }
 
 h2 {
@@ -86,7 +86,7 @@ header {
   align-items: center;
   row-gap: 140px;
   grid-column: 1/-1;
-  padding: 32px;
+  padding: 32px 32px 16px 32px;
 }
 
 .header-box {
@@ -105,8 +105,37 @@ header {
   gap: 4px;
 }
 
+#notificationButton,
+#profileButton {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#notificationButton:hover .main-icon,
+#profileButton:hover .main-icon {
+  width: 40px;
+  height: 40px;
+}
+
 .website-logo {
   width: 164px;
+}
+
+.main-icon {
+  width: 32px;
+  height: 32px;
+  stroke: #414b3b;
+}
+
+.secondary-icon {
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  stroke: #414b3b;
 }
 
 /* ASIDE */
@@ -297,7 +326,8 @@ auto .add-button:hover {
   grid-template-columns: 2fr 1fr;
   grid-template-rows: auto auto auto 1fr;
   column-gap: 32px;
-  row-gap: 32px;
+  row-gap: 16px;
+  padding-right: 120px;
 }
 .homescreen-title {
   color: #586352;
@@ -323,7 +353,7 @@ auto .add-button:hover {
 }
 
 .search-bar {
-  padding: 16px 32px 16px 64px;
+  padding: 10px;
   width: 100%;
   box-shadow: 0 5px 5px 1px hsla(210, 10%, 23%, 0.178);
   border: 1px solid #8aa17b;
@@ -337,7 +367,6 @@ auto .add-button:hover {
 .input-icon {
   width: 18px;
   position: absolute;
-  transform: translateX(32px);
   color: #8aa17b;
 }
 
@@ -999,7 +1028,7 @@ auto .add-button:hover {
   grid-row: 2;
   grid-column: 1/3;
   display: flex;
-  gap: 32px;
+  gap: 16px;
 }
 
 .tasks-header-container .search-bar-container {
@@ -1008,7 +1037,7 @@ auto .add-button:hover {
 
 .search-task-options {
   display: flex;
-  gap: 32px;
+  gap: 16px;
 }
 
 .search-task-button:hover svg,
@@ -1202,7 +1231,7 @@ auto .add-button:hover {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-bottom: 36px;
+  margin-bottom: 16px;
 }
 
 .task-preview-title {
@@ -1269,14 +1298,36 @@ auto .add-button:hover {
 
 .task-pageButtons-container {
   display: flex;
-  gap: 24px;
   justify-content: center;
+  gap: 12px;
+  align-items: center;
   margin-bottom: 12px;
+  width: 100%;
 }
 
 #prevPage,
-#nextPage {
-  padding: 12px 36px;
+#nextPage,
+#pageCounter {
+  width: 24px;
+  height: 24px;
+  padding: 6px;
+  border-radius: 50%;
+}
+
+#prevPage svg,
+#nextPage svg {
+  width: 16px;
+}
+
+#pageCounter {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #8aa17b;
+  color: #414b3b;
+  font-weight: 900;
 }
 
 #prevPage.hide,
@@ -1285,7 +1336,8 @@ auto .add-button:hover {
 }
 
 /* filter/sort elements */
-#filterTask {
+#filterTask,
+#sortTask {
   position: relative;
 }
 
@@ -1301,9 +1353,10 @@ auto .add-button:hover {
   position: absolute;
   border: 1px solid #8aa17b;
   border-bottom: none;
-  margin-top: 64px;
+  margin-top: 56px;
   color: #414b3b;
   display: none;
+  font-size: 12px;
 }
 
 .search-task-modal.active {
@@ -1398,14 +1451,10 @@ auto .add-button:hover {
   color: #e68b86;
 }
 
-#sortTask {
-  position: relative;
-}
-
 #sortTaskModal {
   position: absolute;
-  margin-left: 150px;
   width: fit-content;
+  margin-left: 118px;
 }
 
 .sort-option-title {
@@ -1442,4 +1491,57 @@ auto .add-button:hover {
 .options-button svg {
   width: 14px;
   height: 14px;
+}
+
+/*MESSAGE MODAL*/
+#deleteMessage,
+#taskDetailsModal {
+  left: 50%;
+  top: 50%;
+  padding: 32px;
+  border: 1px solid #d8d8d8;
+  border-radius: 6px;
+  transform: translate(-50%, -50%);
+}
+
+.alert-options {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 24px;
+}
+
+.alert-message span {
+  color: #414b3b;
+  font-weight: 900;
+}
+
+.message-option-button {
+  padding: 6px 24px;
+  border: 1px solid #8aa17b;
+  border-radius: 500px;
+  color: #8aa17b;
+  transition: all ease-in 0.2s;
+  font-weight: 700;
+}
+
+#deleteButton {
+  background-color: #8aa17b;
+  color: #ffffff;
+  border: 1px solid transparent;
+}
+
+#deleteButton:hover {
+  background-color: #586352;
+}
+
+#dontDeleteButton:hover {
+  background-color: #d8d8d8;
+}
+
+.message-option-button:hover {
+  filter: brightness(1) invert(0);
+}
+
+/*TASK DETAILS*/
+#taskDetailsModal {
 }
