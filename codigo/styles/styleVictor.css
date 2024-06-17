@@ -1545,3 +1545,138 @@ auto .add-button:hover {
 /*TASK DETAILS*/
 #taskDetailsModal {
 }
+
+.task-detail-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.task-title {
+  color: #414b3b;
+}
+
+.subject-title {
+  background-color: #586352;
+  padding: 3px 12px;
+  border-radius: 1000px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.task-detail-header {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #586352;
+  padding: 6px 0;
+}
+
+.task-detail-title {
+  display: flex;
+  gap: 12px;
+}
+
+.task-details-data {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.task-data-list {
+}
+
+.task-data-item {
+  color: #6d6d6d;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 12px 6px;
+}
+
+.task-data-item svg,
+.data-description-header svg {
+  width: 16px;
+  height: 16px;
+}
+
+.task-data-description {
+  border: 1px solid #8aa17b;
+  border-radius: 5px;
+  padding: 6px;
+}
+
+.data-description-header {
+  color: #6d6d6d;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+}
+
+.data-description-content {
+  color: #6d6d6d;
+  border-radius: 5px;
+  padding: 12px;
+  max-width: 600px;
+  font-size: 14px;
+}
+
+.item-info-button {
+  border-radius: 3px;
+  display: flex;
+  background-color: #ca4f48;
+  color: #ffffff;
+}
+
+.item-info-button span {
+}
+
+.item-info-button .border,
+.subject-info-button .border {
+  border-left: 1.5px solid #ffffff;
+  margin-left: 6px;
+}
+
+.item-info-container {
+  padding: 6px;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.item-info-container svg {
+  width: 16px;
+  height: 16px;
+}
+
+.item-info-container:first-child {
+  gap: 6px;
+}
+
+#changePriorityButton {
+  background-color: #1481ba;
+}
+
+.subject-info-button {
+  background-color: #586352;
+  color: #ffffff;
+  border-radius: 3px;
+  display: flex;
+}
+
+.input-date {
+  padding: 3px 6px;
+  font-size: 14px;
+  border-radius: 3px;
+  border: 1px solid #414b3b;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: #414b3b;
+}

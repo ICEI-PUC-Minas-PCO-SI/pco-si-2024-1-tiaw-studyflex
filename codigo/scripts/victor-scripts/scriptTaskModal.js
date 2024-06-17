@@ -41,6 +41,40 @@ async function fetchTasks() {
 
 fetchTasks();
 
+async function getTask(url) {
+  try {
+    // Make a GET request using fetch
+    const response = await fetch(url);
+    // Check if the response is OK (status code 200-299)
+    if (!response.ok) {
+      throw new Error("Network response was not ok " + response.statusText);
+    }
+    // Parse the JSON from the response
+    const data = await response.json();
+    return data; // Return the JSON data
+  } catch (error) {
+    // Handle any errors that occurred during the fetch operation
+    console.error("There has been a problem with your fetch operation:", error);
+  } finally {
+    // This code runs regardless of whether the request succeeded or failed
+    console.log("Fetch operation is complete.");
+  }
+  /*fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Houve um erro ao pesquisar a tarefa!");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      console.error("Houve um problema ao exluir a tarefa:", error);
+      throw error;
+    });*/
+}
+
 function deleteTaskURL(url) {
   fetch(url, {
     method: "DELETE",
@@ -158,7 +192,7 @@ async function fetchTasksPages(key, value, sorting) {
         let finalDate = new Date(taskData[i].dataFinal);
         finalDate.setDate(finalDate.getDate() + 1);
         taskListContent = `
-        <article class="task-item-preview">
+        <article class="task-item-preview" data-taskid="${taskData[i].id}">
         <div class="task-item-header">
           <div class="task-preview-title">
             <h2>${taskData[i].nome}</h2>
@@ -166,9 +200,6 @@ async function fetchTasksPages(key, value, sorting) {
           </div>
 
           <div class="task-preview-options">
-            <button class="options-icon-container edit-button" id="editTaskButton" data-taskid="${
-              taskData[i].id
-            }"><i data-lucide="pen"></i></button>
             <button class="options-icon-container delete-button" id="deleteTaskButton" data-taskid="${
               taskData[i].id
             }"><i data-lucide="trash-2"></i></button>
@@ -207,16 +238,18 @@ async function fetchTasksPages(key, value, sorting) {
 
       const deleteTaskButton = document.querySelectorAll(".delete-button");
       const editTaskButton = document.querySelectorAll(".edit-button");
+      const taskElement = document.querySelectorAll(".task-item-preview");
 
       for (let button of deleteTaskButton) {
-        button.addEventListener("click", () => {
+        button.addEventListener("click", (e) => {
           deleteTask(button);
+          e.stopPropagation();
         });
       }
 
-      for (let button of editTaskButton) {
-        button.addEventListener("click", () => {
-          editTask(button);
+      for (let task of taskElement) {
+        task.addEventListener("click", (e) => {
+          openTask(task);
         });
       }
 
@@ -492,7 +525,7 @@ function deleteTask(taskButton) {
   const deleteButton = document.getElementById("deleteButton");
   const cancelDeleteButton = document.getElementById("dontDeleteButton");
 
-  deleteButton.addEventListener("click", () => {
+  deleteButton.addEventListener("click", (event) => {
     let taskId = taskButton.dataset.taskid;
     deleteTaskURL(`http://localhost:3000/tarefas/${taskId}`);
     message.close();
@@ -503,11 +536,18 @@ function deleteTask(taskButton) {
   });
 }
 
-function editTask(taskButton) {
-  console.log(taskButton);
+function openTask(taskElement) {
+  let taskElementID = taskElement.dataset.taskid;
+  const taskDetailsModal = document.getElementById("taskDetailsModal");
+  taskDetailsModal.showModal();
+
+  const closeTaskDetailButton = document.getElementById("closeTaskDetail");
+  closeTaskDetailButton.addEventListener("click", (event) => {
+    taskDetailsModal.close();
+  });
+
+  const task = getTask(`http://localhost:3000/tarefas/${taskElementID}`);
+  console.log(task);
 }
 /*
  */
-
-taskDetailsModal = document.getElementById("taskDetailsModal");
-taskDetailsModal.showModal();
