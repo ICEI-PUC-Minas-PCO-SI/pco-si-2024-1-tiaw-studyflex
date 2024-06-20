@@ -42,8 +42,8 @@ function displayNote(note) {
     noteDiv.className = `note ${note.colorClass}`;
     noteDiv.dataset.id = note.id;
     noteDiv.innerHTML = `
-        <h2 class="tit">${note.title}</h2>
-        <p class="subtit">${note.content}</p>
+        <h2 class="tit" contenteditable="false">${note.title}</h2>
+        <p class="subtit" contenteditable="false">${note.content}</p>
         <span class="date">${note.date}</span>
         <span class="edit">
             <svg width="50" height="50" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +52,7 @@ function displayNote(note) {
             </svg>
         </span>
         <span class="save" style="display: none;">
-            <img src="img/save.png" width="50" height="50" alt="Save" width="50" height="50">
+            <img src="img/save.png" width="50" height="50" alt="Save">
         </span>
         <span class="delete">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="56" height="26" viewBox="0 0 256 256" xml:space="preserve">
@@ -94,6 +94,8 @@ function toggleEditMode(noteDiv, isEditing) {
     if (isEditing) {
         titleElement.setAttribute('contenteditable', 'true');
         contentElement.setAttribute('contenteditable', 'true');
+        titleElement.focus(); // Coloca o foco no título para edição
+        contentElement.focus(); // Coloca o foco no conteúdo para edição
         editIcon.style.display = 'none'; // Oculta o ícone de edição
         saveIcon.style.display = 'block'; // Mostra o ícone de salvar
     } else {
