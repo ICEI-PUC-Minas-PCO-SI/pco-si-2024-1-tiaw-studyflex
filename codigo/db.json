@@ -89,26 +89,25 @@
   ],
   "notas": [
     {
-      "title": "FISICA",
-      "content": "FORÇA CENTRI FUGA",
+      "title": "Título da Nota",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "colorClass": "note-red",
-      "date": "sexta-feira, 14 de junho de 2024",
-      "id": "417a"
-    },
-    {
-      "title": "Sinuca no P9",
-      "content": "Mateus é muito ruim na Sinuca,sem pressão aqui é o Rafão",
-      "colorClass": "note-yellow",
-      "date": "sexta-feira, 14 de junho de 2024",
-      "id": "05da"
-    },
-    {
-      "title": "AVISO",
-      "content": "2+2=4",
-      "colorClass": "note-blue",
-      "date": "sexta-feira, 14 de junho de 2024",
-      "id": "43db"
+      "date": "terça-feira, 18 de junho de 2024",
+      "id": "7fbd"
     }
   ],
-  "usuarios": []
+  "usuarios": [
+    {
+      "id": "9045",
+      "username": "Raphael9x2",
+      "email": "rafa123@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "f521",
+      "username": "Raphael9x2",
+      "email": "rafa123@gmail.com",
+      "password": "1234"
+    }
+  ]
 }

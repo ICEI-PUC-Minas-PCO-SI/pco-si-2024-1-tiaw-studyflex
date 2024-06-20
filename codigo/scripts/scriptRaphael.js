@@ -39,8 +39,8 @@ function displayNote(note) {
     const notesContainer = document.getElementById('notesContainer');
     
     const noteDiv = document.createElement('div');
-    noteDiv.className = `note ${note.colorClass}`; // Usa a cor armazenada
-    noteDiv.dataset.id = note.id; // Adiciona o ID da nota como atributo de dados
+    noteDiv.className = `note ${note.colorClass}`;
+    noteDiv.dataset.id = note.id;
     noteDiv.innerHTML = `
         <h2 class="tit">${note.title}</h2>
         <p class="subtit">${note.content}</p>
@@ -50,6 +50,9 @@ function displayNote(note) {
                 <circle cx="20.5" cy="20.5" r="20.5" fill="#8AA17B"/>
                 <path d="M9 27.9993V33H14.0007L28.7561 18.2446L23.7554 13.2439L9 27.9993ZM32.6099 14.3907C33.13 13.8707 33.13 13.0239 32.6099 12.5038L29.4962 9.39005C28.9761 8.86998 28.1293 8.86998 27.6093 9.39005L25.1689 11.8304L30.1696 16.8311L32.6099 14.3907Z" fill="white"/>
             </svg>
+        </span>
+        <span class="save" style="display: none;">
+            <img src="img/save.png" width="50" height="50" alt="Save" width="50" height="50">
         </span>
         <span class="delete">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="56" height="26" viewBox="0 0 256 256" xml:space="preserve">
@@ -63,10 +66,16 @@ function displayNote(note) {
     `;
     
     const editIcon = noteDiv.querySelector('.edit');
+    const saveIcon = noteDiv.querySelector('.save');
     const deleteIcon = noteDiv.querySelector('.delete');
 
     editIcon.addEventListener('click', () => {
-        toggleEditMode(noteDiv);
+        toggleEditMode(noteDiv, true);
+    });
+
+    saveIcon.addEventListener('click', () => {
+        toggleEditMode(noteDiv, false);
+        saveNoteChanges(noteDiv);
     });
 
     deleteIcon.addEventListener('click', () => {
@@ -76,22 +85,22 @@ function displayNote(note) {
     notesContainer.appendChild(noteDiv);
 }
 
-function toggleEditMode(noteDiv) {
+function toggleEditMode(noteDiv, isEditing) {
     const titleElement = noteDiv.querySelector('h2');
     const contentElement = noteDiv.querySelector('p');
     const editIcon = noteDiv.querySelector('.edit');
+    const saveIcon = noteDiv.querySelector('.save');
 
-    const isEditing = titleElement.getAttribute('contenteditable') === 'true';
-
-    if (!isEditing) {
+    if (isEditing) {
         titleElement.setAttribute('contenteditable', 'true');
         contentElement.setAttribute('contenteditable', 'true');
-        editIcon.style.fill = '#FFD700'; // Altera a cor do ícone do lápis para indicar que está em modo de edição
+        editIcon.style.display = 'none'; // Oculta o ícone de edição
+        saveIcon.style.display = 'block'; // Mostra o ícone de salvar
     } else {
-        saveNoteChanges(noteDiv);
         titleElement.setAttribute('contenteditable', 'false');
         contentElement.setAttribute('contenteditable', 'false');
-        editIcon.style.fill = 'white'; // Volta a cor original do ícone do lápis
+        editIcon.style.display = 'block'; // Mostra o ícone de edição
+        saveIcon.style.display = 'none'; // Oculta o ícone de salvar
     }
 }
 
@@ -122,7 +131,6 @@ function saveNoteChanges(noteDiv) {
 }
 
 function deleteNote(id, noteDiv) {
-    console.log(`Tentando deletar nota com id: ${id}`);
     fetch(`${URL_NOTAS}/${id}`, {
         method: 'DELETE'
     })
@@ -145,7 +153,7 @@ function fetchNotes() {
     .then(notes => {
         notes.forEach(note => {
             displayNote(note);
-            getNextColorClass(); // Avança o índice para a próxima cor
+            getNextColorClass();
         });
     });
 }

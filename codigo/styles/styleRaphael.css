@@ -578,10 +578,6 @@ auto .add-button:hover {
   cursor: pointer;
 }
 
-
-
-
-
 .add {
   border: none;
   color: white;
@@ -645,5 +641,17 @@ auto .add-button:hover {
   right: 10px;
   font-size: 12px;
   color: #555;
+  cursor: pointer;
+}
+
+.edit, .save {
+  cursor: pointer;
+}
+
+.save {
+  display: none; 
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
   cursor: pointer;
 }
