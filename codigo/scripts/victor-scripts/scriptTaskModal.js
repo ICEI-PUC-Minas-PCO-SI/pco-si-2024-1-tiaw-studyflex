@@ -34,6 +34,9 @@ async function fetchTasks() {
       if (data.length > taskPerPage) {
         prevButton.classList.remove("hide");
         nextButton.classList.remove("hide");
+      } else {
+        prevButton.classList.add("hide");
+        nextButton.classList.add("hide");
       }
     }
   } catch (error) {}
