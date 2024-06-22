@@ -3,17 +3,18 @@ const closeSubjectBtn = document.getElementById("closeSubjectBtn");
 const createSubjectModal = document.getElementById("createSubjectModal");
 const form = document.getElementById("newSubjectForm");
 const subjectsList = document.getElementById("subjectsList");
+const searchInput = document.getElementById('searchInput');
 
 // URL da API
 const URL_MATERIAS = "http://localhost:3000/materias"; 
 
-// Mostrar o modal quando o botão "+ Matéria" for clicado
+// Evento para mostrar o Modal
 createSubjectBtn.addEventListener("click", () => {
   createSubjectModal.showModal();
   console.log("Modal abriu");
 });
 
-// Fechar o modal quando clicar no "x"
+// Certificar que o modal fechou
 closeSubjectBtn.addEventListener("click", () => {
   createSubjectModal.close();
   console.log("Modal fechou");
@@ -26,7 +27,7 @@ form.addEventListener("submit", async (event) => {
 
   const formData = new FormData(form);
 
-  // Converter os dados do formulário em um objeto JSON
+  // Convertendo dados em um obj
   const jsonObject = {};
   formData.forEach((value, key) => {
     jsonObject[key] = value;
@@ -54,7 +55,8 @@ form.addEventListener("submit", async (event) => {
   }
 });
 
-async function fetchSubjects() {
+// Função para buscar e exibir a lista de matérias, com suporte para filtragem
+async function fetchSubjects(filter = "") {
   try {
     const response = await fetch(URL_MATERIAS, {
       method: 'GET',
@@ -70,13 +72,16 @@ async function fetchSubjects() {
     // Limpar a lista de matérias
     subjectsList.innerHTML = '';
 
-    // Exibir a lista de matérias
-    data.forEach(subject => {
+    const filteredData = data.filter(subject => 
+      subject.nome.toLowerCase().includes(filter.toLowerCase())
+    );
+
+    filteredData.forEach(subject => {
       const subjectItem = document.createElement('div');
       subjectItem.classList.add('materia-box'); // Adiciona a classe para estilização
       subjectItem.textContent = subject.nome;
 
-      // Adicionar botão de deletar
+      
       const deleteBtn = document.createElement('button');
       deleteBtn.classList.add('delete-btn');
       deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>'; 
@@ -101,7 +106,7 @@ async function deleteSubject(id, subjectItem) {
 
     if (response.ok) {
       alert("Matéria deletada com sucesso!");
-      subjectsList.removeChild(subjectItem); // Remove o item do DOM
+      subjectsList.removeChild(subjectItem); 
     } else {
       const errorText = await response.text();
       alert("Não foi possível deletar a matéria! Erro: " + errorText);
@@ -112,6 +117,12 @@ async function deleteSubject(id, subjectItem) {
     alert('Houve um problema ao deletar a matéria. Por favor, tente novamente.');
   }
 }
+
+// Evento de input no campo de busca para filtrar matérias
+searchInput.addEventListener('input', (event) => {
+  const filterText = event.target.value;
+  fetchSubjects(filterText);
+});
 
 // Buscar e exibir a lista de matérias ao carregar a página
 fetchSubjects();
