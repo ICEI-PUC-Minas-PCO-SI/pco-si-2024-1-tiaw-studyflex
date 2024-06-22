@@ -87,6 +87,24 @@
       "dataFinal": "2024-06-24",
       "prioridade": "3",
       "descricao": "w"
+    },
+    {
+      "id": "a11b",
+      "nome": "TAREFA DE TESTE 1 ",
+      "status": "3",
+      "materia": "lucas",
+      "dataFinal": "2024-06-30",
+      "prioridade": "3",
+      "descricao": "Teste feito no dia 22/06/2024"
+    },
+    {
+      "id": "e035",
+      "nome": "teste 2",
+      "status": "2",
+      "materia": "lucas",
+      "dataFinal": "2024-09-23",
+      "prioridade": "3",
+      "descricao": "no "
     }
   ],
   "materias": [
@@ -109,9 +127,45 @@
     {
       "id": "59d7",
       "nome": "galo"
+    },
+    {
+      "id": "f55b",
+      "nome": "quimica"
+    },
+    {
+      "id": "df0a",
+      "nome": "renatola"
+    },
+    {
+      "id": "96c4",
+      "nome": "Quem é Renatola"
+    },
+    {
+      "id": "c6f7",
+      "nome": "Quem engravidou o renatola"
+    },
+    {
+      "id": "e40f",
+      "nome": "pq engravidaram o renatola"
+    },
+    {
+      "id": "c888",
+      "nome": "daqui nove meses"
+    },
+    {
+      "id": "e7bd",
+      "nome": "descubra"
     }
   ],
-  "notas": [],
+  "notas": [
+    {
+      "title": "Título da Nota",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "colorClass": "note-red",
+      "date": "sábado, 22 de junho de 2024",
+      "id": "9190"
+    }
+  ],
   "usuarios": [
     {
       "id": "9045",

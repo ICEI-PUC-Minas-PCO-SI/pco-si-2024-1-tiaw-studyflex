@@ -1,5 +1,6 @@
 //URL API DE DADOS
 const URL_TAREFAS = "http://localhost:3000/tarefas";
+const URL_MATERIAS = "http://localhost:3000/materias"; // adicionei a url de matérias
 
 //WHAT PAGE ARE WE IN?
 let pageTitle = document.querySelector(".homescreen-title").textContent;
@@ -42,6 +43,38 @@ async function fetchTasks() {
 }
 
 fetchTasks();
+
+//integração das matérias nas tarefas
+
+// função para buscar as matérias do servidor JSON
+async function fetchMaterias() {
+  try {
+    const response = await fetch(URL_MATERIAS); 
+    if (response.ok) {
+      const materias = await response.json(); 
+      populateMateriasDropdown(materias); 
+    }
+  } catch (error) {
+    console.log(error); 
+  }
+}
+
+// função para as materias aparecerem no campo de seleção
+function populateMateriasDropdown(materias) {
+  const taskSubjectSelect = document.getElementById("taskSubject");
+  taskSubjectSelect.innerHTML = ""; 
+
+  materias.forEach((materia) => {
+    const option = document.createElement("option");
+    option.value = materia.nome;
+    option.textContent = materia.nome;
+    taskSubjectSelect.appendChild(option); 
+  });
+}
+
+fetchMaterias(); 
+
+// fechou
 
 function returnURL(key, value, sorting) {
   let URL_DASHBOARD = `http://localhost:3000/tarefas?status=2&status=3&_page=${page}&_limit=${taskPerPage}`;
