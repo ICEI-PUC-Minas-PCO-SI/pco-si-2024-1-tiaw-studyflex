@@ -81,7 +81,6 @@ async function fetchSubjects(filter = "") {
       subjectItem.classList.add('materia-box'); // Adiciona a classe para estilização
       subjectItem.textContent = subject.nome;
 
-      
       const deleteBtn = document.createElement('button');
       deleteBtn.classList.add('delete-btn');
       deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>'; 
