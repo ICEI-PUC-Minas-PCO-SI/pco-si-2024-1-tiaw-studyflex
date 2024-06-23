@@ -543,16 +543,51 @@
           </dialog>
 
           <!--CALENDÁRIO-->
+          <section class="homescreen-task-info">    
+            <article class="calendar-view">
+              <div class="container-calendar-total">
+              <h3 class="task-info-title">
+                <strong>Quarta-feira</strong>, 24 de janeiro
+              </h3>
+              <input type="text" id="smallCalendar" placeholder="Select Date" style="visibility: hidden;">
+              <div id="smallCalendarContainer">
+                <div id="smallCalendarPlaceholder"></div>
+              </div>
+              <div id="calendarModal">
+                <div class="modal-header">
+                  <h3 id="selectedDate"></h3>
+                  <span class="close">&times;</span>
+                </div>
+                <div class="calendar-container">
+                  <div id="largeCalendar"></div>
+                  <div id="eventDetails"></div>
+                </div>
+              </div>
+  
+              <div id="progress-container">
+                <div class="container-progress" id="blocodeprogresso">
+                  <h3 class="tituloProgresso">Progresso das Disciplinas</h3>
+                </div>
+              </div>
+            </div> 
+            </article>
+          </section>
+
         </section>
 
         <!--CONTEÚDO DINAMICO-->
       </main>
     </div>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="./scripts/victor-scripts/scriptTaskModal.js" async></script>
-    <script src="./scripts/victor-scripts/app.js" async></script>
-    <script src="./scripts/scriptMateus.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/locale/pt-br.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="./scripts/victor-scripts/scriptTaskModal.js" async></script>
+  <script src="./scripts/victor-scripts/app.js" async></script>
+  <script src="/codigo/scripts/mateus-scripts/scriptMateus.js"></script>
+  <script src="./scripts/scriptRafaelM.js"></script>
   </body>
 </html>

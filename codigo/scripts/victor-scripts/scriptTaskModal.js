@@ -45,24 +45,7 @@ async function fetchTasks() {
 fetchTasks();
 
 async function getTask(url) {
-  try {
-    // Make a GET request using fetch
-    const response = await fetch(url);
-    // Check if the response is OK (status code 200-299)
-    if (!response.ok) {
-      throw new Error("Network response was not ok " + response.statusText);
-    }
-    // Parse the JSON from the response
-    const data = await response.json();
-    return data; // Return the JSON data
-  } catch (error) {
-    // Handle any errors that occurred during the fetch operation
-    console.error("There has been a problem with your fetch operation:", error);
-  } finally {
-    // This code runs regardless of whether the request succeeded or failed
-    console.log("Fetch operation is complete.");
-  }
-  /*fetch(url)
+  fetch(url)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Houve um erro ao pesquisar a tarefa!");
@@ -72,10 +55,13 @@ async function getTask(url) {
     .then((data) => {
       return data;
     })
+    .then((taskObj) => {
+      return taskObj;
+    })
     .catch((error) => {
       console.error("Houve um problema ao exluir a tarefa:", error);
       throw error;
-    });*/
+    });
 }
 
 function deleteTaskURL(url) {
@@ -229,9 +215,7 @@ async function fetchTasksPages(key, value, sorting) {
         </div>
 
         <div class="task-preview-description">
-          <p>
-          ${taskData[i].descricao}
-          </p>
+          <p>${taskData[i].descricao}</p>
         </div>
       </article>
       `;
@@ -428,7 +412,7 @@ createTaskButton.addEventListener("click", () => {
     });
 
     try {
-      const reponse = await fetch(URL_TAREFAS, {
+      fetch(URL_TAREFAS, {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(jsonObject),
@@ -539,18 +523,303 @@ function deleteTask(taskButton) {
   });
 }
 
+function getStatusHTML(status, mode) {
+  let htmlCode;
+
+  switch (status) {
+    case "1":
+      htmlCode = `
+      <button class="item-info-button done-button" id="changeStatusButton" onclick="changeStatus(3)">
+       <div class="item-info-container">
+            <i data-lucide="circle-check"></i>
+               <span id="taskDetailsStatus" data-status="1" >Feito</span>
+             </div>
+           <span class="border"></span>
+
+            <div class="item-info-container">
+          <i data-lucide="refresh-ccw" class="spin-icon"></i>
+       </div>
+       </button>
+      `;
+      break;
+
+    case "2":
+      htmlCode = `
+      <button class="item-info-button doing-button" id="changeStatusButton" onclick="changeStatus(1)" >
+       <div class="item-info-container">
+            <i data-lucide="circle-minus"></i>
+               <span id="taskDetailsStatus" data-status="2">Fazendo</span>
+             </div>
+           <span class="border"></span>
+
+            <div class="item-info-container">
+          <i data-lucide="refresh-ccw" class="spin-icon"></i>
+       </div>
+       </button>
+      `;
+      break;
+
+    case "3":
+      htmlCode = `
+      <button class="item-info-button do-button" id="changeStatusButton" onclick="changeStatus(2)">
+       <div class="item-info-container">
+            <i data-lucide="circle-dot"></i>
+               <span id="taskDetailsStatus" data-status="3">Fazer</span>
+             </div>
+           <span class="border"></span>
+
+            <div class="item-info-container">
+          <i data-lucide="refresh-ccw" class="spin-icon"></i>
+       </div>
+       </button>
+      `;
+      break;
+    default:
+      break;
+  }
+  if (mode == null) {
+    return htmlCode;
+  } else {
+  }
+}
+
+function getPriorityHTML(prioridade) {
+  let htmlCode;
+  switch (prioridade) {
+    case "3":
+      htmlCode = `
+      <button class="item-info-button urgent-button" id="changePriorityButton" onclick="changePriority(1)">
+       <div class="item-info-container ">
+            <i data-lucide="flag"></i>
+            <span id="taskDetailsPriority" data-priority="3">Urgente</span>
+        </div>
+
+            <span class="border"></span>
+
+      <div class="item-info-container">
+         <i data-lucide="refresh-ccw" class="spin-icon"></i>
+      </div>
+      </button>
+      `;
+      break;
+
+    case "2":
+      htmlCode = `
+      <button class="item-info-button high-button" id="changePriorityButton" onclick="changePriority(3)">
+      <div class="item-info-container">
+            <i data-lucide="flag"></i>
+            <span id="taskDetailsPriority" data-priority="2">Alta</span>
+        </div>
+
+            <span class="border"></span>
+
+      <div class="item-info-container">
+         <i data-lucide="refresh-ccw" class="spin-icon"></i>
+      </div>
+      </button>
+      `;
+      break;
+
+    case "1":
+      htmlCode = `
+      <button class="item-info-button normal-button" id="changePriorityButton" onclick="changePriority(2)">
+      <div class="item-info-container">
+            <i data-lucide="flag"></i>
+            <span id="taskDetailsPriority" data-priority="1">Normal</span>
+        </div>
+
+            <span class="border"></span>
+
+      <div class="item-info-container">
+         <i data-lucide="refresh-ccw" class="spin-icon"></i>
+      </div>
+      </button>
+      `;
+
+      break;
+    default:
+      break;
+  }
+
+  return htmlCode;
+}
+
+function changeStatus(status) {
+  statusContainer.innerHTML = "";
+  statusContainer.innerHTML = getStatusHTML(status.toString());
+  lucide.createIcons();
+}
+
+function changePriority(prioridade) {
+  priorityContainer.innerHTML = "";
+  priorityContainer.innerHTML = getPriorityHTML(prioridade.toString());
+  lucide.createIcons();
+}
+
 function openTask(taskElement) {
   let taskElementID = taskElement.dataset.taskid;
   const taskDetailsModal = document.getElementById("taskDetailsModal");
-  taskDetailsModal.showModal();
+  const url = `http://localhost:3000/tarefas/${taskElementID}`;
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Houve um erro ao pesquisar a tarefa!");
+      }
+      return response.json();
+    })
+    .then((task) => {
+      let statusHTML = getStatusHTML(task.status);
+      let priorityHTML = getPriorityHTML(task.prioridade);
 
-  const closeTaskDetailButton = document.getElementById("closeTaskDetail");
-  closeTaskDetailButton.addEventListener("click", (event) => {
-    taskDetailsModal.close();
-  });
+      let taskHTML = `
+      
+      <div class="task-detail-container">
+              <button class="btn close-btn" id="closeTaskDetail"><i data-lucide="x"></i></button>
+              <div class="task-detail-header">
+                <div class="task-detail-title">
+                  <input type=text" id="TaskDetailsTitle" class="task-title" value="${
+                    task.nome
+                  }"></input>
+                  <span class="subject-title">${
+                    !task.materia ? "tarefa" : task.materia
+                  }</span>
+                </div> 
+              </div>
 
-  const task = getTask(`http://localhost:3000/tarefas/${taskElementID}`);
-  console.log(task);
+              <div class="task-details-data">
+                <ul class="task-data-list">
+                  <li class="task-data-item">
+                    <div class="item-title">
+                      <i data-lucide="loader-circle"></i>
+                    <span>Status</span>
+                  </div>
+
+                  <div id="statusContainer">${statusHTML}</div>
+                  
+                    
+                  </li >
+                  <li class="task-data-item">
+                    <div class="item-title">
+                      <i data-lucide="book-marked"></i>
+                      <span>Matéria</span>
+                    </div>
+
+                    <button class="subject-info-button" id="changeSubjectButton">
+                      <div class="item-info-container">
+                        <span id="taskDetailsSubject">${
+                          !task.materia ? "tarefa" : task.materia
+                        }</span>
+                      </div>
+  
+                    <span class="border"></span>
+  
+                      <div class="item-info-container">
+                        <i data-lucide="chevron-right" class="spin-icon"></i>
+                      </div>
+                    </button>
+                    
+                  </li>
+
+                  <li class="task-data-item">
+                    <div class="item-title">
+                      <i data-lucide="flag"></i>
+                    <span>Prioridade</span>
+                  </div>
+
+                  <div id="priorityContainer">${priorityHTML}</div>
+                    
+                  </li>   
+
+                  <li class="task-data-item">
+                    <div class="item-title">
+                      <i data-lucide="calendar-days"></i>
+                      <span>Data final</span>
+                    </div>
+
+                    <input type="date" id="taskDetailsDate" class="input-date" value=${
+                      task.dataFinal
+                    }>
+                    
+                  </li>
+                               
+                </ul>
+
+                <div class="task-data-description">
+                  <div class="data-description-header">
+                    <i data-lucide="message-square-more"></i>
+                    <span>Descrição</span>
+                  </div>
+
+                  <textarea id="taskDetailsDecription" class="data-description-content">
+                    ${task.descricao}
+                  </textarea>
+
+                </div>
+              </div>
+            </div>
+      `;
+
+      taskDetailsModal.innerHTML = taskHTML;
+      taskDetailsModal.showModal();
+
+      const taskdata = {
+        nome: TaskDetailsTitle,
+        status: taskDetailsStatus,
+        dataFinal: taskDetailsDate,
+        prioridade: taskDetailsPriority,
+        descricao: taskDetailsDecription,
+        id: taskElementID,
+      };
+      const closeTaskDetailButton = document.getElementById("closeTaskDetail");
+      closeTaskDetailButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        const TaskDetailsTitle =
+          document.getElementById("TaskDetailsTitle").value;
+        const taskDetailsDate =
+          document.getElementById("taskDetailsDate").value;
+        const taskDetailsStatus =
+          document.getElementById("taskDetailsStatus").dataset.status;
+        const taskDetailsPriority = document.getElementById(
+          "taskDetailsPriority"
+        ).dataset.priority;
+        const taskDetailsDecription = document
+          .getElementById("taskDetailsDecription")
+          .value.trim();
+        const taskDetailsSubject =
+          document.getElementById("taskDetailsSubject").textContent;
+        const taskdata = {
+          nome: TaskDetailsTitle,
+          status: taskDetailsStatus,
+          dataFinal: taskDetailsDate,
+          prioridade: taskDetailsPriority,
+          descricao: taskDetailsDecription,
+          id: taskElementID,
+        };
+
+        fetch(URL_TAREFAS + `/${taskElementID}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(taskdata),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Erro ao editar tarefa" + response.statusText);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log("Success:", data);
+          })
+          .catch((error) => {
+            console.error("Houve um erro ao procurar a tarefa", error);
+          });
+      });
+    })
+    .finally(() => {
+      lucide.createIcons();
+    });
 }
 /*
  */

@@ -1544,8 +1544,8 @@ auto .add-button:hover {
 
 /*TASK DETAILS*/
 #taskDetailsModal {
+  outline: none;
 }
-
 .task-detail-container {
   display: flex;
   flex-direction: column;
@@ -1554,6 +1554,9 @@ auto .add-button:hover {
 
 .task-title {
   color: #414b3b;
+  outline: none;
+  border: none;
+  font-size: 24px;
 }
 
 .subject-title {
@@ -1568,7 +1571,7 @@ auto .add-button:hover {
 }
 
 .task-detail-header {
-  margin-top: 12px;
+  margin-top: 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1623,18 +1626,18 @@ auto .add-button:hover {
   color: #6d6d6d;
   border-radius: 5px;
   padding: 12px;
-  max-width: 600px;
+  width: 100%;
   font-size: 14px;
+  resize: none;
+  outline: none;
+  border: none;
+  text-align: start;
 }
 
 .item-info-button {
   border-radius: 3px;
   display: flex;
-  background-color: #ca4f48;
   color: #ffffff;
-}
-
-.item-info-button span {
 }
 
 .item-info-button .border,
@@ -1660,7 +1663,19 @@ auto .add-button:hover {
   gap: 6px;
 }
 
-#changePriorityButton {
+.item-info-button.do-button,
+.item-info-button.urgent-button {
+  background-color: #e68b86;
+}
+.item-info-button.doing-button,
+.item-info-button.high-button {
+  background-color: #edbf74;
+}
+.item-info-button.done-button {
+  background-color: #8aa17b;
+}
+
+.item-info-button.normal-button {
   background-color: #1481ba;
 }
 

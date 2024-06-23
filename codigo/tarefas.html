@@ -19,6 +19,7 @@
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
     <link rel="stylesheet" href="./styles/styleVictor.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <title>StudyFlex</title>
   </head>
 
@@ -525,112 +526,7 @@
 
           <!-- DETALHES DA TAREFA -->
           <dialog class="task-information" id="taskDetailsModal">
-            <div class="task-detail-container">
-              <button class="btn close-btn" id="closeTaskDetail"><i data-lucide="x"></i></button>
-              <div class="task-detail-header">
-                <div class="task-detail-title">
-                  <h1 class="task-title">SPRINT 4</h1>
-                  <span class="subject-title">TIAW</span>
-              </div>
-                
-
-                <div class="task-preview-options">
-                  <button class="options-icon-container delete-button" id="deleteTaskButton" data-taskid="${
-          
-                  "><i data-lucide="trash-2"></i></button>
-                </div>
-              </div>
-
-              <div class="task-details-data">
-                <ul class="task-data-list">
-                  <li class="task-data-item">
-                    <div class="item-title">
-                      <i data-lucide="loader-circle"></i>
-                    <span>Status</span>
-                  </div>
-
-                  <button class="item-info-button" id="changeStatusButton">
-                    <div class="item-info-container">
-                      <i data-lucide="circle-dot"></i>
-                      <span>Fazer</span>
-                    </div>
-
-                    <span class="border"></span>
-
-                    <div class="item-info-container">
-                      <i data-lucide="refresh-ccw" class="spin-icon"></i>
-                    </div>
-                  </button>
-                    
-                  </li >
-                  <li class="task-data-item">
-                    <div class="item-title">
-                      <i data-lucide="book-marked"></i>
-                      <span>Matéria</span>
-                    </div>
-
-                    <button class="subject-info-button" id="changeSubjectButton">
-                      <div class="item-info-container">
-                        <span>TIAW</span>
-                      </div>
-  
-                    <span class="border"></span>
-  
-                      <div class="item-info-container">
-                        <i data-lucide="chevron-right" class="spin-icon"></i>
-                      </div>
-                    </button>
-                    
-                  </li>
-
-                  <li class="task-data-item">
-                    <div class="item-title">
-                      <i data-lucide="flag"></i>
-                    <span>Prioridade</span>
-                  </div>
-
-                  <button class="item-info-button" id="changePriorityButton">
-                    <div class="item-info-container">
-                      <i data-lucide="flag"></i>
-                      <span>Alta</span>
-                    </div>
-
-                    <span class="border"></span>
-
-                    <div class="item-info-container">
-                      <i data-lucide="refresh-ccw" class="spin-icon"></i>
-                    </div>
-                  </button>
-                    
-                  </li>   
-
-                  <li class="task-data-item">
-                    <div class="item-title">
-                      <i data-lucide="calendar-days"></i>
-                      <span>Data final</span>
-                    </div>
-
-                    <input type="date" class="input-date">
-                    
-                  </li>
-                               
-                </ul>
-
-                <div class="task-data-description">
-                  <div class="data-description-header">
-                    <i data-lucide="message-square-more"></i>
-                    <span>Descrição</span>
-                  </div>
-
-                  <div class="data-description-content">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, tenetur est. Explicabo tempore cum praesentium recusandae, quod sed itaque!
-                  </div>
-
-                </div>
-              </div>
-            </div>
-            
-            
+        
           </dialog>
 
           <!--CALENDÁRIO-->
@@ -639,7 +535,6 @@
         <!--CONTEÚDO DINAMICO-->
       </main>
     </div>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="./scripts/victor-scripts/scriptTaskModal.js" async></script>
