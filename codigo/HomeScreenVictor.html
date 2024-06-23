@@ -91,9 +91,7 @@
               class="search-bar"
             />
 
-            <button type="submit" class="submit-btn">
-              
-            </button>
+            <button type="submit" id="searchButton" class="submit-btn"></button>
           </form>
 
           <div class="add-subject-content empty">
@@ -181,24 +179,21 @@
         <section class="homescreen" id="homescreenView">
           <h1 class="homescreen-title">Dashboard</h1>
           <div class="tasks-header-container dashboard-page">
-            <form action="" method="get" class="search-bar-container">
+            <div  class="search-bar-container">
               <input
                 type="search"
                 name=""
                 placeholder="Buscar.."
                 aria-label="Search"
                 class="search-bar"
+                id="searchTaskBar"
               />
 
         
               <button type="submit" class="submit-btn">
-                <img
-                  src="./assets/imgs/search_icon.png"
-                  alt="Botão de pesquisar"
-                  class="submit-icon"
-                />
+                <i data-lucide="search"></i>
               </button>
-            </form>
+            </div>
 
             <div class="task-control-container">
               <div class="add-btn-container">

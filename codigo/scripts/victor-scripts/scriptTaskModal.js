@@ -18,6 +18,10 @@ const prevButton = document.getElementById("prevPage");
 const nextButton = document.getElementById("nextPage");
 const pageCounter = document.getElementById("pageCounter");
 
+//SEARCH BAR
+const searchTaskBar = document.getElementById("searchTaskBar");
+const searchButton = document.getElementById("searchButton");
+
 let page = 1;
 let skip;
 let keyFilter, valueFilter;
@@ -114,6 +118,9 @@ function returnURL(key, value, sorting) {
     if (sorting) {
       return URL_TAREFAS + sorting;
     }
+
+    console.log(URL_TAREFAS);
+
     return URL_TAREFAS;
   }
 }
@@ -142,16 +149,15 @@ async function fetchTasksPages(key, value, sorting) {
 
       if (taskData.length === 0) {
         pageCounter.classList.add("hide");
-        tasksList.classList.add("complete");
-
         page--;
         return;
       }
-      tasksList.classList.remove("complete");
+      pageCounter.classList.remove("hide");
 
       pageCounter.innerHTML = `<span>${page}</span>`;
 
       tasksList.innerHTML = "";
+
       let taskPreview, taskListContent;
 
       for (let i = 0; i < taskData.length; i++) {
@@ -265,13 +271,26 @@ prevButton.addEventListener("click", () => {
     return;
   } else {
     page--;
-    fetchTasksPages(keyFilter, valueFilter, SORT_URL);
+
+    if (searchTaskBar.value) {
+      fetchTasksPages("nome_like", searchTaskBar.value, SORT_URL);
+    } else {
+      fetchTasksPages(keyFilter, valueFilter, SORT_URL);
+    }
   }
 });
 
 nextButton.addEventListener("click", () => {
-  page++;
-  fetchTasksPages(keyFilter, valueFilter, SORT_URL);
+  if (page == pageLength % taskPerPage) {
+    return;
+  } else {
+    page++;
+    if (searchTaskBar.value) {
+      fetchTasksPages("nome_like", searchTaskBar.value, SORT_URL);
+    } else {
+      fetchTasksPages(keyFilter, valueFilter, SORT_URL);
+    }
+  }
 });
 
 newTaskForm.addEventListener("submit", () => {
@@ -790,6 +809,7 @@ function openTask(taskElement) {
           .value.trim();
         const taskDetailsSubject =
           document.getElementById("taskDetailsSubject").textContent;
+
         const taskdata = {
           nome: TaskDetailsTitle,
           status: taskDetailsStatus,
@@ -824,5 +844,8 @@ function openTask(taskElement) {
       lucide.createIcons();
     });
 }
-/*
- */
+
+searchButton.addEventListener("click", function (event) {
+  const query = searchTaskBar.value;
+  fetchTasksPages("nome_like", query);
+});
