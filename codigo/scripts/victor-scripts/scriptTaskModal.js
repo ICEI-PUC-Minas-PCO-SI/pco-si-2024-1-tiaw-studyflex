@@ -16,10 +16,13 @@ const tasksList = document.getElementById("taskList");
 //PAGINATION
 const prevButton = document.getElementById("prevPage");
 const nextButton = document.getElementById("nextPage");
+const pageCounter = document.getElementById("pageCounter");
+
 let page = 1;
 let skip;
 let keyFilter, valueFilter;
 let SORT_URL;
+let pageLength;
 
 //Fetching tasks
 const taskPerPage = 3;
@@ -30,7 +33,7 @@ async function fetchTasks() {
     const response = await fetch(URL_TAREFAS);
     if (response.ok) {
       const data = await response.json();
-
+      pageLength = data.length;
       if (data.length > taskPerPage) {
         prevButton.classList.remove("hide");
         nextButton.classList.remove("hide");
@@ -138,15 +141,19 @@ async function fetchTasksPages(key, value, sorting) {
       const taskData = await response.json();
 
       if (taskData.length === 0) {
-        page--;
+        pageCounter.classList.add("hide");
+        tasksList.classList.add("complete");
 
+        page--;
         return;
       }
+      tasksList.classList.remove("complete");
+
+      pageCounter.innerHTML = `<span>${page}</span>`;
+
       tasksList.innerHTML = "";
       let taskPreview, taskListContent;
 
-      if (taskData.length == 0) {
-      }
       for (let i = 0; i < taskData.length; i++) {
         let taskStatus;
         taskPreview = document.createElement("l1");
@@ -218,13 +225,14 @@ async function fetchTasksPages(key, value, sorting) {
           <p>${taskData[i].descricao}</p>
         </div>
       </article>
+      </div>
       `;
+
         taskPreview.innerHTML += taskListContent;
         tasksList.appendChild(taskPreview);
       }
 
       const deleteTaskButton = document.querySelectorAll(".delete-button");
-      const editTaskButton = document.querySelectorAll(".edit-button");
       const taskElement = document.querySelectorAll(".task-item-preview");
 
       for (let button of deleteTaskButton) {
@@ -239,9 +247,6 @@ async function fetchTasksPages(key, value, sorting) {
           openTask(task);
         });
       }
-
-      const pageCounter = document.getElementById("pageCounter");
-      pageCounter.innerHTML = `<p>${page}</p>`;
 
       lucide.createIcons();
     } else {
@@ -761,16 +766,14 @@ function openTask(taskElement) {
 
       taskDetailsModal.innerHTML = taskHTML;
       taskDetailsModal.showModal();
-
-      const taskdata = {
-        nome: TaskDetailsTitle,
-        status: taskDetailsStatus,
-        dataFinal: taskDetailsDate,
-        prioridade: taskDetailsPriority,
-        descricao: taskDetailsDecription,
-        id: taskElementID,
-      };
       const closeTaskDetailButton = document.getElementById("closeTaskDetail");
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" || event.key === "Esc") {
+          closeTaskDetailButton.click();
+        }
+      });
+
       closeTaskDetailButton.addEventListener("click", (event) => {
         event.preventDefault();
         const TaskDetailsTitle =

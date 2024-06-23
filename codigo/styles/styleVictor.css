@@ -615,9 +615,13 @@ auto .add-button:hover {
 }
 
 #TaskEndDate {
-  padding: 3px;
+  padding: 3px 6px;
+  font-size: 14px;
+  border-radius: 3px;
+  border: 1px solid #414b3b;
   cursor: pointer;
-  font-family: "Lato", sans-serif;
+  text-transform: uppercase;
+  color: #414b3b;
 }
 
 /*STATUS SELECT*/
@@ -1330,6 +1334,10 @@ auto .add-button:hover {
   font-weight: 900;
 }
 
+#pageCounter.hide {
+  display: none;
+}
+
 #prevPage.hide,
 #nextPage.hide {
   display: none;
@@ -1545,6 +1553,7 @@ auto .add-button:hover {
 /*TASK DETAILS*/
 #taskDetailsModal {
   outline: none;
+  width: 450px;
 }
 .task-detail-container {
   display: flex;
@@ -1581,6 +1590,8 @@ auto .add-button:hover {
 }
 
 .task-detail-title {
+  justify-content: space-between;
+  width: 100%;
   display: flex;
   gap: 12px;
 }
@@ -1626,12 +1637,11 @@ auto .add-button:hover {
   color: #6d6d6d;
   border-radius: 5px;
   padding: 12px;
-  width: 100%;
-  font-size: 14px;
   resize: none;
+  font-size: 14px;
   outline: none;
   border: none;
-  text-align: start;
+  width: 100%;
 }
 
 .item-info-button {
@@ -1694,4 +1704,16 @@ auto .add-button:hover {
   cursor: pointer;
   text-transform: uppercase;
   color: #414b3b;
+}
+
+.image-background {
+  width: 100%;
+  max-width: 300px;
+}
+
+#taskList.complete {
+  padding: 32px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
