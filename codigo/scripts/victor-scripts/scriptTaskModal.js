@@ -118,9 +118,6 @@ function returnURL(key, value, sorting) {
     if (sorting) {
       return URL_TAREFAS + sorting;
     }
-
-    console.log(URL_TAREFAS);
-
     return URL_TAREFAS;
   }
 }
@@ -153,9 +150,7 @@ async function fetchTasksPages(key, value, sorting) {
         return;
       }
       pageCounter.classList.remove("hide");
-
       pageCounter.innerHTML = `<span>${page}</span>`;
-
       tasksList.innerHTML = "";
 
       let taskPreview, taskListContent;

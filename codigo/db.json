@@ -1,27 +1,12 @@
 {
   "tarefas": [
     {
-      "nome": "SPRINT 1",
-      "status": "3",
-      "dataFinal": "2024-06-25",
-      "prioridade": "1",
-      "descricao": "",
-      "id": 1
-    },
-    {
-      "nome": "SPRINT 2",
-      "status": "3",
-      "dataFinal": "2024-06-19",
-      "prioridade": "3",
-      "descricao": "",
-      "id": 2
-    },
-    {
       "nome": "SPRINT 3 ",
       "status": "1",
       "dataFinal": "2024-07-03",
       "prioridade": "3",
       "descricao": "",
+      "materia": "TIAW",
       "id": 3
     },
     {
@@ -30,6 +15,7 @@
       "dataFinal": "2024-06-19",
       "prioridade": "2",
       "descricao": "",
+      "materia": "TIAW",
       "id": 4
     },
     {
@@ -39,6 +25,14 @@
       "prioridade": "3",
       "descricao": "Pedir com carinho",
       "id": 5
+    },
+    {
+      "nome": "Q",
+      "status": "2",
+      "dataFinal": "2024-06-04",
+      "prioridade": "1",
+      "descricao": "",
+      "id": 6
     }
   ],
   "materias": [],
