@@ -38,10 +38,7 @@ async function fetchTasks() {
     if (response.ok) {
       const data = await response.json();
       pageLength = data.length;
-      if (data.length > taskPerPage) {
-        prevButton.classList.remove("hide");
-        nextButton.classList.remove("hide");
-      } else {
+      if (data.length === 0) {
         prevButton.classList.add("hide");
         nextButton.classList.add("hide");
       }
@@ -51,7 +48,6 @@ async function fetchTasks() {
 
 fetchTasks();
 
-//
 async function getTask(url) {
   fetch(url)
     .then((response) => {
@@ -140,6 +136,19 @@ function returnURL(key, value, sorting) {
 async function fetchTasksPages(key, value, sorting) {
   try {
     skip = (page - 1) * taskPerPage; //NÚMERO DE TAREFAS QUE DEVEM SER IGNORADAS E A PARTIR DE QUAL TAREFA REALIZAR A BUSCA
+
+    if (page == 1) {
+      prevButton.classList.add("hide");
+    } else {
+      prevButton.classList.remove("hide");
+    }
+
+    let pages = Math.ceil(pageLength / taskPerPage);
+    if (page == pages) {
+      nextButton.classList.add("hide");
+    } else {
+      nextButton.classList.remove("hide");
+    }
 
     //SOLICITA A URL BASE COM NO PARAMETROS RECEBIDOS
     if (!key && !value) {
@@ -287,7 +296,6 @@ fetchTasksPages();
 //BOTÃO DE DE VOLTAR 1 PÁGINA
 prevButton.addEventListener("click", () => {
   if (page === 1) {
-    nextButton.classList.add("hide");
     return;
   } else {
     page--;
@@ -296,15 +304,13 @@ prevButton.addEventListener("click", () => {
     } else {
       fetchTasksPages(keyFilter, valueFilter, SORT_URL);
     }
-    nextButton.classList.remove("hide");
   }
 });
 
 //BOTÃO DE DE AVANÇAR 1 PÁGINA
 nextButton.addEventListener("click", () => {
-  let pages = Math.ceil(pageLength % taskPerPage);
+  let pages = Math.ceil(pageLength / taskPerPage);
   if (page == pages) {
-    nextButton.classList.add("hide");
     return;
   } else {
     page++;
@@ -313,7 +319,6 @@ nextButton.addEventListener("click", () => {
     } else {
       fetchTasksPages(keyFilter, valueFilter, SORT_URL);
     }
-    prevButton.classList.remove("hide");
   }
 });
 
