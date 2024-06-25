@@ -1,37 +1,37 @@
 //URL API DE DADOS
 const URL_TAREFAS = "http://localhost:3000/tarefas";
 
-//WHAT PAGE ARE WE IN?
+//NOME DA PÁGINA QUE ESTAMOS
 let pageTitle = document.querySelector(".homescreen-title").textContent;
 
-//TASK MODAL VARIABLES
+//ELEMENTOS DO MODAL DE CRIAR UMA TAREFA
 const createTaskModal = document.getElementById("creteTaskModal");
 const createTaskButton = document.getElementById("createTaskBtn");
 const closeTaskButton = document.getElementById("closeTaskCreatorButton");
 
-//TASK CONTAINER VARIABLES
+//CONTAINER DA LISTA DE TAREFAS
 const tasksContainer = document.getElementById("tasksContainer");
 const tasksList = document.getElementById("taskList");
 
-//PAGINATION
+//ELEMENTOS E VARIAVEIS DE PAGINAÇÃO
 const prevButton = document.getElementById("prevPage");
 const nextButton = document.getElementById("nextPage");
 const pageCounter = document.getElementById("pageCounter");
-
-//SEARCH BAR
-const searchTaskBar = document.getElementById("searchTaskBar");
-const searchButton = document.getElementById("searchButton");
-
+const taskPerPage = 3;
+let URL_TAREFAS_PAGE;
+let SORT_URL;
 let page = 1;
 let skip;
 let keyFilter, valueFilter;
-let SORT_URL;
+
 let pageLength;
 
-//Fetching tasks
-const taskPerPage = 3;
-let URL_TAREFAS_PAGE;
+//ELEMENTOS DA BARRA DE PESQUISA
+const searchTaskBar = document.getElementById("searchTaskBar");
+const searchButton = document.getElementById("searchButton");
 
+//REALIZA UMA PESQUISA NAS TAREFAS REGISTRADAS NO BANCO
+//COM O NÚMERO DE TAREFAS, DEFINIMOS A ESTRUTRA DE PÁGINAS DO NOSSO SITE
 async function fetchTasks() {
   try {
     const response = await fetch(URL_TAREFAS);
@@ -51,6 +51,7 @@ async function fetchTasks() {
 
 fetchTasks();
 
+//
 async function getTask(url) {
   fetch(url)
     .then((response) => {
@@ -71,6 +72,7 @@ async function getTask(url) {
     });
 }
 
+//DELETAR A TAREFA QUE FOI PASSADA NA URL
 function deleteTaskURL(url) {
   fetch(url, {
     method: "DELETE",
@@ -89,17 +91,28 @@ function deleteTaskURL(url) {
     });
 }
 
+//RETORNA UMA URL COM BASE NOS PARAMETROS PASSADOS
+//DEFINE A BASE DA PESQUISA QUE SERÁ FEITA NO BANCO
 function returnURL(key, value, sorting) {
+  //KEY - 'propriedade' da tarefa
+  //VALUE - valor da propriedade
+  //SORTING - modo de ordenação das tarefas (query de ordenação do json server)
+
+  //URL BASE DA PÁGINA DE DASHBOARD (APRESENTA APENAS AS TAREFAS ATIVAS - STATUS 2 E 3)
   let URL_DASHBOARD = `http://localhost:3000/tarefas?status=2&status=3&_page=${page}&_limit=${taskPerPage}`;
+  //URL BASE DA PÁGINA DE TAEFAS (APRESENTA TODDAS AS TAREFAS CRIADAS)
   let URL_TAREFAS = `http://localhost:3000/tarefas?_page=${page}&_limit=${taskPerPage}`;
 
+  //VERIFICA SE FOI PASSADO ALGUMA CRITERIO PARA LISTAR AS TAREFAS
   if (!key && !value && !sorting) {
+    //RETORNA A URL SEM NENHUM FILTRO E SEM ORDENAÇÃO
     if (pageTitle === "Dashboard") {
       return URL_DASHBOARD;
     } else if (pageTitle === "Tarefas") {
       return URL_TAREFAS;
     }
   } else if (!key && !value && sorting) {
+    //RETORNA A URL SEM NENHUM FILTRO E COM ORDENAÇÃO
     if (pageTitle === "Dashboard") {
       return URL_DASHBOARD + sorting;
     } else if (pageTitle === "Tarefas") {
@@ -107,6 +120,7 @@ function returnURL(key, value, sorting) {
     }
   }
 
+  //RETORNAS AS URLS QUE TIVEREM ALGUM TIPO DE FILTRO NAS TAREFAS + ORDENAÇÃO
   if (pageTitle === "Dashboard") {
     URL_DASHBOARD = `http://localhost:3000/tarefas?${key}=${value}&_page=${page}&_limit=${taskPerPage}`;
     if (sorting) {
@@ -122,9 +136,12 @@ function returnURL(key, value, sorting) {
   }
 }
 
+//CARREGA O HTML DAS TAREFAS NA TELA DE ACORDO COM O CRITÉRIO DE PAGINAÇÃO
 async function fetchTasksPages(key, value, sorting) {
   try {
-    skip = (page - 1) * taskPerPage;
+    skip = (page - 1) * taskPerPage; //NÚMERO DE TAREFAS QUE DEVEM SER IGNORADAS E A PARTIR DE QUAL TAREFA REALIZAR A BUSCA
+
+    //SOLICITA A URL BASE COM NO PARAMETROS RECEBIDOS
     if (!key && !value) {
       if (sorting) {
         URL_TAREFAS_PAGE = returnURL(null, null, sorting);
@@ -139,19 +156,24 @@ async function fetchTasksPages(key, value, sorting) {
       }
     }
 
+    //REALIZA A PESQUISA NO BANCO DAS TAREFAS
     const response = await fetch(URL_TAREFAS_PAGE);
 
     if (response.ok) {
+      //ARRAY DE TODAS AS TAREFAS QUE DEVEM SER LISTADAS NA PÁGINA
       const taskData = await response.json();
 
+      //VERIFICA SE NÃO HÁ NENHUMA TAREFA CRIADA
       if (taskData.length === 0) {
         pageCounter.classList.add("hide");
         page--;
         return;
       }
+
+      //ADICIONA OS ELEMENTOS HMTL DE PAGINAÇÃO
       pageCounter.classList.remove("hide");
       pageCounter.innerHTML = `<span>${page}</span>`;
-      tasksList.innerHTML = "";
+      tasksList.innerHTML = ""; //ZERA A LISTA DE TAREFAS NO HTML
 
       let taskPreview, taskListContent;
 
@@ -185,9 +207,10 @@ async function fetchTasksPages(key, value, sorting) {
         } else {
           subjectContent = `<span>${taskData[i].materia}</span>`;
         }
-
         let finalDate = new Date(taskData[i].dataFinal);
         finalDate.setDate(finalDate.getDate() + 1);
+
+        //CRIA O ELEMENTO HTML DA TAREFA CRIADA
         taskListContent = `
         <article class="task-item-preview" data-taskid="${taskData[i].id}">
         <div class="task-item-header">
@@ -229,12 +252,13 @@ async function fetchTasksPages(key, value, sorting) {
       </div>
       `;
 
+        //ADICIONA A TAREFADA NO <li> PARA SER INCLUSO NA LISTA DE TAREFAS
         taskPreview.innerHTML += taskListContent;
         tasksList.appendChild(taskPreview);
       }
 
-      const deleteTaskButton = document.querySelectorAll(".delete-button");
-      const taskElement = document.querySelectorAll(".task-item-preview");
+      const deleteTaskButton = document.querySelectorAll(".delete-button"); //BOTÃO DE APAGAR A TAREFA
+      const taskElement = document.querySelectorAll(".task-item-preview"); //PREVIEW DA TAREFA
 
       for (let button of deleteTaskButton) {
         button.addEventListener("click", (e) => {
@@ -248,35 +272,39 @@ async function fetchTasksPages(key, value, sorting) {
           openTask(task);
         });
       }
-
       lucide.createIcons();
     } else {
     }
   } catch (error) {
     {
-      alert(error);
+      alert("Não foi possível carregar as tarefas");
     }
   }
 }
 
 fetchTasksPages();
 
+//BOTÃO DE DE VOLTAR 1 PÁGINA
 prevButton.addEventListener("click", () => {
   if (page === 1) {
+    nextButton.classList.add("hide");
     return;
   } else {
     page--;
-
     if (searchTaskBar.value) {
       fetchTasksPages("nome_like", searchTaskBar.value, SORT_URL);
     } else {
       fetchTasksPages(keyFilter, valueFilter, SORT_URL);
     }
+    nextButton.classList.remove("hide");
   }
 });
 
+//BOTÃO DE DE AVANÇAR 1 PÁGINA
 nextButton.addEventListener("click", () => {
-  if (page == pageLength % taskPerPage) {
+  let pages = Math.ceil(pageLength % taskPerPage);
+  if (page == pages) {
+    nextButton.classList.add("hide");
     return;
   } else {
     page++;
@@ -285,6 +313,7 @@ nextButton.addEventListener("click", () => {
     } else {
       fetchTasksPages(keyFilter, valueFilter, SORT_URL);
     }
+    prevButton.classList.remove("hide");
   }
 });
 
