@@ -1,15 +1,6 @@
 {
   "tarefas": [
     {
-      "nome": "SPRINT 3 ",
-      "status": "1",
-      "dataFinal": "2024-07-03",
-      "prioridade": "3",
-      "descricao": "",
-      "materia": "TIAW",
-      "id": 3
-    },
-    {
       "nome": "SPRINT 4",
       "status": "1",
       "dataFinal": "2024-06-19",
@@ -33,6 +24,30 @@
       "prioridade": "1",
       "descricao": "",
       "id": 6
+    },
+    {
+      "nome": "Teste",
+      "status": "3",
+      "dataFinal": "2024-06-26",
+      "prioridade": "1",
+      "descricao": "",
+      "id": 7
+    },
+    {
+      "nome": "Teste",
+      "status": "3",
+      "dataFinal": "2024-06-26",
+      "prioridade": "1",
+      "descricao": "",
+      "id": 8
+    },
+    {
+      "nome": "teste",
+      "status": "3",
+      "dataFinal": "2024-06-25",
+      "prioridade": "2",
+      "descricao": "",
+      "id": 9
     }
   ],
   "materias": [],

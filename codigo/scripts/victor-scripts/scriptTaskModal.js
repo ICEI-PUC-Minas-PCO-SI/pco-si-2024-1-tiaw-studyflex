@@ -149,6 +149,7 @@ async function fetchTasksPages(key, value, sorting) {
         page--;
         return;
       }
+
       pageCounter.classList.remove("hide");
       pageCounter.innerHTML = `<span>${page}</span>`;
       tasksList.innerHTML = "";
@@ -267,16 +268,17 @@ prevButton.addEventListener("click", () => {
   } else {
     page--;
 
-    if (searchTaskBar.value) {
-      fetchTasksPages("nome_like", searchTaskBar.value, SORT_URL);
-    } else {
-      fetchTasksPages(keyFilter, valueFilter, SORT_URL);
-    }
+    // if (searchTaskBar.value) {
+    //   fetchTasksPages("nome_like", searchTaskBar.value, SORT_URL);
+    // } else {
+    fetchTasksPages(keyFilter, valueFilter, SORT_URL);
+    // }
   }
 });
 
 nextButton.addEventListener("click", () => {
-  if (page == pageLength % taskPerPage) {
+  let pages = Math.ceil(pageLength / taskPerPage);
+  if (page == pages) {
     return;
   } else {
     page++;
