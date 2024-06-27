@@ -17,25 +17,27 @@ const itensPerPage = 4;
 let currentPage = 1;
 
 //Função para contar o total de tarefas em cada matéria
-function TotalTarefasdasMaterias(tarefas) {
+function TotalTarefasdasMaterias(tarefas, materias) {
     const totalMaterias = {};
+    materias.forEach(materia => {
+        totalMaterias[materia.nome] = 0;
+    });
     tarefas.forEach(tarefa => {
-        if (!totalMaterias[tarefa.materia]) {
-            totalMaterias[tarefa.materia] = 0;
+        if (totalMaterias.hasOwnProperty(tarefa.materia)) {
+            totalMaterias[tarefa.materia]++;
         }
-        totalMaterias[tarefa.materia]++;
     });
     return totalMaterias;
 }
 
 //Função para contar o total de tarefas feitas em cada matéria
-function TarefasFeitasdasMaterias(tarefas) {
+function TarefasFeitasdasMaterias(tarefas, materias) {
     const feitasMaterias = {};
+    materias.forEach(materia => {
+        feitasMaterias[materia.nome] = 0;
+    });
     tarefas.forEach(tarefa => {
-        if (tarefa.status === "3") {
-            if (!feitasMaterias[tarefa.materia]) {
-                feitasMaterias[tarefa.materia] = 0;
-            }
+        if (tarefa.status === "3" && feitasMaterias.hasOwnProperty(tarefa.materia)) {
             feitasMaterias[tarefa.materia]++;
         }
     });
@@ -46,13 +48,13 @@ function TarefasFeitasdasMaterias(tarefas) {
 function atualizarProgresso(data) {
     const progressoBloco = document.getElementById('blocodeprogresso');  
     
-    const totalTarefasPorMateria = TotalTarefasdasMaterias(data.tarefas);
-    const tarefasFeitasPorMateria = TarefasFeitasdasMaterias(data.tarefas);
+    const totalTarefasPorMateria = TotalTarefasdasMaterias(data.tarefas, data.materias);
+    const tarefasFeitasPorMateria = TarefasFeitasdasMaterias(data.tarefas, data.materias);
     
     const materias = Object.keys(totalTarefasPorMateria);
     const totalPages = Math.ceil(materias.length / itensPerPage);
 
-    // Função para renderizar a página atual
+    //Função para renderizar a página atual
     function renderPage(page) {
         progressoBloco.innerHTML = '<h3 class="tituloProgresso">Progressos das Matérias</h3>';
         const start = (page - 1) * itensPerPage;
@@ -62,17 +64,19 @@ function atualizarProgresso(data) {
             const materia = materias[i];
             const totalTarefas = totalTarefasPorMateria[materia];
             const tarefasFeitas = tarefasFeitasPorMateria[materia] || 0;
-            const porcentagem = (tarefasFeitas / totalTarefas) * 100;
+            const porcentagem = (totalTarefas > 0) ? (tarefasFeitas / totalTarefas) * 100 : 0;
             const porcentagemLimite = Math.max(0, Math.min(100, porcentagem));
             let porcentagemContador;
 
-            // Limitar a porcentagem de 0 a 100
-            if (Number.isInteger(porcentagemLimite)) {
+            //Limitar a porcentagem de 0 a 100
+            if (totalTarefas === 0) {
+                porcentagemContador = "Sem tarefas";
+            } else if (Number.isInteger(porcentagemLimite)) {
                 porcentagemContador = porcentagemLimite.toString();
             } else {
                 porcentagemContador = porcentagemLimite.toFixed(1);
 
-                // If que não permite que a casa decimal comece com 0
+                //If que não permite que a casa decimal comece com 0
                 if (porcentagemContador.endsWith('.0')) {
                     porcentagemContador = porcentagemLimite.toFixed(0);
                 }
@@ -104,8 +108,8 @@ function atualizarProgresso(data) {
             progressoBloco.appendChild(flexContainer);
             progressoBloco.appendChild(progressBarClone);
 
-            nivelProgressoClone.textContent = `${tarefasFeitas} / ${totalTarefas} (${porcentagemContador}%)`;
-            levelProgressClone.style.width = porcentagemLimite + '%';
+            nivelProgressoClone.textContent = (totalTarefas === 0) ? "Sem tarefas" : `${tarefasFeitas} / ${totalTarefas} (${porcentagemContador}%)`;
+            levelProgressClone.style.width = (totalTarefas === 0) ? '0%' : porcentagemLimite + '%';
         }
 
         //Botões de navegação
@@ -131,11 +135,20 @@ function atualizarProgresso(data) {
         navigation.appendChild(prevButton);
         navigation.appendChild(nextButton);
         progressoBloco.appendChild(navigation);
+
+        //Função para esconder as setas se não houver matérias
+        function verificarMaterias() {
+            if (materias.length === 0) {
+                navigation.style.display = 'none';
+            } else {
+                navigation.style.display = 'flex';
+            }
+        }
+
+        //Verificar as matérias
+        verificarMaterias();
     }
 
     //Renderizar a primeira página
     renderPage(currentPage);
 }
-
-
-
