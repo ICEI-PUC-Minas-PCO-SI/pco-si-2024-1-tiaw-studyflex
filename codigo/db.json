@@ -105,6 +105,15 @@
       "dataFinal": "2024-09-23",
       "prioridade": "3",
       "descricao": "no "
+    },
+    {
+      "id": "95db",
+      "nome": "Enviar Sprint 4",
+      "status": "2",
+      "materia": "teste",
+      "dataFinal": "2024-06-28",
+      "prioridade": "3",
+      "descricao": "bora bill"
     }
   ],
   "materias": [
@@ -121,10 +130,6 @@
       "nome": "teste"
     },
     {
-      "id": "59d7",
-      "nome": "galo"
-    },
-    {
       "id": "f55b",
       "nome": "quimica"
     },
@@ -135,10 +140,6 @@
     {
       "id": "96c4",
       "nome": "Quem é Renatola"
-    },
-    {
-      "id": "c6f7",
-      "nome": "Quem engravidou o renatola"
     },
     {
       "id": "c888",

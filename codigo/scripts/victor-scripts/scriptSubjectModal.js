@@ -115,10 +115,10 @@ async function fetchSubjects(filter = "") {
       materiaBox.classList.add('materia-box');
       materiaBox.innerHTML = `
         ${materia.nome} 
-        <span class="num-tarefas">(${concluidas}/${totalTarefas} tarefas)</span>
         <div class="progress-bar">
           <div class="progress" style="width: ${progresso}%;"></div>
         </div>
+        <span class="num-tarefas">N° Tarefas: ${totalTarefas}</span>
       `;
 
       const deleteBtn = document.createElement('button');
