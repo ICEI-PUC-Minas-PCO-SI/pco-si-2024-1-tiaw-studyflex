@@ -123,58 +123,371 @@
     </aside>
 
     <main id="mainContainer">
-      <!--CONTEÚDO DINAMICO-->
-
+      
       <!--Aqui é onde será adcionado as diferentes variações das telas, o conteúdo dinâmico do site-->
       <section class="homescreen" id="homescreenView">
-        <h1 class="menuInicial-title">Tarefas da matéria</h1>
-        <form action="" method="get" class="search-bar-container">
-          <input type="search" name="" placeholder="Buscar tarefa..." aria-label="Search" class="search-bar" />
+        <h1 class="subjects-title">Dashboard</h1>
+        <div class="tasks-header-container dashboard-page">
+          <form action="" method="get" class="search-bar-container">
+            <input
+              type="search"
+              name=""
+              placeholder="Buscar.."
+              aria-label="Search"
+              class="search-bar"
+            />
 
-          <img src="./assets/imgs/loupe_icon.png" alt="Lupa icone" class="input-icon" />
-
-          <button type="submit" class="submit-btn">
-            <img src="./assets/imgs/search_icon.png" alt="Botão de pesquisar" class="submit-icon" />
-          </button>
-        </form>
-
-        <!--Começo - Caixa de Tarefas -->
-        <div class="conteiner-localTarefas">
-          <div class="box-tarefa">
-            <section class="tasks-container" id="tasks-box">
-              <article class="task-preview note">
-                <a href="./personalizarAna.html">
-                  <h3 class="task-title">TAREFA</h3>
-                </a>
-                <a href="./materiasVictor.html" class="task-subject">Matéria</a>
-                <p class="task-description">
-                  Lorem ipsum is placeholder text commonly used in the graphic,
-                  print, and publishing industries for previewing layouts and
-                  visual mockups...
-                </p>
-                <button class="task-details">
-                  <img src="./assets/imgs/details_icon.png" alt="Detalhes icone" class="icon task-icon" />
-                </button>
-              </article>
-            </section>
-          </div>
-
-          <!--Final - Caixa de Tarefas -->
-
-          <div id="novastarefas">
-            <div id="divisao"></div>
-          </div>
-
-          <!--Começo - Botão para criar uma nova tarefa -->
-
-          <div class="conteiner-addTask">
-            <button onclick="criarTarefa()" class="adicionarTarefa()" id="addTasksButton">
-              <img src="./assets/imgs/add_icon.png" alt="Tarefas" class="btn-img-tasks" draggable="false" />
+      
+            <button type="submit" class="submit-btn">
+              <img
+                src="./assets/imgs/search_icon.png"
+                alt="Botão de pesquisar"
+                class="submit-icon"
+              />
             </button>
+          </form>
+
+          <div class="task-control-container">
+            <div class="add-btn-container">
+              <button class="create-btn options-button" id="createTaskBtn">
+                <i data-lucide="plus"></i>
+                <span>TAREFA</span>
+              </button>
+            </div>
+
+            <div class="search-task-options">
+              <button id="filterTask" class="search-task-button options-button">
+                <i data-lucide="filter"></i>
+                <span>Filtrar</span>
+              </button>
+
+              <!--MODAL PARA FILTRO-->
+              <div class="search-task-modal" id="filterTaskModal">
+                <ul id="filterOptions">
+                  <li class="filter-group" id="statusGroup">
+                    <div class="filter-group-title">
+                      <span>Status</span>
+                      <i data-lucide="chevron-down"></i>
+                    </div>
+                    <ul  class="filter-options" id="statusOptions">
+                      <li class="filter-option"><i data-lucide="circle-dot"></i><span>Fazer</span></li>
+                      <li class="filter-option"><i data-lucide="circle-minus"></i><span>Fazendo</span></li>
+                    </ul>
+                  </li>
+                  <li class="filter-group" id="priorityGroup">
+                    <div class="filter-group-title">
+                      <span>Prioridade</span>
+                      <i data-lucide="chevron-down"></i>
+                    </div>
+                    <ul class="filter-options" id="priorityOptions">
+                      <li class="filter-option"><i data-lucide="flag"></i></i><span>Normal</span></li>
+                      <li class="filter-option"><i data-lucide="flag"></i><span>Alta</span></li>
+                      <li class="filter-option"><i data-lucide="flag"></i></i><span>Urgente</span></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <button id="sortTask" class="search-task-button options-button">
+                <i data-lucide="arrow-up-down"></i>
+                <span>Ordenar</span>
+              </button>
+
+              <!--MODAL PARA ORDEM-->
+              <div class="search-task-modal" id="sortTaskModal">
+                <ul id="sortOptions">
+                  <li class="sort-option dataFinal">
+                    <span>Data final crescente</span>     
+                  </li>
+                  <li class="sort-option  dataFinal" >
+                    <span>Data final decrescente</span>           
+                  </li>
+                  <li class="sort-option status" >   
+                    <span>Status crescente</span>
+                  </li>
+                  <li class="sort-option status" >   
+                    <span>Status decrescente</span>
+                  </li>
+                  <li class="sort-option prioridade">
+                    <span>Prioridade crescente</span>             
+                  </li>
+                  <li class="sort-option prioridade">
+                    <span>Prioridade decrescente</span>             
+                  </li>
+                </ul>
+              </div>
+
+            </div>
           </div>
         </div>
-        <!--Final- Botão para criar uma nova tarefa -->
 
+        <!-- POP UP PARA CRIAR TAREFA -->
+        <dialog class="create-task-container" id="creteTaskModal">
+          <button class="btn close-btn" id="closeTaskCreatorButton">
+            <img
+              src="./assets/imgs/close_icon.png"
+              alt="Botão de fechar"
+              draggable="false"
+              class="close-icon"
+            />
+          </button>
+
+          <!--FORMULARIO PARA CRIAR TAREFA-->
+          <div class="form-container">
+            <form action="" id="newTaskForm">
+              <div class="form-group task-name">
+                <input
+                  type="text"
+                  name="nome"
+                  id="taskTitle"
+                  placeholder="Nova Tarefa"
+                  value=""
+                  required
+                />
+              </div>
+
+              <div class="form-group task-status">
+                <label for="">
+                  <i data-lucide="loader-circle" class="label-icon"></i>
+                  <span>Status</span>
+                </label>
+
+                <div class="select-status">
+                  <div id="category-select-status">
+                    <input type="checkbox" id="options-view-button-status" />
+
+                    <div id="select-button-status">
+                      <div class="title-container-status">
+                        <div class="cont" id="currentStatus">
+                          <i
+                            data-lucide="loader-circle"
+                            id="defaultIconStatus"
+                            data-icon="Status"
+                            class="active"
+                          ></i>
+                          <i
+                            data-lucide="circle-dot"
+                            id="doIcon"
+                            data-icon="Fazer"
+                          ></i>
+                          <i
+                            data-lucide="circle-minus"
+                            id="doingIcon"
+                            data-icon="Fazendo"
+                          ></i>
+                          <i
+                            data-lucide="circle-check"
+                            id="doneIcon"
+                            data-icon="Feito"
+                          ></i>
+                        </div>
+
+                        <div id="selected-value-status">Status</div>
+                      </div>
+
+                      <div id="chevrons-status">
+                        <i data-lucide="chevron-down"></i>
+                        <i data-lucide="chevron-up"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <ul id="options-status">
+                    <li class="option-status" re>
+                      <input
+                        type="radio"
+                        name="status"
+                        value="3"
+                        data-label="Fazer"
+                        required
+                      />
+                      <i data-lucide="circle-dot"></i>
+                      <span class="label">Fazer</span>
+                      <i data-lucide="check"></i>
+                    </li>
+
+                    <li class="option-status">
+                      <input
+                        type="radio"
+                        name="status"
+                        value="2"
+                        data-label="Fazendo"
+                        required
+                      />
+                      <i data-lucide="circle-minus"></i>
+                      <span class="label">Fazendo</span>
+                      <i data-lucide="check"></i>
+                    </li>
+
+                    <li class="option-status">
+                      <input
+                        type="radio"
+                        name="status"
+                        value="1"
+                        data-label="Feito"
+                        required
+                      />
+                      <i data-lucide="circle-check"></i>
+                      <span class="label">Feito</span>
+                      <i data-lucide="check"></i>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="form-group task-FormSubject">
+                <label for="formSubject">
+                  <i data-lucide="book-marked" class="label-icon"></i>
+                  <span>Matéria</span>
+                </label>
+
+                <div class="select-container">
+                  <select name="materia" id="taskSubject"></select>
+                </div>
+              </div>
+
+              <div class="form-group task-finalDate">
+                <label for="formFinalDate">
+                  <i data-lucide="calendar-days" class="label-icon"></i>
+                  <span>Data final</span>
+                </label>
+
+                <input
+                  type="date"
+                  name="dataFinal"
+                  id="TaskEndDate"
+                  required
+                />
+              </div>
+
+              <div class="form-group task-priority">
+                <label for="formPriority">
+                  <i data-lucide="flag" class="label-icon"></i>
+                  <span>Prioridade</span>
+                </label>
+
+                <div class="select">
+                  <div id="category-select">
+                    <input type="checkbox" id="options-view-button" />
+
+                    <div id="select-button">
+                      <div class="title-container">
+                        <div class="cont" id="currentStatus">
+                          <i
+                            data-lucide="flag"
+                            id="defaultFlagIcon"
+                            data-icon="Prioridade"
+                          ></i>
+                        </div>
+
+                        <div id="selected-value">Prioridade</div>
+                      </div>
+
+                      <div id="chevrons">
+                        <i data-lucide="chevron-down"></i>
+                        <i data-lucide="chevron-up"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <ul id="options">
+                    <li class="option">
+                      <input
+                        type="radio"
+                        name="prioridade"
+                        value="1"
+                        data-label="Normal"
+                        required
+                      />
+                      <i data-lucide="flag" class="normalFlag"></i>
+                      <span class="label">Normal</span>
+                      <i data-lucide="check"></i>
+                    </li>
+
+                    <li class="option">
+                      <input
+                        type="radio"
+                        name="prioridade"
+                        value="2"
+                        data-label="Alta"
+                        required
+                      />
+                      <i data-lucide="flag" class="altaFlag"></i>
+                      <span class="label">Alta</span>
+                      <i data-lucide="check"></i>
+                    </li>
+
+                    <li class="option">
+                      <input
+                        type="radio"
+                        name="prioridade"
+                        value="3"
+                        data-label="Urgente"
+                        required
+                      />
+                      <i data-lucide="flag" class="urgenteFlag"></i>
+                      <span class="label">Urgente</span>
+                      <i data-lucide="check"></i>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="form-group task-description">
+                <label for="formDescription">
+                  <i data-lucide="message-square-more" class="label-icon"></i>
+                  <span>Descrição</span>
+                </label>
+
+                <textarea name="descricao" id="taskDescription"></textarea>
+              </div>
+
+              <div class="button-container">
+                <button type="submit">Criar tarefa</button>
+              </div>
+            </form>
+          </div>
+        </dialog>
+
+        <!-- LISTA DE TAREFAS ATIVAS -->
+        <section class="tasks-container" id="tasksContainer">
+          <!--LISTA DE TAREFAS CRIADAS -->
+
+          <!--MODAL PARA EXCLUIR TAREFA-->
+          <dialog class="delete-message-modal message-modal" id="deleteMessage">
+            <div class="alert-message">
+              <p>Tem certeza que deseja <span>excluir</span> a tarefa?</p>       
+            </div>
+            <div class="alert-options">
+              <button id="deleteButton" class="message-option-button">Sim</button>
+              <button id="dontDeleteButton" class="message-option-button">Cancelar</button>
+            </div>
+          </dialog>
+           <!--MODAL PARA EXCLUIR TAREFA-->
+
+          <ul id="taskList"></ul>
+
+          <div class="task-pageButtons-container">
+            <button class="search-task-button" id="prevPage">
+              <i data-lucide="arrow-left"></i>
+            </button>
+
+            <div id="pageCounter"></div>
+
+            <button class="search-task-button" id="nextPage">
+              <i data-lucide="arrow-right"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- DETALHES DA TAREFA -->
+        <dialog class="task-information" id="taskDetailsModal">
+          <button id="editTaskButton"><i data-lucide="pencil"></i></button>
+          <div class="task-information-title">
+            <h2>SPRINT 3</h2>
+            <span>TIAW</span>
+          </div>
+        </dialog>
         <!-- Começo - Calendário -->
 
         <section class="homescreen-task-info">
@@ -208,6 +521,7 @@
                   <h3 class="tituloProgresso">Progresso das Disciplinas</h3>
                 </div>
               </div>
+              
            </div> 
            </article>
         </section>
@@ -227,10 +541,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/locale/pt-br.js"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
 <script src="./scripts/victor-scripts/scriptTaskModal.js" async></script>
-<script src="./scripts/victor-scripts/app.js" async></script>
+<script src="./scripts/victor-scripts/app.js"></script>
+<script src="./scripts/victor-scripts/scriptTaskModal.js"></script>
+<script src="./scripts/victor-scripts/server.js"></script>
 <script src="./scripts/mateus-scripts/scriptMateus.js"></script>
-<script src="scripts/scriptRafaelM.js"></script>
-
-
+<script src="./scripts/rafaelM-scripts/scriptRafaelM.js"></script>
 
 </html>
