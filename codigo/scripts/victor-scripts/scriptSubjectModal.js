@@ -58,41 +58,82 @@ form.addEventListener("submit", async (event) => {
 // Função para buscar e exibir a lista de matérias, com suporte para filtragem
 async function fetchSubjects(filter = "") {
   try {
-    const response = await fetch(URL_MATERIAS, {
+    // Busca as matérias
+    const responseMaterias = await fetch(URL_MATERIAS, {
       method: 'GET',
       headers: { "Content-Type": "application/json" }
     });
 
-    if (!response.ok) {
-      throw new Error('Erro na resposta da rede: ' + response.statusText);
+    if (!responseMaterias.ok) {
+      throw new Error('Erro na resposta da rede: ' + responseMaterias.statusText);
     }
 
-    const data = await response.json();
-    console.log('Matérias:', data);
-    // Limpar a lista de matérias
+    const materias = await responseMaterias.json();
+
+    // Busca as tarefas
+    const responseTarefas = await fetch('http://localhost:3000/tarefas', {
+      method: 'GET',
+      headers: { "Content-Type": "application/json" }
+    });
+
+    if (!responseTarefas.ok) {
+      throw new Error('Erro na resposta da rede: ' + responseTarefas.statusText);
+    }
+
+    const tarefas = await responseTarefas.json();
+
+    // Limpa a lista de matérias
     subjectsList.innerHTML = '';
 
-    const filteredData = data.filter(subject => 
-      subject.nome.toLowerCase().includes(filter.toLowerCase())
+    // Filtra matérias conforme o filtro de busca
+    const filteredMaterias = materias.filter(materia =>
+      materia.nome.toLowerCase().includes(filter.toLowerCase())
     );
 
-    filteredData.forEach(subject => {
-      const subjectItem = document.createElement('div');
-      subjectItem.classList.add('materia-box'); // Adiciona a classe para estilização
-      subjectItem.textContent = subject.nome;
+    // Cria os elementos HTML para cada matéria
+    filteredMaterias.forEach(materia => {
+      const tarefasDaMateria = tarefas.filter(tarefa => tarefa.materia === materia.nome);
+      const numTarefas = tarefasDaMateria.length;
+
+      // Contagem dos status das tarefas
+      let emProgresso = 0;
+      let concluidas = 0;
+      tarefasDaMateria.forEach(tarefa => {
+        if (tarefa.status === '1' || tarefa.status === '2') {
+          emProgresso++;
+        } else if (tarefa.status === '3') {
+          concluidas++;
+        }
+      });
+
+      // Calcular a porcentagem de conclusão
+      const totalTarefas = tarefasDaMateria.length;
+      const progresso = totalTarefas > 0 ? (concluidas / totalTarefas) * 100 : 0;
+
+      // Cria o elemento da matéria com a barra de progresso
+      const materiaBox = document.createElement('div');
+      materiaBox.classList.add('materia-box');
+      materiaBox.innerHTML = `
+        ${materia.nome} 
+        <span class="num-tarefas">(${concluidas}/${totalTarefas} tarefas)</span>
+        <div class="progress-bar">
+          <div class="progress" style="width: ${progresso}%;"></div>
+        </div>
+      `;
 
       const deleteBtn = document.createElement('button');
       deleteBtn.classList.add('delete-btn');
-      deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>'; 
-      deleteBtn.addEventListener('click', () => deleteSubject(subject.id, subjectItem));
-      
-      subjectItem.appendChild(deleteBtn);
-      subjectsList.appendChild(subjectItem);
+      deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+      deleteBtn.addEventListener('click', () => deleteSubject(materia.id, materiaBox));
+
+      materiaBox.appendChild(deleteBtn);
+      subjectsList.appendChild(materiaBox);
     });
   } catch (error) {
     console.error('Erro ao buscar matérias:', error);
   }
 }
+
 
 async function deleteSubject(id, subjectItem) {
   const URL_DELETE = `${URL_MATERIAS}/${id}`;

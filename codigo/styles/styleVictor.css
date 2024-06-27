@@ -1429,3 +1429,18 @@ auto .add-button:hover {
 .delete-btn:hover {
   background-color: #3b4337;
 }
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.progress {
+  height: 100%;
+  background-color: #4caf50; /* Cor da barra de progresso */
+  border-radius: 5px;
+}
+
