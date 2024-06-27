@@ -54,7 +54,7 @@ function atualizarProgresso(data) {
 
     // Função para renderizar a página atual
     function renderPage(page) {
-        progressoBloco.innerHTML = '<h3 class="tituloProgresso">Progresso das Disciplinas</h3>'; // Reset conteúdo
+        progressoBloco.innerHTML = '<h3 class="tituloProgresso">Progressos das Matérias</h3>';
         const start = (page - 1) * itensPerPage;
         const end = Math.min(start + itensPerPage, materias.length);
 
@@ -111,7 +111,6 @@ function atualizarProgresso(data) {
         //Botões de navegação
         const navigation = document.createElement('div');
         navigation.className = 'navigation';
-        
         const prevButton = document.createElement('button');
         prevButton.innerHTML = '←';
         prevButton.disabled = page === 1;
@@ -122,6 +121,7 @@ function atualizarProgresso(data) {
 
         const nextButton = document.createElement('button');
         nextButton.innerHTML = '→';
+        
         nextButton.disabled = page === totalPages;
         nextButton.addEventListener('click', () => {
             currentPage++;
