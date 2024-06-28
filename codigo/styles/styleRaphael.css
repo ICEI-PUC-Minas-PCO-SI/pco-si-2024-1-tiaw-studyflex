@@ -654,5 +654,8 @@ auto .add-button:hover {
   bottom: 10px;
   right: 10px;
   cursor: pointer;
+
+background: #8AA17B;
+
   
 }
