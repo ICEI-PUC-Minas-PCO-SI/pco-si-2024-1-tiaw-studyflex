@@ -165,25 +165,25 @@
   ],
   "notas": [
     {
-      "id": "d2be",
       "title": "Título da Nota",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "colorClass": "note-yellow",
       "date": "sexta-feira, 28 de junho de 2024",
-      "colorClass": "note-yellow"
+      "id": "d2be"
     },
     {
-      "id": "2cd5",
       "title": "Título da Nota",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "colorClass": "note-red",
       "date": "sexta-feira, 28 de junho de 2024",
-      "colorClass": "note-blue"
+      "id": "fb41"
     },
     {
-      "id": "fb41",
       "title": "Título da Nota",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "colorClass": "note-blue",
       "date": "sexta-feira, 28 de junho de 2024",
-      "colorClass": "note-red"
+      "id": "8b8a"
     }
   ],
   "usuarios": [
