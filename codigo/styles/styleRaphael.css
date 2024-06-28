@@ -548,7 +548,8 @@ auto .add-button:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content:flex-start;
+  justify-content: flex-start;
+  position: relative; /* Adicionado para posicionamento relativo */
 }
 
 .note {
@@ -580,15 +581,16 @@ auto .add-button:hover {
 
 .add {
   border: none;
-  color: white;
   padding: 15px;
   border-radius: 50%;
   cursor: pointer;
-  
   display: flex;
+  position: absolute; /* Posicionamento absoluto para o botão */
+  transition: all 0.3s ease; /* Transição suave para o movimento */
+  margin-top: 370px;
+  margin-left: 480px;
 }
 
-/* Cores diferentes para as notas */
 .note-red {
   background: #E68B86;
 }
@@ -600,8 +602,6 @@ auto .add-button:hover {
 .note-blue {
   background: #9DAADF;
 }
-
-
 
 .tit {
   width: 166px;
@@ -654,4 +654,5 @@ auto .add-button:hover {
   bottom: 10px;
   right: 10px;
   cursor: pointer;
+  
 }

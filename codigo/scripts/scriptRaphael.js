@@ -1,6 +1,5 @@
 const URL_NOTAS = "http://localhost:3000/notas";
-let colorIndex = 0;
-const colors = ['note-red', 'note-yellow', 'note-blue'];
+const colorClasses = ['note-red', 'note-yellow', 'note-blue'];
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn').addEventListener('click', addNote);
@@ -16,7 +15,7 @@ function addNote() {
         title: 'Título da Nota',
         content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         date: date,
-        colorClass: getNextColorClass()
+        colorClass: colorClasses[getRandomInt(colorClasses.length)] // Pega uma cor aleatória da lista
     };
 
     fetch(URL_NOTAS, {
@@ -28,11 +27,16 @@ function addNote() {
     })
     .then(response => response.json())
     .then(newNote => {
-        displayNote(newNote);
+        displayNote(newNote); // Exibe a nova nota após a criação no servidor
+        updateButtonPosition(); // Atualiza a posição do botão de adicionar
     })
     .catch(error => {
         console.error('Erro ao adicionar a nota:', error);
     });
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
 }
 
 function displayNote(note) {
@@ -65,103 +69,112 @@ function displayNote(note) {
         </span>
     `;
     
-    const editIcon = noteDiv.querySelector('.edit');
-    const saveIcon = noteDiv.querySelector('.save');
-    const deleteIcon = noteDiv.querySelector('.delete');
-
-    editIcon.addEventListener('click', () => {
-        toggleEditMode(noteDiv, true);
-    });
-
-    saveIcon.addEventListener('click', () => {
-        toggleEditMode(noteDiv, false);
-        saveNoteChanges(noteDiv);
-    });
-
-    deleteIcon.addEventListener('click', () => {
-        deleteNote(note.id, noteDiv);
-    });
-
     notesContainer.appendChild(noteDiv);
-}
 
-function toggleEditMode(noteDiv, isEditing) {
-    const titleElement = noteDiv.querySelector('h2');
-    const contentElement = noteDiv.querySelector('p');
-    const editIcon = noteDiv.querySelector('.edit');
-    const saveIcon = noteDiv.querySelector('.save');
-
-    if (isEditing) {
-        titleElement.setAttribute('contenteditable', 'true');
-        contentElement.setAttribute('contenteditable', 'true');
-        titleElement.focus(); // Coloca o foco no título para edição
-        contentElement.focus(); // Coloca o foco no conteúdo para edição
-        editIcon.style.display = 'none'; // Oculta o ícone de edição
-        saveIcon.style.display = 'block'; // Mostra o ícone de salvar
-    } else {
-        titleElement.setAttribute('contenteditable', 'false');
-        contentElement.setAttribute('contenteditable', 'false');
-        editIcon.style.display = 'block'; // Mostra o ícone de edição
-        saveIcon.style.display = 'none'; // Oculta o ícone de salvar
-    }
-}
-
-function saveNoteChanges(noteDiv) {
-    const id = noteDiv.dataset.id;
-    const title = noteDiv.querySelector('h2').innerText;
-    const content = noteDiv.querySelector('p').innerText;
-    const colorClass = noteDiv.className.split(' ').find(cls => colors.includes(cls));
-    const date = noteDiv.querySelector('.date').innerText;
-
-    fetch(`${URL_NOTAS}/${id}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ title, content, colorClass, date })
-    })
-    .then(response => {
-        if (response.ok) {
-            console.log('Nota atualizada com sucesso');
-        } else {
-            console.error('Erro ao atualizar a nota:', response.statusText);
-        }
-    })
-    .catch(error => {
-        console.error('Erro ao atualizar a nota:', error);
-    });
-}
-
-function deleteNote(id, noteDiv) {
-    fetch(`${URL_NOTAS}/${id}`, {
-        method: 'DELETE'
-    })
-    .then(response => {
-        if (response.ok) {
-            noteDiv.remove();
-            console.log(`Nota com id ${id} excluída com sucesso.`);
-        } else {
-            console.error('Erro ao deletar a nota:', response.statusText);
-        }
-    })
-    .catch(error => {
-        console.error('Erro ao deletar a nota:', error);
-    });
+    noteDiv.querySelector('.edit').addEventListener('click', () => editNote(noteDiv, note.id));
+    noteDiv.querySelector('.save').addEventListener('click', () => saveNote(noteDiv, note.id));
+    noteDiv.querySelector('.delete').addEventListener('click', () => deleteNote(note.id));
 }
 
 function fetchNotes() {
     fetch(URL_NOTAS)
     .then(response => response.json())
     .then(notes => {
-        notes.forEach(note => {
-            displayNote(note);
-            getNextColorClass();
-        });
+        notes.forEach(note => displayNote(note));
+        updateButtonPosition();
+    })
+    .catch(error => {
+        console.error('Erro ao buscar notas:', error);
     });
 }
 
-function getNextColorClass() {
-    const nextColorClass = colors[colorIndex];
-    colorIndex = (colorIndex + 1) % colors.length;
-    return nextColorClass;
+function updateButtonPosition() {
+    const notesContainer = document.getElementById('notesContainer');
+    const notes = notesContainer.querySelectorAll('.note');
+    const addButton = document.getElementById('btn');
+
+    if (notes.length === 0) {
+        addButton.style.top = '0';
+        addButton.style.left = '0';
+    } else {
+        const lastNote = notes[notes.length - 1];
+        const rect = lastNote.getBoundingClientRect();
+        const containerRect = notesContainer.getBoundingClientRect();
+
+        if (rect.right + lastNote.offsetWidth > containerRect.right) {
+            addButton.style.top = (rect.bottom - containerRect.top + 20) + 'px';
+            addButton.style.left = '0';
+        } else {
+            addButton.style.top = rect.top - containerRect.top + 'px';
+            addButton.style.left = (rect.right - containerRect.left + 20) + 'px';
+        }
+    }
+}
+
+function editNote(noteDiv, noteId) {
+    const titleElement = noteDiv.querySelector('h2');
+    const contentElement = noteDiv.querySelector('p');
+    const editButton = noteDiv.querySelector('.edit');
+    const saveButton = noteDiv.querySelector('.save');
+
+    const colorClass = noteDiv.className.split(' ').find(cls => cls.startsWith('note-'));
+    noteDiv.dataset.colorClass = colorClass;
+
+    titleElement.contentEditable = 'true';
+    titleElement.focus();
+    document.execCommand('selectAll', false, null);
+
+    contentElement.contentEditable = 'true';
+
+    editButton.style.display = 'none';
+    saveButton.style.display = 'inline-block';
+}
+
+function saveNote(noteDiv, noteId) {
+    const titleElement = noteDiv.querySelector('h2');
+    const contentElement = noteDiv.querySelector('p');
+    const editButton = noteDiv.querySelector('.edit');
+    const saveButton = noteDiv.querySelector('.save');
+
+    const updatedNote = {
+        title: titleElement.textContent,
+        content: contentElement.textContent,
+        colorClass: noteDiv.dataset.colorClass, // Recupera a classe de cor preservada
+        date: noteDiv.querySelector('.date').textContent // Recupera a data da nota
+    };
+
+    fetch(`${URL_NOTAS}/${noteId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updatedNote)
+    })
+    .then(response => response.json())
+    .then(data => {
+        titleElement.contentEditable = 'false';
+        contentElement.contentEditable = 'false';
+
+        editButton.style.display = 'inline-block';
+        saveButton.style.display = 'none';
+    })
+    .catch(error => {
+        console.error('Erro ao salvar a nota:', error);
+    });
+}
+
+function deleteNote(noteId) {
+    fetch(`${URL_NOTAS}/${noteId}`, {
+        method: 'DELETE'
+    })
+    .then(() => {
+        const noteDiv = document.querySelector(`.note[data-id="${noteId}"]`);
+        if (noteDiv) {
+            noteDiv.remove();
+        }
+        updateButtonPosition();
+    })
+    .catch(error => {
+        console.error('Erro ao deletar a nota:', error);
+    });
 }
