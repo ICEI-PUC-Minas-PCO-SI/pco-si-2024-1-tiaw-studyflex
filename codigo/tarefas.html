@@ -19,6 +19,7 @@
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
     <link rel="stylesheet" href="./styles/styleVictor.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <title>StudyFlex</title>
   </head>
 
@@ -33,36 +34,13 @@
         /></a>
 
         <div class="header-box">
-          <button class="btn header-btn">
-            <img
-              src="./assets/imgs/notification_icon.svg"
-              alt="Notificações"
-              class="btn-img"
-              draggable="false"
-            />
+          <button class="btn header-btn" id="notificationButton">
+            <i data-lucide="messages-square" class="main-icon"></i>
           </button>
 
-          <button class="btn header-btn">
-            <img
-              src="./assets/imgs/profile_icon.svg"
-              alt="Perfil do usuário"
-              class="btn-img"
-              draggable="false"
-            />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="btn-svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="m19.5 8.25-7.5 7.5-7.5-7.5"
-              />
-            </svg>
+          <button class="btn header-btn"  id="profileButton">
+            <i data-lucide="user" class="main-icon"></i>
+            <i data-lucide="chevron-down" class="secondary-icon"></i>
           </button>
         </div>
       </header>
@@ -101,29 +79,20 @@
           </button>
 
           <h2>Selecionar matéria</h2>
-          <form action="" method="dialog" class="search-bar-container">
+          <div  class="search-bar-container">
             <input
               type="search"
               name=""
               placeholder="Buscar.."
               aria-label="Search"
               class="search-bar"
-            />
-
-            <img
-              src="./assets/imgs/loupe_icon.png"
-              alt="Lupa icone"
-              class="input-icon"
+              id="searchSubjectBar"
             />
 
             <button type="submit" class="submit-btn">
-              <img
-                src="./assets/imgs/search_icon.png"
-                alt="Botão de pesquisar"
-                class="submit-icon"
-              />
+            
             </button>
-          </form>
+          </div>
 
           <div class="add-subject-content empty">
             <img
@@ -171,7 +140,7 @@
             </a>
           </li>
           <li class="aside-option" id="materiasTab">
-            <a href="./materiasVictor.html">
+            <a href="./anotacoesRaphael.html">
               <img
                 src="./assets/imgs/materias_icon.png"
                 alt="Matérias icone"
@@ -180,26 +149,7 @@
               <span>Matérias</span>
             </a>
           </li>
-          <li class="aside-option" id="configTab">
-            <a href="#">
-              <img
-                src="./assets/imgs/config_icon.png"
-                alt="Configurações icone"
-                class="option-icon"
-              />
-              <span>Configurações</span>
-            </a>
-          </li>
         </ul>
-
-        <!--BOTÃO MODO NOTURNO-->
-        <div class="toggle-container">
-          <input type="checkbox" id="check" />
-          <label for="check" class="switch">
-            <span class="slider"></span>
-          </label>
-          <span>Modo Noturno</span>
-        </div>
       </aside>
 
       <main id="mainContainer">
@@ -210,39 +160,29 @@
         <section class="homescreen" id="homescreenView">
           <h1 class="homescreen-title">Tarefas</h1>
           <div class="tasks-header-container">
-            <form action="" method="get" class="search-bar-container">
+            <div class="search-bar-container">
               <input
                 type="search"
                 name=""
                 placeholder="Buscar.."
                 aria-label="Search"
                 class="search-bar"
+                id="searchTaskBar"
               />
-
-              <img
-                src="./assets/imgs/loupe_icon.png"
-                alt="Lupa icone"
-                class="input-icon"
-              />
-
-              <button type="submit" class="submit-btn">
-                <img
-                  src="./assets/imgs/search_icon.png"
-                  alt="Botão de pesquisar"
-                  class="submit-icon"
-                />
+              <button type="submit" class="submit-btn" id="searchButton">
+                <i data-lucide="search"></i> 
               </button>
-            </form>
+            </div>
 
             <div class="add-btn-container">
-              <button class="create-btn" id="createTaskBtn">
+              <button class="create-btn options-button" id="createTaskBtn">
                 <i data-lucide="plus"></i>
                 <span>TAREFA</span>
               </button>
             </div>
 
             <div class="search-task-options">
-              <button id="filterTask" class="search-task-button">
+              <button id="filterTask" class="search-task-button options-button">
                 <i data-lucide="filter"></i>
                 <span>Filtrar</span>
               </button>
@@ -275,7 +215,7 @@
                 </ul>
               </div>
 
-              <button id="sortTask" class="search-task-button">
+              <button id="sortTask" class="search-task-button options-button">
                 <i data-lucide="arrow-up-down"></i>
                 <span>Ordenar</span>
               </button>
@@ -535,17 +475,53 @@
             </div>
           </dialog>
 
+          <div class="postTaskButtonContainer">
+          <button class="postTaskContainer" type="button"><i data-lucide="clipboard-plus"></i>
+          Criar tarefa
+          </button>
+          </div>
+
           <!-- LISTA DE TAREFAS ATIVAS -->
           <section class="tasks-container task-page" id="tasksContainer">
             <!--LISTA DE TAREFAS CRIADAS -->
 
+            <!--MODAL PARA EXCLUIR TAREFA-->
+            <dialog class="delete-message-modal message-modal" id="deleteMessage">
+              <div class="alert-message">
+                <p>Tem certeza que deseja <span>excluir</span> a tarefa?</p>       
+              </div>
+              <div class="alert-options">
+                <button id="deleteButton" class="message-option-button">Sim</button>
+                <button id="dontDeleteButton" class="message-option-button">Cancelar</button>
+              </div>
+            </dialog>
+             <!--MODAL PARA EXCLUIR TAREFA-->
+
+              <!--MODAL DE ALERTA-->
+            <dialog class="delete-message-modal message-modal" id="warningModal">
+              <div class="alert-message" id="message">
+    
+              </div>
+              <div class="alert-options">
+                <button id="okButton">
+                  <i data-lucide="thumbs-up"></i>
+                </button>
+              </div>
+            </dialog>
+             <!--MODAL DE ALERTA-->
+
             <ul id="taskList"></ul>
 
+           
+
             <div class="task-pageButtons-container">
-              <button class="search-task-button hide" id="prevPage">
+              <button class="search-task-button" id="prevPage">
                 <i data-lucide="arrow-left"></i>
               </button>
-              <button class="search-task-button hide" id="nextPage">
+
+              <div id="pageCounter"></div>
+
+              <button class="search-task-button" id="nextPage">
                 <i data-lucide="arrow-right"></i>
               </button>
             </div>
@@ -553,13 +529,7 @@
 
           <!-- DETALHES DA TAREFA -->
           <dialog class="task-information" id="taskDetailsModal">
-            <button id="editTaskButton"><i data-lucide="pencil"></i></button>
-            <div class="task-information-title">
-              <h2>SPRINT 3</h2>
-              <span>TIAW</span>
-            </div>
           </dialog>
-          <!--CALENDÁRIO-->
         </section>
 
         <!--CONTEÚDO DINAMICO-->
@@ -567,7 +537,6 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="./scripts/victor-scripts/scriptTaskModal.js" async></script>
     <script src="./scripts/victor-scripts/app.js" async></script>
   </body>
