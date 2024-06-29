@@ -609,6 +609,7 @@ auto .add-button:hover {
 
 .add:hover {
   transform: scale(1.1); /* Aumenta o tamanho do elemento em 10% */
+  background: #747070;
 }
 
 .save:hover {

@@ -13,7 +13,7 @@ function addNote() {
 
     const note = {
         title: 'Título da Nota',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        content: 'Conteúdo da nota',
         date: date,
         colorClass: colorClasses[getRandomInt(colorClasses.length)] // Pega uma cor aleatória da lista
     };
