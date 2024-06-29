@@ -114,15 +114,6 @@
       "dataFinal": "2024-06-28",
       "prioridade": "3",
       "descricao": "bora bill"
-    },
-    {
-      "id": "cc16",
-      "nome": "Design Gráfico para vendas e visualizações",
-      "status": "3",
-      "materia": "Quem é Renatola",
-      "dataFinal": "2024-06-28",
-      "prioridade": "3",
-      "descricao": ""
     }
   ],
   "materias": [
@@ -139,14 +130,6 @@
       "nome": "teste"
     },
     {
-      "id": "f55b",
-      "nome": "quimica"
-    },
-    {
-      "id": "df0a",
-      "nome": "renatola"
-    },
-    {
       "id": "96c4",
       "nome": "Quem é Renatola"
     },
@@ -157,33 +140,15 @@
     {
       "id": "e7bd",
       "nome": "descubra"
-    },
-    {
-      "id": "d9c7",
-      "nome": "crl"
     }
   ],
   "notas": [
     {
-      "id": "0fca",
+      "id": "2758",
       "title": "Título da Nota",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "date": "sexta-feira, 28 de junho de 2024",
       "colorClass": "note-red"
-    },
-    {
-      "id": "a6e7",
-      "title": "Título da Nota",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "date": "sexta-feira, 28 de junho de 2024",
-      "colorClass": "note-yellow"
-    },
-    {
-      "id": "f6c0",
-      "title": "Título da Nota",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "date": "sexta-feira, 28 de junho de 2024",
-      "colorClass": "note-blue"
     }
   ],
   "usuarios": [

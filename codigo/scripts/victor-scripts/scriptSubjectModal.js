@@ -114,7 +114,7 @@ async function fetchSubjects(filter = "") {
       const materiaBox = document.createElement('div');
       materiaBox.classList.add('materia-box');
       materiaBox.innerHTML = `
-        ${materia.nome} 
+         ${materia.nome.toUpperCase()}
         <div class="progress-bar">
           <div class="progress" style="width: ${progresso}%;"></div>
         </div>
