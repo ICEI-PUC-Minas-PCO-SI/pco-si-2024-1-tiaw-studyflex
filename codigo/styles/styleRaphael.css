@@ -589,7 +589,22 @@ auto .add-button:hover {
   transition: all 0.3s ease; /* Transição suave para o movimento */
   margin-top: 370px;
   margin-left: 480px;
+  background-color: #414b3b;
+  
 }
+
+.edit {
+  
+  transition: transform 0.3s ease; /* Define a transição para suavizar o efeito */
+}
+
+.edit:hover {
+  transform: scale(1.1); /* Aumenta o tamanho do elemento em 10% */
+  background: #747070;
+}
+
+
+
 
 .note-red {
   background: #E68B86;

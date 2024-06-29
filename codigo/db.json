@@ -165,20 +165,6 @@
   ],
   "notas": [
     {
-      "title": "Título da Nota",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit.njbjLorem ipsum dolor sit amet, consectetur adipiscing elit.njbjLorem ipsum dolor sit amet, consectetur adipiscing elit.njbjLorem ipsum dolor sit amet, consectetur adipiscing elit.njbjLorem ipsum dolor sit amet, consectetur adipiscing elit.njbjLorem ipsum dolor sit amet, consectetur adipiscing elit.njbjLorem ipsum dolor sit amet, consectetur adipiscing elit.njbj.",
-      "colorClass": "note-yellow",
-      "date": "sexta-feira, 28 de junho de 2024",
-      "id": "d2be"
-    },
-    {
-      "title": "Título da Nota",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.njbjLorem ipsum dolor sit amet, consectetur adipiscing elit.njbjLorem ipsum dolor sit amet, consectetur adipiscing elit.njbjLorem ipsum dolor sit amet, consectetur adipiscing elit.njbj",
-      "colorClass": "note-blue",
-      "date": "sexta-feira, 28 de junho de 2024",
-      "id": "8b8a"
-    },
-    {
       "id": "0fca",
       "title": "Título da Nota",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -186,35 +172,14 @@
       "colorClass": "note-red"
     },
     {
-      "id": "1f8f",
-      "title": "Título da Nota",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "date": "sexta-feira, 28 de junho de 2024",
-      "colorClass": "note-red"
-    },
-    {
-      "id": "57d8",
+      "id": "a6e7",
       "title": "Título da Nota",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "date": "sexta-feira, 28 de junho de 2024",
       "colorClass": "note-yellow"
     },
     {
-      "id": "d668",
-      "title": "Título da Nota",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "date": "sexta-feira, 28 de junho de 2024",
-      "colorClass": "note-yellow"
-    },
-    {
-      "id": "f47d",
-      "title": "Título da Nota",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "date": "sexta-feira, 28 de junho de 2024",
-      "colorClass": "note-yellow"
-    },
-    {
-      "id": "1cf2",
+      "id": "f6c0",
       "title": "Título da Nota",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "date": "sexta-feira, 28 de junho de 2024",
