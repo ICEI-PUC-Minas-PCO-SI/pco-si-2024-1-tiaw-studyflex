@@ -40,8 +40,8 @@ async function fetchTasks() {
       const data = await response.json();
       pageLength = data.length;
       if (data.length === 0) {
-        prevButton.classList.add("hide");
-        nextButton.classList.add("hide");
+        await prevButton.classList.add("hide");
+        await nextButton.classList.add("hide");
       }
     }
   } catch (error) {
@@ -753,6 +753,19 @@ function openTask(taskElement, method) {
         task.prioridade ? task.prioridade : "1"
       );
 
+      let sublist = `<ul id="subjectOptionsList" class="subjectOptionsList">`;
+
+      getSubjectData().then((data) => {
+        data.forEach((subject) => {
+          let subItem = `
+           <li class="subjectOptionsItem" data-subject="${subject.id}">${subject.nome}</li>
+          `;
+          sublist += subItem;
+        });
+      });
+      sublist += `</ul>`;
+      console.log(sublist);
+
       let taskHTML = `
       
       <div class="task-detail-container">
@@ -795,11 +808,12 @@ function openTask(taskElement, method) {
   
                     <span class="border"></span>
   
-                      <div class="item-info-container">
+                      <div class="item-info-container" id="subContainer">
                         <i data-lucide="chevron-right" class="spin-icon"></i>
                       </div>
                     </button>
                     
+                   ${sublist}
                   </li>
 
                   <li class="task-data-item">
@@ -854,6 +868,11 @@ function openTask(taskElement, method) {
       const taskDetailsDecription = document.getElementById(
         "taskDetailsDecription"
       );
+      const changeSubButton = document.getElementById("changeSubjectButton");
+
+      changeSubButton.addEventListener("click", () => {
+        alert("ok");
+      });
       taskDetailsDecription.addEventListener("click", () => {
         taskDetailsDecription.focus();
         taskDetailsDecription.setSelectionRange(0, 0);
@@ -964,3 +983,17 @@ searchButton.addEventListener("click", function (event) {
   const query = searchTaskBar.value;
   fetchTasksPages("nome_like", query);
 });
+
+//GETTING MATERIAS
+async function getSubjectData() {
+  try {
+    const response = await fetch(URL_MATERIAS);
+    if (!response.ok) {
+      throw new Error(`Houve um erro ao procurar a matéria`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Houve um erro ao procurar a matéria:", error);
+  }
+}

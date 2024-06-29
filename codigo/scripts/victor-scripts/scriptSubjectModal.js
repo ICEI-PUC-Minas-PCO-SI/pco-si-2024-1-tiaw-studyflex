@@ -1,12 +1,12 @@
+// URL da API
+const URL_MATERIAS = "http://localhost:3000/materias";
+
+const form = document.getElementById("newSubjectForm");
+const subjectsList = document.getElementById("subjectsList");
+const searchInput = document.getElementById("searchInput");
 const createSubjectBtn = document.getElementById("createSubjectBtn");
 const closeSubjectBtn = document.getElementById("closeSubjectBtn");
 const createSubjectModal = document.getElementById("createSubjectModal");
-const form = document.getElementById("newSubjectForm");
-const subjectsList = document.getElementById("subjectsList");
-const searchInput = document.getElementById('searchInput');
-
-// URL da API
-const URL_MATERIAS = "http://localhost:3000/materias"; 
 
 // Evento para mostrar o Modal
 createSubjectBtn.addEventListener("click", () => {
@@ -35,13 +35,12 @@ form.addEventListener("submit", async (event) => {
 
   try {
     const response = await fetch(URL_MATERIAS, {
-      method: 'POST',
+      method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(jsonObject)
+      body: JSON.stringify(jsonObject),
     });
 
     if (response.ok) {
-      alert("Matéria criada com sucesso!");
       createSubjectModal.close();
       fetchSubjects();
     } else {
@@ -50,8 +49,10 @@ form.addEventListener("submit", async (event) => {
       console.error("Erro na resposta:", errorText);
     }
   } catch (error) {
-    console.error('Erro ao enviar o formulário:', error);
-    alert('Houve um problema ao enviar o formulário. Por favor, tente novamente.');
+    console.error("Erro ao enviar o formulário:", error);
+    alert(
+      "Houve um problema ao enviar o formulário. Por favor, tente novamente."
+    );
   }
 });
 
@@ -60,59 +61,66 @@ async function fetchSubjects(filter = "") {
   try {
     // Busca as matérias
     const responseMaterias = await fetch(URL_MATERIAS, {
-      method: 'GET',
-      headers: { "Content-Type": "application/json" }
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
     });
 
     if (!responseMaterias.ok) {
-      throw new Error('Erro na resposta da rede: ' + responseMaterias.statusText);
+      throw new Error(
+        "Erro na resposta da rede: " + responseMaterias.statusText
+      );
     }
 
     const materias = await responseMaterias.json();
 
     // Busca as tarefas
-    const responseTarefas = await fetch('http://localhost:3000/tarefas', {
-      method: 'GET',
-      headers: { "Content-Type": "application/json" }
+    const responseTarefas = await fetch("http://localhost:3000/tarefas", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
     });
 
     if (!responseTarefas.ok) {
-      throw new Error('Erro na resposta da rede: ' + responseTarefas.statusText);
+      throw new Error(
+        "Erro na resposta da rede: " + responseTarefas.statusText
+      );
     }
 
     const tarefas = await responseTarefas.json();
 
     // Limpa a lista de matérias
-    subjectsList.innerHTML = '';
+    subjectsList.innerHTML = "";
 
     // Filtra matérias conforme o filtro de busca
-    const filteredMaterias = materias.filter(materia =>
+    const filteredMaterias = materias.filter((materia) =>
       materia.nome.toLowerCase().includes(filter.toLowerCase())
     );
 
     // Cria os elementos HTML para cada matéria
-    filteredMaterias.forEach(materia => {
-      const tarefasDaMateria = tarefas.filter(tarefa => tarefa.materia === materia.nome);
+    filteredMaterias.forEach((materia) => {
+      const tarefasDaMateria = tarefas.filter(
+        (tarefa) => tarefa.materia === materia.nome
+      );
       const numTarefas = tarefasDaMateria.length;
 
       // Contagem dos status das tarefas
       let emProgresso = 0;
       let concluidas = 0;
-      tarefasDaMateria.forEach(tarefa => {
-        if (tarefa.status === '1' || tarefa.status === '2') {
+      tarefasDaMateria.forEach((tarefa) => {
+        if (tarefa.status === "1" || tarefa.status === "2") {
           emProgresso++;
-        } else if (tarefa.status === '3') {
+        } else if (tarefa.status === "3") {
           concluidas++;
         }
       });
 
       // Calcular a porcentagem de conclusão
       const totalTarefas = tarefasDaMateria.length;
-      const progresso = totalTarefas > 0 ? (concluidas / totalTarefas) * 100 : 0;
+      const progresso =
+        totalTarefas > 0 ? (concluidas / totalTarefas) * 100 : 0;
 
       // Cria o elemento da matéria com a barra de progresso
-      const materiaBox = document.createElement('div');
-      materiaBox.classList.add('materia-box');
+      const materiaBox = document.createElement("div");
+      materiaBox.classList.add("materia-box");
       materiaBox.innerHTML = `
          ${materia.nome.toUpperCase()}
         <div class="progress-bar">
@@ -121,45 +129,47 @@ async function fetchSubjects(filter = "") {
         <span class="num-tarefas">N° Tarefas: ${totalTarefas}</span>
       `;
 
-      const deleteBtn = document.createElement('button');
-      deleteBtn.classList.add('delete-btn');
+      const deleteBtn = document.createElement("button");
+      deleteBtn.classList.add("delete-btn");
       deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
-      deleteBtn.addEventListener('click', () => deleteSubject(materia.id, materiaBox));
+      deleteBtn.addEventListener("click", () =>
+        deleteSubject(materia.id, materiaBox)
+      );
 
       materiaBox.appendChild(deleteBtn);
       subjectsList.appendChild(materiaBox);
     });
   } catch (error) {
-    console.error('Erro ao buscar matérias:', error);
+    console.error("Erro ao buscar matérias:", error);
   }
 }
 
-
 async function deleteSubject(id, subjectItem) {
   const URL_DELETE = `${URL_MATERIAS}/${id}`;
-  
+
   try {
     const response = await fetch(URL_DELETE, {
-      method: 'DELETE',
-      headers: { "Content-Type": "application/json" }
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
     });
 
     if (response.ok) {
-      alert("Matéria deletada com sucesso!");
-      subjectsList.removeChild(subjectItem); 
+      subjectsList.removeChild(subjectItem);
     } else {
       const errorText = await response.text();
       alert("Não foi possível deletar a matéria! Erro: " + errorText);
       console.error("Erro na resposta:", errorText);
     }
   } catch (error) {
-    console.error('Erro ao deletar a matéria:', error);
-    alert('Houve um problema ao deletar a matéria. Por favor, tente novamente.');
+    console.error("Erro ao deletar a matéria:", error);
+    alert(
+      "Houve um problema ao deletar a matéria. Por favor, tente novamente."
+    );
   }
 }
 
 // Evento de input no campo de busca para filtrar matérias
-searchInput.addEventListener('input', (event) => {
+searchInput.addEventListener("input", (event) => {
   const filterText = event.target.value;
   fetchSubjects(filterText);
 });

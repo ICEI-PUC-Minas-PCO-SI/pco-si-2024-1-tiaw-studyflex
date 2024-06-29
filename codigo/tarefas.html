@@ -59,12 +59,7 @@
         </ul>
 
         <button class="btn add-button" id="addSubjectButton">
-          <img
-            src="./assets/imgs/add_icon.png"
-            alt="Notificações"
-            class="btn-img"
-            draggable="false"
-          />
+          <i data-lucide="circle-plus"></i>
         </button>
         <!--MODAL PARA SELECIONAR MATÉRIA PARA INCLUIR NA NAVBAR-->
 
@@ -79,21 +74,6 @@
           </button>
 
           <h2>Selecionar matéria</h2>
-          <div  class="search-bar-container">
-            <input
-              type="search"
-              name=""
-              placeholder="Buscar.."
-              aria-label="Search"
-              class="search-bar"
-              id="searchSubjectBar"
-            />
-
-            <button type="submit" class="submit-btn">
-            
-            </button>
-          </div>
-
           <div class="add-subject-content empty">
             <img
               src="./assets/imgs/not_found_img.jpg"
@@ -510,7 +490,17 @@
             </dialog>
              <!--MODAL DE ALERTA-->
 
-            <ul id="taskList"></ul>
+            <ul id="taskList">
+
+                <ul id="subjectOptionsList">
+                  <li class="subjectOptionsItem">TIAW</li>
+                  <li class="subjectOptionsItem">ATP</li>
+                  <li class="subjectOptionsItem">DIW</li>
+                  <li class="subjectOptionsItem">FILOSOFIA</li>
+                  <li class="subjectOptionsItem">IC</li>
+                </ul>
+              </div>
+    
 
            
 

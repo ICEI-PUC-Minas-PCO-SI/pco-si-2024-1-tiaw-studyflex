@@ -447,11 +447,20 @@ auto .add-button:hover {
   justify-content: center;
   align-items: center;
   padding: 0;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
   margin-left: -16px;
 }
 
+#addSubjectButton svg {
+  width: 26px;
+  height: 26px;
+  color: #ffffff;
+  fill: #3b4337;
+  transition: all 0.2s ease-in;
+}
+#addSubjectButton:hover svg {
+  fill: #ffffff;
+  color: #3b4337;
+}
 /* CALENDARIO */
 
 #smallCalendarContainer {
@@ -1101,6 +1110,7 @@ auto .add-button:hover {
   border: none;
   padding: 24px;
   position: absolute;
+  border-radius: 5px;
 }
 
 #createSubjectModal {
@@ -1108,6 +1118,9 @@ auto .add-button:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 5px 5px 1px hsla(210, 10%, 23%, 0.178);
+}
+
+#createSubjectBtn {
 }
 
 #newSubjectForm {
@@ -1128,6 +1141,10 @@ auto .add-button:hover {
   letter-spacing: 2px;
   width: 100%;
   padding-bottom: 6px;
+}
+
+#adcSubject {
+  border-radius: 500px;
 }
 
 /*TASK CONTAINER*/
@@ -1846,4 +1863,35 @@ auto .add-button:hover {
 .textMessage span {
   color: #414b3b;
   font-weight: 900;
+}
+
+#createSubjectBtn {
+  border-radius: 500px;
+  font-size: 14px;
+  padding: 6px 24px;
+}
+
+#subjectOptionsContainer {
+  width: 150px;
+}
+#subjectOptionsList {
+  border-radius: 5px;
+  border: 1px solid #586352;
+  background-color: #414b3b;
+}
+
+.subjectOptionsItem {
+  padding: 6px 12px;
+  font-size: 12px;
+  color: #ffffff;
+  border-top: 1px solid #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+.subjectOptionsItem:first-of-type {
+  border-top: none;
+}
+
+.subjectOptionsItem:hover {
+  background-color: #586352;
 }
