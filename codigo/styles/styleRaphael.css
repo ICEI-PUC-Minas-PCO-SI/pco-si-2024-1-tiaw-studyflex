@@ -120,14 +120,12 @@ aside {
   display: flex;
   flex-direction: column;
   gap: 48px;
-  
 }
 
 .aside-menu {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  
 }
 
 .aside-option {
@@ -489,16 +487,13 @@ nav {
   width: 300px;
 }
 
-
-
-
 /* CALENDARIO */
 .cal-modal {
   position: relative; /* Para o posicionamento relativo dos elementos filhos */
 }
 
 .large-cal-modal-container {
-  background: rgba(0, 0, 0, .4);
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -535,7 +530,6 @@ nav {
   height: 30px; /* Altura do botão */
   border-radius: 50%; /* Transforma o botão em um círculo */
 }
-
 
 .large-cal-modal button.close-modal {
   position: absolute;
@@ -592,7 +586,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-   /* Ocupa toda a altura da .cal-modal */
+  /* Ocupa toda a altura da .cal-modal */
 }
 
 #calendar {
@@ -600,126 +594,113 @@ nav {
   margin: 0 auto; /* Centraliza horizontalmente */
 }
 
-
 /* FIM DO CALENDARIO */
 
-.container2{
+.container2 {
   flex-wrap: wrap;
   display: flex;
-  padding:45px;
-  
+  padding: 45px;
 }
 
-.retan1{
+.retan1 {
   position: relative;
   border: 1px solid #ccc;
   border-radius: 5px;
-   margin-left: 50px;
-   margin-right: 50px;
-   height: 400px;
-   width: 300px;
-   padding: 5px;
-   background-color: #E68B86;
-   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  margin-left: 50px;
+  margin-right: 50px;
+  height: 400px;
+  width: 300px;
+  padding: 5px;
+  background-color: #e68b86;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   border: none;
-  margin-top:35px;
-  word-wrap: break-word;
-  
-}
-
-.retan2{
-  position: relative; 
-   margin-left: 50px;
-   margin-right: 50px;
-   height: 400px;
-   width: 300px;
-   padding: 5px;
-   border: 1px solid #ccc;
-   border-radius: 5px;
-   background-color: #EDBF74;
-   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-  border: none;
-  margin-top:35px;
+  margin-top: 35px;
   word-wrap: break-word;
 }
 
-.retan3{
+.retan2 {
   position: relative;
-   margin-left: 50px;
-   margin-right: 50px;
-   height: 400px;
-   width: 300px;
-   border: 1px solid #ccc;
-   border-radius: 5px;
-   
-   padding: 5px;
-   background-color:  #9DAADF;
-   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  margin-left: 50px;
+  margin-right: 50px;
+  height: 400px;
+  width: 300px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #edbf74;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   border: none;
-  margin-top:35px;
+  margin-top: 35px;
   word-wrap: break-word;
-   
 }
 
-.Btn{
-margin-top: 130px;
-margin-left: 50px;
-margin-right: 50px;
-padding: 5px;
-height: 70px;
-width: 70px;
+.retan3 {
+  position: relative;
+  margin-left: 50px;
+  margin-right: 50px;
+  height: 400px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 
+  padding: 5px;
+  background-color: #9daadf;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  border: none;
+  margin-top: 35px;
+  word-wrap: break-word;
 }
 
-.lapis{
+.Btn {
+  margin-top: 130px;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding: 5px;
+  height: 70px;
+  width: 70px;
+}
+
+.lapis {
   margin-top: 200px;
   margin-left: 210px;
   height: 70px;
   width: 70px;
   position: absolute;
-  
-  }
+}
 
-  .h3{
-    margin-left: 20px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size:30px;
-    margin-top: 1px;
-  }
+.h3 {
+  margin-left: 20px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 30px;
+  margin-top: 1px;
+}
 
-  .p{
-      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-      font-size:20px;
-      margin-top: 30px;
-      margin-left: 20px;
-      color:rgb(86, 76, 76);
-    
-  }
+.p {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 20px;
+  margin-top: 30px;
+  margin-left: 20px;
+  color: rgb(86, 76, 76);
+}
 
-  input{
-    
-    margin-left: 50px;
-    height: 30px;
-    text-align: center;
-    font-family: arial;
-  }
+input {
+  margin-left: 50px;
+  height: 30px;
+  text-align: center;
+  font-family: arial;
+}
 
-  textarea{
-    margin-left:50px;
-    margin-top: 5px;
-    height: 100px;
-    width: 170px;
-    text-align: center;
-    font-family: arial;
-  }
+textarea {
+  margin-left: 50px;
+  margin-top: 5px;
+  height: 100px;
+  width: 170px;
+  text-align: center;
+  font-family: arial;
+}
 
-  .delete{
-    margin-left: 250px;
-    margin-top: 10px;
-    color: white;
-  }
-
-
-
- 
- 
+.delete {
+  margin-left: 250px;
+  margin-top: 10px;
+  color: white;
+}

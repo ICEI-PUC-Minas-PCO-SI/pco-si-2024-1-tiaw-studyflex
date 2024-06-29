@@ -1316,6 +1316,27 @@ auto .add-button:hover {
   padding: 6px;
   border-radius: 50%;
 }
+#prevPage.unactive,
+#nextPage.unactive {
+  border-color: #6d6d6d;
+  cursor: default;
+  color: #6d6d6d;
+}
+
+#prevPage.unactive:hover,
+#nextPage.unactive:hover {
+  border-color: #6d6d6d;
+  cursor: default;
+  background-color: #ffffff;
+}
+
+#prevPage.unactive:hover svg,
+#nextPage.unactive:hover svg {
+  border-color: #6d6d6d;
+  cursor: default;
+  color: #6d6d6d;
+  background-color: #ffffff;
+}
 
 #prevPage svg,
 #nextPage svg {
@@ -1502,7 +1523,8 @@ auto .add-button:hover {
 
 /*MESSAGE MODAL*/
 #deleteMessage,
-#taskDetailsModal {
+#taskDetailsModal,
+#warningModal {
   left: 50%;
   top: 50%;
   padding: 32px;
@@ -1511,6 +1533,9 @@ auto .add-button:hover {
   transform: translate(-50%, -50%);
 }
 
+#taskDetailsModal {
+  padding: 32px 32px 24px 32px;
+}
 .alert-options {
   display: flex;
   justify-content: space-evenly;
@@ -1712,4 +1737,58 @@ auto .add-button:hover {
 
 .submit-btn svg {
   color: #414b3b;
+}
+
+.postTaskButtonContainer {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+}
+
+#postTaskButton {
+  background-color: #586352;
+  padding: 6px 32px;
+  border-radius: 200px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+}
+
+#okButton {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #586352;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  color: #ffffff;
+}
+
+#postTaskButton:hover,
+#okButton:hover {
+  background-color: #414b3b;
+}
+
+.warningImgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.warningImgContainer img {
+  max-width: 200px;
+}
+
+.textMessage {
+  color: #586352;
+}
+.textMessage span {
+  color: #414b3b;
+  font-weight: 900;
 }

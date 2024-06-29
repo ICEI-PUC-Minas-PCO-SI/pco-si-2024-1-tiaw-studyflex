@@ -475,6 +475,12 @@
             </div>
           </dialog>
 
+          <div class="postTaskButtonContainer">
+          <button class="postTaskContainer" type="button"><i data-lucide="clipboard-plus"></i>
+          Criar tarefa
+          </button>
+          </div>
+
           <!-- LISTA DE TAREFAS ATIVAS -->
           <section class="tasks-container task-page" id="tasksContainer">
             <!--LISTA DE TAREFAS CRIADAS -->
@@ -490,6 +496,19 @@
               </div>
             </dialog>
              <!--MODAL PARA EXCLUIR TAREFA-->
+
+              <!--MODAL DE ALERTA-->
+            <dialog class="delete-message-modal message-modal" id="warningModal">
+              <div class="alert-message" id="message">
+    
+              </div>
+              <div class="alert-options">
+                <button id="okButton">
+                  <i data-lucide="thumbs-up"></i>
+                </button>
+              </div>
+            </dialog>
+             <!--MODAL DE ALERTA-->
 
             <ul id="taskList"></ul>
 
