@@ -538,9 +538,9 @@ auto .add-button:hover {
 }
 
 .tituloo {
-  text-align: center;
+  text-align: left;
   font-weight: 700;
-  font-size: 32px;
+  font-size: 30px;
   color: #586352;
 }
 
@@ -612,6 +612,7 @@ auto .add-button:hover {
   font-size: 20px;
   line-height: 24px;
   color: #000000;
+  
 }
 
 .subtit {
@@ -624,6 +625,11 @@ auto .add-button:hover {
   line-height: 24px;
   color: #000000;
   opacity: 0.5;
+  overflow: hidden; 
+text-overflow: ellipsis; 
+display: -webkit-box;
+-webkit-line-clamp: 8; 
+-webkit-box-orient: vertical; 
 }
 
 .date {
