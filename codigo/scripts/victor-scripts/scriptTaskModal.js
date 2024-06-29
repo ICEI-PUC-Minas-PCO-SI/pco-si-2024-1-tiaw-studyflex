@@ -31,6 +31,15 @@ let pageLength;
 const searchTaskBar = document.getElementById("searchTaskBar");
 const searchButton = document.getElementById("searchButton");
 
+//MATÉRIAS
+let materiasArray;
+
+async function getSubjects() {
+  materiasArray = await getSubjectList();
+}
+
+getSubjects();
+
 //REALIZA UMA PESQUISA NAS TAREFAS REGISTRADAS NO BANCO
 //COM O NÚMERO DE TAREFAS, DEFINIMOS A ESTRUTRA DE PÁGINAS DO NOSSO SITE
 async function fetchTasks() {
@@ -47,6 +56,25 @@ async function fetchTasks() {
   } catch (error) {
     console.log(error);
   }
+}
+
+async function buscarMaterias() {
+  try {
+    const response = await fetch(URL_MATERIAS);
+    if (!response.ok) {
+      throw new Error("Erro ao buscar matérias");
+    }
+    const materias = await response.json();
+    return materias;
+  } catch (error) {
+    console.error("Erro:", error);
+    return [];
+  }
+}
+
+async function getSubjectList() {
+  const materias = await buscarMaterias();
+  return materias;
 }
 
 fetchTasks();
@@ -140,19 +168,6 @@ async function fetchTasksPages(key, value, sorting) {
   try {
     skip = (page - 1) * taskPerPage; //NÚMERO DE TAREFAS QUE DEVEM SER IGNORADAS E A PARTIR DE QUAL TAREFA REALIZAR A BUSCA
 
-    if (page == 1) {
-      prevButton.classList.add("unactive");
-    } else {
-      prevButton.classList.remove("unactive");
-    }
-
-    let pages = Math.ceil(pageLength / taskPerPage);
-    if (page == pages) {
-      nextButton.classList.add("unactive");
-    } else {
-      nextButton.classList.remove("unactive");
-    }
-
     //SOLICITA A URL BASE COM NO PARAMETROS RECEBIDOS
     if (!key && !value) {
       if (sorting) {
@@ -174,6 +189,21 @@ async function fetchTasksPages(key, value, sorting) {
     if (response.ok) {
       //ARRAY DE TODAS AS TAREFAS QUE DEVEM SER LISTADAS NA PÁGINA
       const taskData = await response.json();
+
+      pageLength = taskData.length;
+
+      if (page == 1) {
+        prevButton.classList.add("unactive");
+      } else {
+        prevButton.classList.remove("unactive");
+      }
+
+      let pages = Math.ceil(pageLength / taskPerPage);
+      if (page == pages) {
+        nextButton.classList.add("unactive");
+      } else {
+        nextButton.classList.remove("unactive");
+      }
 
       //VERIFICA SE NÃO HÁ NENHUMA TAREFA CRIADA
       if (taskData.length === 0) {
@@ -678,6 +708,12 @@ function changeStatus(status) {
   lucide.createIcons();
 }
 
+function changeSubject(subItem) {
+  const subTitle = document.getElementById("taskDetailsSubject");
+  subTitle.innerHTML = subItem.innerHTML;
+  subTitle.dataset.SubID = subItem.dataset.subject;
+}
+
 function changePriority(prioridade) {
   priorityContainer.innerHTML = "";
   priorityContainer.innerHTML = getPriorityHTML(prioridade.toString());
@@ -721,7 +757,7 @@ function getTaskDetails(taskid) {
   return taskdata;
 }
 
-function openTask(taskElement, method) {
+async function openTask(taskElement, method) {
   let taskElementID;
   let dataAtual = "";
   const taskDetailsModal = document.getElementById("taskDetailsModal");
@@ -747,27 +783,13 @@ function openTask(taskElement, method) {
       }
       return response.json();
     })
-    .then((task) => {
+    .then(async (task) => {
       let statusHTML = getStatusHTML(task.status ? task.status : "3");
       let priorityHTML = getPriorityHTML(
         task.prioridade ? task.prioridade : "1"
       );
 
-      let sublist = `<ul id="subjectOptionsList" class="subjectOptionsList">`;
-
-      getSubjectData().then((data) => {
-        data.forEach((subject) => {
-          let subItem = `
-           <li class="subjectOptionsItem" data-subject="${subject.id}">${subject.nome}</li>
-          `;
-          sublist += subItem;
-        });
-      });
-      sublist += `</ul>`;
-      console.log(sublist);
-
       let taskHTML = `
-      
       <div class="task-detail-container">
               <button class="btn close-btn" id="closeTaskDetail"><i data-lucide="x"></i></button>
               <div class="task-detail-header">
@@ -799,9 +821,9 @@ function openTask(taskElement, method) {
                       <span>Matéria</span>
                     </div>
 
-                    <button class="subject-info-button" id="changeSubjectButton">
+                    <button class="subject-info-button" id="changeSubjectButton" >
                       <div class="item-info-container">
-                        <span id="taskDetailsSubject">${
+                        <span id="taskDetailsSubject" data-SubID="">${
                           !task.materia ? "selecionar matéria" : task.materia
                         }</span>
                       </div>
@@ -812,8 +834,7 @@ function openTask(taskElement, method) {
                         <i data-lucide="chevron-right" class="spin-icon"></i>
                       </div>
                     </button>
-                    
-                   ${sublist}
+                    ${await loadSubjects()}
                   </li>
 
                   <li class="task-data-item">
@@ -846,7 +867,7 @@ function openTask(taskElement, method) {
                     <span>Descrição</span>
                   </div>
 
-                  <textarea id="taskDetailsDecription" class="data-description-content" maxlength="320">
+                  <textarea id="taskDetailsDecription" class="data-description-content" maxlength="260">
                     ${task.descricao ? task.descricao : ""}
                   </textarea>
                 </div>
@@ -865,14 +886,26 @@ function openTask(taskElement, method) {
       }
 
       taskDetailsModal.showModal();
+
       const taskDetailsDecription = document.getElementById(
         "taskDetailsDecription"
       );
-      const changeSubButton = document.getElementById("changeSubjectButton");
 
-      changeSubButton.addEventListener("click", () => {
-        alert("ok");
+      const changeSubButton = document.getElementById("changeSubjectButton");
+      const subjectsList = document.getElementById("subjectOptionsList");
+
+      changeSubButton.addEventListener("click", async () => {
+        subjectsList.classList.toggle("hide");
+        const subItens = document.querySelectorAll(".subjectOptionsItem");
+
+        subItens.forEach((subject) => {
+          subject.addEventListener("click", (event) => {
+            changeSubject(event.target);
+          });
+        });
       });
+
+      const subListHtml = document.getElementById("subjectOptionsList");
       taskDetailsDecription.addEventListener("click", () => {
         taskDetailsDecription.focus();
         taskDetailsDecription.setSelectionRange(0, 0);
@@ -899,7 +932,6 @@ function openTask(taskElement, method) {
         closeTaskDetailButton.addEventListener("click", (event) => {
           event.preventDefault();
           taskdata = getTaskDetails(taskElementID);
-          console.log(taskdata);
           fetch(URL_TAREFAS + `/${taskElementID}`, {
             method: "PUT",
             headers: {
@@ -921,12 +953,11 @@ function openTask(taskElement, method) {
             });
         });
       } else {
-        console.log("teste");
-        let taskdata = getTaskDetails();
         const postTaskButton = document.getElementById("postTaskButton");
         const warningModal = document.getElementById("warningModal");
         const message = document.getElementById("message");
         const okButton = document.getElementById("okButton");
+
         document.addEventListener("keydown", function (event) {
           if (event.key === "Escape" || event.key === "Esc") {
             closeTaskDetailButton.click();
@@ -936,6 +967,8 @@ function openTask(taskElement, method) {
           taskDetailsModal.close();
         });
         postTaskButton.addEventListener("click", () => {
+          let taskdata = getTaskDetails();
+
           valid = false;
           if (
             !taskdata.nome ||
@@ -947,7 +980,7 @@ function openTask(taskElement, method) {
             let warningMessage = `
              
               <div class="warningImgContainer">
-                <img src="./assets/imgs/warning_img.png" alt="Aviso" />
+                <img src="./assets/imgs/warning_img.png" alt="Aviso"/>
               </div>
               <div class="textMessage">
                     <p>Escolha um <span>nome</span> e uma <span>matéria</span> para a sua tarefa</p>
@@ -958,6 +991,8 @@ function openTask(taskElement, method) {
             okButton.addEventListener("click", async () => {
               warningModal.close();
             });
+          } else {
+            valid = true;
           }
           if (valid) {
             try {
@@ -984,16 +1019,20 @@ searchButton.addEventListener("click", function (event) {
   fetchTasksPages("nome_like", query);
 });
 
-//GETTING MATERIAS
-async function getSubjectData() {
+let sublist;
+
+async function loadSubjects() {
+  const subjectsData = await getSubjectList();
+
   try {
-    const response = await fetch(URL_MATERIAS);
-    if (!response.ok) {
-      throw new Error(`Houve um erro ao procurar a matéria`);
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Houve um erro ao procurar a matéria:", error);
-  }
+  } catch (error) {}
+  let list = `<ul id="subjectOptionsList" class="hide">`;
+  subjectsData.forEach((subject) => {
+    let subItem = `
+      <li class="subjectOptionsItem" data-subject="${subject.id}">${subject.nome}</li>`;
+    list += subItem;
+  });
+  list += `</ul>`;
+
+  return list;
 }

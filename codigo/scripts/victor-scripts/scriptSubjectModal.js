@@ -11,13 +11,11 @@ const createSubjectModal = document.getElementById("createSubjectModal");
 // Evento para mostrar o Modal
 createSubjectBtn.addEventListener("click", () => {
   createSubjectModal.showModal();
-  console.log("Modal abriu");
 });
 
 // Certificar que o modal fechou
 closeSubjectBtn.addEventListener("click", () => {
   createSubjectModal.close();
-  console.log("Modal fechou");
 });
 
 // Evento de enviar o formulário

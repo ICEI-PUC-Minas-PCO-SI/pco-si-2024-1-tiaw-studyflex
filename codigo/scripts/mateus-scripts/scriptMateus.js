@@ -42,7 +42,6 @@ $(document).ready(function () {
       },
       onChange: function (selectedDates, dateStr, instance) {
         showModal(dateStr);
-        console.log("ABRIU");
       },
     });
   }
@@ -91,7 +90,6 @@ $(document).ready(function () {
       })),
       dayClick: function (date, jsEvent, view) {
         showModal(date.format());
-        console.log("ABRIU");
       },
     });
 
@@ -116,7 +114,6 @@ $(document).ready(function () {
   // Carregar as tarefas e inicializar o calendário após o carregamento
   loadTasks().then(() => {
     initializeSmallCalendar();
-    console.log("ABRIU");
 
     // Atualiza o título com a data de hoje ao carregar a página
     const today = moment().format("YYYY-MM-DD");

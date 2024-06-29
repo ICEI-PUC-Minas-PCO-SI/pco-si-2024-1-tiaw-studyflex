@@ -1000,6 +1000,9 @@ auto .add-button:hover {
   display: flex;
   flex-direction: column;
   width: 100%;
+  justify-content: start;
+
+  background-color: #1481ba;
 }
 
 #taskDescription {
@@ -1009,6 +1012,7 @@ auto .add-button:hover {
   outline: none;
   border: none;
   border-bottom: 1px solid #586352;
+  background-color: #1481ba;
 }
 
 /*SUBMIT BUTTON*/
@@ -1649,6 +1653,7 @@ auto .add-button:hover {
 #taskDetailsModal {
   outline: none;
   width: 450px;
+  overflow-x: hidden;
 }
 .task-detail-container {
   display: flex;
@@ -1724,6 +1729,7 @@ auto .add-button:hover {
   color: #6d6d6d;
   display: flex;
   align-items: center;
+  justify-content: start;
   gap: 6px;
   padding: 6px 12px;
 }
@@ -1738,6 +1744,7 @@ auto .add-button:hover {
   border: none;
   width: 100%;
   height: 150px;
+  text-align: left;
 }
 
 .item-info-button {
@@ -1871,13 +1878,47 @@ auto .add-button:hover {
   padding: 6px 24px;
 }
 
-#subjectOptionsContainer {
-  width: 150px;
-}
 #subjectOptionsList {
-  border-radius: 5px;
-  border: 1px solid #586352;
-  background-color: #414b3b;
+  border-radius: 3px;
+  background-color: #586352;
+  position: absolute;
+  right: 65px;
+  top: 174px;
+  overflow-y: auto;
+  max-height: 150px;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  text-rendering: optimizeLegibility;
+  transition: all 0.5s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px;
+}
+
+#subjectOptionsList.hide {
+  right: -200px;
+  color: transparent;
+  background-color: transparent;
+}
+
+#subjectOptionsList::-webkit-scrollbar {
+  width: 8px;
+  margin-left: 5px;
+  background-color: #d9d9d9;
+  padding: 100px;
+  border-radius: 3px;
+}
+
+#subjectOptionsListdy::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #6d6d6d;
+  padding: 100px;
+}
+
+#subjectOptionsList::-webkit-scrollbar-thumb {
+  border-radius: 500px;
+  height: 12px;
+  outline: 5px solid transparent;
+  background-color: #8aa17b;
+  cursor: pointer;
 }
 
 .subjectOptionsItem {
@@ -1887,11 +1928,22 @@ auto .add-button:hover {
   border-top: 1px solid #ffffff;
   text-align: center;
   cursor: pointer;
+  max-width: 100px;
 }
 .subjectOptionsItem:first-of-type {
   border-top: none;
+  border-radius: 3px;
+}
+
+.subjectOptionsItem:last-of-type {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 .subjectOptionsItem:hover {
-  background-color: #586352;
+  background-color: #414b3b;
+}
+
+#changeSubjectButton {
+  position: relative;
 }

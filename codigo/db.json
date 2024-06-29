@@ -1,5 +1,42 @@
 {
-  "tarefas": [],
+  "tarefas": [
+    {
+      "nome": "teste",
+      "status": "1",
+      "dataFinal": "2024-06-29",
+      "prioridade": "2",
+      "materia": "TIAW",
+      "descricao": "",
+      "id": 1
+    },
+    {
+      "nome": "Engravidar o Renatola",
+      "status": "3",
+      "dataFinal": "2024-06-29",
+      "prioridade": "1",
+      "materia": "IC",
+      "descricao": "as",
+      "id": 2
+    },
+    {
+      "nome": "A",
+      "status": "2",
+      "dataFinal": "2024-06-29",
+      "prioridade": "1",
+      "materia": "DIW",
+      "descricao": "",
+      "id": 3
+    },
+    {
+      "nome": "s",
+      "status": "3",
+      "dataFinal": "2024-06-29",
+      "prioridade": "1",
+      "materia": "TIAW",
+      "descricao": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "id": 4
+    }
+  ],
   "materias": [
     {
       "nome": "TIAW",
@@ -18,7 +55,7 @@
       "id": 4
     },
     {
-      "nome": "FILOSOFIa",
+      "nome": "FILOSOFIA",
       "id": 5
     }
   ],
