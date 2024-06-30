@@ -447,86 +447,160 @@ Escolhemos o Git como ferramenta de versionamento de código devido à sua popul
 
 # Projeto da Solução
 
-......  COLOQUE AQUI O SEU TEXTO ......
+Nesta seção são apresentados os detalhes técnicos da solução criada pela equipe, abordando a Arquitetura da Solução, as estruturas de dados e as telas já implementadas.
+
 
 ## Tecnologias Utilizadas
+Navegador - Interface básica do sistema
+ HTML
+CSS
+JS
+Node
+Local Storage
+O armazenamento local no navegador é utilizado para manter dados importantes, organizados em bancos de dados JSON, tais como:
+Tarefas: Gerenciamento de tarefas, incluindo criação, edição,progresso, filtragem e ordenação.
+Notificações: Sistema de alertas e notificações para manter o usuário informado sobre suas atividades.
+Usuários: Perfis e preferências dos usuários para personalização da experiência.
+Notas: Gerenciamento de criação de notas.
+Hospedagem
+O site é hospedado em um servidor web, permitindo acesso fácil e rápido às páginas através do navegador.
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Descreva aqui qual(is) tecnologias você vai usar para resolver o seu
-> problema, ou seja, implementar a sua solução. Liste todas as
-> tecnologias envolvidas, linguagens a serem utilizadas, serviços web,
-> frameworks, bibliotecas, IDEs de desenvolvimento, e ferramentas.
-> Apresente também uma figura explicando como as tecnologias estão
-> relacionadas ou como uma interação do usuário com o sistema vai ser
-> conduzida, por onde ela passa até retornar uma resposta ao usuário.
-> 
-> Inclua os diagramas de User Flow, esboços criados pelo grupo
-> (stoyboards), além dos protótipos de telas (wireframes). Descreva cada
-> item textualmente comentando e complementando o que está apresentado
-> nas imagens.
 
 ## Arquitetura da solução
 
-......  COLOQUE AQUI O SEU TEXTO E O DIAGRAMA DE ARQUITETURA .......
+O diagrama mostra como os diferentes módulos estão conectados. O usuário interage com a aplicação por meio do navegador. A aplicação se comunica com a internet e é hospedada em algum lugar.
 
-> Inclua um diagrama da solução e descreva os módulos e as tecnologias
-> que fazem parte da solução. Discorra sobre o diagrama.
-> 
-> **Exemplo do diagrama de Arquitetura**:
-> 
-> ![Exemplo de Arquitetura](images/arquitetura-exemplo.png)
+O Node.js é responsável por processar as solicitações do usuário, acessar os dados das tarefas, matérias, usuários e anotações, e fornecer respostas adequadas. As tecnologias front-end (CSS, HTML e JavaScript) são usadas para criar a interface do usuário.
+
+Em resumo, o diagrama ilustra a arquitetura da aplicação StudyFlex e como os diferentes componentes se relacionam para fornecer funcionalidades aos usuários.
+
+
 
 
 # Avaliação da Aplicação
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Apresente os cenários de testes utilizados na realização dos testes da
-> sua aplicação. Escolha cenários de testes que demonstrem os requisitos
-> sendo satisfeitos.
+1. Verificação do Logo e Navegação:
+Cenário: Verificar se o logo do StudyFlex está visível e clicável.
+Passos:
+-Abrir a página inicial.
+-Localizar o logo do StudyFlex.
+-Clicar no logo.
+Resultado Esperado: O usuário é redirecionado para a página inicial.
+2. Funcionalidade de Notificações:
+-Cenário: Testar se o botão de notificações exibe corretamente o ícone.
+-Passos:
+-Abrir qualquer página que contenha o cabeçalho.
+-Localizar o botão de notificações.
+-Verificar se o ícone de notificações é exibido.
+-Resultado Esperado: O ícone de notificações está visível e funcional.
+3. Menu de Navegação:
+-Cenário: Validar se os links do menu de navegação estão corretos.
+-Passos:
+-Abrir a página inicial.
+-Verificar se todos os itens do menu de navegação estão presentes e corretamente linkados.
+-Clicar em cada item do menu e verificar se a página correspondente abre.
+-Resultado Esperado: Todos os links do menu direcionam corretamente para as páginas esperadas.
+ 4. Modal de Adicionar Matéria:
+-Cenário: Testar a funcionalidade do modal de adicionar matéria na barra de navegação.
+-Passos:
+-Abrir a página inicial.
+-Clicar no botão de adicionar matéria na barra de navegação.
+-Verificar se o modal é exibido corretamente.
+-Resultado Esperado: O modal de adicionar matéria é exibido quando o botão é clicado.
+5. Criar Nova Tarefa:
+-Cenário: Testar a criação de uma nova tarefa usando o modal de criação.
+-Passos:
+-Abrir a página inicial.
+-Clicar no botão de criar tarefas.
+-Preencher todos os campos obrigatórios (nome da tarefa, status, matéria, data final, prioridade).
+-Submeter o formulário.
+-Resultado Esperado: A tarefa é criada com sucesso e aparece na lista de tarefas.
+6. Filtrar e Ordenar Tarefas:
+-Cenário: Testar a funcionalidade de filtrar e ordenar as tarefas na página.
+-Passos:
+-Abrir a página de tarefas.
+-Utilizar os filtros de status e prioridade.
+-Utilizar os botões de ordenação para alterar a ordem das tarefas.
+-Resultado Esperado: As tarefas são filtradas e ordenadas conforme as opções selecionadas.
+7. Detalhes da Tarefa:
+-Cenário: Testar se é possível visualizar os detalhes de uma tarefa.
+-Passos:
+-Abrir a página de tarefas.
+-Clicar em uma tarefa específica para abrir os detalhes.
+-Resultado Esperado: O modal de detalhes da tarefa é aberto e exibe as informações corretas da tarefa selecionada.
+ 8. Integração com Calendário:
+-Cenário: Verificar se o calendário exibe corretamente os eventos relacionados às tarefas.
+-Passos:
+-Abrir a página inicial.
+-Verificar a presença e funcionalidade do calendário.
+-Verificar se as tarefas são corretamente exibidas no calendário.
+-Resultado Esperado: As tarefas são exibidas no calendário conforme suas datas de conclusão.
 
 ## Plano de Testes
 
-......  COLOQUE AQUI O SEU TEXTO ......
+1. Verificação do Logo e Navegação:
+Funcionalidade Avaliada: Navegação básica e integridade visual do logo.
+Grupo de Usuários: Testes internos da equipe de desenvolvimento.
+Ferramentas Utilizadas: Navegadores comuns (Chrome, Firefox, Edge).
+2. Funcionalidade de Notificações:
+Funcionalidade Avaliada: Exibição e interação com o botão de notificações.
+Grupo de Usuários: Testes internos da equipe de desenvolvimento.
+Ferramentas Utilizadas: Navegadores de dispositivos móveis.
+3. Menu de Navegação:
+Funcionalidade Avaliada: Corretude dos links e redirecionamentos do menu.
+Grupo de Usuários: Testes internos e usuários representativos de diferentes áreas de interesse.
+Ferramentas Utilizadas: Diferentes resoluções de tela e navegadores.
+4. Modal de Adicionar Matéria:
+Funcionalidade Avaliada: Funcionamento e usabilidade do modal de adição de matéria.
+Grupo de Usuários: Testes internos da equipe de desenvolvimento.
+Ferramentas Utilizadas: Testes de usabilidade e acessibilidade.
+5, Criar Nova Tarefa:
+Funcionalidade Avaliada: Processo de criação de uma nova tarefa através do modal.
+Grupo de Usuários: Testes internos da equipe de desenvolvimento.
+Ferramentas Utilizadas: Testes de integração com o backend e validação de formulários.
+6. Filtrar e Ordenar Tarefas:
+Funcionalidade Avaliada: Eficácia dos filtros e opções de ordenação das tarefas.
+Grupo de Usuários: Testes internos da equipe de desenvolvimento.
+Ferramentas Utilizadas: Testes de performance e compatibilidade.
+7. Detalhes da Tarefa:
+Funcionalidade Avaliada: Exibição correta dos detalhes de uma tarefa específica.
+Grupo de Usuários: Testes internos da equipe de desenvolvimento.
+Ferramentas Utilizadas: Inspeção de elementos e validação de dados.
+8.Integração com Calendário:
+Funcionalidade Avaliada: Exibição e integração das tarefas com o calendário.
+Grupo de Usuários: Testes internos da equipe de desenvolvimento.
+Ferramentas Utilizadas: Verificação de consistência de dados e funcionalidades específicas do calendário.
 
-> Enumere quais cenários de testes foram selecionados para teste. Neste
-> tópico o grupo deve detalhar quais funcionalidades avaliadas, o grupo
-> de usuários que foi escolhido para participar do teste e as
-> ferramentas utilizadas.
-> 
-> **Links Úteis**:
-> - [IBM - Criação e Geração de Planos de Teste](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Práticas e Técnicas de Testes Ágeis](http://assiste.serpro.gov.br/serproagil/Apresenta/slides.pdf)
-> -  [Teste de Software: Conceitos e tipos de testes](https://blog.onedaytesting.com.br/teste-de-software/)
 
 ## Ferramentas de Testes (Opcional)
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Comente sobre as ferramentas de testes utilizadas.
-> 
-> **Links Úteis**:
-> - [Ferramentas de Test para Java Script](https://geekflare.com/javascript-unit-testing/)
-> - [UX Tools](https://uxdesign.cc/ux-user-research-and-user-testing-tools-2d339d379dc7)
+Durante o processo de testes da aplicação StudyFlex, foram empregadas ferramentas especializadas para testes de desempenho e usabilidade do sistema. Abaixo estão as ferramentas utilizadas:
+Testes Manuais e de Usabilidade: Foram conduzidos testes manuais e de usabilidade por uma equipe de usuários beta selecionados. Esses testes focaram na experiência do usuário, identificação de bugs visuais e validação das funcionalidades de acordo com o comportamento esperado.
+Postman: O Postman é uma ferramenta indispensável para testes de desenvolvedor, especialmente focada em testar e validar APIs. Ele permite enviar requisições HTTP, automatizar testes, debugar interações, criar documentação de API e suportar múltiplos ambientes de desenvolvimento.
+Navegadores comuns: (Chrome, Firefox, Edge).
 
 ## Registros de Testes
 
-......  COLOQUE AQUI O SEU TEXTO ......
+Durante nossos testes da aplicação StudyFlex, exploramos profundamente para entender como ela se comporta em diferentes cenários. Aqui estão os principais pontos que descobrimos, tanto os positivos quanto os desafios que enfrentamos, e o que planejamos fazer para melhorar nas próximas versões.
+ RESULTADOS DO TESTE
+Nossos testes revelaram muitos aspectos positivos, bem como áreas que precisam de atenção extra na aplicação StudyFlex:
+     Pontos Fortes:
+Desempenho em Geral: A aplicação respondeu bem nos testes, com tempos de resposta aceitáveis e interações rápidas.
+Interface Amigável: Recebemos feedback positivo sobre a interface intuitiva, que facilita a navegação e o uso para nossos usuários.
+      Funcionalidades Essenciais: As principais funcionalidades, como criação de tarefas e filtragem, funcionaram conforme planejado, atendendo às expectativas.
+  AREAS DE MELHORIA 
+Responsividade: Identificamos alguns problemas em dispositivos móveis, especialmente em telas menores. Precisamos ajustar o layout para garantir uma experiência consistente em todos os dispositivos.
+Gerenciamento de Estado: Notamos que, em certas situações, pode haver conflitos no gerenciamento de estado da aplicação. Vamos melhorar para evitar problemas futuros.
 
-> Discorra sobre os resultados do teste. Ressaltando pontos fortes e
-> fracos identificados na solução. Comente como o grupo pretende atacar
-> esses pontos nas próximas iterações. Apresente as falhas detectadas e
-> as melhorias geradas a partir dos resultados obtidos nos testes.
+ ESTRATÉGIAS PARA PRÓXIMOS DESENVOLVIMENTOS
+Para abordar essas áreas de melhoria e continuar melhorando a StudyFlex, planejamos implementar as seguintes estratégias:
+Aprimorar a Responsividade: Vamos revisar o layout e adaptar melhor os elementos para garantir uma experiência de usuário uniforme, independentemente do dispositivo usado.
+Otimizar o Gerenciamento de Estado: Pretendemos adotar técnicas mais robustas de gerenciamento de estado para evitar inconsistências e melhorar a estabilidade da aplicação.
+Durante os testes, priorizamos e corrigimos as falhas que poderiam afetar negativamente a experiência do usuário. Todas as melhorias propostas foram integradas ao nosso ciclo de desenvolvimento, garantindo que o site seja sempre aprimorado.
+
 
 
 # Referências
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Inclua todas as referências (livros, artigos, sites, etc) utilizados
-> no desenvolvimento do trabalho.
-> 
-> **Links Úteis**:
-> - [Formato ABNT](https://www.normastecnicas.com/abnt/trabalhos-academicos/referencias/)
+MORAIS, BT de; EDUARDO, Antunes França; MORAIS, PH de. A Importância dos Ambientes Virtuais de Aprendizagem-AVA e suas funcionalidades nas Plataformas de Ensino à Distância-EaD. In: Anais do V Conedu-Congresso Nacional de Educação. Fortaleza. 2018. p. 01-10.
 =======
