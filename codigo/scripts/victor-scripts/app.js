@@ -7,13 +7,6 @@ const URL_NOTAS = "http://localhost:3000/notas";
 //URL ATUAL
 let currentURL = window.location.href;
 
-//ADD NAV ELEMENT
-const addSubjectModal = document.getElementById("addSubjectModal");
-const openSubjectButton = document.getElementById("addSubjectButton");
-const closeSubjectButton = document.getElementById("closeSubjectButton");
-const navBar = document.getElementById("viewTab");
-const windowNav = document.getElementById("windowNav");
-
 //MAIN CONTAINER
 const mainContainer = document.getElementById("mainContainer");
 
@@ -48,15 +41,6 @@ fetch(URL_MATERIAS)
     // Handle any errors that occurred during the fetch
     console.error("Erro ao realizar a requisição", error);
   });*/
-
-//Add subject dialog
-openSubjectButton.addEventListener("click", () => {
-  addSubjectModal.showModal();
-});
-
-closeSubjectButton.addEventListener("click", () => {
-  addSubjectModal.close();
-});
 
 //Toggling active style in the aside options
 for (let asideOption of asideOptions) {

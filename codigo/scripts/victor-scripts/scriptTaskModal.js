@@ -1,6 +1,7 @@
 //URL API DE DADOS
 const URL_TAREFAS = "http://localhost:3000/tarefas";
 const URL_MATERIAS = "http://localhost:3000/materias"; // adicionei a url de matérias
+const URL_NAVBARS = "http://localhost:3000/janelas";
 
 //NOME DA PÁGINA QUE ESTAMOS
 let pageTitle = document.querySelector(".homescreen-title").textContent;
@@ -31,6 +32,16 @@ let pageLength;
 const searchTaskBar = document.getElementById("searchTaskBar");
 const searchButton = document.getElementById("searchButton");
 
+//MENSAGEM
+const message = document.getElementById("message");
+
+//NAV
+const viewTab = document.getElementById("viewTab");
+viewTab.addEventListener("click", () => {});
+console.log(viewTab);
+
+const okButton = document.getElementById("okButton");
+
 //MATÉRIAS
 let materiasArray;
 
@@ -42,9 +53,9 @@ getSubjects();
 
 //REALIZA UMA PESQUISA NAS TAREFAS REGISTRADAS NO BANCO
 //COM O NÚMERO DE TAREFAS, DEFINIMOS A ESTRUTRA DE PÁGINAS DO NOSSO SITE
-async function fetchTasks() {
+async function fetchTasks(url) {
   try {
-    const response = await fetch(URL_TAREFAS);
+    const response = await fetch(url ? url : URL_TAREFAS);
     if (response.ok) {
       const data = await response.json();
       pageLength = data.length;
@@ -72,9 +83,28 @@ async function buscarMaterias() {
   }
 }
 
+async function buscarJanelas() {
+  try {
+    const response = await fetch(URL_NAVBARS);
+    if (!response.ok) {
+      throw new Error("Erro ao buscar janelas");
+    }
+    const janelas = await response.json();
+    return janelas;
+  } catch (error) {
+    console.error("Erro:", error);
+    return [];
+  }
+}
+
 async function getSubjectList() {
   const materias = await buscarMaterias();
   return materias;
+}
+
+async function getNavList() {
+  const janelas = await buscarJanelas();
+  return janelas;
 }
 
 fetchTasks();
@@ -101,6 +131,7 @@ async function getTask(url) {
 
 //DELETAR A TAREFA QUE FOI PASSADA NA URL
 function deleteTaskURL(url) {
+  console.log(url);
   fetch(url, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
@@ -165,6 +196,7 @@ function returnURL(key, value, sorting) {
 
 //CARREGA O HTML DAS TAREFAS NA TELA DE ACORDO COM O CRITÉRIO DE PAGINAÇÃO
 async function fetchTasksPages(key, value, sorting) {
+  console.log(key, value, sorting);
   try {
     skip = (page - 1) * taskPerPage; //NÚMERO DE TAREFAS QUE DEVEM SER IGNORADAS E A PARTIR DE QUAL TAREFA REALIZAR A BUSCA
 
@@ -185,19 +217,29 @@ async function fetchTasksPages(key, value, sorting) {
 
     //REALIZA A PESQUISA NO BANCO DAS TAREFAS
     const response = await fetch(URL_TAREFAS_PAGE);
+    fetchTasks(URL_TAREFAS_PAGE);
 
     if (response.ok) {
       //ARRAY DE TODAS AS TAREFAS QUE DEVEM SER LISTADAS NA PÁGINA
       const taskData = await response.json();
+      console.log(taskData);
 
-      pageLength = taskData.length;
+      if (key === "materiaId" && taskData.length === 0) {
+        let notFound = `
+        <li id="notFoundWarning">
+            <img src="./assets/imgs/page_not_found_img.png" alt="erro 404">
+        </li>
+        `;
+
+        tasksContainer.classList.add("notfound");
+        tasksContainer.innerHTML = notFound;
+      }
 
       if (page == 1) {
         prevButton.classList.add("unactive");
       } else {
         prevButton.classList.remove("unactive");
       }
-
       let pages = Math.ceil(pageLength / taskPerPage);
       if (page == pages) {
         nextButton.classList.add("unactive");
@@ -208,7 +250,6 @@ async function fetchTasksPages(key, value, sorting) {
       //VERIFICA SE NÃO HÁ NENHUMA TAREFA CRIADA
       if (taskData.length === 0) {
         pageCounter.classList.add("hide");
-        page--;
         return;
       }
 
@@ -333,6 +374,8 @@ prevButton.addEventListener("click", () => {
   } else {
     page--;
     if (searchTaskBar.value) {
+      keyFilter = "nome_like";
+      valueFilter = searchTaskBar.value;
       fetchTasksPages("nome_like", searchTaskBar.value, SORT_URL);
     } else {
       fetchTasksPages(keyFilter, valueFilter, SORT_URL);
@@ -348,7 +391,9 @@ nextButton.addEventListener("click", () => {
   } else {
     page++;
     if (searchTaskBar.value) {
-      fetchTasksPages("nome_like", searchTaskBar.value, SORT_URL);
+      keyFilter = "nome_like";
+      valueFilter = searchTaskBar.value;
+      fetchTasksPages(keyFilter, valueFilter, SORT_URL);
     } else {
       fetchTasksPages(keyFilter, valueFilter, SORT_URL);
     }
@@ -525,7 +570,7 @@ filterButton.addEventListener("click", () => {
       keyFilter = key;
       valueFilter = value;
       page = 1;
-      fetchTasksPages(key, value);
+      fetchTasksPages(keyFilter, valueFilter);
     });
   });
 
@@ -579,6 +624,11 @@ function deleteTask(taskButton) {
   cancelDeleteButton.addEventListener("click", () => {
     message.close();
   });
+}
+
+function deleteNav(navButton) {
+  let taskId = navButton.id;
+  deleteTaskURL(`http://localhost:3000/janelas/${taskId}`);
 }
 
 function getStatusHTML(status, mode) {
@@ -711,7 +761,7 @@ function changeStatus(status) {
 function changeSubject(subItem) {
   const subTitle = document.getElementById("taskDetailsSubject");
   subTitle.innerHTML = subItem.innerHTML;
-  subTitle.dataset.SubID = subItem.dataset.subject;
+  subTitle.dataset.subid = subItem.dataset.subject;
 }
 
 function changePriority(prioridade) {
@@ -733,6 +783,9 @@ function getTaskDetails(taskid) {
   const taskDetailsSubject =
     document.getElementById("taskDetailsSubject").textContent;
 
+  const taskDetailsSubjectId =
+    document.getElementById("taskDetailsSubject").dataset.subid;
+
   let taskdata = {};
   if (taskid) {
     taskdata = {
@@ -742,7 +795,7 @@ function getTaskDetails(taskid) {
       prioridade: taskDetailsPriority,
       materia: taskDetailsSubject,
       descricao: taskDetailsDecription.trim().replace(/\s+/g, " "),
-      id: taskid,
+      materiaId: +taskDetailsSubjectId,
     };
   } else {
     taskdata = {
@@ -752,6 +805,7 @@ function getTaskDetails(taskid) {
       prioridade: taskDetailsPriority,
       materia: taskDetailsSubject,
       descricao: taskDetailsDecription.trim().replace(/\s+/g, " "),
+      materiaId: +taskDetailsSubjectId,
     };
   }
   return taskdata;
@@ -821,9 +875,9 @@ async function openTask(taskElement, method) {
                       <span>Matéria</span>
                     </div>
 
-                    <button class="subject-info-button" id="changeSubjectButton" >
+                    <button class="subject-info-button" id="changeSubjectButton">
                       <div class="item-info-container">
-                        <span id="taskDetailsSubject" data-SubID="">${
+                        <span id="taskDetailsSubject">${
                           !task.materia ? "selecionar matéria" : task.materia
                         }</span>
                       </div>
@@ -887,10 +941,6 @@ async function openTask(taskElement, method) {
 
       taskDetailsModal.showModal();
 
-      const taskDetailsDecription = document.getElementById(
-        "taskDetailsDecription"
-      );
-
       const changeSubButton = document.getElementById("changeSubjectButton");
       const subjectsList = document.getElementById("subjectOptionsList");
 
@@ -905,12 +955,6 @@ async function openTask(taskElement, method) {
         });
       });
 
-      const subListHtml = document.getElementById("subjectOptionsList");
-      taskDetailsDecription.addEventListener("click", () => {
-        taskDetailsDecription.focus();
-        taskDetailsDecription.setSelectionRange(0, 0);
-      });
-
       const closeTaskDetailButton = document.getElementById("closeTaskDetail");
 
       document.addEventListener("keydown", function (event) {
@@ -920,18 +964,11 @@ async function openTask(taskElement, method) {
       });
 
       if (method === "put") {
-        const taskDetailsDecription = document.getElementById(
-          "taskDetailsDecription"
-        );
-        taskDetailsDecription.addEventListener("click", () => {
-          taskDetailsDecription.focus();
-          taskDetailsDecription.setSelectionRange(0, 0);
-        });
-
         let taskdata;
         closeTaskDetailButton.addEventListener("click", (event) => {
           event.preventDefault();
           taskdata = getTaskDetails(taskElementID);
+
           fetch(URL_TAREFAS + `/${taskElementID}`, {
             method: "PUT",
             headers: {
@@ -955,8 +992,6 @@ async function openTask(taskElement, method) {
       } else {
         const postTaskButton = document.getElementById("postTaskButton");
         const warningModal = document.getElementById("warningModal");
-        const message = document.getElementById("message");
-        const okButton = document.getElementById("okButton");
 
         document.addEventListener("keydown", function (event) {
           if (event.key === "Escape" || event.key === "Esc") {
@@ -1016,7 +1051,10 @@ async function openTask(taskElement, method) {
 
 searchButton.addEventListener("click", function (event) {
   const query = searchTaskBar.value;
-  fetchTasksPages("nome_like", query);
+  keyFilter = "nome_like";
+  valueFilter = query;
+
+  fetchTasksPages(keyFilter, valueFilter);
 });
 
 let sublist;
@@ -1036,3 +1074,171 @@ async function loadSubjects() {
 
   return list;
 }
+
+//ADD NAV ELEMENT
+const addSubjectModal = document.getElementById("addSubjectModal");
+const openSubjectButton = document.getElementById("addSubjectButton");
+const navBar = document.getElementById("viewTab");
+const modalNoSubject = `
+ <button class="btn close-btn" id="closeSubjectNavButton">
+            <i data-lucide="x"></i>
+          </button>
+          <h2>Selecionar matéria</h2>
+   <div class="add-subject-content empty">
+      <img src="./assets/imgs/not_found_img.jpg" alt="Conteúdo vazio" class="template-img" draggable="false">
+    </div>
+
+`;
+navBar.addEventListener("click", (e) => {
+  alert("indios");
+  fetchTasksPages();
+  e.stopPropagation();
+});
+
+async function newSubBar(materia) {
+  if (janelasAtivas.length >= 4) {
+    let warningMessage = `
+         
+          <div class="warningImgContainer">
+            <img src="./assets/imgs/warning_img.png" alt="Aviso"/>
+          </div>
+          <div class="textMessage">
+                <p>Número máximo de janelas ativas atingido!</p>
+              </div>`;
+    message.innerHTML = warningMessage;
+    warningModal.showModal();
+
+    okButton.addEventListener("click", () => {
+      warningModal.close();
+    });
+    return;
+  }
+  let nome = materia.querySelector("span");
+  let navBarSubject = `
+      <li
+          class="window-view" 
+            data-subid=${materia.dataset.subid}
+            id="viewTab">
+              <h2 class="window-title">${nome.textContent}</h2>
+              <button class="closeNav" id=${materia.dataset.subid}><i data-lucide="x" ></i></button>
+        </li>
+  `;
+
+  let navOBJ = {
+    nome: nome.textContent,
+    conteudo: navBarSubject,
+    materiaId: materia.dataset.subid,
+    id: +materia.dataset.subid,
+  };
+
+  try {
+    fetch(URL_NAVBARS, {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(navOBJ),
+    });
+  } catch (error) {
+    console.log("Error:", error);
+    alert("Erro ao criar tarefa");
+  }
+  lucide.createIcons();
+}
+
+let janelasAtivas = [];
+
+async function loadSubBar() {
+  let janelas = await getNavList();
+  let janelasList = ``;
+  janelas.forEach((janela) => {
+    janelasList += janela.conteudo;
+    janelasAtivas.push(+janela.materiaId);
+  });
+
+  windowNav.innerHTML += janelasList;
+  lucide.createIcons();
+
+  let janelasAbertas = document.querySelectorAll(".window-view");
+  let fecharJanelas = document.querySelectorAll(".closeNav");
+
+  for (let button of fecharJanelas) {
+    button.addEventListener("click", (e) => {
+      deleteNav(button);
+      e.stopPropagation();
+    });
+  }
+
+  for (let janela of janelasAbertas) {
+    janela.addEventListener("click", (e) => {
+      let subjectId = janela.dataset.subid;
+      keyFilter = "materiaId";
+      valueFilter = subjectId;
+      fetchTasksPages(keyFilter, valueFilter);
+      e.stopPropagation();
+    });
+  }
+}
+
+loadSubBar();
+
+//Add subject dialog
+addSubjectButton.addEventListener("click", async () => {
+  let materias = await getSubjectList();
+
+  if (materias.length === 0) {
+    addSubjectModal.innerHTML = modalNoSubject;
+  } else {
+    let subList = `<ul id="navSubList">`;
+
+    materias.forEach((materia) => {
+      let subItem = `
+       <li class="navSubItem ${
+         janelasAtivas.includes(materia.id) ? "inactive" : ""
+       }" data-subid=${materia.id}>
+       <button class="navSubButton" data-subid=${materia.id}>
+       <span>${materia.nome}</span>
+       </button>
+       </li>
+      `;
+      subList += subItem;
+    });
+
+    subList += `</ul>`;
+    let modalWithSubject = `
+     <button class="btn close-btn" id="closeSubjectNavButton">
+            <i data-lucide="x"></i>
+          </button>
+      <h2>Selecionar matéria</h2>
+    `;
+    modalWithSubject += subList;
+    addSubjectModal.innerHTML = modalWithSubject;
+  }
+
+  lucide.createIcons();
+  addSubjectModal.showModal();
+  const closeSubjectButton = document.getElementById("closeSubjectNavButton");
+  let navButtonList = document.querySelectorAll(".navSubItem");
+
+  navButtonList.forEach((materia) => {
+    materia.addEventListener("click", (event) => {
+      event.stopPropagation();
+
+      if (!materia.classList.contains("inactive")) {
+        newSubBar(materia);
+        closeSubjectButton.click();
+      }
+    });
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" || event.key === "Esc") {
+      closeSubjectButton.click();
+    }
+    closeSubjectButton.addEventListener("click", () => {
+      addSubjectModal.close();
+    });
+  });
+
+  closeSubjectButton.addEventListener("click", () => {
+    addSubjectModal.close();
+  });
+});
