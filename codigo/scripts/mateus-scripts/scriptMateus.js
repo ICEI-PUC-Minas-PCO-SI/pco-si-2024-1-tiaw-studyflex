@@ -11,6 +11,7 @@ $(document).ready(function () {
         tasks = data.map((item) => ({
           date: item.dataFinal,
           title: item.nome,
+          subject: item.materia, // Adiciona a matéria à tarefa
         }));
       })
       .catch((error) => {
@@ -63,7 +64,7 @@ $(document).ready(function () {
     if (dateTasks.length > 0) {
       dateTasks.forEach((task) => {
         const div = document.createElement("div");
-        div.innerText = task.title;
+        div.innerHTML = `${task.title} <span class="task-subject">${task.subject}</span>`;
         eventDetails.appendChild(div);
       });
     } else {
@@ -85,7 +86,7 @@ $(document).ready(function () {
       eventLimit: true,
       contentHeight: "auto", // Ajustar a altura do conteúdo
       events: tasks.map((task) => ({
-        title: task.title,
+        title: `${task.title} - ${task.subject}`, // Inclui a matéria no título do evento
         start: task.date,
       })),
       dayClick: function (date, jsEvent, view) {

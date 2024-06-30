@@ -534,6 +534,17 @@ auto .add-button:hover {
   margin-bottom: 10px;
   font-size: 16px;
   color: white; /* Ajustar a cor do texto para garantir legibilidade */
+  display: flex;
+  justify-content: space-between; /* Adicionar espaço entre a tarefa e a tag de matéria */
+}
+
+.task-subject {
+  background-color: #414b3b; /* Cor de fundo para a tag de matéria */
+  border-radius: 500px;
+  padding: 2px 8px;
+  margin-left: 10px;
+  font-size: 12px;
+  color: white; /* Cor do texto para garantir legibilidade */
 }
 
 /* FullCalendar Customizations */
@@ -547,6 +558,7 @@ auto .add-button:hover {
 }
 
 /* FIM DO CALENDARIO */
+
 
 /*CRIANDO TAREFA PELA HOMESCREEN*/
 
