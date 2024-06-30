@@ -1,9 +1,9 @@
 // URL da API
-const URL_MATERIAS = "http://localhost:3000/materias";
+const URL_MATERIA = "http://localhost:3000/materias";
 
 const form = document.getElementById("newSubjectForm");
 const subjectsList = document.getElementById("subjectsList");
-const searchInput = document.getElementById("searchInput");
+const searchInput = document.getElementById("searchTaskBar");
 const createSubjectBtn = document.getElementById("createSubjectBtn");
 const closeSubjectBtn = document.getElementById("closeSubjectBtn");
 const createSubjectModal = document.getElementById("createSubjectModal");
@@ -32,7 +32,7 @@ form.addEventListener("submit", async (event) => {
   });
 
   try {
-    const response = await fetch(URL_MATERIAS, {
+    const response = await fetch(URL_MATERIA, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(jsonObject),
@@ -58,7 +58,7 @@ form.addEventListener("submit", async (event) => {
 async function fetchSubjects(filter = "") {
   try {
     // Busca as matérias
-    const responseMaterias = await fetch(URL_MATERIAS, {
+    const responseMaterias = await fetch(URL_MATERIA, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -104,9 +104,9 @@ async function fetchSubjects(filter = "") {
       let emProgresso = 0;
       let concluidas = 0;
       tarefasDaMateria.forEach((tarefa) => {
-        if (tarefa.status === "1" || tarefa.status === "2") {
+        if (tarefa.status === "3" || tarefa.status === "2") {
           emProgresso++;
-        } else if (tarefa.status === "3") {
+        } else if (tarefa.status === "1") {
           concluidas++;
         }
       });
@@ -143,7 +143,7 @@ async function fetchSubjects(filter = "") {
 }
 
 async function deleteSubject(id, subjectItem) {
-  const URL_DELETE = `${URL_MATERIAS}/${id}`;
+  const URL_DELETE = `${URL_MATERIA}/${id}`;
 
   try {
     const response = await fetch(URL_DELETE, {

@@ -1,51 +1,54 @@
 const URL_NOTAS = "http://localhost:3000/notas";
-const colorClasses = ['note-red', 'note-yellow', 'note-blue'];
+const colorClasses = ["note-red", "note-yellow", "note-blue"];
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('btn').addEventListener('click', addNote);
-    fetchNotes();
+document.addEventListener("DOMContentLoaded", async () => {
+  document.getElementById("btn").addEventListener("click", addNote);
+  await fetchNotes();
 });
 
-function addNote() {
-    const date = new Date().toLocaleDateString('pt-BR', {
-        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-    });
+async function addNote() {
+  const date = new Date().toLocaleDateString("pt-BR", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
-    const note = {
-        title: 'Título da Nota',
-        content: 'Conteúdo da nota',
-        date: date,
-        colorClass: colorClasses[getRandomInt(colorClasses.length)] // Pega uma cor aleatória da lista
-    };
+  const note = {
+    title: "Título da Nota",
+    content: "Conteúdo da nota",
+    date: date,
+    colorClass: colorClasses[getRandomInt(colorClasses.length)], // Pega uma cor aleatória da lista
+  };
 
-    fetch(URL_NOTAS, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(note)
+  fetch(URL_NOTAS, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(note),
+  })
+    .then((response) => response.json())
+    .then((newNote) => {
+      displayNote(newNote);
+      updateButtonPosition();
     })
-    .then(response => response.json())
-    .then(newNote => {
-        displayNote(newNote); 
-        updateButtonPosition(); 
-    })
-    .catch(error => {
-        console.error('Erro ao adicionar a nota:', error);
+    .catch((error) => {
+      console.error("Erro ao adicionar a nota:", error);
     });
 }
 
 function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
+  return Math.floor(Math.random() * max);
 }
 
 function displayNote(note) {
-    const notesContainer = document.getElementById('notesContainer');
-    
-    const noteDiv = document.createElement('div');
-    noteDiv.className = `note ${note.colorClass}`;
-    noteDiv.dataset.id = note.id;
-    noteDiv.innerHTML = `
+  const notesContainer = document.getElementById("notesContainer");
+
+  const noteDiv = document.createElement("div");
+  noteDiv.className = `note ${note.colorClass}`;
+  noteDiv.dataset.id = note.id;
+  noteDiv.innerHTML = `
         <h2 class="tit" contenteditable="false">${note.title}</h2>
         <p class="subtit" contenteditable="false">${note.content}</p>
         <span class="date">${note.date}</span>
@@ -65,113 +68,121 @@ function displayNote(note) {
             </svg>
         </span>
     `;
-    
-    notesContainer.appendChild(noteDiv);
 
-    noteDiv.querySelector('.edit').addEventListener('click', () => editNote(noteDiv, note.id));
-    noteDiv.querySelector('.save').addEventListener('click', () => saveNote(noteDiv, note.id));
-    noteDiv.querySelector('.delete').addEventListener('click', () => deleteNote(note.id));
+  notesContainer.appendChild(noteDiv);
+
+  noteDiv
+    .querySelector(".edit")
+    .addEventListener("click", async () => editNote(noteDiv, note.id));
+  noteDiv
+    .querySelector(".save")
+    .addEventListener("click", async () => saveNote(noteDiv, note.id));
+  noteDiv
+    .querySelector(".delete")
+    .addEventListener("click", async () => deleteNote(note.id));
 }
 
-function fetchNotes() {
-    fetch(URL_NOTAS)
-    .then(response => response.json())
-    .then(notes => {
-        notes.forEach(note => displayNote(note));
-        updateButtonPosition();
+async function fetchNotes() {
+  fetch(URL_NOTAS)
+    .then((response) => response.json())
+    .then((notes) => {
+      notes.forEach((note) => displayNote(note));
+      updateButtonPosition();
     })
-    .catch(error => {
-        console.error('Erro ao buscar notas:', error);
+    .catch((error) => {
+      console.error("Erro ao buscar notas:", error);
     });
 }
 
 function updateButtonPosition() {
-    const notesContainer = document.getElementById('notesContainer');
-    const notes = notesContainer.querySelectorAll('.note');
-    const addButton = document.getElementById('btn');
+  const notesContainer = document.getElementById("notesContainer");
+  const notes = notesContainer.querySelectorAll(".note");
+  const addButton = document.getElementById("btn");
 
-    if (notes.length === 0) {
-        addButton.style.top = '0';
-        addButton.style.left = '0';
+  if (notes.length === 0) {
+    addButton.style.top = "0";
+    addButton.style.left = "0";
+  } else {
+    const lastNote = notes[notes.length - 1];
+    const rect = lastNote.getBoundingClientRect();
+    const containerRect = notesContainer.getBoundingClientRect();
+
+    if (rect.right + lastNote.offsetWidth > containerRect.right) {
+      addButton.style.top = rect.bottom - containerRect.top + 20 + "px";
+      addButton.style.left = "0";
     } else {
-        const lastNote = notes[notes.length - 1];
-        const rect = lastNote.getBoundingClientRect();
-        const containerRect = notesContainer.getBoundingClientRect();
-
-        if (rect.right + lastNote.offsetWidth > containerRect.right) {
-            addButton.style.top = (rect.bottom - containerRect.top + 20) + 'px';
-            addButton.style.left = '0';
-        } else {
-            addButton.style.top = rect.top - containerRect.top + 'px';
-            addButton.style.left = (rect.right - containerRect.left + 20) + 'px';
-        }
+      addButton.style.top = rect.top - containerRect.top + "px";
+      addButton.style.left = rect.right - containerRect.left + 20 + "px";
     }
+  }
 }
 
 function editNote(noteDiv, noteId) {
-    const titleElement = noteDiv.querySelector('h2');
-    const contentElement = noteDiv.querySelector('p');
-    const editButton = noteDiv.querySelector('.edit');
-    const saveButton = noteDiv.querySelector('.save');
+  const titleElement = noteDiv.querySelector("h2");
+  const contentElement = noteDiv.querySelector("p");
+  const editButton = noteDiv.querySelector(".edit");
+  const saveButton = noteDiv.querySelector(".save");
 
-    const colorClass = noteDiv.className.split(' ').find(cls => cls.startsWith('note-'));
-    noteDiv.dataset.colorClass = colorClass;
+  const colorClass = noteDiv.className
+    .split(" ")
+    .find((cls) => cls.startsWith("note-"));
+  noteDiv.dataset.colorClass = colorClass;
 
-    titleElement.contentEditable = 'true';
-    titleElement.focus();
-    document.execCommand('selectAll', false, null);
+  titleElement.contentEditable = "true";
+  titleElement.focus();
+  document.execCommand("selectAll", false, null);
 
-    contentElement.contentEditable = 'true';
+  contentElement.contentEditable = "true";
 
-    editButton.style.display = 'none';
-    saveButton.style.display = 'inline-block';
+  editButton.style.display = "none";
+  saveButton.style.display = "inline-block";
 }
 
-function saveNote(noteDiv, noteId) {
-    const titleElement = noteDiv.querySelector('h2');
-    const contentElement = noteDiv.querySelector('p');
-    const editButton = noteDiv.querySelector('.edit');
-    const saveButton = noteDiv.querySelector('.save');
+async function saveNote(noteDiv, noteId) {
+  const titleElement = noteDiv.querySelector("h2");
+  const contentElement = noteDiv.querySelector("p");
+  const editButton = noteDiv.querySelector(".edit");
+  const saveButton = noteDiv.querySelector(".save");
 
-    const updatedNote = {
-        title: titleElement.textContent,
-        content: contentElement.textContent,
-        colorClass: noteDiv.dataset.colorClass, // Recupera a classe de cor preservada
-        date: noteDiv.querySelector('.date').textContent // Recupera a data da nota
-    };
+  const updatedNote = {
+    title: titleElement.textContent,
+    content: contentElement.textContent,
+    colorClass: noteDiv.dataset.colorClass, // Recupera a classe de cor preservada
+    date: noteDiv.querySelector(".date").textContent, // Recupera a data da nota
+  };
 
-    fetch(`${URL_NOTAS}/${noteId}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(updatedNote)
+  fetch(`${URL_NOTAS}/${noteId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedNote),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      titleElement.contentEditable = "false";
+      contentElement.contentEditable = "false";
+
+      editButton.style.display = "inline-block";
+      saveButton.style.display = "none";
     })
-    .then(response => response.json())
-    .then(data => {
-        titleElement.contentEditable = 'false';
-        contentElement.contentEditable = 'false';
-
-        editButton.style.display = 'inline-block';
-        saveButton.style.display = 'none';
-    })
-    .catch(error => {
-        console.error('Erro ao salvar a nota:', error);
+    .catch((error) => {
+      console.error("Erro ao salvar a nota:", error);
     });
 }
 
 function deleteNote(noteId) {
-    fetch(`${URL_NOTAS}/${noteId}`, {
-        method: 'DELETE'
-    })
+  fetch(`${URL_NOTAS}/${noteId}`, {
+    method: "DELETE",
+  })
     .then(() => {
-        const noteDiv = document.querySelector(`.note[data-id="${noteId}"]`);
-        if (noteDiv) {
-            noteDiv.remove();
-        }
-        updateButtonPosition();
+      const noteDiv = document.querySelector(`.note[data-id="${noteId}"]`);
+      if (noteDiv) {
+        noteDiv.remove();
+      }
+      updateButtonPosition();
     })
-    .catch(error => {
-        console.error('Erro ao deletar a nota:', error);
+    .catch((error) => {
+      console.error("Erro ao deletar a nota:", error);
     });
 }

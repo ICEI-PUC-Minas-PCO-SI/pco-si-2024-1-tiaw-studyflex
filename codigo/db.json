@@ -1,93 +1,124 @@
 {
   "tarefas": [
     {
-      "nome": "TESTE",
-      "status": "1",
+      "nome": "Engravidar o Renatola",
+      "status": "3",
       "dataFinal": "2024-06-30",
-      "prioridade": "2",
-      "materia": "FILOSOFIA",
+      "prioridade": "1",
+      "materia": "RENATOLA",
       "descricao": "",
       "materiaId": null,
       "id": 1
     },
     {
-      "nome": "aaa",
+      "nome": "A",
       "status": "3",
       "dataFinal": "2024-06-30",
       "prioridade": "1",
-      "materia": "Renatola",
+      "materia": "ATP",
       "descricao": "",
-      "materiaId": null,
-      "id": 6
-    },
-    {
-      "nome": "S",
-      "status": "3",
-      "dataFinal": "2024-06-30",
-      "prioridade": "1",
-      "materia": "ATP 2",
-      "descricao": "",
-      "materiaId": null,
-      "id": 7
+      "materiaId": 2,
+      "id": 2
     }
   ],
   "materias": [
     {
-      "nome": "TIAW",
+      "nome": "tiaw",
       "id": 1
     },
     {
-      "nome": "IC",
+      "nome": "ATP",
       "id": 2
     },
     {
-      "nome": "DIW",
+      "nome": "RENATOLA",
       "id": 3
     },
     {
-      "nome": "ATP",
+      "nome": "ATP 3",
       "id": 4
     },
     {
-      "nome": "FILOSOFIA",
+      "nome": "ADADA",
       "id": 5
     },
     {
-      "nome": "Renatola",
+      "nome": "ADADA",
       "id": 6
     },
     {
-      "nome": "ATP 2",
+      "nome": "FSFA",
       "id": 7
+    },
+    {
+      "nome": "SAFAFSA",
+      "id": 8
+    },
+    {
+      "nome": "SAFSAFSA",
+      "id": 9
+    },
+    {
+      "nome": "SASS",
+      "id": 10
     }
   ],
   "notas": [
     {
       "title": "Título da Nota",
       "content": "Conteúdo da nota",
-      "date": "sábado, 29 de junho de 2024",
+      "date": "domingo, 30 de junho de 2024",
+      "colorClass": "note-yellow",
+      "id": 4
+    },
+    {
+      "title": "Título da Nota",
+      "content": "Conteúdo da nota",
+      "date": "domingo, 30 de junho de 2024",
+      "colorClass": "note-yellow",
+      "id": 5
+    },
+    {
+      "title": "Título da Nota",
+      "content": "Conteúdo da nota",
+      "date": "domingo, 30 de junho de 2024",
+      "colorClass": "note-blue",
+      "id": 6
+    },
+    {
+      "title": "Título da Nota",
+      "content": "Conteúdo da nota",
+      "date": "domingo, 30 de junho de 2024",
       "colorClass": "note-red",
-      "id": 1
+      "id": 7
+    },
+    {
+      "title": "Título da Nota",
+      "content": "Conteúdo da nota",
+      "date": "domingo, 30 de junho de 2024",
+      "colorClass": "note-blue",
+      "id": 8
+    },
+    {
+      "title": "Título da Nota",
+      "content": "Conteúdo da nota",
+      "date": "domingo, 30 de junho de 2024",
+      "colorClass": "note-blue",
+      "id": 9
     }
   ],
   "janelas": [
     {
-      "nome": "ATP",
-      "conteudo": "\n      <li\n          class=\"window-view\" \n            data-subid=4\n            id=\"viewTab\">\n              <h2 class=\"window-title\">ATP</h2>\n              <button class=\"closeNav\" id=4><i data-lucide=\"x\" ></i></button>\n        </li>\n  ",
-      "materiaId": "4",
-      "id": 4
-    },
-    {
-      "nome": "TIAW",
-      "conteudo": "\n      <li\n          class=\"window-view\" \n            data-subid=1\n            id=\"viewTab\">\n              <h2 class=\"window-title\">TIAW</h2>\n              <button class=\"closeNav\" id=1><i data-lucide=\"x\" ></i></button>\n        </li>\n  ",
+      "nome": "tiaw",
+      "conteudo": "\n      <li\n          class=\"window-view\" \n            data-subid=1\n      >\n              <h2 class=\"window-title\">tiaw</h2>\n              <button class=\"closeNav\" id=1><i data-lucide=\"x\" ></i></button>\n        </li>\n  ",
       "materiaId": "1",
       "id": 1
     },
     {
-      "nome": "FILOSOFIA",
-      "conteudo": "\n      <li\n          class=\"window-view\" \n            data-subid=5\n            id=\"viewTab\">\n              <h2 class=\"window-title\">FILOSOFIA</h2>\n              <button class=\"closeNav\" id=5><i data-lucide=\"x\" ></i></button>\n        </li>\n  ",
-      "materiaId": "5",
-      "id": 5
+      "nome": "RENATOLA",
+      "conteudo": "\n      <li\n          class=\"window-view\" \n            data-subid=3\n      >\n              <h2 class=\"window-title\">RENATOLA</h2>\n              <button class=\"closeNav\" id=3><i data-lucide=\"x\" ></i></button>\n        </li>\n  ",
+      "materiaId": "3",
+      "id": 3
     }
   ]
 }

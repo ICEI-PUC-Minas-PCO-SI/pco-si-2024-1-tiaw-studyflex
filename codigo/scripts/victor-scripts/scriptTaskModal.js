@@ -36,9 +36,9 @@ const searchButton = document.getElementById("searchButton");
 const message = document.getElementById("message");
 
 //NAV
-const viewTab = document.getElementById("viewTab");
-viewTab.addEventListener("click", () => {});
-console.log(viewTab);
+const mainNavBar = document.querySelectorAll(".mainNavTitle");
+
+console.log(mainNavBar);
 
 const okButton = document.getElementById("okButton");
 
@@ -58,6 +58,7 @@ async function fetchTasks(url) {
     const response = await fetch(url ? url : URL_TAREFAS);
     if (response.ok) {
       const data = await response.json();
+      console.log(data);
       pageLength = data.length;
       if (data.length === 0) {
         await prevButton.classList.add("hide");
@@ -87,6 +88,9 @@ async function buscarJanelas() {
   try {
     const response = await fetch(URL_NAVBARS);
     if (!response.ok) {
+      if (response.status == 404) {
+        return [];
+      }
       throw new Error("Erro ao buscar janelas");
     }
     const janelas = await response.json();
@@ -130,19 +134,19 @@ async function getTask(url) {
 }
 
 //DELETAR A TAREFA QUE FOI PASSADA NA URL
-function deleteTaskURL(url) {
+async function deleteTaskURL(url) {
   console.log(url);
   fetch(url, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
   })
     .then((response) => {
-      if (!response.ok) {
+      console.log(response);
+      if (!response.ok && response.status != 500) {
         throw new Error("Houve um erro ao excluir a tarefa!");
       }
-      return response.json();
+      return response;
     })
-    .then(() => {})
     .catch((error) => {
       console.error("Houve um problema ao exluir a tarefa:", error);
       throw error;
@@ -196,7 +200,6 @@ function returnURL(key, value, sorting) {
 
 //CARREGA O HTML DAS TAREFAS NA TELA DE ACORDO COM O CRITÉRIO DE PAGINAÇÃO
 async function fetchTasksPages(key, value, sorting) {
-  console.log(key, value, sorting);
   try {
     skip = (page - 1) * taskPerPage; //NÚMERO DE TAREFAS QUE DEVEM SER IGNORADAS E A PARTIR DE QUAL TAREFA REALIZAR A BUSCA
 
@@ -215,26 +218,37 @@ async function fetchTasksPages(key, value, sorting) {
       }
     }
 
+    if (key == "materiaId" && value == 0) {
+      URL_TAREFAS_PAGE = returnURL();
+    }
+
     //REALIZA A PESQUISA NO BANCO DAS TAREFAS
-    const response = await fetch(URL_TAREFAS_PAGE);
-    fetchTasks(URL_TAREFAS_PAGE);
+    let response = await fetch(URL_TAREFAS_PAGE); //ARRAY DE TODAS AS TAREFAS QUE DEVEM SER LISTADAS NA PÁGINA
+    let taskData = await response.json();
+
+    if (key && value && key != "materiaId" && taskData.length === 0) {
+      URL_TAREFAS_PAGE = returnURL();
+      response = await fetch(URL_TAREFAS_PAGE);
+      taskData = await response.json();
+    }
+
+    if (key == "materiaId" && taskData.length == 0) {
+      let notFoundHtml = `
+         <li id="notFoundWarning">
+        <img src="./assets/imgs/page_not_found_img.png" alt="not found">
+      </li>
+      `;
+      taskList.innerHTML = notFoundHtml;
+      prevButton.classList.add("hide");
+      nextButton.classList.add("hide");
+      pageCounter.classList.add("hide");
+      tasksContainer.classList.add("notfound");
+      return;
+    }
 
     if (response.ok) {
-      //ARRAY DE TODAS AS TAREFAS QUE DEVEM SER LISTADAS NA PÁGINA
-      const taskData = await response.json();
-      console.log(taskData);
-
-      if (key === "materiaId" && taskData.length === 0) {
-        let notFound = `
-        <li id="notFoundWarning">
-            <img src="./assets/imgs/page_not_found_img.png" alt="erro 404">
-        </li>
-        `;
-
-        tasksContainer.classList.add("notfound");
-        tasksContainer.innerHTML = notFound;
-      }
-
+      prevButton.classList.remove("hide");
+      nextButton.classList.remove("hide");
       if (page == 1) {
         prevButton.classList.add("unactive");
       } else {
@@ -1049,11 +1063,25 @@ async function openTask(taskElement, method) {
     });
 }
 
-searchButton.addEventListener("click", function (event) {
+searchTaskBar.addEventListener("keydown", function (event) {
   const query = searchTaskBar.value;
   keyFilter = "nome_like";
   valueFilter = query;
+  if (query == "") {
+    keyFilter = null;
+  }
+  fetchTasksPages(keyFilter, valueFilter);
+});
 
+searchTaskBar.addEventListener("keydown", (event) => {
+  console.log(event.key);
+  if (event.key === "Enter") {
+    searchButton.click();
+  }
+});
+
+searchButton.addEventListener("click", () => {
+  searchTaskBar.value = "";
   fetchTasksPages(keyFilter, valueFilter);
 });
 
@@ -1078,7 +1106,9 @@ async function loadSubjects() {
 //ADD NAV ELEMENT
 const addSubjectModal = document.getElementById("addSubjectModal");
 const openSubjectButton = document.getElementById("addSubjectButton");
-const navBar = document.getElementById("viewTab");
+const windowNav = document.getElementById("windowNav");
+const homescreenTitle = document.querySelector(".homescreen-title");
+
 const modalNoSubject = `
  <button class="btn close-btn" id="closeSubjectNavButton">
             <i data-lucide="x"></i>
@@ -1089,11 +1119,6 @@ const modalNoSubject = `
     </div>
 
 `;
-navBar.addEventListener("click", (e) => {
-  alert("indios");
-  fetchTasksPages();
-  e.stopPropagation();
-});
 
 async function newSubBar(materia) {
   if (janelasAtivas.length >= 4) {
@@ -1118,7 +1143,7 @@ async function newSubBar(materia) {
       <li
           class="window-view" 
             data-subid=${materia.dataset.subid}
-            id="viewTab">
+      >
               <h2 class="window-title">${nome.textContent}</h2>
               <button class="closeNav" id=${materia.dataset.subid}><i data-lucide="x" ></i></button>
         </li>
@@ -1169,11 +1194,28 @@ async function loadSubBar() {
 
   for (let janela of janelasAbertas) {
     janela.addEventListener("click", (e) => {
+      let janelasAtivas = document.querySelectorAll(".window-view");
+      let janelasAbertasTitle = document.querySelectorAll(".window-title");
+      let fecharJanelas = document.querySelectorAll(".closeNav");
+
+      janelasAtivas.forEach((janelahtml) => {
+        janelahtml.classList.remove("active");
+        e.target.classList.add("active");
+      });
       let subjectId = janela.dataset.subid;
-      keyFilter = "materiaId";
-      valueFilter = subjectId;
-      fetchTasksPages(keyFilter, valueFilter);
-      e.stopPropagation();
+
+      if (subjectId === 0) {
+        console.log(subjectId);
+        fetchTasksPages();
+      } else {
+        keyFilter = "materiaId";
+        valueFilter = subjectId;
+        fetchTasksPages(keyFilter, valueFilter);
+      }
+
+      let title = janela.textContent.trim();
+      homescreenTitle.textContent =
+        title === "Tela Inicial" ? "Dashboard" : title;
     });
   }
 }

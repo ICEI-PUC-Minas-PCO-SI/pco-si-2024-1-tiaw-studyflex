@@ -46,59 +46,23 @@
     <nav id="navBar">
       <!--Navbar para adicionar matéria que deseja acompanhar as tarefas-->
       <ul class="window-nav" id="windowNav">
-        <li
-          class="window-view active"
-          content-id="homescreenView"
-          id="viewTab"
-        >
-          <a href="#">
-            <h2 class="window-title">Tela Inicial</h2>
-          </a>
-        </li>
+     <li
+            class="window-view active"
+            content-id="homescreenView"
+            id="mainNavBar" data-subid="0"
+          >
+          <h2 class="window-title mainNavTitle">Tela Inicial</h2>
+          </li>
       </ul>
 
-      <!--Botão para abrir modal de adicionar matéria na navbar-->
+
+        
       <button class="btn add-button" id="addSubjectButton">
-        <img
-          src="./assets/imgs/add_icon.png"
-          alt="Notificações"
-          class="btn-img"
-          draggable="false"
-        />
+        <i data-lucide="circle-plus"></i>
       </button>
 
       <!--MODAL PARA SELECIONAR MATÉRIA PARA INCLUIR NA NAVBAR-->
       <dialog class="add-subject-container" id="addSubjectModal">
-        <button class="btn close-btn" id="closeSubjectButton">
-          <img
-            src="./assets/imgs/close_icon.png"
-            alt="Botão de fechar"
-            draggable="false"
-            class="close-icon"
-          />
-        </button>
-
-        <h2>Selecionar matéria</h2>
-        <form action="" method="dialog" class="search-bar-container">
-          <input
-            type="search"
-            name=""
-            placeholder="Buscar.."
-            aria-label="Search"
-            class="search-bar"
-          />
-
-          <button type="submit" id="searchButton" class="submit-btn"></button>
-        </form>
-
-        <div class="add-subject-content empty">
-          <img
-            src="./assets/imgs/not_found_img.jpg"
-            alt="Conteúdo vazio"
-            class="template-img"
-            draggable="false"
-          />
-        </div>
       </dialog>
       <!--MODAL PARA SELECIONAR MATÉRIA PARA INCLUIT NA NAVBAR-->
     </nav>
@@ -156,7 +120,7 @@
       <section class="homescreen" id="homescreenView">
         <h1 class="homescreen-title">Dashboard</h1>
         <div class="tasks-header-container dashboard-page">
-          <div  class="search-bar-container">
+          <div class="search-bar-container">
             <input
               type="search"
               name=""
@@ -165,12 +129,11 @@
               class="search-bar"
               id="searchTaskBar"
             />
-
-      
-            <button type="submit" class="submit-btn">
-              <i data-lucide="search"></i>
+            <button type="submit" class="submit-btn" id="searchButton">
+              <i data-lucide="search"></i> 
             </button>
           </div>
+
 
           <div class="task-control-container">
             <div class="add-btn-container">
