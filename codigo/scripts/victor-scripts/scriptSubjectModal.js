@@ -131,7 +131,7 @@ async function fetchSubjects(filter = "") {
       deleteBtn.classList.add("delete-btn");
       deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
       deleteBtn.addEventListener("click", () =>
-        deleteSubject(materia.id, materiaBox)
+        deleteSubject(materia.id, materia.nome, materiaBox)
       );
 
       materiaBox.appendChild(deleteBtn);
@@ -142,10 +142,33 @@ async function fetchSubjects(filter = "") {
   }
 }
 
-async function deleteSubject(id, subjectItem) {
-  const URL_DELETE = `${URL_MATERIA}/${id}`;
+async function deleteSubject(materiaId, materiaNome, subjectItem) {
+  const URL_DELETE = `${URL_MATERIA}/${materiaId}`;
 
   try {
+    // Buscar as tarefas associadas à matéria
+    const responseTarefas = await fetch(`http://localhost:3000/tarefas?materia=${materiaNome}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (!responseTarefas.ok) {
+      throw new Error(
+        "Erro na resposta da rede ao buscar tarefas: " + responseTarefas.statusText
+      );
+    }
+
+    const tarefas = await responseTarefas.json();
+
+    // Apagar todas as tarefas associadas
+    for (const tarefa of tarefas) {
+      await fetch(`http://localhost:3000/tarefas/${tarefa.id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    // Apagar a matéria
     const response = await fetch(URL_DELETE, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
@@ -159,9 +182,9 @@ async function deleteSubject(id, subjectItem) {
       console.error("Erro na resposta:", errorText);
     }
   } catch (error) {
-    console.error("Erro ao deletar a matéria:", error);
+    console.error("Erro ao deletar a matéria e suas tarefas associadas:", error);
     alert(
-      "Houve um problema ao deletar a matéria. Por favor, tente novamente."
+      "Houve um problema ao deletar a matéria e suas tarefas associadas. Por favor, tente novamente."
     );
   }
 }
