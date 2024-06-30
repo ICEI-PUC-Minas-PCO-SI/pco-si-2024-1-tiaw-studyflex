@@ -36,10 +36,7 @@ const searchButton = document.getElementById("searchButton");
 const message = document.getElementById("message");
 
 //NAV
-const mainNavBar = document.querySelectorAll(".mainNavTitle");
-
-console.log(mainNavBar);
-
+const mainNavBar = document.getElementById("mainNavBar");
 const okButton = document.getElementById("okButton");
 
 //MATÉRIAS
@@ -58,17 +55,19 @@ async function fetchTasks(url) {
     const response = await fetch(url ? url : URL_TAREFAS);
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
+
       pageLength = data.length;
-      if (data.length === 0) {
-        await prevButton.classList.add("hide");
-        await nextButton.classList.add("hide");
+      if (pageLength === 0) {
+        prevButton.classList.add("hide");
+        nextButton.classList.add("hide");
       }
     }
   } catch (error) {
     console.log(error);
   }
 }
+
+fetchTasks();
 
 async function buscarMaterias() {
   try {
@@ -110,8 +109,6 @@ async function getNavList() {
   const janelas = await buscarJanelas();
   return janelas;
 }
-
-fetchTasks();
 
 async function getTask(url) {
   fetch(url)
@@ -159,11 +156,25 @@ function returnURL(key, value, sorting) {
   //KEY - 'propriedade' da tarefa
   //VALUE - valor da propriedade
   //SORTING - modo de ordenação das tarefas (query de ordenação do json server)
-
   //URL BASE DA PÁGINA DE DASHBOARD (APRESENTA APENAS AS TAREFAS ATIVAS - STATUS 2 E 3)
   let URL_DASHBOARD = `http://localhost:3000/tarefas?status=2&status=3&_page=${page}&_limit=${taskPerPage}`;
   //URL BASE DA PÁGINA DE TAEFAS (APRESENTA TODDAS AS TAREFAS CRIADAS)
   let URL_TAREFAS = `http://localhost:3000/tarefas?_page=${page}&_limit=${taskPerPage}`;
+
+  if (key == "materiaId" && value != 0) {
+    let url = `http://localhost:3000/tarefas?${key}=${value}&_page=${page}&_limit=${taskPerPage}`;
+    if (sorting) {
+      url + sorting;
+    }
+    return url;
+  } else if (key == "materiaId" && value == 0) {
+    if (sorting) {
+      return URL_TAREFAS + sorting;
+    }
+    return URL_TAREFAS;
+  }
+
+  console.log(1243);
 
   //VERIFICA SE FOI PASSADO ALGUMA CRITERIO PARA LISTAR AS TAREFAS
   if (!key && !value && !sorting) {
@@ -195,7 +206,10 @@ function returnURL(key, value, sorting) {
       return URL_TAREFAS + sorting;
     }
     return URL_TAREFAS;
+  } else {
+    URL_TAREFAS = `http://localhost:3000/tarefas?${key}=${value}&_page=${page}&_limit=${taskPerPage}`;
   }
+  return URL_TAREFAS;
 }
 
 //CARREGA O HTML DAS TAREFAS NA TELA DE ACORDO COM O CRITÉRIO DE PAGINAÇÃO
@@ -243,18 +257,34 @@ async function fetchTasksPages(key, value, sorting) {
       nextButton.classList.add("hide");
       pageCounter.classList.add("hide");
       tasksContainer.classList.add("notfound");
+
       return;
     }
 
     if (response.ok) {
+      if (key == "materiaId" && value == 0) {
+        URL_TAREFAS_PAGE = URL_TAREFAS;
+        fetchTasks(URL_TAREFAS_PAGE);
+        prevButton.classList.remove("unactive");
+        nextButton.classList.remove("unactive");
+      } else {
+        URL_TAREFAS_PAGE = returnURL(key, value, sorting);
+      }
+
       prevButton.classList.remove("hide");
       nextButton.classList.remove("hide");
+
       if (page == 1) {
         prevButton.classList.add("unactive");
       } else {
         prevButton.classList.remove("unactive");
       }
+
       let pages = Math.ceil(pageLength / taskPerPage);
+
+      console.log("paginas " + page);
+      console.log("paginas " + pages);
+
       if (page == pages) {
         nextButton.classList.add("unactive");
       } else {
@@ -382,7 +412,8 @@ async function fetchTasksPages(key, value, sorting) {
 fetchTasksPages();
 
 //BOTÃO DE DE VOLTAR 1 PÁGINA
-prevButton.addEventListener("click", () => {
+prevButton.addEventListener("click", (e) => {
+  console.log(e.target);
   if (page === 1) {
     return;
   } else {
@@ -392,13 +423,15 @@ prevButton.addEventListener("click", () => {
       valueFilter = searchTaskBar.value;
       fetchTasksPages("nome_like", searchTaskBar.value, SORT_URL);
     } else {
+      console.log(keyFilter, valueFilter);
       fetchTasksPages(keyFilter, valueFilter, SORT_URL);
     }
   }
 });
 
 //BOTÃO DE DE AVANÇAR 1 PÁGINA
-nextButton.addEventListener("click", () => {
+nextButton.addEventListener("click", (e) => {
+  console.log(e.target);
   let pages = Math.ceil(pageLength / taskPerPage);
   if (page == pages) {
     return;
@@ -809,7 +842,7 @@ function getTaskDetails(taskid) {
       prioridade: taskDetailsPriority,
       materia: taskDetailsSubject,
       descricao: taskDetailsDecription.trim().replace(/\s+/g, " "),
-      materiaId: +taskDetailsSubjectId,
+      materiaId: taskDetailsSubjectId,
     };
   } else {
     taskdata = {
@@ -819,7 +852,7 @@ function getTaskDetails(taskid) {
       prioridade: taskDetailsPriority,
       materia: taskDetailsSubject,
       descricao: taskDetailsDecription.trim().replace(/\s+/g, " "),
-      materiaId: +taskDetailsSubjectId,
+      materiaId: taskDetailsSubjectId,
     };
   }
   return taskdata;
@@ -1067,22 +1100,27 @@ searchTaskBar.addEventListener("keydown", function (event) {
   const query = searchTaskBar.value;
   keyFilter = "nome_like";
   valueFilter = query;
-  if (query == "") {
-    keyFilter = null;
-  }
   fetchTasksPages(keyFilter, valueFilter);
 });
 
 searchTaskBar.addEventListener("keydown", (event) => {
-  console.log(event.key);
   if (event.key === "Enter") {
+    mainNavBar.click();
     searchButton.click();
   }
 });
 
 searchButton.addEventListener("click", () => {
   searchTaskBar.value = "";
+  let title;
+  const pageFilter = document.querySelector("li[]");
+  if (pageTitle == "Tarefas") {
+    title = pageTitle;
+  }
+  const mainnav = document.getElementById("mainNavBar");
+  mainnav.click();
   fetchTasksPages(keyFilter, valueFilter);
+  pageTitle.replace(title);
 });
 
 let sublist;
@@ -1121,7 +1159,7 @@ const modalNoSubject = `
 `;
 
 async function newSubBar(materia) {
-  if (janelasAtivas.length >= 4) {
+  if (janelasAtivas.length >= 5) {
     let warningMessage = `
          
           <div class="warningImgContainer">
@@ -1205,11 +1243,15 @@ async function loadSubBar() {
       let subjectId = janela.dataset.subid;
 
       if (subjectId === 0) {
-        console.log(subjectId);
+        page = 1;
+        fetchTasks();
         fetchTasksPages();
       } else {
+        page = 1;
         keyFilter = "materiaId";
         valueFilter = subjectId;
+        let url = returnURL(keyFilter, valueFilter);
+        fetchTasks(url);
         fetchTasksPages(keyFilter, valueFilter);
       }
 
@@ -1242,6 +1284,7 @@ addSubjectButton.addEventListener("click", async () => {
        </li>
       `;
       subList += subItem;
+      console.log(subItem);
     });
 
     subList += `</ul>`;

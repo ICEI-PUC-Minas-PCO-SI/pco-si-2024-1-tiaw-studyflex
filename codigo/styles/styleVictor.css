@@ -273,7 +273,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 64px;
+  padding: 8px 24px;
   border: 2px solid transparent;
   border-radius: 20px 20px 0px 0px;
   background-image: linear-gradient(to right, #ffffff, #f5f5f5);
@@ -318,7 +318,7 @@ auto .add-button:hover {
 }
 
 .window-title {
-  font-size: 20px;
+  font-size: 16px;
   color: #414b3b;
 }
 
@@ -560,7 +560,6 @@ auto .add-button:hover {
 }
 
 /* FIM DO CALENDARIO */
-
 
 /*CRIANDO TAREFA PELA HOMESCREEN*/
 
