@@ -468,6 +468,7 @@ O site é hospedado em um servidor web, permitindo acesso fácil e rápido às p
 
 
 ## Arquitetura da solução
+![diagrama novo](https://github.com/ICEI-PUC-Minas-PCO-SI/pco-si-2024-1-tiaw-studyflex/assets/163950822/6cf37ba5-ee01-488c-b22b-7f966c183b27)
 
 O diagrama mostra como os diferentes módulos estão conectados. O usuário interage com a aplicação por meio do navegador. A aplicação se comunica com a internet e é hospedada em algum lugar.
 
