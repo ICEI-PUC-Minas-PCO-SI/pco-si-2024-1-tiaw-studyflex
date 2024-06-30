@@ -35,17 +35,6 @@
             alt="StudyFlex logo"
             class="website-logo"
         /></a>
-
-        <div class="header-box">
-          <button class="btn header-btn" id="notificationButton">
-            <i data-lucide="messages-square" class="main-icon"></i>
-          </button>
-
-          <button class="btn header-btn" id="profileButton">
-            <i data-lucide="user" class="main-icon"></i>
-            <i data-lucide="chevron-down" class="secondary-icon"></i>
-          </button>
-        </div>
       </header>
 
       <nav id="navBar">
@@ -180,5 +169,15 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="./scripts/victor-scripts/scriptSubjectModal.js" async></script>
     <script src="./scripts/victor-scripts/app.js" async></script>
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget("https://vlibras.gov.br/app");
+    </script>
   </body>
 </html>

@@ -2,7 +2,7 @@
   "tarefas": [
     {
       "nome": "A",
-      "status": "3",
+      "status": "1",
       "dataFinal": "2024-06-30",
       "prioridade": "1",
       "materia": "tiaw",
@@ -11,7 +11,7 @@
     },
     {
       "nome": "Sprint",
-      "status": "3",
+      "status": "1",
       "dataFinal": "2024-06-30",
       "prioridade": "1",
       "materia": "ADADA",
@@ -20,7 +20,7 @@
     },
     {
       "nome": "a",
-      "status": "3",
+      "status": "1",
       "dataFinal": "2024-06-30",
       "prioridade": "1",
       "materia": "ATP 3",
@@ -47,26 +47,6 @@
       "id": 5
     },
     {
-      "nome": "aaaaa",
-      "status": "3",
-      "dataFinal": "2024-06-30",
-      "prioridade": "1",
-      "materia": "ATP",
-      "descricao": "",
-      "materiaId": "2",
-      "id": 6
-    },
-    {
-      "nome": "sasasas",
-      "status": "3",
-      "dataFinal": "2024-06-30",
-      "prioridade": "1",
-      "materia": "ATP 3",
-      "descricao": "",
-      "materiaId": "4",
-      "id": 7
-    },
-    {
       "nome": "a",
       "status": "3",
       "dataFinal": "2024-06-30",
@@ -78,22 +58,6 @@
     }
   ],
   "materias": [
-    {
-      "nome": "tiaw",
-      "id": 1
-    },
-    {
-      "nome": "ATP",
-      "id": 2
-    },
-    {
-      "nome": "RENATOLA",
-      "id": 3
-    },
-    {
-      "nome": "ATP 3",
-      "id": 4
-    },
     {
       "nome": "ADADA",
       "id": 5
@@ -126,35 +90,9 @@
       "date": "domingo, 30 de junho de 2024",
       "colorClass": "note-yellow",
       "id": 4
-    },
-    {
-      "title": "Título da Nota",
-      "content": "Conteúdo da nota",
-      "date": "domingo, 30 de junho de 2024",
-      "colorClass": "note-red",
-      "id": 5
-    },
-    {
-      "title": "Título da Nota",
-      "content": "Conteúdo da nota",
-      "date": "domingo, 30 de junho de 2024",
-      "colorClass": "note-yellow",
-      "id": 6
     }
   ],
   "janelas": [
-    {
-      "nome": "ATP",
-      "conteudo": "\n      <li\n          class=\"window-view\" \n            data-subid=2\n      >\n              <h2 class=\"window-title\">ATP</h2>\n              <button class=\"closeNav\" id=2><i data-lucide=\"x\" ></i></button>\n        </li>\n  ",
-      "materiaId": "2",
-      "id": 2
-    },
-    {
-      "nome": "ATP 3",
-      "conteudo": "\n      <li\n          class=\"window-view\" \n            data-subid=4\n      >\n              <h2 class=\"window-title\">ATP 3</h2>\n              <button class=\"closeNav\" id=4><i data-lucide=\"x\" ></i></button>\n        </li>\n  ",
-      "materiaId": "4",
-      "id": 4
-    },
     {
       "nome": "SASS",
       "conteudo": "\n      <li\n          class=\"window-view\" \n            data-subid=10\n      >\n              <h2 class=\"window-title\">SASS</h2>\n              <button class=\"closeNav\" id=10><i data-lucide=\"x\" ></i></button>\n        </li>\n  ",
@@ -166,6 +104,12 @@
       "conteudo": "\n      <li\n          class=\"window-view\" \n            data-subid=7\n      >\n              <h2 class=\"window-title\">FSFA</h2>\n              <button class=\"closeNav\" id=7><i data-lucide=\"x\" ></i></button>\n        </li>\n  ",
       "materiaId": "7",
       "id": 7
+    },
+    {
+      "nome": "ADADA",
+      "conteudo": "\n      <li\n          class=\"window-view\" \n            data-subid=6\n      >\n              <h2 class=\"window-title\">ADADA</h2>\n              <button class=\"closeNav\" id=6><i data-lucide=\"x\" ></i></button>\n        </li>\n  ",
+      "materiaId": "6",
+      "id": 6
     }
   ],
   "usuarios": [
