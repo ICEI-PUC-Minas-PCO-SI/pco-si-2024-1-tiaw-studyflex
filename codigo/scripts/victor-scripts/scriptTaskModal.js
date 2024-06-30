@@ -55,8 +55,8 @@ async function fetchTasks(url) {
     const response = await fetch(url ? url : URL_TAREFAS);
     if (response.ok) {
       const data = await response.json();
-
       pageLength = data.length;
+      console.log(pageLength);
       if (pageLength === 0) {
         prevButton.classList.add("hide");
         nextButton.classList.add("hide");
@@ -138,7 +138,6 @@ async function deleteTaskURL(url) {
     headers: { "Content-Type": "application/json" },
   })
     .then((response) => {
-      console.log(response);
       if (!response.ok && response.status != 500) {
         throw new Error("Houve um erro ao excluir a tarefa!");
       }
@@ -173,8 +172,6 @@ function returnURL(key, value, sorting) {
     }
     return URL_TAREFAS;
   }
-
-  console.log(1243);
 
   //VERIFICA SE FOI PASSADO ALGUMA CRITERIO PARA LISTAR AS TAREFAS
   if (!key && !value && !sorting) {
@@ -281,9 +278,6 @@ async function fetchTasksPages(key, value, sorting) {
       }
 
       let pages = Math.ceil(pageLength / taskPerPage);
-
-      console.log("paginas " + page);
-      console.log("paginas " + pages);
 
       if (page == pages) {
         nextButton.classList.add("unactive");
@@ -423,7 +417,6 @@ prevButton.addEventListener("click", (e) => {
       valueFilter = searchTaskBar.value;
       fetchTasksPages("nome_like", searchTaskBar.value, SORT_URL);
     } else {
-      console.log(keyFilter, valueFilter);
       fetchTasksPages(keyFilter, valueFilter, SORT_URL);
     }
   }
@@ -431,7 +424,6 @@ prevButton.addEventListener("click", (e) => {
 
 //BOTÃO DE DE AVANÇAR 1 PÁGINA
 nextButton.addEventListener("click", (e) => {
-  console.log(e.target);
   let pages = Math.ceil(pageLength / taskPerPage);
   if (page == pages) {
     return;
@@ -1284,7 +1276,6 @@ addSubjectButton.addEventListener("click", async () => {
        </li>
       `;
       subList += subItem;
-      console.log(subItem);
     });
 
     subList += `</ul>`;

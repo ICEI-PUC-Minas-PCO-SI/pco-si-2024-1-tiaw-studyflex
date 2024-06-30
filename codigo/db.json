@@ -1,88 +1,6 @@
 {
-  "tarefas": [
-    {
-      "nome": "A",
-      "status": "1",
-      "dataFinal": "2024-06-30",
-      "prioridade": "1",
-      "materia": "tiaw",
-      "descricao": "",
-      "id": 1
-    },
-    {
-      "nome": "Sprint",
-      "status": "1",
-      "dataFinal": "2024-06-30",
-      "prioridade": "1",
-      "materia": "ADADA",
-      "descricao": "",
-      "id": 2
-    },
-    {
-      "nome": "a",
-      "status": "1",
-      "dataFinal": "2024-06-30",
-      "prioridade": "1",
-      "materia": "ATP 3",
-      "descricao": "",
-      "id": 3
-    },
-    {
-      "nome": "aaaa",
-      "status": "3",
-      "dataFinal": "2024-06-30",
-      "prioridade": "1",
-      "materia": "SAFSAFSA",
-      "descricao": "",
-      "materiaId": 9,
-      "id": 4
-    },
-    {
-      "nome": "aaaa",
-      "status": "3",
-      "dataFinal": "2024-06-30",
-      "prioridade": "1",
-      "materia": "SAFSAFSA",
-      "descricao": "",
-      "id": 5
-    },
-    {
-      "nome": "a",
-      "status": "3",
-      "dataFinal": "2024-06-30",
-      "prioridade": "1",
-      "materia": "FSFA",
-      "descricao": "",
-      "materiaId": "7",
-      "id": 8
-    }
-  ],
-  "materias": [
-    {
-      "nome": "ADADA",
-      "id": 5
-    },
-    {
-      "nome": "ADADA",
-      "id": 6
-    },
-    {
-      "nome": "FSFA",
-      "id": 7
-    },
-    {
-      "nome": "SAFAFSA",
-      "id": 8
-    },
-    {
-      "nome": "SAFSAFSA",
-      "id": 9
-    },
-    {
-      "nome": "SASS",
-      "id": 10
-    }
-  ],
+  "tarefas": [],
+  "materias": [],
   "notas": [
     {
       "title": "Título da Nota",
@@ -92,32 +10,6 @@
       "id": 4
     }
   ],
-  "janelas": [
-    {
-      "nome": "SASS",
-      "conteudo": "\n      <li\n          class=\"window-view\" \n            data-subid=10\n      >\n              <h2 class=\"window-title\">SASS</h2>\n              <button class=\"closeNav\" id=10><i data-lucide=\"x\" ></i></button>\n        </li>\n  ",
-      "materiaId": "10",
-      "id": 10
-    },
-    {
-      "nome": "FSFA",
-      "conteudo": "\n      <li\n          class=\"window-view\" \n            data-subid=7\n      >\n              <h2 class=\"window-title\">FSFA</h2>\n              <button class=\"closeNav\" id=7><i data-lucide=\"x\" ></i></button>\n        </li>\n  ",
-      "materiaId": "7",
-      "id": 7
-    },
-    {
-      "nome": "ADADA",
-      "conteudo": "\n      <li\n          class=\"window-view\" \n            data-subid=6\n      >\n              <h2 class=\"window-title\">ADADA</h2>\n              <button class=\"closeNav\" id=6><i data-lucide=\"x\" ></i></button>\n        </li>\n  ",
-      "materiaId": "6",
-      "id": 6
-    }
-  ],
-  "usuarios": [
-    {
-      "username": "Renatola",
-      "email": "renatinzz@gmail.com",
-      "password": "fuiengravidado",
-      "id": 1
-    }
-  ]
+  "janelas": [],
+  "usuarios": []
 }
