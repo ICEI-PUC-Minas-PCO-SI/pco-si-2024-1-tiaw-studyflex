@@ -452,16 +452,19 @@ Nesta seção são apresentados os detalhes técnicos da solução criada pela e
 
 ## Tecnologias Utilizadas
 Navegador - Interface básica do sistema
+
  HTML
 CSS
 JS
 Node
 Local Storage
+
 O armazenamento local no navegador é utilizado para manter dados importantes, organizados em bancos de dados JSON, tais como:
 Tarefas: Gerenciamento de tarefas, incluindo criação, edição,progresso, filtragem e ordenação.
 Notificações: Sistema de alertas e notificações para manter o usuário informado sobre suas atividades.
 Usuários: Perfis e preferências dos usuários para personalização da experiência.
 Notas: Gerenciamento de criação de notas.
+
 Hospedagem
 O site é hospedado em um servidor web, permitindo acesso fácil e rápido às páginas através do navegador.
 
